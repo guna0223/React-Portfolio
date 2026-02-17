@@ -15,13 +15,13 @@ const Footer = () => {
 
         {/* Navigation Links */}
         <div className="footer-links">
-          <a href="#home">Home</a>
+          <a href="#home">| Home |</a>
           <span className="separator">✦</span>
-          <a href="#about">About</a>
+          <a href="#about">| About |</a>
           <span className="separator">✦</span>
-          <a href="#projects">Projects</a>
+          <a href="#projects">| Projects |</a>
           <span className="separator">✦</span>
-          <a href="#contact">Contact</a>
+          <a href="#contact">| Contact |</a>
         </div>
 
         {/* ADDED: Social Links */}

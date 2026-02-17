@@ -133,3 +133,123 @@
     width: var(--fill);
     box-shadow: 0 0 10px var(--cyan-glow);
 }
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET
+   ============================================ */
+@media (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .skill-category {
+        padding: var(--spacing-md);
+    }
+
+    .category-header {
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .category-header i {
+        font-size: 1.3rem;
+    }
+
+    .category-header h3 {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE LANDSCAPE
+   ============================================ */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .skill-category {
+        padding: var(--spacing-md);
+    }
+
+    .category-header {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .skill-items {
+        gap: var(--spacing-sm);
+    }
+
+    .skill-item i {
+        font-size: 1.5rem;
+        width: 35px;
+    }
+
+    .skill-item span {
+        font-size: 0.9rem;
+        min-width: 70px;
+    }
+
+    .skill-bar {
+        height: 5px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE PORTRAIT
+   ============================================ */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .skills-grid {
+        gap: var(--spacing-sm);
+    }
+
+    .skill-category {
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-md);
+    }
+
+    .category-header {
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .category-header i {
+        font-size: 1.2rem;
+    }
+
+    .category-header h3 {
+        font-size: 0.95rem;
+    }
+
+    .skill-items {
+        gap: var(--spacing-xs);
+    }
+
+    .skill-item {
+        gap: var(--spacing-sm);
+    }
+
+    .skill-item i {
+        font-size: 1.3rem;
+        width: 30px;
+    }
+
+    .skill-item span {
+        font-size: 0.85rem;
+        min-width: 60px;
+    }
+
+    .skill-bar {
+        height: 4px;
+    }
+}

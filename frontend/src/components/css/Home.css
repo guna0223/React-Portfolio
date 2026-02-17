@@ -337,3 +337,185 @@
     0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
     50% { transform: translateY(-15px) rotate(180deg); opacity: 1; }
 }
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET
+   ============================================ */
+@media (max-width: 1024px) {
+    .portal-frame {
+        width: 320px;
+        height: 400px;
+    }
+
+    .portal-ring.outer-ring {
+        width: 320px;
+        height: 320px;
+    }
+
+    .portal-ring.middle-ring {
+        width: 270px;
+        height: 270px;
+    }
+
+    .portal-ring.inner-ring {
+        width: 220px;
+        height: 220px;
+    }
+
+    .portal-core {
+        width: 180px;
+        height: 240px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE LANDSCAPE
+   ============================================ */
+@media (max-width: 768px) {
+    .home {
+        padding-top: 100px;
+    }
+
+    .home-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--spacing-lg);
+    }
+
+    .home-text {
+        align-items: center;
+        order: 2;
+    }
+
+    .home-image {
+        order: 1;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .hero-desc {
+        border-left: none;
+        border-top: 2px solid var(--gold-main);
+        padding-left: 0;
+        padding-top: var(--spacing-md);
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .portal-frame {
+        width: 260px;
+        height: 340px;
+    }
+
+    .portal-ring.outer-ring {
+        width: 260px;
+        height: 260px;
+    }
+
+    .portal-ring.middle-ring {
+        width: 220px;
+        height: 220px;
+    }
+
+    .portal-ring.inner-ring {
+        width: 170px;
+        height: 170px;
+    }
+
+    .portal-core {
+        width: 140px;
+        height: 190px;
+    }
+
+    .floating-runes {
+        display: none;
+    }
+
+    .mystical-intro {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE PORTRAIT
+   ============================================ */
+@media (max-width: 480px) {
+    .home {
+        padding-top: 90px;
+    }
+
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--spacing-sm);
+    }
+
+    .hire-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .social-links {
+        gap: var(--spacing-sm);
+    }
+
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .portal-frame {
+        width: 220px;
+        height: 290px;
+    }
+
+    .portal-ring.outer-ring {
+        width: 220px;
+        height: 220px;
+    }
+
+    .portal-ring.middle-ring {
+        width: 180px;
+        height: 180px;
+    }
+
+    .portal-ring.inner-ring {
+        width: 140px;
+        height: 140px;
+    }
+
+    .portal-core {
+        width: 120px;
+        height: 160px;
+    }
+}

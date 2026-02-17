@@ -7,6 +7,7 @@ import Services from "./pages/Service";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer/Footer";
+import ScriptInitializer from "./components/ScriptInitializer";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -14,6 +15,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
   return (
     <>
+      <ScriptInitializer />
       <Navbar />
       <Home/>
       <About/>
