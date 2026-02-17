@@ -147,17 +147,30 @@ const Projects = () => {
 
               <div className="project-info">
                 <h3>Portfolio Website</h3>
+
                 <p>
-                  A modern, responsive portfolio website showcasing creative
-                  work with smooth animations and interactive elements.
+                  Designed and developed a modern, responsive portfolio website using
+                  <strong> React</strong>, focused on performance, accessibility, and clean
+                  UI interactions with smooth animations.
                 </p>
 
+                {/* <div className="project-points">
+                  <ul>
+                    <li>Built with reusable React components</li>
+                    <li>Responsive layout with mobile-first design</li>
+                    <li>Animated UI elements for enhanced user experience</li>
+                    <li>Optimized asset loading and performance</li>
+                  </ul>
+                </div> */}
+
                 <div className="project-tech">
-                  <span className="tech-rune">⦿</span><span>HTML5</span>
-                  <span className="tech-rune">⦿</span><span>CSS3</span>
+                  <span className="tech-rune">⦿</span><span>React</span>
                   <span className="tech-rune">⦿</span><span>JavaScript</span>
+                  <span className="tech-rune">⦿</span><span>CSS3</span>
+                  <span className="tech-rune">⦿</span><span>Vite</span>
                 </div>
               </div>
+
             </div>
 
             {/* Movie App */}
