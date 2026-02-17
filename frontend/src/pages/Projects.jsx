@@ -1,5 +1,11 @@
 import React from "react";
-import "../components/css/Projects.css"; 
+import "../components/css/Projects.css";
+import gameSellingImg from "../assets/images/project-img/gameselling.png";
+import whatsapp from "../assets/images/project-img/whatapp.png";
+import portfolioImg from "../assets/images/project-img/portfolio.png";
+import weatherImg from "../assets/images/project-img/weather.png";
+
+
 
 const Projects = () => {
   return (
@@ -18,7 +24,7 @@ const Projects = () => {
               <div className="project-image">
                 <div className="relic-frame">
                   <img
-                    src="assets/images/project-img/what's_app.png"
+                    src={whatsapp}
                     alt="WhatsApp UI Project"
                   />
                 </div>
@@ -66,7 +72,7 @@ const Projects = () => {
               <div className="project-image">
                 <div className="relic-frame">
                   <img
-                    src="/assets/images/project-img/weather.png"
+                    src={weatherImg}
                     alt="Weather Dashboard"
                   />
                 </div>
@@ -112,7 +118,7 @@ const Projects = () => {
               <div className="project-image">
                 <div className="relic-frame">
                   <img
-                    src="/assets/images/project-img/portfolio.png"
+                    src={portfolioImg}
                     alt="Portfolio Website"
                   />
                 </div>
@@ -208,7 +214,7 @@ const Projects = () => {
               <div className="project-image">
                 <div className="relic-frame">
                   <img
-                    src="/assets/images/project-img/game.png"
+                    src={gameSellingImg}
                     alt="Game Selling App"
                   />
                 </div>
