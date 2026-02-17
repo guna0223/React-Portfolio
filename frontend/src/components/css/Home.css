@@ -1,0 +1,339 @@
+
+/* ============================================
+   HOME SECTION - THE SANCTUM
+   ============================================ */
+.home {
+    background: linear-gradient(180deg, var(--bg-main) 0%, var(--purple-deep) 50%, var(--bg-secondary) 100%);
+    color: var(--text-main);
+    padding-top: 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+.home::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 60%);
+    opacity: 0.3;
+    animation: float-portal 10s ease-in-out infinite;
+}
+
+@keyframes float-portal {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg); 
+    }
+    33% { 
+        transform: translate(-30px, 30px) rotate(120deg); 
+    }
+    66% { 
+        transform: translate(20px, -20px) rotate(240deg); 
+    }
+}
+
+.home-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.home-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.mystical-intro {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--cyan-main);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.intro-rune {
+    animation: rune-flicker 1.5s ease-in-out infinite;
+}
+
+@keyframes rune-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.greeting {
+    font-weight: 500;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-top: var(--spacing-sm);
+}
+
+.accent-name {
+    background: linear-gradient(135deg, var(--gold-main), var(--gold-light), var(--cyan-main));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    position: relative;
+}
+
+.hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    min-height: 2.5rem;
+}
+
+.subtitle-prefix {
+    color: var(--purple-light);
+    font-style: italic;
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-faded);
+    max-width: 500px;
+    line-height: 1.8;
+    border-left: 2px solid var(--gold-main);
+    padding-left: var(--spacing-md);
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.hire-btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-body);
+}
+
+.hire-btn.primary {
+    background: linear-gradient(135deg, var(--cyan-main), var(--cyan-dark));
+    color: var(--bg-main);
+    box-shadow: 0 4px 15px var(--cyan-glow);
+}
+
+.hire-btn.primary:hover {
+    background: linear-gradient(135deg, var(--cyan-light), var(--cyan-main));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px var(--cyan-glow);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    animation: lightning-flash 2s ease-in-out infinite;
+}
+
+@keyframes lightning-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.hire-btn.secondary {
+    background: transparent;
+    color: var(--gold-main);
+    border: 2px solid var(--gold-main);
+    font-family: var(--font-heading);
+}
+
+.hire-btn.secondary:hover {
+    background: rgba(201, 162, 39, 0.1);
+    border-color: var(--gold-light);
+    box-shadow: var(--shadow-glow-gold);
+    transform: translateY(-3px);
+}
+
+.hire-btn i {
+    transition: var(--transition-normal);
+}
+
+.hire-btn:hover i {
+    transform: translateX(4px);
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-gold);
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    transition: var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+    opacity: 0;
+    transition: var(--transition-normal);
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    border-color: var(--cyan-main);
+    box-shadow: var(--shadow-glow-cyan);
+}
+
+.social-icon:hover .social-glow {
+    opacity: 1;
+}
+
+.social-icon.mystic-whatsapp:hover {
+    background: #25D366;
+    border-color: #25D366;
+    color: white;
+}
+
+.social-icon.mystic-linkedin:hover {
+    background: #0A66C2;
+    border-color: #0A66C2;
+    color: white;
+}
+
+.social-icon.mystic-github:hover {
+    background: #24292F;
+    border-color: var(--gold-main);
+    color: var(--gold-main);
+}
+
+/* Home Image - Portal Design */
+.home-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.portal-frame {
+    position: relative;
+    width: 380px;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portal-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.portal-ring.outer-ring {
+    width: 380px;
+    height: 380px;
+    border-color: var(--gold-main);
+    animation: rotate-portal 20s linear infinite;
+    box-shadow: 0 0 30px var(--magic-gold), inset 0 0 30px var(--magic-gold);
+}
+
+.portal-ring.middle-ring {
+    width: 320px;
+    height: 320px;
+    border-color: var(--purple-light);
+    animation: rotate-portal 15s linear infinite reverse;
+    box-shadow: 0 0 20px var(--magic-purple);
+}
+
+.portal-ring.inner-ring {
+    width: 260px;
+    height: 260px;
+    border-color: var(--cyan-main);
+    animation: rotate-portal 10s linear infinite;
+    box-shadow: 0 0 20px var(--cyan-glow);
+}
+
+@keyframes rotate-portal {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.portal-core {
+    width: 220px;
+    height: 280px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--gold-dark);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.floating-runes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.rune {
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--gold-main);
+    opacity: 0.6;
+    animation: float-rune 4s ease-in-out infinite;
+    text-shadow: 0 0 10px var(--gold-main);
+}
+
+.rune:nth-child(1) { top: 10%; left: -10%; animation-delay: 0s; }
+.rune:nth-child(2) { top: 30%; right: -15%; animation-delay: 1s; }
+.rune:nth-child(3) { bottom: 20%; left: -20%; animation-delay: 2s; }
+.rune:nth-child(4) { bottom: 40%; right: -10%; animation-delay: 3s; }
+
+@keyframes float-rune {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+    50% { transform: translateY(-15px) rotate(180deg); opacity: 1; }
+}

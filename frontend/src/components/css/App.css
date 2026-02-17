@@ -1,0 +1,140 @@
+/* ============================================
+   Portfolio - Dr. Strange Mystic Theme
+   The Sorcerer Supreme's Digital Sanctum
+   ============================================ */
+
+/* CSS Variables - Mystic Color System */
+:root {
+    /* Deep Cosmic Backgrounds */
+    --bg-main: #0a0a12;
+    --bg-secondary: #12121f;
+    --bg-tertiary: #1a1a2e;
+    --bg-card: #16213e;
+    
+    /* Mystic Purple Depths */
+    --purple-deep: #1a0a2e;
+    --purple-main: #2d1b4e;
+    --purple-light: #4a2c7a;
+    
+    /* Golden Accents (Cloak of Levitation) */
+    --gold-main: #c9a227;
+    --gold-light: #e8c547;
+    --gold-dark: #9a7b1a;
+    
+    /* Cyan Mystic Energy (Eye of Agamotto) */
+    --cyan-main: #00d4ff;
+    --cyan-light: #67e8f9;
+    --cyan-dark: #0e7490;
+    --cyan-glow: rgba(0, 212, 255, 0.4);
+    
+    /* Text Colors */
+    --text-main: #e8e8f0;
+    --text-muted: #a0a0b8;
+    --text-faded: #6b6b80;
+    
+    /* Magical Effects */
+    --magic-purple: rgba(167, 139, 250, 0.3);
+    --magic-gold: rgba(201, 162, 39, 0.3);
+    --portal-glow: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+    
+    /* Borders */
+    --border-gold: 1px solid rgba(201, 162, 39, 0.3);
+    --border-cyan: 1px solid rgba(0, 212, 255, 0.3);
+    
+    /* Typography */
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Raleway', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-mystic: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-glow-cyan: 0 0 20px var(--cyan-glow);
+    --shadow-glow-gold: 0 0 20px var(--magic-gold);
+    --shadow-glow-purple: 0 0 20px var(--magic-purple);
+    
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+}
+
+/* Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Mystical Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(45, 27, 78, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(26, 10, 46, 0.5) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-normal);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/*all contant media screen  */
+
+
+

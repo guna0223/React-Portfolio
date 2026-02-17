@@ -1,0 +1,117 @@
+/* ============================================
+   SERVICES SECTION – MODERN CLEAN STYLE
+   ============================================ */
+
+.services {
+    background: linear-gradient(180deg, #0b0f1a 0%, #0f172a 100%);
+    padding: 100px 0;
+}
+
+.services-content {
+    margin-top: 40px;
+}
+
+/* GRID */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+/* CARD */
+.service-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 40px 32px;
+    text-align: center;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* SUBTLE HOVER */
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: #38bdf8;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ICON */
+.service-icon {
+    margin-bottom: 28px;
+}
+
+.icon-circle {
+    width: 72px;
+    height: 72px;
+    margin: auto;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+/* REMOVE OLD GLOW */
+.icon-glow {
+    display: none;
+}
+
+/* TITLE */
+.service-card h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #e5e7eb;
+}
+
+/* DESCRIPTION */
+.service-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #9ca3af;
+    margin-bottom: 22px;
+}
+
+/* FEATURES */
+.service-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* FEATURE TAG */
+.service-features span {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* HIDE RUNES (CLEAN LOOK) */
+.feature-rune {
+    display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .services {
+        padding: 70px 0;
+    }
+
+    .service-card {
+        padding: 32px 24px;
+    }
+
+    .icon-circle {
+        width: 64px;
+        height: 64px;
+        font-size: 1.6rem;
+    }
+}

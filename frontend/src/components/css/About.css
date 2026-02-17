@@ -1,0 +1,212 @@
+
+/* ============================================
+   ABOUT SECTION - THE GRIMOIRE
+   ============================================ */
+.about {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--purple-deep) 50%, var(--bg-tertiary) 100%);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+}
+
+.grimoire-frame {
+    position: relative;
+    width: 320px;
+    height: 420px;
+}
+
+.book-spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-main), var(--gold-dark));
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    box-shadow: var(--shadow-md);
+}
+
+.book-cover {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: calc(100% - 20px);
+    height: 100%;
+    background: var(--purple-main);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--gold-main);
+}
+
+.book-cover::before {
+    content: '⦿';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    color: var(--gold-main);
+    opacity: 0.1;
+}
+
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.magical-seal {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--cyan-main);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--cyan-main);
+    animation: seal-pulse 3s ease-in-out infinite;
+    box-shadow: var(--shadow-glow-cyan);
+}
+
+@keyframes seal-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.about-description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.intro-paragraph {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.drop-cap {
+    float: left;
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    line-height: 0.8;
+    padding-right: var(--spacing-sm);
+    color: var(--gold-main);
+    text-shadow: 2px 2px 0 var(--gold-dark);
+}
+
+.about-description p:not(.intro-paragraph) {
+    font-size: 1rem;
+    color: var(--text-faded);
+    line-height: 1.8;
+}
+
+.about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.highlight {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: var(--border-cyan);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.highlight:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-glow-cyan);
+}
+
+.highlight-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-main), var(--purple-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--gold-main);
+    border: 1px solid var(--gold-main);
+}
+
+.highlight h4 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+.highlight p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.highlight-glow {
+    position: absolute;
+    right: -30px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+    opacity: 0;
+    transition: var(--transition-normal);
+}
+
+.highlight:hover .highlight-glow {
+    opacity: 1;
+}
+
+.about-actions {
+    margin-top: var(--spacing-md);
+}
+
+.about-btn {
+    background: transparent;
+    color: var(--gold-main);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: 2px solid var(--gold-main);
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.about-btn:hover {
+    background: var(--gold-main);
+    color: var(--bg-main);
+    box-shadow: var(--shadow-glow-gold);
+    transform: translateY(-3px);
+}
