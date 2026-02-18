@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/css/About.css"; 
+import "../components/css/About.css";
 import aboutImg from "../assets/AboutImage/img.jpg";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -9,7 +9,7 @@ const About = () => {
     <section id="about" className="section about">
       <div className="container">
         <div className="about-content">
-          
+
           {/* IMAGE SECTION */}
           <div className="about-image">
             <div className="grimoire-frame">

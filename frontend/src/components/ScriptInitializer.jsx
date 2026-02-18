@@ -249,7 +249,7 @@ const ScriptInitializer = () => {
       // Handle Download CV button
       if (button.textContent.includes('Download CV') || button.textContent.includes('resume') || button.querySelector('.fa-download')) {
         const link = document.createElement('a');
-        link.href = '/assets/resume/resume.pdf';
+        link.href = '/resume/Gunasekar_Resume.pdf';
         link.download = 'Gunasekar_Resume.pdf';
         link.click();
         
@@ -324,7 +324,6 @@ const ScriptInitializer = () => {
         input.addEventListener('focus', function() {
           group.classList.add('focused');
         });
-
         input.addEventListener('blur', function() {
           if (!input.value) {
             group.classList.remove('focused');
