@@ -19,7 +19,7 @@ const Projects = () => {
 
         <div className="projects-content">
           <div className="projects-grid">
-{/* shopping */}
+            {/* shopping */}
             <div className="project-card animate-on-scroll">
               <div className="project-image">
                 <div className="relic-frame">
@@ -176,7 +176,7 @@ const Projects = () => {
                 <div className="project-overlay">
                   <div className="project-links">
                     <a
-                      href="https://portfolio-rho-ivory-hvtoexlqp1.vercel.app/"
+                      href="https://react-portfolio-2kbm.vercel.app/"
                       className="project-link"
                       target="_blank"
                       rel="noreferrer"
