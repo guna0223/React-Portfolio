@@ -5,6 +5,7 @@ import whatsapp from "../assets/images/project-img/whatapp.png";
 import portfolioImg from "../assets/images/project-img/portfolio.png";
 import weatherImg from "../assets/images/project-img/weather.png";
 import movie from "../assets/images/project-img/movie.png";
+import shopping from "../assets/images/project-img/shopping.png";
 
 
 const Projects = () => {
@@ -18,6 +19,55 @@ const Projects = () => {
 
         <div className="projects-content">
           <div className="projects-grid">
+{/* shopping */}
+            <div className="project-card animate-on-scroll">
+              <div className="project-image">
+                <div className="relic-frame">
+                  <img
+                    src={shopping}
+                    alt="VEXO E-commerce Application"
+                  />
+                </div>
+
+                <div className="project-overlay">
+                  <div className="project-links">
+                    <a
+                      href="https://react-ecommerce-fxed.vercel.app/"
+                      className="project-link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <a
+                      href="https://github.com/guna0223/React-Ecommerce"
+                      className="project-link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className="fab fa-github"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="project-info">
+                <h3>VEXO – Modern E-Commerce Web App</h3>
+
+                <p>
+                  VEXO is a modern and responsive e-commerce web application built using
+                  React. It integrates a RESTful API (FakeStore API) to dynamically fetch
+                  and display product data, featuring product listing, category filtering,
+                  search functionality, wishlist, and cart management.
+                </p>
+
+                <div className="project-tech">
+                  <span className="tech-rune">⦿</span><span>React</span>
+                  <span className="tech-rune">⦿</span><span>REST API</span>
+                  <span className="tech-rune">⦿</span><span>CSS3</span>
+                </div>
+              </div>
+            </div>
 
             {/* WhatsApp Project */}
             <div className="project-card animate-on-scroll">
