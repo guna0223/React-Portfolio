@@ -1,0 +1,517 @@
+/* Retro Arcade Loading Screen Styles */
+
+/* CSS Variables for Neon Colors */
+:root {
+  --neon-green: #39ff14;
+  --neon-cyan: #00ffff;
+  --neon-purple: #bf00ff;
+  --neon-yellow: #ffff00;
+  --neon-pink: #ff0066;
+  --neon-orange: #ff6600;
+  --arcade-black: #0a0a0a;
+  --arcade-dark: #121218;
+  --crt-glow: rgba(0, 255, 255, 0.1);
+}
+
+/* Main Loading Screen Container */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0a12 0%, #0f0f1a 50%, #0a0a12 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* CRT Screen Effects */
+.crt-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  pointer-events: none;
+  animation: crtOverlay 0.1s infinite;
+}
+
+@keyframes crtOverlay {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
+
+/* Scanlines */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Screen Flicker */
+.screen-flicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  5% { opacity: 0.98; }
+  10% { opacity: 0.92; }
+  15% { opacity: 0.97; }
+  20% { opacity: 0.94; }
+  25% { opacity: 0.99; }
+  30% { opacity: 0.96; }
+  35% { opacity: 0.98; }
+  40% { opacity: 0.93; }
+  45% { opacity: 0.95; }
+  50% { opacity: 1; }
+  55% { opacity: 0.97; }
+  60% { opacity: 0.94; }
+  65% { opacity: 0.98; }
+  70% { opacity: 0.95; }
+  75% { opacity: 0.99; }
+  80% { opacity: 0.96; }
+  85% { opacity: 0.98; }
+  90% { opacity: 0.93; }
+  95% { opacity: 0.97; }
+  100% { opacity: 0.95; }
+}
+
+/* Arcade Container */
+.arcade-container {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  padding: 30px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
+  border: 4px solid #2a2a4a;
+  border-radius: 20px;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    0 0 40px rgba(191, 0, 255, 0.2),
+    inset 0 0 60px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+/* Neon Text Effects */
+.neon-text {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 40px currentColor;
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+.neon-text.cyan {
+  color: var(--neon-cyan);
+}
+
+.neon-text.green {
+  color: var(--neon-green);
+}
+
+.neon-text.yellow {
+  color: var(--neon-yellow);
+}
+
+.neon-text.purple {
+  color: var(--neon-purple);
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 20px currentColor;
+  }
+  to {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 80px currentColor;
+  }
+}
+
+/* Header */
+.arcade-header {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* Game Screen */
+.game-screen {
+  position: relative;
+  height: 120px;
+  background: linear-gradient(180deg, #0d0d15 0%, #151520 100%);
+  border: 3px solid #2a2a4a;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Character Container */
+.character-container {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  overflow: hidden;
+}
+
+.pixel-character {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s steps(4);
+}
+
+.pixel-row {
+  display: flex;
+}
+
+.pixel {
+  width: 6px;
+  height: 6px;
+}
+
+.pixel.filled {
+  background: var(--neon-green);
+  box-shadow: 0 0 3px var(--neon-green);
+}
+
+.pixel.empty {
+  background: transparent;
+}
+
+/* Decorations */
+.decorations {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+.pixel-heart .pixel.filled.heart-color {
+  background: var(--neon-pink);
+  box-shadow: 0 0 3px var(--neon-pink);
+}
+
+.pixel-coin .pixel.filled.coin-color {
+  background: var(--neon-yellow);
+  box-shadow: 0 0 3px var(--neon-yellow);
+}
+
+/* Loading Section */
+.loading-section {
+  margin-bottom: 20px;
+}
+
+.loading-label {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 12px;
+  min-height: 20px;
+}
+
+.loading-bar-container {
+  background: #0a0a10;
+  padding: 8px;
+  border-radius: 5px;
+  border: 2px solid #2a2a4a;
+}
+
+.loading-bar-frame {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.loading-block {
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  transition: all 0.1s ease;
+}
+
+.loading-block.empty {
+  background: #1a1a2a;
+  border: 1px solid #2a2a4a;
+}
+
+.loading-block.filled {
+  background: var(--neon-green);
+  box-shadow: 
+    0 0 8px var(--neon-green),
+    inset 0 0 4px rgba(255, 255, 255, 0.3);
+  animation: blockGlow 0.5s ease-in-out infinite alternate;
+}
+
+/* Block animation delays */
+.loading-block.delay-0 { animation-delay: 0s; }
+.loading-block.delay-1 { animation-delay: 0.1s; }
+.loading-block.delay-2 { animation-delay: 0.2s; }
+.loading-block.delay-3 { animation-delay: 0.3s; }
+.loading-block.delay-4 { animation-delay: 0.4s; }
+
+@keyframes blockGlow {
+  from {
+    box-shadow: 
+      0 0 8px var(--neon-green),
+      inset 0 0 4px rgba(255, 255, 255, 0.3);
+  }
+  to {
+    box-shadow: 
+      0 0 15px var(--neon-green),
+      0 0 25px var(--neon-green),
+      inset 0 0 6px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.progress-info {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* Sound Visualizer */
+.sound-bars {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.sound-bar {
+  width: 8px;
+  background: linear-gradient(to top, var(--neon-purple), var(--neon-cyan));
+  border-radius: 2px;
+  animation: soundBar 0.5s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+@keyframes soundBar {
+  0%, 100% { 
+    height: 10px;
+    opacity: 0.7;
+  }
+  50% { 
+    height: 25px;
+    opacity: 1;
+  }
+}
+
+/* Press Start Button */
+.press-start-container {
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.press-start-btn {
+  background: transparent;
+  border: 3px solid var(--neon-green);
+  color: var(--neon-green);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  padding: 15px 30px;
+  cursor: pointer;
+  border-radius: 10px;
+  text-shadow: 0 0 10px var(--neon-green);
+  box-shadow: 
+    0 0 10px var(--neon-green),
+    inset 0 0 20px rgba(57, 255, 20, 0.1);
+  transition: all 0.3s ease;
+  animation: buttonPulse 1s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px var(--neon-green),
+      inset 0 0 20px rgba(57, 255, 20, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 25px var(--neon-green),
+      0 0 40px var(--neon-green),
+      inset 0 0 30px rgba(57, 255, 20, 0.2);
+  }
+}
+
+.press-start-btn:hover {
+  background: rgba(57, 255, 20, 0.1);
+  transform: scale(1.05);
+}
+
+.press-start-btn:active {
+  transform: scale(0.95);
+}
+
+.blink {
+  animation: blink 0.8s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.insert-coin {
+  margin-top: 15px;
+  font-size: 10px;
+}
+
+/* Footer */
+.arcade-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid #2a2a4a;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.controls-hint {
+  animation: hintPulse 2s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .arcade-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .arcade-header {
+    font-size: 10px;
+  }
+
+  .loading-label {
+    font-size: 9px;
+  }
+
+  .loading-block {
+    width: 12px;
+    height: 12px;
+  }
+
+  .press-start-btn {
+    font-size: 12px;
+    padding: 12px 20px;
+  }
+
+  .arcade-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Pixel Noise Effect */
+.loading-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* RGB Shift Effect on container */
+.arcade-container::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 0, 0, 0.1) 45%,
+    transparent 50%,
+    rgba(0, 255, 255, 0.1) 55%,
+    transparent 60%
+  );
+  border-radius: 20px;
+  pointer-events: none;
+  animation: rgbShift 4s linear infinite;
+}
+
+@keyframes rgbShift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(4px); }
+}
