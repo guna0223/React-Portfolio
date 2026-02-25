@@ -9,12 +9,19 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    const templateParams = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      subject: e.target.subject.value,
+      message: e.target.message.value,
+    };
+
     emailjs
-      .sendForm(
-        "service_y0ymmgf",   
-        "template_x28pqc4",  
-        e.target,
-        "nFxwbwNW4OW4-i054"    
+      .send(
+        "service_y0ymmgf",
+        "template_96kexgk",
+        templateParams,
+        "nFxwbwNW4OW4-i054"
       )
       .then(() => {
         alert("◆ TRANSMISSION SENT ✔");
