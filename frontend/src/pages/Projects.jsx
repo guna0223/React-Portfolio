@@ -16,8 +16,8 @@ const Projects = () => {
       id: 1,
       title: "VEXO – E-Commerce App",
       image: shopping,
-      description: "Modern & responsive e-commerce web app built using React. Integrates FakeStore API for dynamic product data, featuring listing, filtering, search, wishlist & cart.",
-      tech: ["React", "REST API", "CSS3"],
+      description: "A modern and fully responsive e-commerce web application built with React. Features include dynamic product listings with FakeStore API integration, advanced filtering by category and price, real-time search functionality, persistent wishlist and shopping cart features, and a seamless checkout experience. The app emphasizes performance optimization with lazy loading and efficient state management.",
+      tech: ["React", "REST API", "CSS3", "Context API"],
       link: "https://react-ecommerce-fxed.vercel.app/",
       github: "https://github.com/guna0223/React-Ecommerce"
     },
@@ -25,8 +25,8 @@ const Projects = () => {
       id: 2,
       title: "WhatsApp UI Clone",
       image: whatsapp,
-      description: "Responsive WhatsApp UI clone using React with chat lists, message layout & dynamic data rendering.",
-      tech: ["React", "JavaScript", "JSON", "CSS"],
+      description: "A pixel-perfect responsive WhatsApp UI clone built with React. Features include a complete chat list sidebar with search, message conversations with timestamps, online status indicators, typing indicators, and dynamic data rendering from JSON. The interface maintains full responsiveness across mobile, tablet, and desktop devices.",
+      tech: ["React", "JavaScript", "JSON", "CSS3", "Responsive Design"],
       link: "https://whatsapp-ui-ten.vercel.app/",
       github: "https://github.com/guna0223/whatsapp-ui"
     },
@@ -34,8 +34,8 @@ const Projects = () => {
       id: 3,
       title: "Weather Dashboard",
       image: weatherImg,
-      description: "Interactive weather dashboard with location-based forecasts, weather maps & historical data visualization.",
-      tech: ["JavaScript", "OpenWeather API"],
+      description: "An interactive and user-friendly weather dashboard featuring location-based forecasts using geolocation API, current weather conditions with detailed metrics (temperature, humidity, wind speed), 7-day forecast predictions, interactive weather maps with visual overlays, and historical data visualization charts. Integrates OpenWeather API for real-time data.",
+      tech: ["JavaScript", "OpenWeather API", "Chart.js", "CSS3"],
       link: "https://weather-dashbord-seven.vercel.app/",
       github: "https://github.com/guna0223/weather-dashbord"
     },
@@ -43,8 +43,8 @@ const Projects = () => {
       id: 4,
       title: "Portfolio Website",
       image: portfolioImg,
-      description: "Modern, responsive portfolio built with React, focused on performance, accessibility & clean UI.",
-      tech: ["React", "JavaScript", "CSS3", "Vite"],
+      description: "A modern, responsive portfolio built with React focused on performance, accessibility, and clean UI. Features smooth scroll navigation, responsive design for all devices, SEO optimization, interactive animations, and a unique retro arcade-style loading screen. Includes sections for home, about, skills, services, projects, and contact with a cohesive dark theme design.",
+      tech: ["React", "JavaScript", "CSS3", "Vite", "Responsive Design"],
       link: "https://portfolio-guna.vercel.app/",
       github: "https://github.com/guna0223/portfolio"
     },
@@ -52,8 +52,8 @@ const Projects = () => {
       id: 5,
       title: "Movie App",
       image: movie,
-      description: "Movie browsing app built with React & TMDB API, featuring real-time search, detailed info & favorites.",
-      tech: ["React", "Context API", "TMDB API", "CSS"],
+      description: "A feature-rich movie browsing application built with React and TMDB API. Offers real-time search functionality across thousands of movies, detailed movie information pages with cast, crew, trailers and reviews, favorite/wishlist management with local storage persistence, trending movies section, genre-based filtering, and a sleek dark-themed UI with smooth animations.",
+      tech: ["React", "Context API", "TMDB API", "CSS3", "Local Storage"],
       link: "https://movie-project-omega-tawny.vercel.app/",
       github: "https://github.com/guna0223/movie-project"
     },
@@ -61,8 +61,8 @@ const Projects = () => {
       id: 6,
       title: "Game Selling App",
       image: gameSellingImg,
-      description: "Full-stack game selling web app using Django with authentication, product & order management.",
-      tech: ["Django", "Python", "HTML", "CSS"],
+      description: "A full-stack game selling web application built with Django framework. Features include secure user authentication and authorization system, comprehensive product catalog management for games, shopping cart functionality, order processing and tracking, admin dashboard for inventory management, PostgreSQL database integration, and responsive design for all devices.",
+      tech: ["Django", "Python", "HTML", "CSS3", "PostgreSQL", "Authentication"],
       link: null,
       github: "https://github.com/guna0223/Django-Game"
     }

@@ -236,7 +236,7 @@ function LoadingScreen({ onComplete }) {
 
         {/* Footer */}
         <div className="arcade-footer">
-          <span className="neon-text cyan">© 2024 DEVELOPER STUDIO</span>
+          <span className="neon-text cyan">© PEACE DEVELOPER STUDIO</span>
           <div className="controls-hint">
             <span className="neon-text yellow">[CLICK TO START]</span>
           </div>
