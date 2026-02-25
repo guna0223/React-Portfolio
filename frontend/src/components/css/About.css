@@ -7,6 +7,9 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .about-content {
@@ -14,6 +17,9 @@
     grid-template-columns: 1fr 1.5fr;
     gap: var(--spacing-xl);
     align-items: start;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 /* Player Avatar Section */
@@ -229,36 +235,38 @@
    ============================================ */
 @media (max-width: 1024px) {
     .about-content {
-        gap: var(--spacing-lg);
-        padding: 0 var(--spacing-md);
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
     }
     
     .profile-card {
-        width: 240px;
+        width: 220px;
     }
     
     .avatar-frame {
-        width: 170px;
-        height: 220px;
+        width: 160px;
+        height: 200px;
     }
     
     .player-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
     .about {
         overflow-x: hidden;
-        padding: var(--spacing-lg) 0;
+        padding: var(--spacing-md) 0;
+        min-height: auto;
     }
     
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: var(--spacing-lg);
-        padding: 0 var(--spacing-md);
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
         max-width: 100%;
+        width: 100%;
     }
     
     .about-image {
@@ -267,12 +275,12 @@
     
     .profile-card {
         margin: 0 auto;
-        width: 260px;
+        width: 220px;
     }
     
     .avatar-frame {
-        width: 180px;
-        height: 230px;
+        width: 160px;
+        height: 200px;
     }
     
     .about-text {
@@ -282,16 +290,14 @@
     
     .bio-box {
         text-align: left;
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
         width: 100%;
         box-sizing: border-box;
     }
     
     .about-description {
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1.5;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
     }
     
     .player-stats {
@@ -308,7 +314,7 @@
     }
     
     .tech-item {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         padding: var(--spacing-xs);
     }
     
@@ -319,11 +325,11 @@
     }
     
     .about-title {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
     
     .section-title {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 }
 
@@ -331,6 +337,7 @@
     .about {
         padding: var(--spacing-md) var(--spacing-xs);
         overflow-x: hidden;
+        min-height: auto;
     }
     
     .container {
@@ -340,61 +347,65 @@
     }
     
     .section-title {
-        font-size: 1rem;
-        margin-bottom: var(--spacing-md);
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
     }
     
     .about-content {
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm);
         padding: 0 var(--spacing-xs);
+        width: 100%;
+        max-width: 100%;
     }
     
     .profile-card {
-        width: 180px;
+        width: 160px;
         padding: var(--spacing-xs);
-        border-width: 3px;
+        border-width: 2px;
     }
     
     .avatar-frame {
-        width: 140px;
-        height: 175px;
-        border-width: 3px;
+        width: 120px;
+        height: 150px;
+        border-width: 2px;
     }
     
     .profile-header {
-        font-size: 0.4rem;
-        padding: var(--spacing-xs);
+        font-size: 0.35rem;
+        padding: 2px var(--spacing-xs);
         margin: calc(var(--spacing-xs) * -1);
         margin-bottom: var(--spacing-xs);
     }
     
     .player-level {
-        font-size: 0.35rem;
-        padding: 2px 4px;
-        bottom: -10px;
-        right: -10px;
+        font-size: 0.3rem;
+        padding: 2px 3px;
+        bottom: -8px;
+        right: -8px;
         border-width: 2px;
     }
     
     .about-title {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
     
     .bio-box {
-        padding: var(--spacing-sm);
-        border-width: 3px;
+        padding: var(--spacing-xs);
+        border-width: 2px;
     }
     
     .bio-box::before {
-        top: -10px;
-        font-size: 0.8rem;
+        top: -8px;
+        font-size: 0.7rem;
     }
     
     .about-description {
-        font-size: 0.85rem;
-        line-height: 1.4;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .bio-decorative {
+        font-size: 0.7rem;
     }
     
     .player-stats {
@@ -407,36 +418,103 @@
     }
     
     .stat-label {
-        font-size: 0.4rem;
+        font-size: 0.35rem;
     }
     
     .stat-value {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
     }
     
     .tech-stack {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-xs);
         border-width: 2px;
     }
     
     .tech-label {
-        font-size: 0.4rem;
+        font-size: 0.35rem;
     }
     
     .tech-items {
-        gap: 4px;
+        gap: 3px;
     }
     
     .tech-item {
-        font-size: 0.75rem;
-        padding: 2px 6px;
+        font-size: 0.65rem;
+        padding: 2px 4px;
         border-width: 1px;
     }
     
     .about-btn {
-        font-size: 0.85rem;
-        padding: var(--spacing-xs) var(--spacing-md);
-        min-height: 40px;
-        border-width: 3px;
+        font-size: 0.75rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        min-height: 36px;
+        border-width: 2px;
+    }
+}
+
+/* Samsung Galaxy S21 FE and similar small devices (~360px) */
+@media (max-width: 380px) {
+    .about {
+        padding: var(--spacing-sm) 4px;
+    }
+    
+    .container {
+        padding: 0 4px;
+    }
+    
+    .section-title {
+        font-size: 0.8rem;
+    }
+    
+    .profile-card {
+        width: 140px;
+        padding: 4px;
+    }
+    
+    .avatar-frame {
+        width: 100px;
+        height: 130px;
+    }
+    
+    .profile-header {
+        font-size: 0.3rem;
+    }
+    
+    .player-level {
+        font-size: 0.25rem;
+    }
+    
+    .about-title {
+        font-size: 0.55rem;
+    }
+    
+    .bio-box {
+        padding: 6px;
+    }
+    
+    .about-description {
+        font-size: 0.75rem;
+    }
+    
+    .bio-decorative {
+        font-size: 0.6rem;
+    }
+    
+    .stat-box {
+        padding: 6px;
+    }
+    
+    .stat-value {
+        font-size: 0.7rem;
+    }
+    
+    .tech-item {
+        font-size: 0.6rem;
+        padding: 2px 3px;
+    }
+    
+    .about-btn {
+        font-size: 0.7rem;
+        padding: 6px 12px;
     }
 }
