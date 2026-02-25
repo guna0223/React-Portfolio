@@ -38,12 +38,6 @@ const Navbar = () => {
             <span>LET'S TALK</span>
           </a>
         </div>
-
-        <div className="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </nav>
     </header>
   );

@@ -9,7 +9,7 @@
     --retro-bg-secondary: #12122a;
     --retro-bg-tertiary: #1a1a3a;
     --retro-bg-card: #0d0d24;
-    
+
     /* Retro Accent Colors - NES/SNES Style */
     --retro-blue: #4a90d9;
     --retro-blue-dark: #2d5aa0;
@@ -22,33 +22,44 @@
     --retro-purple: #9058d8;
     --retro-white: #f0f0f0;
     --retro-gray: #888898;
-    
+
     /* Text Colors */
     --retro-text: #f0f0f0;
     --retro-text-dim: #a0a0b0;
     --retro-text-muted: #606070;
-    
+
     /* Borders - Thick Pixel Style */
     --retro-border: 4px solid var(--retro-white);
     --retro-border-blue: 4px solid var(--retro-blue);
     --retro-border-yellow: 4px solid var(--retro-yellow);
     --retro-border-green: 4px solid var(--retro-green);
-    
+
     /* Typography - Pixel Fonts */
     --font-pixel: 'Press Start 2P', cursive;
     --font-terminal: 'VT323', monospace;
-    
+
     /* Spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
-    
+
     /* Pixel Size */
     --pixel-size: 4px;
 }
 
+/* gta game style cursor */
+html,
+body,
+header,
+li,input,
+* {
+    cursor: url("/cursor/normal.cur") 0 0, pointer;
+}
+a,button{
+ cursor: url("/cursor/hover.cur") 0 0, pointer !important;   
+}
 /* Reset */
 *,
 *::before,
@@ -83,13 +94,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.15),
-        rgba(0, 0, 0, 0.15) 1px,
-        transparent 1px,
-        transparent 2px
-    );
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 2px);
     pointer-events: none;
     z-index: 9999;
 }
@@ -109,9 +118,17 @@ body::after {
 }
 
 @keyframes crt-flicker {
-    0% { opacity: 0.97; }
-    50% { opacity: 1; }
-    100% { opacity: 0.98; }
+    0% {
+        opacity: 0.97;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.98;
+    }
 }
 
 a {
@@ -223,20 +240,24 @@ img {
 }
 
 @keyframes bounce-arrow {
-    from { transform: translateX(0); }
-    to { transform: translateX(5px); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(5px);
+    }
 }
 
 /* Pixel Divider */
 .pixel-divider {
     height: 4px;
-    background: linear-gradient(90deg, 
-        var(--retro-blue) 0%, 
-        var(--retro-white) 25%, 
-        var(--retro-yellow) 50%, 
-        var(--retro-white) 75%, 
-        var(--retro-blue) 100%
-    );
+    background: linear-gradient(90deg,
+            var(--retro-blue) 0%,
+            var(--retro-white) 25%,
+            var(--retro-yellow) 50%,
+            var(--retro-white) 75%,
+            var(--retro-blue) 100%);
     margin: var(--spacing-lg) 0;
 }
 
@@ -270,7 +291,7 @@ img {
     .section-title {
         font-size: 1.2rem;
     }
-    
+
     .container {
         max-width: 100%;
         padding: 0 var(--spacing-md);
@@ -282,25 +303,25 @@ img {
         font-size: 16px;
         overflow-x: hidden;
     }
-    
+
     .section {
         padding: 100px 0 var(--spacing-lg);
         min-height: auto;
         overflow-x: hidden;
     }
-    
+
     .section-title {
         font-size: 1rem;
         letter-spacing: 2px;
     }
-    
+
     .pixel-box::before {
         top: -4px;
         left: -4px;
         right: -4px;
         bottom: -4px;
     }
-    
+
     .container {
         padding: 0 var(--spacing-md);
         overflow-x: hidden;
@@ -313,11 +334,11 @@ img {
         max-width: 100%;
         overflow-x: hidden;
     }
-    
+
     .section-title {
         font-size: 0.85rem;
     }
-    
+
     body {
         overflow-x: hidden;
         max-width: 100vw;

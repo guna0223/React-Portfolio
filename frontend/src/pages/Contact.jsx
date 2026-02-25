@@ -136,7 +136,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-
+            {/* contact form */}
             <div className="contact-form">
               <div className="form-header">◆ ENTER MESSAGE ◆</div>
 

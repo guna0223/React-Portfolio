@@ -33,7 +33,11 @@ const Home = () => {
             </div>
 
             <div className="hero-actions">
-              <a href="#about" className="hire-btn primary"><span>▶ START QUEST</span></a>
+              <a
+                href="#about" className="hire-btn primary"
+              >
+                <span>▶ START QUEST</span>
+              </a>
 
               <a
                 href="/src/assets/resume/Gunasekar D --Resume.pdf"
