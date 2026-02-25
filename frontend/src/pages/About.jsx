@@ -108,15 +108,15 @@ const About = () => {
                 </button>
               </div>
               {/* Retro Success Alert */}
-
-              {showAlert && (
-                <div className="retro-alert">
-                  <span className="retro-alert-icon">★</span>
-                  <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
-                  <span className="retro-alert-icon">★</span>
-                </div>
-              )}
             </div>
+            {showAlert && (
+              <div className="retro-alert alert-msg">
+                <span className="retro-alert-icon">★</span>
+                <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+                <span className="retro-alert-icon">★</span>
+              </div>
+            )}
+
           </div>
 
         </div>

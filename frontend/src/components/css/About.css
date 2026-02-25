@@ -207,6 +207,11 @@
 /* Action Button */
 .about-actions {
     margin-top: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: flex-start;
 }
 
 .about-btn {
@@ -525,10 +530,11 @@
    ============================================ */
 
 .about-actions {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     flex-wrap: nowrap;
     gap: 10px;
+    justify-content: flex-end;
 }
 
 .download-btn-wrapper {
@@ -538,16 +544,23 @@
     gap: 10px;
 }
 
+.alert-msg {
+    position: fixed;
+    top: 740px;
+    right: 10px;
+}
+
 .retro-alert {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 10px;
+    padding: 8px 12px;
     background: var(--retro-bg-card);
     border: 2px solid var(--retro-green);
     box-shadow: 3px 3px 0 var(--retro-blue-dark);
     animation: retro-alert-appear 0.3s ease-out;
     white-space: nowrap;
+    z-index: 9999;
 }
 
 .retro-alert-icon {
@@ -557,7 +570,7 @@
 
 .retro-alert-message {
     font-family: var(--font-pixel);
-    font-size: 0.3rem;
+    font-size: 0.5rem;
     color: var(--retro-green);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -587,92 +600,43 @@
     }
 
     .retro-alert {
+        top: 100px;
         align-items: center;
-        padding: 4px 8px;
+        padding: 6px 10px;
     }
 
     .retro-alert-message {
-        font-size: 0.25rem;
+        font-size: 0.45rem;
     }
 }
 
 @media (max-width: 480px) {
     .about-actions {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: row;
+        width: auto;
     }
 
     .download-btn-wrapper {
-        width: 100%;
+        width: auto;
         justify-content: center;
         flex-wrap: wrap;
     }
 
     .retro-alert {
+        top: 75px;
         width: auto;
         max-width: 100%;
         justify-content: center;
-        padding: 4px 6px;
+        padding: 5px 8px;
     }
 
     .retro-alert-message {
-        font-size: 0.2rem;
+        font-size: 0.4rem;
     }
 
     .retro-alert-icon {
-        font-size: 8px;
+        font-size: 10px;
     }
 }
 
 /* END OF FILE */
-
-/* Mobile responsiveness for alert */
-@media (max-width: 768px) {
-    .about-actions {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .retro-alert {
-        position: relative;
-        align-items: center;
-        left: auto;
-        top: auto;
-        transform: none;
-        margin-left: 0;
-        margin-top: 8px;
-    }
-
-    .retro-alert-content {
-        padding: var(--spacing-xs) var(--spacing-sm);
-        gap: var(--spacing-xs);
-    }
-
-    .retro-alert-message {
-        font-size: 0.35rem;
-    }
-
-    .retro-alert-icon {
-        font-size: 0.7rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .retro-alert {
-        margin-top: 6px;
-    }
-
-    .retro-alert-content {
-        padding: 3px 6px;
-        gap: 3px;
-    }
-
-    .retro-alert-message {
-        font-size: 0.25rem;
-    }
-
-    .retro-alert-icon {
-        font-size: 0.5rem;
-    }
-}
