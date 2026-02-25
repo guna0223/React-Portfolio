@@ -83,6 +83,10 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
     overflow-x: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
@@ -94,6 +98,12 @@ body {
     position: relative;
     font-size: 18px;
     max-width: 100vw;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
 }
 
 /* CRT Scanline Effect Overlay */
