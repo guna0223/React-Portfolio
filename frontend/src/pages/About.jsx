@@ -1,6 +1,6 @@
 import React from "react";
 import "../components/css/About.css";
-import aboutImg from "../assets/AboutImage/img.jpg";
+import aboutImg from "../assets/AboutImage/img.jpeg";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 
