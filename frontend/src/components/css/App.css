@@ -59,7 +59,7 @@ li,
 }
 
 a,
-button {
+button,i,.arow{
     cursor: url("/cursor/hover.cur") 0 0, pointer !important;
 }
 

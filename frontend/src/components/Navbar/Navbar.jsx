@@ -35,7 +35,7 @@ const Navbar = () => {
 
         <div className="nav-cta">
           <a href="#contact" className="cta-btn">
-            <span>LET'S TALK</span>
+            <span className="arow">LET'S TALK</span>
           </a>
         </div>
       </nav>
