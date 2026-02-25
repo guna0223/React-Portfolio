@@ -1,14 +1,35 @@
 import React from "react";
 import "../components/css/Contact.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
+
+  // SEND EMAIL FUNCTION (ADDED ONLY)
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_y0ymmgf",   
+        "template_x28pqc4",  
+        e.target,
+        "nFxwbwNW4OW4-i054"    
+      )
+      .then(() => {
+        alert("◆ TRANSMISSION SENT ✔");
+        e.target.reset();
+      })
+      .catch((error) => {
+        alert("◆ TRANSMISSION FAILED ✖");
+        console.error(error);
+      });
+  };
+
   return (
     <section id="contact" className="section contact">
       <div className="container">
-        <h2 className="section-title">
-          [ COMM TERMINAL ]
-        </h2>
+        <h2 className="section-title">[ COMM TERMINAL ]</h2>
 
         <div className="terminal-container">
           <div className="terminal-header">
@@ -83,11 +104,10 @@ const Contact = () => {
 
             {/* CONTACT FORM */}
             <div className="contact-form">
-              <div className="form-header">
-                ◆ ENTER MESSAGE ◆
-              </div>
-              
-              <form id="contactForm">
+              <div className="form-header">◆ ENTER MESSAGE ◆</div>
+
+              {/* ONLY onSubmit ADDED */}
+              <form id="contactForm" onSubmit={sendEmail}>
                 <div className="form-group">
                   <input type="text" id="name" name="name" required />
                   <label htmlFor="name">NAME</label>
@@ -110,7 +130,9 @@ const Contact = () => {
                     rows="5"
                     required
                   ></textarea>
-                  <label htmlFor="message">MESSAGE<span className="terminal-cursor"></span></label>
+                  <label htmlFor="message">
+                    MESSAGE<span className="terminal-cursor"></span>
+                  </label>
                 </div>
 
                 <button type="submit" className="submit-btn">
@@ -118,6 +140,7 @@ const Contact = () => {
                 </button>
               </form>
             </div>
+
           </div>
         </div>
       </div>
