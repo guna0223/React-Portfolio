@@ -45,7 +45,7 @@ const Projects = () => {
       image: portfolioImg,
       description: "Modern, responsive portfolio built with React, focused on performance, accessibility & clean UI.",
       tech: ["React", "JavaScript", "CSS3", "Vite"],
-      link: "https://react-portfolio-2kbm.vercel.app/",
+      link: "https://portfolio-guna.vercel.app/",
       github: "https://github.com/guna0223/portfolio"
     },
     {
