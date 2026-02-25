@@ -72,6 +72,13 @@ button,i,.arow{
     box-sizing: border-box;
 }
 
+/* Dynamic viewport height for mobile browser Desktop site mode */
+:root {
+    --dvh: 100dvh;
+    --svh: 100svh;
+    --lvh: 100lvh;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
@@ -205,12 +212,13 @@ img {
 
 /* Section Base */
 .section {
-    min-height: 100vh;
+    min-height: var(--dvh, 100vh);
     padding: 120px 0 var(--spacing-xl);
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
+    box-sizing: border-box;
 }
 
 .section-title {

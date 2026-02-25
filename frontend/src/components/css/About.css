@@ -4,12 +4,13 @@
 
 .about {
     background: var(--retro-bg);
-    min-height: 100vh;
+    min-height: var(--dvh, 100vh);
     display: flex;
     align-items: center;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .about-content {

@@ -4,10 +4,11 @@
 
 .projects {
     background: var(--retro-bg);
-    min-height: 100vh;
+    min-height: var(--dvh, 100vh);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 /* Projects Grid */

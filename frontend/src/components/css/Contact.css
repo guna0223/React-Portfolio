@@ -4,11 +4,12 @@
 
 .contact {
     background: var(--retro-bg);
-    min-height: 100vh;
+    min-height: var(--dvh, 100vh);
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-bottom: var(--spacing-xl);
+    box-sizing: border-box;
 }
 
 /* Terminal Container */
