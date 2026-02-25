@@ -1,4 +1,4 @@
-/* ============================================
+ /* ============================================
    CONTACT SECTION - COMMUNICATION TERMINAL
    ============================================ */
 
@@ -253,6 +253,18 @@
   background: var(--retro-bg-card);
   border-color: var(--retro-green);
   color: var(--retro-green);
+}
+
+.retro-alert.warning {
+  background: var(--retro-bg-card);
+  border-color: var(--retro-yellow);
+  color: var(--retro-yellow);
+}
+
+.retro-alert.admin-success {
+  background: var(--retro-bg-card);
+  border-color: var(--retro-blue);
+  color: var(--retro-blue);
 }
 
 .retro-alert.error {

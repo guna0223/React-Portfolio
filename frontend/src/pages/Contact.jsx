@@ -4,7 +4,11 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
-  const [alertInfo, setAlertInfo] = useState({ show: false, type: "", message: "" });
+  const [alertInfo, setAlertInfo] = useState({
+    show: false,
+    type: "",
+    message: "",
+  });
 
   const showAlert = (type, message) => {
     setAlertInfo({ show: true, type, message });
@@ -16,41 +20,38 @@ const Contact = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
 
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const subject = e.target.subject.value;
+    const message = e.target.message.value;
 
-    // Admin email params
-    const adminParams = {
-      name: formData.name,
-      email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-    };
+    // Build dynamic subject and message in React
+    const dynamicSubject = `New Portfolio Message from ${name} - ${subject}`;
+    const dynamicMessage = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`;
 
-    // User auto-reply params
-    const userParams = {
-      name: formData.name,
-      to_email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
+    // Send ALL required variables to EmailJS
+    const emailParams = {
+      name: name,
+      email: email,
+      subject: dynamicSubject,
+      message: dynamicMessage,
+      reply_to: email,
+      to_email: "gunasekar0223@gmail.com"
     };
 
     try {
-      // Step 1: Send email to admin
-      await emailjs.send("service_y0ymmgf", "template_96kexgk", adminParams, "nFxwbwNW4OW4-i054");
-      
-      // Step 2: Send confirmation to user
-      await emailjs.send("service_y0ymmgf", "template_z5qlmac", userParams, "nFxwbwNW4OW4-i054");
-      
-      showAlert("success", "TRANSMISSION COMPLETE - CHECK YOUR MAIL");
+      await emailjs.send(
+        "service_y0ymmgf",
+        "template_z5qlmac",
+        emailParams,
+        "nFxwbwNW4OW4-i054"
+      );
+
+      showAlert("success", "MESSAGE DELIVERED");
       e.target.reset();
     } catch (error) {
-      console.error(error);
-      showAlert("error", "TRANSMISSION FAILED - TRY AGAIN");
+      console.error("MAIL FAILED:", error);
+      showAlert("error", "DELIVERY FAILED");
     }
   };
 
@@ -58,16 +59,17 @@ const Contact = () => {
     <section id="contact" className="section contact">
       <div className="container">
         <h2 className="section-title">[ COMM TERMINAL ]</h2>
-        
-        {/* Retro Alert Box */}
+
         {alertInfo.show && (
           <div className={`retro-alert ${alertInfo.type}`}>
             <span className="alert-icon">
-              {alertInfo.type === "success" ? "✔" : "✖"}
+              {alertInfo.type === "success" || alertInfo.type === "admin-success"
+                ? "✔"
+                : alertInfo.type === "warning"
+                ? "⚠"
+                : "✖"}
             </span>
-            <span className="alert-message">
-              {alertInfo.message}
-            </span>
+            <span className="alert-message">{alertInfo.message}</span>
             <span className="alert-cursor">_</span>
           </div>
         )}
@@ -83,9 +85,7 @@ const Contact = () => {
           </div>
 
           <div className="terminal-content">
-            {/* CONTACT INFO */}
             <div className="contact-info">
-
               <div className="contact-item">
                 <div className="contact-icon">
                   <i className="fas fa-envelope"></i>
@@ -96,58 +96,11 @@ const Contact = () => {
                   <a href="mailto:gunasekar0223@gmail.com">[ SEND MAIL ]</a>
                 </div>
               </div>
-
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fas fa-phone"></i>
-                </div>
-                <div className="contact-details">
-                  <h3>◆ PHONE</h3>
-                  <p>9486436037</p>
-                </div>
-              </div>
-
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fas fa-map-marker"></i>
-                </div>
-                <div className="contact-details">
-                  <h3>◆ LOCATION</h3>
-                  <p>BTM 1st Stage, Bengaluru</p>
-                  <a
-                    href="https://www.google.com/maps/place/BTM+1st+Stage,+Bangalore/@12.9199239,77.6068483,17z"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    [ VIEW MAP ]
-                  </a>
-                </div>
-              </div>
-
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fab fa-whatsapp"></i>
-                </div>
-                <div className="contact-details">
-                  <h3>◆ WHATSAPP</h3>
-                  <p>9486436037</p>
-                  <a
-                    href="https://web.whatsapp.com/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    [ SEND MSG ]
-                  </a>
-                </div>
-              </div>
-
             </div>
 
-            {/* CONTACT FORM */}
             <div className="contact-form">
               <div className="form-header">◆ ENTER MESSAGE ◆</div>
 
-              {/* ONLY onSubmit ADDED */}
               <form id="contactForm" onSubmit={sendEmail}>
                 <div className="form-group">
                   <input type="text" id="name" name="name" required />
@@ -165,12 +118,7 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group">
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    required
-                  ></textarea>
+                  <textarea id="message" name="message" rows="5" required />
                   <label htmlFor="message">
                     MESSAGE<span className="terminal-cursor"></span>
                   </label>
