@@ -16,45 +16,39 @@ const Contact = () => {
     }, 4000);
   };
 
-  const onSubmit = async (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     showAlert("", "SENDING...");
 
-    // Get all form values
-    const formData = new FormData(e.target);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const subject = formData.get("subject");
-    const message = formData.get("message");
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const subject = e.target.subject.value;
+    const message = e.target.message.value;
 
-    // Create clean object for Web3Forms
     const payload = {
       access_key: "272fad5e-4e4a-4fab-9083-a301958026b8",
-      name: name,
-      email: email,
-      subject: subject,
-      message: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`
+      name: {name},
+      email: {email},
+      subject: {subject},
+      message: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage: ${message}`,
+      from_name: "Portfolio Contact",
+      replyto: email
     };
 
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
 
-      const data = await response.json();
-
-      if (data.success) {
-        showAlert("success", "MESSAGE DELIVERED");
-        e.target.reset();
-      } else {
-        showAlert("error", "DELIVERY FAILED");
-      }
-    } catch (error) {
+    const data = await response.json();
+    
+    if (data.success) {
+      showAlert("success", "MESSAGE DELIVERED");
+      e.target.reset();
+    } else {
       showAlert("error", "DELIVERY FAILED");
     }
   };
@@ -101,7 +95,7 @@ const Contact = () => {
             <div className="contact-form">
               <div className="form-header">◆ ENTER MESSAGE ◆</div>
 
-              <form id="contactForm" onSubmit={onSubmit}>
+              <form id="contactForm" onSubmit={sendEmail}>
                 <div className="form-group">
                   <input type="text" name="name" required />
                   <label>NAME</label>
