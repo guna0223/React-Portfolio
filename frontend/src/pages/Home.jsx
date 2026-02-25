@@ -1,13 +1,13 @@
 import React from "react";
-import profileImg from "../assets/AboutImage/homeimg.jpeg"; 
-import "../components/css/Home.css"; 
+import profileImg from "../assets/AboutImage/homeimg.jpeg";
+import "../components/css/Home.css";
 
 const Home = () => {
   return (
     <section id="home" className="section home">
       <div className="container">
         <div className="home-content">
-          
+
           {/* TEXT CONTENT */}
           <div className="home-text">
             <div className="press-start">
@@ -27,18 +27,16 @@ const Home = () => {
             </h3>
 
             <div className="hero-desc">
-              ◆ Quest: Building epic web applications with Python, Django, SQL, 
-              HTML, CSS, JavaScript & React. 
+              ◆ Quest: Building epic web applications with Python, Django, SQL,
+              HTML, CSS, JavaScript & React.
               ◆ Mission: Create clean, responsive & scalable digital realms.
             </div>
 
             <div className="hero-actions">
-              <button className="hire-btn primary">
-                <span>▶ START QUEST</span>
-              </button>
+              <a href="#about" className="hire-btn primary"><span>▶ START QUEST</span></a>
 
-              <a 
-                href="/src/assets/resume/Gunasekar D --Resume.pdf" 
+              <a
+                href="/src/assets/resume/Gunasekar D --Resume.pdf"
                 download
                 className="hire-btn secondary"
               >
