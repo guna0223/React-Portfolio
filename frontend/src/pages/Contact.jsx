@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../components/css/Contact.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [alertInfo, setAlertInfo] = useState({
@@ -17,40 +16,45 @@ const Contact = () => {
     }, 4000);
   };
 
-  const sendEmail = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    showAlert("", "SENDING...");
 
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const subject = e.target.subject.value;
-    const message = e.target.message.value;
+    // Get all form values
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const subject = formData.get("subject");
+    const message = formData.get("message");
 
-    // Build dynamic subject and message in React
-    const dynamicSubject = `New Portfolio Message from ${name} - ${subject}`;
-    const dynamicMessage = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`;
-
-    // Send ALL required variables to EmailJS
-    const emailParams = {
+    // Create clean object for Web3Forms
+    const payload = {
+      access_key: "272fad5e-4e4a-4fab-9083-a301958026b8",
       name: name,
       email: email,
-      subject: dynamicSubject,
-      message: dynamicMessage,
-      reply_to: email,
-      to_email: "gunasekar0223@gmail.com"
+      subject: subject,
+      message: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`
     };
 
     try {
-      await emailjs.send(
-        "service_y0ymmgf",
-        "template_z5qlmac",
-        emailParams,
-        "nFxwbwNW4OW4-i054"
-      );
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
 
-      showAlert("success", "MESSAGE DELIVERED");
-      e.target.reset();
+      const data = await response.json();
+
+      if (data.success) {
+        showAlert("success", "MESSAGE DELIVERED");
+        e.target.reset();
+      } else {
+        showAlert("error", "DELIVERY FAILED");
+      }
     } catch (error) {
-      console.error("MAIL FAILED:", error);
       showAlert("error", "DELIVERY FAILED");
     }
   };
@@ -63,11 +67,7 @@ const Contact = () => {
         {alertInfo.show && (
           <div className={`retro-alert ${alertInfo.type}`}>
             <span className="alert-icon">
-              {alertInfo.type === "success" || alertInfo.type === "admin-success"
-                ? "✔"
-                : alertInfo.type === "warning"
-                ? "⚠"
-                : "✖"}
+              {alertInfo.type === "success" ? "✔" : "✖"}
             </span>
             <span className="alert-message">{alertInfo.message}</span>
             <span className="alert-cursor">_</span>
@@ -101,25 +101,25 @@ const Contact = () => {
             <div className="contact-form">
               <div className="form-header">◆ ENTER MESSAGE ◆</div>
 
-              <form id="contactForm" onSubmit={sendEmail}>
+              <form id="contactForm" onSubmit={onSubmit}>
                 <div className="form-group">
-                  <input type="text" id="name" name="name" required />
-                  <label htmlFor="name">NAME</label>
+                  <input type="text" name="name" required />
+                  <label>NAME</label>
                 </div>
 
                 <div className="form-group">
-                  <input type="email" id="email" name="email" required />
-                  <label htmlFor="email">EMAIL</label>
+                  <input type="email" name="email" required />
+                  <label>EMAIL</label>
                 </div>
 
                 <div className="form-group">
-                  <input type="text" id="subject" name="subject" required />
-                  <label htmlFor="subject">SUBJECT</label>
+                  <input type="text" name="subject" required />
+                  <label>SUBJECT</label>
                 </div>
 
                 <div className="form-group">
-                  <textarea id="message" name="message" rows="5" required />
-                  <label htmlFor="message">
+                  <textarea name="message" rows="5" required />
+                  <label>
                     MESSAGE<span className="terminal-cursor"></span>
                   </label>
                 </div>
