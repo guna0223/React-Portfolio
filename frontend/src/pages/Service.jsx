@@ -1,33 +1,33 @@
 import React from "react";
-import "../components/css/Services.css"; // optional if you have CSS
+import "../components/css/Services.css";
 
 const Services = () => {
     return (
         <section id="service" className="section services">
             <div className="container">
                 <h2 className="section-title">
-                    <span className="title-icon">⚔️</span>
-                    What I Do
+                    [ GAME FEATURES ]
                 </h2>
 
                 <div className="services-content">
-                    <div className="services-grid">
+                    <div className="features-container">
+                        <div className="features-header">
+                            <div className="features-title">◆ WHAT I DO ◆</div>
+                        </div>
+                        
+                        <div className="services-grid">
 
-                        {/* Web Development */}
-                        <div className="service-card animate-on-scroll">
-                            <div className="service-icon">
-                                <div className="icon-circle">
-                                    <i className="fas fa-code"></i>
+                            {/* Web Development */}
+                            <div className="service-card">
+                                <div className="service-icon">
+                                    <div className="icon-box">
+                                        <i className="fas fa-code"></i>
+                                    </div>
                                 </div>
-                                <div className="icon-glow"></div>
-                            </div>
 
-                            <h3>Web Development</h3>
-                            <p>
-                                I create responsive, modern websites using the latest technologies
-                                and best practices. From concept to deployment, I ensure your
-                                website looks great and performs perfectly.
-                            </p>
+                                <h3>◆ WEB DEV ◆</h3>
+                                <p>
+                                    Building responsive & modern websites using cutting-edge 
 
                             <div className="service-features">
                                 <span className="feature-rune">✦</span>

@@ -10,102 +10,86 @@ const Home = () => {
           
           {/* TEXT CONTENT */}
           <div className="home-text">
-            <div className="mystical-intro animate-on-scroll">
-              <span className="intro-rune">◈</span>
-              <span className="greeting">Hello, I am</span>
-              <span className="intro-rune">◈</span>
+            <div className="press-start">
+              PRESS START<span className="blink">_</span>
             </div>
 
-            <h1 className="hero-title animate-on-scroll">
-              <span className="accent-name">Gunasekar</span>
+            <h1 className="welcome-player">
+              Welcome, Player<span className="blink">▌</span>
             </h1>
 
-            <h2
-              className="hero-subtitle animate-on-scroll"
-              id="rotating-profession"
-            >
-              <span className="subtitle-prefix">Full-Stack</span> Developer
+            <h2 className="hero-title">
+              <span className="name">GUNASEKAR</span>
             </h2>
 
-            <p className="hero-desc animate-on-scroll">
-              A passionate Full-Stack Developer skilled in Python, Django, SQL,
-              and modern frontend technologies including HTML, CSS, JavaScript,
-              and React, focused on building clean, responsive, and scalable web
-              applications.
-            </p>
+            <h3 className="hero-subtitle">
+              [ FULL-STACK DEVELOPER ]
+            </h3>
 
-            <div className="hero-actions animate-on-scroll">
-              <button className="hire-btn primary">
-                <span className="btn-icon">⚡</span>
-                <span>Hire Me</span>
-              </button>
-
-              <button className="hire-btn secondary">
-                <i className="fas fa-download"></i>
-                <span>Download resume</span>
-              </button>
+            <div className="hero-desc">
+              ◆ Quest: Building epic web applications with Python, Django, SQL, 
+              HTML, CSS, JavaScript & React. 
+              ◆ Mission: Create clean, responsive & scalable digital realms.
             </div>
 
-            <div className="social-links animate-on-scroll">
+            <div className="hero-actions">
+              <button className="hire-btn primary">
+                <span>▶ START QUEST</span>
+              </button>
+
+              <a 
+                href="/src/assets/resume/Gunasekar D --Resume.pdf" 
+                download
+                className="hire-btn secondary"
+              >
+                <span>⬇ GET MAP</span>
+              </a>
+            </div>
+
+            <div className="social-links">
               <a
                 href="https://web.whatsapp.com/"
                 aria-label="WhatsApp"
-                className="social-icon mystic-whatsapp"
+                className="social-icon"
                 target="_blank"
                 rel="noreferrer"
               >
                 <i className="fab fa-whatsapp"></i>
-                <span className="social-glow"></span>
               </a>
 
               <a
                 href="https://www.linkedin.com/in/gunasekar0223/"
                 aria-label="LinkedIn"
-                className="social-icon mystic-linkedin"
+                className="social-icon"
                 target="_blank"
                 rel="noreferrer"
               >
                 <i className="fab fa-linkedin-in"></i>
-                <span className="social-glow"></span>
               </a>
 
               <a
                 href="https://github.com/guna0223"
                 aria-label="GitHub"
-                className="social-icon mystic-github"
+                className="social-icon"
                 target="_blank"
                 rel="noreferrer"
               >
                 <i className="fab fa-github"></i>
-                <span className="social-glow"></span>
               </a>
             </div>
           </div>
 
           {/* IMAGE CONTENT */}
-          <div className="home-image animate-on-scroll">
-            <div className="portal-frame">
-              <div className="portal-ring outer-ring">⍟</div>
-              <div className="portal-ring outer-ring">⍟</div>
-              <div className="portal-ring middle-ring">✺</div>
-              <div className="portal-ring inner-ring">⊛</div>
-
-              <div className="portal-core">
-                <img
-                  src={profileImg}
-                  alt="Gunasekar"
-                  className="profile-image"
-                />
-              </div>
-
-              <div className="portal-particles"></div>
+          <div className="home-image">
+            <div className="pixel-frame">
+              <img
+                src={profileImg}
+                alt="Gunasekar"
+                className="profile-image"
+              />
             </div>
-
-            <div className="floating-runes">
-              <span className="rune">⧉</span>
-              <span className="rune">⍟</span>
-              <span className="rune">✺</span>
-              <span className="rune">⊛</span>
+            <div className="frame-decoration">
+              ★ PLAYER 1 ★
             </div>
           </div>
 
