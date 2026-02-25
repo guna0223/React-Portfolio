@@ -2,6 +2,20 @@ import { useEffect } from 'react';
 
 const ScriptInitializer = () => {
   useEffect(() => {
+    // Add hamburger button to navbar if it doesn't exist
+    const navbar = document.querySelector('.navbar');
+    const existingHamburger = document.querySelector('.hamburger');
+    
+    if (navbar && !existingHamburger) {
+      const hamburger = document.createElement('div');
+      hamburger.className = 'hamburger';
+      hamburger.innerHTML = '<span></span><span></span><span></span>';
+      hamburger.setAttribute('aria-label', 'Toggle menu');
+      hamburger.setAttribute('role', 'button');
+      hamburger.setAttribute('tabindex', '0');
+      navbar.appendChild(hamburger);
+    }
+    
     // DOM Elements
     const header = document.querySelector('header');
     const hamburger = document.querySelector('.hamburger');
