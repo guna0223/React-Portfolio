@@ -52,7 +52,7 @@ const Home = () => {
 
             <div className="hero-desc">
               ◆ Quest: Building epic web applications with Python, Django, SQL,
-              HTML, CSS, JavaScript & React.
+              HTML, CSS, JavaScript & React. <br />
               ◆ Mission: Create clean, responsive & scalable digital realms.
             </div>
 
@@ -63,24 +63,22 @@ const Home = () => {
                 <span>▶ START QUEST</span>
               </a>
 
-              <a
-                href="/resume/Gunasekar_Resume.pdf"
-                className="hire-btn secondary"
-                onClick={handleResumeDownload}
-              >
-                <span>⬇ GET MAP</span>
-              </a>
+              <div className="download-btn-wrapper">
+                <a
+                  href="/resume/Gunasekar_Resume.pdf"
+                  className="hire-btn secondary"
+                  onClick={handleResumeDownload}
+                >
+                  <span>⬇ GET MAP</span>
+                </a>
 
-              {/* Retro Success Alert */}
-              {showAlert && (
-                <div className="retro-alert">
-                  <div className="retro-alert-content">
-                    <span className="retro-alert-icon">★</span>
+                {/* Retro Success Alert */}
+                {showAlert && (
+                  <div className="retro-alert">
                     <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
-                    <span className="retro-alert-icon">★</span>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
 
             <div className="social-links">

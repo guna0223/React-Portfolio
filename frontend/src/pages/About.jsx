@@ -109,11 +109,7 @@ const About = () => {
               {/* Retro Success Alert */}
               {showAlert && (
                 <div className="retro-alert">
-                  <div className="retro-alert-content">
-                    <span className="retro-alert-icon">★</span>
-                    <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
-                    <span className="retro-alert-icon">★</span>
-                  </div>
+                  <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
                 </div>
               )}
             </div>
