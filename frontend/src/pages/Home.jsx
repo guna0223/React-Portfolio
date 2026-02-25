@@ -6,8 +6,18 @@ const Home = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const handleResumeDownload = (e) => {
-    // Allow the default download behavior
-    // Show alert after a brief delay to let download start
+    // Prevent default anchor behavior
+    e.preventDefault();
+    
+    // Create a hidden anchor element to trigger download
+    const link = document.createElement('a');
+    link.href = '/resume/Gunasekar_Resume.pdf';
+    link.download = 'Gunasekar_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Show alert after download starts
     setTimeout(() => {
       setShowAlert(true);
       // Auto-hide after 3 seconds
@@ -55,12 +65,22 @@ const Home = () => {
 
               <a
                 href="/resume/Gunasekar_Resume.pdf"
-                download="Gunasekar_Resume.pdf"
-                onClick={handleResumeDownload}
                 className="hire-btn secondary"
+                onClick={handleResumeDownload}
               >
                 <span>⬇ GET MAP</span>
               </a>
+
+              {/* Retro Success Alert */}
+              {showAlert && (
+                <div className="retro-alert">
+                  <div className="retro-alert-content">
+                    <span className="retro-alert-icon">★</span>
+                    <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+                    <span className="retro-alert-icon">★</span>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="social-links">
@@ -111,17 +131,6 @@ const Home = () => {
           </div>
 
         </div>
-
-        {/* Retro Success Alert */}
-        {showAlert && (
-          <div className="retro-alert">
-            <div className="retro-alert-content">
-              <span className="retro-alert-icon">★</span>
-              <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
-              <span className="retro-alert-icon">★</span>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

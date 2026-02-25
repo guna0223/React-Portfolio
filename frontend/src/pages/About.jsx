@@ -105,21 +105,21 @@ const About = () => {
               <button className="about-btn" onClick={handleResumeDownload}>
                 ⬇ DOWNLOAD MAP
               </button>
+              
+              {/* Retro Success Alert */}
+              {showAlert && (
+                <div className="retro-alert">
+                  <div className="retro-alert-content">
+                    <span className="retro-alert-icon">★</span>
+                    <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+                    <span className="retro-alert-icon">★</span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
         </div>
-
-        {/* Retro Success Alert */}
-        {showAlert && (
-          <div className="retro-alert">
-            <div className="retro-alert-content">
-              <span className="retro-alert-icon">★</span>
-              <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
-              <span className="retro-alert-icon">★</span>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

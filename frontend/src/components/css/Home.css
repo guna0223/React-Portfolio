@@ -465,11 +465,15 @@
    RETRO SUCCESS ALERT
    ============================================ */
 
+.hero-actions {
+    position: relative;
+}
+
 .retro-alert {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 10px;
     z-index: 9999;
     animation: retro-alert-appear 0.3s ease-out;
 }
@@ -477,29 +481,25 @@
 @keyframes retro-alert-appear {
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: translateY(-10px);
     }
     100% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translateY(0);
     }
 }
 
 .retro-alert-content {
     background: var(--retro-bg-card);
-    border: 4px solid var(--retro-green);
-    padding: var(--spacing-lg) var(--spacing-xl);
+    border: 3px solid var(--retro-green);
+    padding: var(--spacing-sm) var(--spacing-md);
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     box-shadow: 
-        0 0 0 4px var(--retro-bg),
-        0 0 0 8px var(--retro-green),
-        8px 8px 0 var(--retro-blue-dark);
-    animation: retro-alert-pulse 1s ease-in-out infinite;
+        0 0 0 3px var(--retro-bg),
+        0 0 0 6px var(--retro-green),
+        4px 4px 0 var(--retro-blue-dark);
 }
 
 @keyframes retro-alert-pulse {
@@ -520,7 +520,7 @@
 
 .retro-alert-icon {
     color: var(--retro-yellow);
-    font-size: 1.5rem;
+    font-size: 1rem;
     animation: retro-star-bounce 0.5s ease-in-out infinite alternate;
 }
 
@@ -543,40 +543,54 @@
 
 .retro-alert-message {
     font-family: var(--font-pixel);
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     color: var(--retro-green);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0 var(--retro-green-dark);
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0 var(--retro-green-dark);
     white-space: nowrap;
 }
 
 /* Mobile responsiveness for alert */
 @media (max-width: 768px) {
-    .retro-alert-content {
-        padding: var(--spacing-md) var(--spacing-lg);
-        gap: var(--spacing-sm);
+    .retro-alert {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 8px;
     }
     
-    .retro-alert-message {
-        font-size: 0.6rem;
-        letter-spacing: 1px;
-    }
-    
-    .retro-alert-icon {
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
     .retro-alert-content {
-        padding: var(--spacing-sm) var(--spacing-md);
-        flex-direction: column;
+        padding: var(--spacing-xs) var(--spacing-sm);
         gap: var(--spacing-xs);
     }
     
     .retro-alert-message {
+        font-size: 0.35rem;
+    }
+    
+    .retro-alert-icon {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .retro-alert {
+        margin-top: 6px;
+    }
+    
+    .retro-alert-content {
+        padding: 3px 6px;
+        flex-direction: row;
+        gap: 3px;
+    }
+    
+    .retro-alert-message {
+        font-size: 0.25rem;
+    }
+    
+    .retro-alert-icon {
         font-size: 0.5rem;
-        text-align: center;
     }
 }
