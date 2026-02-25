@@ -53,13 +53,16 @@
 html,
 body,
 header,
-li,input,
+li,
 * {
     cursor: url("/cursor/normal.cur") 0 0, pointer;
 }
-a,button{
- cursor: url("/cursor/hover.cur") 0 0, pointer !important;   
+
+a,
+button {
+    cursor: url("/cursor/hover.cur") 0 0, pointer !important;
 }
+
 /* Reset */
 *,
 *::before,
