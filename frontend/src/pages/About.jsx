@@ -15,7 +15,7 @@ const About = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     // Show alert after download starts
     setTimeout(() => {
       setShowAlert(true);
@@ -31,7 +31,7 @@ const About = () => {
         <h2 className="section-title">
           [ PLAYER PROFILE ]
         </h2>
-        
+
         <div className="about-content">
 
           {/* IMAGE SECTION - Player Card */}
@@ -70,20 +70,20 @@ const About = () => {
                 <div className="stat-label">◆ CLASS</div>
                 <div className="stat-value">Full-Stack Dev</div>
               </div>
-              
+
               <div className="stat-box">
                 <div className="stat-label">◆ LOCATION</div>
                 <div className="stat-value">BTM, Bengaluru</div>
               </div>
-              
+
               <div className="stat-box">
                 <div className="stat-label">◆ EDUCATION</div>
                 <div className="stat-value">Computer Science</div>
               </div>
-              
+
               <div className="stat-box">
                 <div className="stat-label">◆ STATUS</div>
-                <div className="stat-value" style={{color: 'var(--retro-green)'}}>● ACTIVE</div>
+                <div className="stat-value" style={{ color: 'var(--retro-green)' }}>● ACTIVE</div>
               </div>
             </div>
 
@@ -106,18 +106,16 @@ const About = () => {
                 <button className="about-btn" onClick={handleResumeDownload}>
                   ⬇ DOWNLOAD MAP
                 </button>
-                
-                {/* Retro Success Alert */}
-                {showAlert && (
-                  <div className="retro-alert">
-                    <div className="retro-alert-content">
-                      <span className="retro-alert-icon">★</span>
-                      <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
-                      <span className="retro-alert-icon">★</span>
-                    </div>
-                  </div>
-                )}
               </div>
+              {/* Retro Success Alert */}
+
+              {showAlert && (
+                <div className="retro-alert">
+                  <span className="retro-alert-icon">★</span>
+                  <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+                  <span className="retro-alert-icon">★</span>
+                </div>
+              )}
             </div>
           </div>
 

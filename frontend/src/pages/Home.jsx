@@ -8,7 +8,7 @@ const Home = () => {
   const handleResumeDownload = (e) => {
     // Prevent default anchor behavior
     e.preventDefault();
-    
+
     // Create a hidden anchor element to trigger download
     const link = document.createElement('a');
     link.href = '/resume/Gunasekar_Resume.pdf';
@@ -16,7 +16,7 @@ const Home = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     // Show alert after download starts
     setTimeout(() => {
       setShowAlert(true);
@@ -70,18 +70,15 @@ const Home = () => {
                 >
                   <span>⬇ GET MAP</span>
                 </a>
-
-                {/* Retro Success Alert */}
-                {showAlert && (
-                  <div className="retro-alert">
-                    <div className="retro-alert-content">
-                      <span className="retro-alert-icon">★</span>
-                      <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
-                      <span className="retro-alert-icon">★</span>
-                    </div>
-                  </div>
-                )}
               </div>
+              {/* Retro Success Alert */}
+              {showAlert && (
+                <div className="retro-alert">
+                  <span className="retro-alert-icon">★</span>
+                  <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+                  <span className="retro-alert-icon">★</span>
+                </div>
+              )}
             </div>
 
             <div className="social-links">
