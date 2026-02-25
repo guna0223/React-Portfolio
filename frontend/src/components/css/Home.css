@@ -108,7 +108,6 @@
 
 .hero-title .name {
     color: var(--retro-yellow);
-    text-shadow: 3px 3px 0 var(--retro-yellow-dark);
 }
 
 /* Subtitle */
