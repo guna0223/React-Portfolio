@@ -138,6 +138,10 @@
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-md);
     }
+    
+    .skills-content {
+        padding: 0 var(--spacing-md);
+    }
 }
 
 @media (max-width: 768px) {
@@ -172,7 +176,19 @@
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .skills {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .skills-content {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .stats-container {
+        padding: var(--spacing-sm);
     }
     
     .stats-title {

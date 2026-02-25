@@ -241,6 +241,7 @@
 @media (max-width: 1024px) {
     .terminal-content {
         gap: var(--spacing-md);
+        padding: var(--spacing-md);
     }
 }
 
@@ -290,12 +291,25 @@
     
     .submit-btn {
         font-size: 1rem;
+        min-height: 44px;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .contact {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .terminal-container {
+        margin: 0 var(--spacing-xs);
+    }
+    
+    .terminal-content {
+        padding: var(--spacing-sm);
     }
     
     .terminal-title {
@@ -317,5 +331,24 @@
     
     .contact-details a {
         font-size: 0.8rem;
+    }
+    
+    .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm);
+    }
+    
+    .form-group label {
+        font-size: 0.35rem;
+    }
+    
+    .submit-btn {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm);
     }
 }

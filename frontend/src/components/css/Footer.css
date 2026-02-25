@@ -148,8 +148,20 @@ footer {
         padding: var(--spacing-xs) var(--spacing-sm);
     }
     
+    .footer-content {
+        gap: var(--spacing-xs);
+    }
+    
     .status-bar {
         font-size: 0.85rem;
+        gap: var(--spacing-xs);
+    }
+    
+    .status-item {
+        gap: var(--spacing-xs);
+    }
+    
+    .footer-socials {
         gap: var(--spacing-xs);
     }
     
@@ -161,5 +173,10 @@ footer {
     
     .footer-note {
         font-size: 0.35rem;
+        margin-top: var(--spacing-xs);
+    }
+    
+    .footer-decoration {
+        font-size: 0.5rem;
     }
 }

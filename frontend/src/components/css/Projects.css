@@ -285,9 +285,17 @@
         max-width: 400px;
         margin: 0 auto;
     }
+    
+    .project-info {
+        padding: var(--spacing-md);
+    }
 }
 
 @media (max-width: 768px) {
+    .projects {
+        padding: var(--spacing-lg) 0;
+    }
+    
     .project-card {
         flex-direction: column;
         text-align: center;
@@ -322,11 +330,19 @@
     .dialog-buttons {
         flex-direction: column;
     }
+    
+    .dialog-btn {
+        min-height: 44px;
+    }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .projects-grid {
+        gap: var(--spacing-xs);
     }
     
     .project-info h3 {
@@ -335,6 +351,10 @@
     
     .project-info p {
         font-size: 0.9rem;
+    }
+    
+    .project-tech {
+        flex-wrap: wrap;
     }
     
     .project-tech span {
@@ -347,5 +367,18 @@
     
     .dialog-text p {
         font-size: 0.9rem;
+    }
+    
+    .dialog-image {
+        max-width: 100%;
+    }
+    
+    .dialog-buttons {
+        gap: var(--spacing-sm);
+    }
+    
+    .dialog-btn {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm) var(--spacing-md);
     }
 }

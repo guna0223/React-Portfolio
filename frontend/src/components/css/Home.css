@@ -251,6 +251,7 @@
 @media (max-width: 1024px) {
     .home-content {
         gap: var(--spacing-lg);
+        padding: 0 var(--spacing-md);
     }
     
     .pixel-frame {
@@ -261,17 +262,23 @@
     .hero-title {
         font-size: 1.1rem;
     }
+    
+    .hero-desc {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 768px) {
     .home {
         padding-top: 100px;
+        overflow-x: hidden;
     }
     
     .home-content {
         grid-template-columns: 1fr;
         text-align: center;
         gap: var(--spacing-lg);
+        padding: 0 var(--spacing-md);
     }
     
     .home-text {
@@ -316,10 +323,17 @@
 @media (max-width: 480px) {
     .home {
         padding-top: 80px;
+        min-height: auto;
+        padding-bottom: var(--spacing-lg);
     }
     
     .container {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .home-content {
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
     }
     
     .press-start {
@@ -346,6 +360,7 @@
     .hire-btn {
         font-size: 1rem;
         padding: var(--spacing-xs) var(--spacing-md);
+        min-height: 44px;
     }
     
     .social-links {
@@ -361,5 +376,9 @@
     .pixel-frame {
         width: 180px;
         height: 230px;
+    }
+    
+    .frame-decoration {
+        font-size: 0.4rem;
     }
 }
