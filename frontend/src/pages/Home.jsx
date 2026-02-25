@@ -51,9 +51,8 @@ const Home = () => {
             </h3>
 
             <div className="hero-desc">
-              ◆ Quest: Building epic web applications with Python, Django, SQL,
-              HTML, CSS, JavaScript & React. <br />
-              ◆ Mission: Create clean, responsive & scalable digital realms.
+              <span className="bio-line">◆ Quest: Building epic web applications with Python, Django, SQL, HTML, CSS, JavaScript & React.</span>
+              <span className="bio-line">◆ Mission: Create clean, responsive & scalable digital realms.</span>
             </div>
 
             <div className="hero-actions">
@@ -75,7 +74,11 @@ const Home = () => {
                 {/* Retro Success Alert */}
                 {showAlert && (
                   <div className="retro-alert">
-                    <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+                    <div className="retro-alert-content">
+                      <span className="retro-alert-icon">★</span>
+                      <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+                      <span className="retro-alert-icon">★</span>
+                    </div>
                   </div>
                 )}
               </div>

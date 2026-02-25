@@ -102,16 +102,22 @@ const About = () => {
             </div>
 
             <div className="about-actions">
-              <button className="about-btn" onClick={handleResumeDownload}>
-                ⬇ DOWNLOAD MAP
-              </button>
-              
-              {/* Retro Success Alert */}
-              {showAlert && (
-                <div className="retro-alert">
-                  <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
-                </div>
-              )}
+              <div className="download-btn-wrapper">
+                <button className="about-btn" onClick={handleResumeDownload}>
+                  ⬇ DOWNLOAD MAP
+                </button>
+                
+                {/* Retro Success Alert */}
+                {showAlert && (
+                  <div className="retro-alert">
+                    <div className="retro-alert-content">
+                      <span className="retro-alert-icon">★</span>
+                      <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+                      <span className="retro-alert-icon">★</span>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 

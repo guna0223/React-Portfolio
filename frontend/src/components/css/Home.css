@@ -130,6 +130,11 @@
     background: var(--retro-bg-card);
 }
 
+.bio-line {
+    display: block;
+    margin-bottom: 4px;
+}
+
 /* Action Buttons */
 .hero-actions {
     display: flex;
@@ -479,41 +484,47 @@
 }
 
 .retro-alert {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
     margin-left: 12px;
-    padding: 4px 10px;
-    background: #000;
-    border: 2px solid var(--retro-green);
-    color: var(--retro-green);
-    font-family: var(--font-terminal);
-    font-size: 14px;
-    white-space: nowrap;
-    animation: retro-alert-appear 0.2s ease-out;
+    z-index: 9999;
+    animation: retro-alert-appear 0.3s ease-out;
 }
 
-.retro-alert::before {
-    content: '>';
+.retro-alert-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--retro-bg-card);
+    border: 3px solid var(--retro-green);
+    box-shadow: 4px 4px 0 var(--retro-blue-dark);
+}
+
+.retro-alert-icon {
     color: var(--retro-yellow);
-    font-weight: bold;
+    font-size: 14px;
 }
 
 .retro-alert-message {
-    font-family: var(--font-terminal);
-    font-size: 13px;
+    font-family: var(--font-pixel);
+    font-size: 0.45rem;
+    color: var(--retro-green);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 @keyframes retro-alert-appear {
     0% {
         opacity: 0;
-        transform: translateX(-10px);
+        transform: translateY(-50%) translateX(-10px);
     }
     100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(-50%) translateX(0);
     }
 }
 
@@ -534,20 +545,27 @@
         top: auto;
         transform: none;
         margin-left: 0;
-        margin-top: 8px;
+        margin-top: 10px;
         width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     .retro-alert {
-        margin-top: 6px;
-        padding: 3px 8px;
-        font-size: 12px;
+        margin-top: 8px;
+    }
+    
+    .retro-alert-content {
+        padding: 6px 10px;
+        gap: 6px;
     }
     
     .retro-alert-message {
-        font-size: 11px;
+        font-size: 0.35rem;
+    }
+    
+    .retro-alert-icon {
+        font-size: 10px;
     }
 }
 
