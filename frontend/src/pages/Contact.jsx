@@ -20,36 +20,34 @@ const Contact = () => {
     e.preventDefault();
     showAlert("", "SENDING...");
 
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const subject = e.target.subject.value;
-    const message = e.target.message.value;
+    // ✅ USE FORM DATA DIRECTLY FROM FORM
+    const formData = new FormData(e.target);
 
-    const payload = {
-      access_key: "272fad5e-4e4a-4fab-9083-a301958026b8",
-      name: {name},
-      email: {email},
-      subject: {subject},
-      message: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage: ${message}`,
-      from_name: "Portfolio Contact",
-      replyto: email
-    };
+    // ✅ REQUIRED ACCESS KEY
+    formData.append("access_key", "272fad5e-4e4a-4fab-9083-a301958026b8");
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
+    // ✅ OPTIONAL (GOOD PRACTICE)
+    formData.append("from_name", "Portfolio Contact");
+    formData.append("replyto", e.target.email.value);
 
-    const data = await response.json();
-    
-    if (data.success) {
-      showAlert("success", "MESSAGE DELIVERED");
-      e.target.reset();
-    } else {
-      showAlert("error", "DELIVERY FAILED");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        showAlert("success", "MESSAGE DELIVERED");
+        e.target.reset();
+      } else {
+        console.error(data);
+        showAlert("error", "DELIVERY FAILED");
+      }
+    } catch (error) {
+      console.error(error);
+      showAlert("error", "NETWORK ERROR");
     }
   };
 
