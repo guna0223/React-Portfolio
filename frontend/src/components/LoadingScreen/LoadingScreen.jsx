@@ -54,7 +54,7 @@ function LoadingScreen({ onComplete }) {
           setShowPressStart(true);
           return 100;
         }
-        return prev + Math.random() * 6 + 0.5;
+        return prev + Math.random() * 7 + 0.5;
       });
     }, 100);
 
