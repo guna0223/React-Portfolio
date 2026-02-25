@@ -38,12 +38,13 @@ const Skills = () => {
               {/* Frontend */}
               <div className="skill-category">
                 <div className="category-header">
-                  <i className="fas fa-eye"></i>
+                  <i className="fas fa-desktop"></i>
                   <h3>FRONTEND</h3>
                 </div>
 
                 <div className="skill-items">
                   <div className="skill-item">
+                    <i className="fab fa-html5" style={{color: '#e34c26'}}></i>
                     <span>HTML5</span>
                     <div className="skill-bar">
                       {generatePixelBar(95)}
@@ -51,6 +52,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fab fa-css3-alt" style={{color: '#264de4'}}></i>
                     <span>CSS3</span>
                     <div className="skill-bar">
                       {generatePixelBar(90)}
@@ -58,6 +60,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fab fa-js-square" style={{color: '#f0db4f'}}></i>
                     <span>JavaScript</span>
                     <div className="skill-bar">
                       {generatePixelBar(85)}
@@ -65,6 +68,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fab fa-react" style={{color: '#61dafb'}}></i>
                     <span>React</span>
                     <div className="skill-bar">
                       {generatePixelBar(85)}
@@ -76,12 +80,13 @@ const Skills = () => {
               {/* Backend */}
               <div className="skill-category">
                 <div className="category-header">
-                  <i className="fas fa-hat-wizard"></i>
+                  <i className="fas fa-server"></i>
                   <h3>BACKEND</h3>
                 </div>
 
                 <div className="skill-items">
                   <div className="skill-item">
+                    <i className="fab fa-python" style={{color: '#306998'}}></i>
                     <span>Python</span>
                     <div className="skill-bar">
                       {generatePixelBar(90)}
@@ -89,6 +94,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fas fa-dragon" style={{color: '#092e20'}}></i>
                     <span>Django</span>
                     <div className="skill-bar">
                       {generatePixelBar(85)}
@@ -106,6 +112,7 @@ const Skills = () => {
 
                 <div className="skill-items">
                   <div className="skill-item">
+                    <i className="fas fa-server" style={{color: '#00758f'}}></i>
                     <span>MySQL</span>
                     <div className="skill-bar">
                       {generatePixelBar(85)}
@@ -113,6 +120,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fas fa-table" style={{color: '#e48e00'}}></i>
                     <span>SQL</span>
                     <div className="skill-bar">
                       {generatePixelBar(80)}
@@ -124,12 +132,13 @@ const Skills = () => {
               {/* Tools */}
               <div className="skill-category">
                 <div className="category-header">
-                  <i className="fas fa-wand-magic-sparkles"></i>
+                  <i className="fas fa-tools"></i>
                   <h3>TOOLS</h3>
                 </div>
 
                 <div className="skill-items">
                   <div className="skill-item">
+                    <i className="fab fa-git-alt" style={{color: '#f05032'}}></i>
                     <span>Git</span>
                     <div className="skill-bar">
                       {generatePixelBar(90)}
@@ -137,6 +146,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fab fa-github" style={{color: '#ffffff'}}></i>
                     <span>GitHub</span>
                     <div className="skill-bar">
                       {generatePixelBar(90)}
@@ -144,6 +154,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fas fa-code" style={{color: '#007acc'}}></i>
                     <span>VS Code</span>
                     <div className="skill-bar">
                       {generatePixelBar(95)}
@@ -151,6 +162,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fas fa-terminal" style={{color: '#4af626'}}></i>
                     <span>CLI</span>
                     <div className="skill-bar">
                       {generatePixelBar(85)}
@@ -162,12 +174,13 @@ const Skills = () => {
               {/* UI / UX */}
               <div className="skill-category">
                 <div className="category-header">
-                  <i className="fas fa-palette"></i>
+                  <i className="fas fa-paint-brush"></i>
                   <h3>UI/UX</h3>
                 </div>
 
                 <div className="skill-items">
                   <div className="skill-item">
+                    <i className="fas fa-mobile-alt" style={{color: '#ff6b6b'}}></i>
                     <span>Responsive</span>
                     <div className="skill-bar">
                       {generatePixelBar(95)}
@@ -175,6 +188,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fas fa-puzzle-piece" style={{color: '#9b59b6'}}></i>
                     <span>Components</span>
                     <div className="skill-bar">
                       {generatePixelBar(85)}
@@ -186,12 +200,13 @@ const Skills = () => {
               {/* Frameworks */}
               <div className="skill-category">
                 <div className="category-header">
-                  <i className="fas fa-book-spells"></i>
+                  <i className="fas fa-cubes"></i>
                   <h3>FRAMEWORKS</h3>
                 </div>
 
                 <div className="skill-items">
                   <div className="skill-item">
+                    <i className="fab fa-bootstrap" style={{color: '#7952b3'}}></i>
                     <span>Bootstrap</span>
                     <div className="skill-bar">
                       {generatePixelBar(90)}
@@ -199,6 +214,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fab fa-react" style={{color: '#61dafb'}}></i>
                     <span>React</span>
                     <div className="skill-bar">
                       {generatePixelBar(85)}
@@ -206,6 +222,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fas fa-dragon" style={{color: '#092e20'}}></i>
                     <span>Django</span>
                     <div className="skill-bar">
                       {generatePixelBar(85)}
@@ -213,6 +230,7 @@ const Skills = () => {
                   </div>
 
                   <div className="skill-item">
+                    <i className="fas fa-plug" style={{color: '#00d4ff'}}></i>
                     <span>REST APIs</span>
                     <div className="skill-bar">
                       {generatePixelBar(80)}
