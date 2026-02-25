@@ -1,76 +1,52 @@
 /* ============================================
-   Portfolio - Dr. Strange Mystic Theme
-   The Sorcerer Supreme's Digital Sanctum
+   RETRO GAMING PORTFOLIO - 8-BIT/16-BIT STYLE
    ============================================ */
 
-/* CSS Variables - Mystic Color System */
+/* CSS Variables - Retro Game Color System */
 :root {
-    /* Deep Cosmic Backgrounds */
-    --bg-main: #0a0a12;
-    --bg-secondary: #12121f;
-    --bg-tertiary: #1a1a2e;
-    --bg-card: #16213e;
-
-    /* Mystic Purple Depths */
-    --purple-deep: #1a0a2e;
-    --purple-main: #2d1b4e;
-    --purple-light: #4a2c7a;
-
-    /* Golden Accents (Cloak of Levitation) */
-    --gold-main: #c9a227;
-    --gold-light: #e8c547;
-    --gold-dark: #9a7b1a;
-
-    /* Cyan Mystic Energy (Eye of Agamotto) */
-    --cyan-main: #00d4ff;
-    --cyan-light: #67e8f9;
-    --cyan-dark: #0e7490;
-    --cyan-glow: rgba(0, 212, 255, 0.4);
-
+    /* Dark Background - Classic Console */
+    --retro-bg: #0a0a1a;
+    --retro-bg-secondary: #12122a;
+    --retro-bg-tertiary: #1a1a3a;
+    --retro-bg-card: #0d0d24;
+    
+    /* Retro Accent Colors - NES/SNES Style */
+    --retro-blue: #4a90d9;
+    --retro-blue-dark: #2d5aa0;
+    --retro-green: #38b764;
+    --retro-green-dark: #2a8a4a;
+    --retro-yellow: #f8d828;
+    --retro-yellow-dark: #c9a800;
+    --retro-red: #e84855;
+    --retro-cyan: #28c8c8;
+    --retro-purple: #9058d8;
+    --retro-white: #f0f0f0;
+    --retro-gray: #888898;
+    
     /* Text Colors */
-    --text-main: #e8e8f0;
-    --text-muted: #a0a0b8;
-    --text-faded: #6b6b80;
-
-    /* Magical Effects */
-    --magic-purple: rgba(167, 139, 250, 0.3);
-    --magic-gold: rgba(201, 162, 39, 0.3);
-    --portal-glow: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
-
-    /* Borders */
-    --border-gold: 1px solid rgba(201, 162, 39, 0.3);
-    --border-cyan: 1px solid rgba(0, 212, 255, 0.3);
-
-    /* Typography */
-    --font-heading: 'Cinzel', serif;
-    --font-body: 'Raleway', sans-serif;
-
+    --retro-text: #f0f0f0;
+    --retro-text-dim: #a0a0b0;
+    --retro-text-muted: #606070;
+    
+    /* Borders - Thick Pixel Style */
+    --retro-border: 4px solid var(--retro-white);
+    --retro-border-blue: 4px solid var(--retro-blue);
+    --retro-border-yellow: 4px solid var(--retro-yellow);
+    --retro-border-green: 4px solid var(--retro-green);
+    
+    /* Typography - Pixel Fonts */
+    --font-pixel: 'Press Start 2P', cursive;
+    --font-terminal: 'VT323', monospace;
+    
     /* Spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
-
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
-    --transition-mystic: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-
-    /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
-    --shadow-glow-cyan: 0 0 20px var(--cyan-glow);
-    --shadow-glow-gold: 0 0 20px var(--magic-gold);
-    --shadow-glow-purple: 0 0 20px var(--magic-purple);
-
-    /* Border Radius */
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-full: 9999px;
+    
+    /* Pixel Size */
+    --pixel-size: 4px;
 }
 
 /* Reset */
@@ -88,15 +64,16 @@ html {
 }
 
 body {
-    font-family: var(--font-body);
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    line-height: 1.6;
+    font-family: var(--font-terminal);
+    background-color: var(--retro-bg);
+    color: var(--retro-text);
+    line-height: 1.4;
     overflow-x: hidden;
     position: relative;
+    font-size: 18px;
 }
 
-/* Mystical Background */
+/* CRT Scanline Effect Overlay */
 body::before {
     content: '';
     position: fixed;
@@ -104,18 +81,41 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background:
-        radial-gradient(ellipse at 20% 20%, rgba(45, 27, 78, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(26, 10, 46, 0.5) 0%, transparent 70%);
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
     pointer-events: none;
-    z-index: -1;
+    z-index: 9999;
+}
+
+/* CRT Screen Flicker (Subtle) */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 16, 16, 0.03);
+    pointer-events: none;
+    z-index: 9998;
+    animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+    0% { opacity: 0.97; }
+    50% { opacity: 1; }
+    100% { opacity: 0.98; }
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: var(--transition-normal);
+    cursor: pointer;
 }
 
 ul {
@@ -126,6 +126,7 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+    image-rendering: pixelated;
 }
 
 /* Container */
@@ -136,121 +137,159 @@ img {
     padding: 0 var(--spacing-lg);
 }
 
-/*all contant media screen  */
+/* Pixel Box - Base Component */
+.pixel-box {
+    background: var(--retro-bg-card);
+    border: var(--retro-border);
+    padding: var(--spacing-lg);
+    position: relative;
+}
 
+.pixel-box::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 4px solid var(--retro-blue-dark);
+    pointer-events: none;
+}
 
+/* Pixel Button */
+.pixel-btn {
+    font-family: var(--font-terminal);
+    font-size: 1.2rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--retro-blue);
+    color: var(--retro-white);
+    border: 4px solid var(--retro-white);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: none;
+    position: relative;
+}
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-@media (max-width: 1024px) {
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
+.pixel-btn:hover {
+    background: var(--retro-yellow);
+    color: var(--retro-bg);
+    border-color: var(--retro-yellow);
+}
+
+.pixel-btn:active {
+    transform: translate(2px, 2px);
+}
+
+/* Section Base */
+.section {
+    min-height: 100vh;
+    padding: 120px 0 var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.section-title {
+    font-family: var(--font-pixel);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: var(--retro-yellow);
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0 var(--retro-blue-dark);
+    letter-spacing: 4px;
+}
+
+/* Blinking Cursor */
+.blink {
+    animation: blink-animation 0.8s steps(2, start) infinite;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
     }
+}
 
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* Selector Arrow */
+.selector-arrow {
+    color: var(--retro-yellow);
+    margin-right: var(--spacing-sm);
+    animation: bounce-arrow 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes bounce-arrow {
+    from { transform: translateX(0); }
+    to { transform: translateX(5px); }
+}
+
+/* Pixel Divider */
+.pixel-divider {
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--retro-blue) 0%, 
+        var(--retro-white) 25%, 
+        var(--retro-yellow) 50%, 
+        var(--retro-white) 75%, 
+        var(--retro-blue) 100%
+    );
+    margin: var(--spacing-lg) 0;
+}
+
+/* Scrollbar - Retro Style */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--retro-bg);
+    border-left: 2px solid var(--retro-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--retro-blue);
+    border: 2px solid var(--retro-white);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--retro-yellow);
+}
+
+/* Selection */
+::selection {
+    background: var(--retro-yellow);
+    color: var(--retro-bg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 1.2rem;
     }
 }
 
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: rgba(10, 10, 18, 0.98);
-        flex-direction: column;
-        justify-content: center;
-        gap: var(--spacing-lg);
-        transition: var(--transition-normal);
+    body {
+        font-size: 16px;
     }
-
-    .nav-menu.active {
-        left: 0;
+    
+    .section {
+        padding: 100px 0 var(--spacing-lg);
+        min-height: auto;
     }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-cta {
-        display: none;
-    }
-
-    .home-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .home-text {
-        align-items: center;
-    }
-
-    .hero-desc {
-        border-left: none;
-        border-top: 2px solid var(--gold-main);
-        padding-left: 0;
-        padding-top: var(--spacing-md);
-    }
-
-    .home-image {
-        order: -1;
-    }
-
-    .portal-frame {
-        width: 280px;
-        height: 350px;
-    }
-
-    .portal-ring.outer-ring {
-        width: 280px;
-        height: 280px;
-    }
-
-    .portal-ring.middle-ring {
-        width: 230px;
-        height: 230px;
-    }
-
-    .portal-ring.inner-ring {
-        width: 180px;
-        height: 180px;
-    }
-
-    .portal-core {
-        width: 150px;
-        height: 200px;
-    }
-
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-
-    .grimoire-frame {
-        width: 250px;
-        height: 320px;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
+    
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .pixel-box::before {
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
     }
 }
 
@@ -258,94 +297,8 @@ img {
     .container {
         padding: 0 var(--spacing-md);
     }
-
-    .hero-title {
-        font-size: 2rem;
+    
+    .section-title {
+        font-size: 0.85rem;
     }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .hire-btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .about-highlights {
-        gap: var(--spacing-sm);
-    }
-
-    .highlight {
-        padding: var(--spacing-sm);
-    }
-
-    .floating-runes {
-        display: none;
-    }
-}
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Staggered animation delays */
-.animate-on-scroll:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.animate-on-scroll:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.animate-on-scroll:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.animate-on-scroll:nth-child(4) {
-    transition-delay: 0.4s;
-}
-
-.animate-on-scroll:nth-child(5) {
-    transition-delay: 0.5s;
-}
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-main);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--purple-light);
-    border-radius: var(--radius-full);
-    border: 2px solid var(--bg-main);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--gold-main);
-}
-
-/* Selection Styling */
-::selection {
-    background: var(--cyan-main);
-    color: var(--bg-main);
 }

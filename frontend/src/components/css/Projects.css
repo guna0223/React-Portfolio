@@ -1,225 +1,351 @@
 /* ============================================
-   PROJECTS SECTION - RELICS
+   PROJECTS SECTION - GAME SELECT MENU
    ============================================ */
+
 .projects {
-    background: linear-gradient(
-        180deg,
-        var(--bg-secondary) 0%,
-        var(--bg-main) 50%,
-        var(--purple-deep) 100%
-    );
+    background: var(--retro-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* Projects Grid */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
 }
 
+/* Project Item - Menu Row Style */
 .project-card {
-    background: var(--bg-card);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: var(--border-gold);
-    transition: var(--transition-normal);
+    background: var(--retro-bg-card);
+    border: 4px solid var(--retro-gray);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: none;
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-glow-gold);
+.project-card:hover,
+.project-card.active {
+    border-color: var(--retro-yellow);
+    background: var(--retro-bg-tertiary);
 }
 
+/* Selector Arrow */
+.project-selector {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--retro-yellow);
+    background: var(--retro-bg-secondary);
+    border-right: 4px solid var(--retro-gray);
+    padding: var(--spacing-md);
+}
+
+.project-card:hover .project-selector,
+.project-card.active .project-selector {
+    color: var(--retro-cyan);
+    border-right-color: var(--retro-yellow);
+}
+
+/* Project Thumbnail */
 .project-image {
-    position: relative;
-    height: 200px;
+    width: 120px;
+    height: 80px;
+    border: 3px solid var(--retro-white);
     overflow: hidden;
-}
-
-.relic-frame {
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--gold-dark);
+    flex-shrink: 0;
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition-slow);
+    image-rendering: pixelated;
 }
 
-.project-card:hover .project-image img {
-    transform: scale(1.1);
-}
-
-.project-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 10, 18, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: var(--transition-normal);
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-links {
-    display: flex;
-    gap: var(--spacing-md);
-}
-
-.project-link {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--bg-tertiary);
-    border: 2px solid var(--gold-main);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold-main);
-    font-size: 1.3rem;
-    transition: var(--transition-normal);
-}
-
-.project-link:hover {
-    background: var(--gold-main);
-    color: var(--bg-main);
-    transform: scale(1.1);
-    box-shadow: var(--shadow-glow-gold);
-}
-
+/* Project Info */
 .project-info {
-    padding: var(--spacing-lg);
+    flex: 1;
+    padding: var(--spacing-md) var(--spacing-lg);
 }
 
 .project-info h3 {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    color: var(--gold-main);
-    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    color: var(--retro-white);
+    margin-bottom: var(--spacing-xs);
     letter-spacing: 1px;
 }
 
 .project-info p {
-    font-size: 0.9rem;
-    color: var(--text-faded);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
+    font-family: var(--font-terminal);
+    font-size: 1rem;
+    color: var(--retro-text-dim);
 }
 
+/* Tech Tags */
 .project-tech {
     display: flex;
-    flex-wrap: wrap;
     gap: var(--spacing-xs);
-    font-size: 0.8rem;
+    margin-top: var(--spacing-xs);
 }
 
 .project-tech span {
-    padding: 4px 10px;
-    background: var(--bg-tertiary);
-    border-radius: var(--radius-full);
-    color: var(--text-muted);
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    font-family: var(--font-terminal);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    background: var(--retro-bg-tertiary);
+    border: 2px solid var(--retro-blue);
+    color: var(--retro-blue);
 }
 
-.tech-rune {
-    color: var(--cyan-main);
+/* Project Details Dialog */
+.project-details {
+    display: none;
+    border: 4px solid var(--retro-yellow);
+    background: var(--retro-bg-card);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    animation: slide-down 0.1s ease-out;
+}
+
+.project-details.open {
+    display: block;
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dialog Header */
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--retro-blue);
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.dialog-title {
+    font-family: var(--font-pixel);
+    font-size: 0.8rem;
+    color: var(--retro-yellow);
+}
+
+.dialog-close {
+    font-family: var(--font-terminal);
+    font-size: 1.2rem;
+    color: var(--retro-red);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: var(--spacing-xs);
+}
+
+.dialog-close:hover {
+    color: var(--retro-white);
+}
+
+/* Dialog Content */
+.dialog-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-lg);
+}
+
+.dialog-image {
+    border: 4px solid var(--retro-white);
+    overflow: hidden;
+}
+
+.dialog-image img {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.dialog-text h4 {
+    font-family: var(--font-pixel);
     font-size: 0.6rem;
-}
-
-/* ============================================
-   ADDED STYLES FOR EXTRA CONTENT
-   ============================================ */
-
-/* Project Type Badge */
-.project-badge {
-    display: inline-block;
+    color: var(--retro-cyan);
     margin-bottom: var(--spacing-sm);
-    padding: 4px 12px;
-    font-size: 0.7rem;
-    text-transform: uppercase;
     letter-spacing: 1px;
-    border-radius: var(--radius-full);
-    background: rgba(255, 215, 0, 0.1);
-    color: var(--gold-main);
-    border: 1px solid var(--gold-dark);
 }
 
-/* Project Highlights List */
+.dialog-text p {
+    font-family: var(--font-terminal);
+    font-size: 1rem;
+    color: var(--retro-text);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Project Points */
 .project-points {
     list-style: none;
-    padding-left: 0;
     margin-bottom: var(--spacing-md);
 }
 
 .project-points li {
+    font-family: var(--font-terminal);
+    font-size: 0.95rem;
+    color: var(--retro-text-dim);
+    padding-left: var(--spacing-md);
     position: relative;
-    padding-left: 16px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-    line-height: 1.6;
+    margin-bottom: var(--spacing-xs);
 }
 
 .project-points li::before {
-    content: "✦";
+    content: '◆';
     position: absolute;
     left: 0;
-    top: 0;
-    font-size: 0.7rem;
-    color: var(--cyan-main);
+    color: var(--retro-green);
+    font-size: 0.6rem;
 }
 
-/* Role & Status Chips */
+/* Dialog Buttons */
+.dialog-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.dialog-btn {
+    font-family: var(--font-terminal);
+    font-size: 1rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.dialog-btn.primary {
+    background: var(--retro-green);
+    color: var(--retro-white);
+    border-color: var(--retro-white);
+}
+
+.dialog-btn.primary:hover {
+    background: var(--retro-yellow);
+    color: var(--retro-bg);
+    border-color: var(--retro-yellow);
+}
+
+.dialog-btn.secondary {
+    background: transparent;
+    color: var(--retro-blue);
+    border-color: var(--retro-blue);
+}
+
+.dialog-btn.secondary:hover {
+    background: var(--retro-blue);
+    color: var(--retro-white);
+}
+
+/* Project Meta */
 .project-meta {
     display: flex;
-    flex-wrap: wrap;
     gap: var(--spacing-sm);
-    font-size: 0.75rem;
     margin-top: var(--spacing-sm);
 }
 
 .project-meta span {
-    padding: 3px 10px;
-    border-radius: var(--radius-full);
-    background: rgba(0, 212, 255, 0.08);
-    border: 1px solid rgba(0, 212, 255, 0.25);
-    color: var(--text-faded);
-}
-
-/* Hover polish for new elements */
-.project-card:hover .project-badge {
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
-}
-
-.project-card:hover .project-meta span {
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.25);
+    font-family: var(--font-terminal);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    background: var(--retro-bg-tertiary);
+    border: 2px solid var(--retro-gray);
+    color: var(--retro-gray);
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
-@media (max-width: 992px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 1024px) {
+    .dialog-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .dialog-image {
+        max-width: 400px;
+        margin: 0 auto;
     }
 }
 
-@media (max-width: 600px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .project-card {
+        flex-direction: column;
+        text-align: center;
     }
-
+    
+    .project-selector {
+        width: 100%;
+        border-right: none;
+        border-bottom: 4px solid var(--retro-gray);
+        padding: var(--spacing-sm);
+    }
+    
+    .project-card:hover .project-selector,
+    .project-card.active .project-selector {
+        border-right: none;
+        border-bottom-color: var(--retro-yellow);
+    }
+    
     .project-image {
-        height: 180px;
+        width: 100%;
+        height: 150px;
     }
-
+    
     .project-info {
         padding: var(--spacing-md);
+    }
+    
+    .project-tech {
+        justify-content: center;
+    }
+    
+    .dialog-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .project-info h3 {
+        font-size: 0.6rem;
+    }
+    
+    .project-info p {
+        font-size: 0.9rem;
+    }
+    
+    .project-tech span {
+        font-size: 0.7rem;
+    }
+    
+    .dialog-title {
+        font-size: 0.65rem;
+    }
+    
+    .dialog-text p {
+        font-size: 0.9rem;
     }
 }

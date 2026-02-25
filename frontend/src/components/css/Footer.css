@@ -1,256 +1,165 @@
 /* ============================================
-   FOOTER SECTION – ARCANE SIGNATURE
+   FOOTER - RETRO GAME STATUS BAR STYLE
    ============================================ */
 
 footer {
-    background: linear-gradient(
-        180deg,
-        var(--bg-main) 0%,
-        var(--purple-deep) 100%
-    );
-    padding: 60px 20px 40px;
-    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    background: var(--retro-bg-card);
+    border-top: 4px solid var(--retro-blue);
+    padding: var(--spacing-md) var(--spacing-lg);
+    position: relative;
 }
 
+/* Status Bar Design */
 .footer-content {
     max-width: 1200px;
-    margin: auto;
-    text-align: center;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    gap: 18px;
+    justify-content: space-between;
     align-items: center;
-}
-
-/* Symbol */
-.footer-symbol {
-    font-size: 2rem;
-    color: var(--gold-main);
-    animation: footer-pulse 2.5s ease-in-out infinite;
-}
-
-@keyframes footer-pulse {
-    0%, 100% {
-        opacity: 0.6;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
-}
-
-/* Text */
-.footer-content p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-}
-
-/* Navigation Links */
-.footer-links {
-    display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: var(--spacing-md);
+}
+
+/* Status Text - Terminal Style */
+.status-bar {
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap: var(--spacing-md);
+    font-family: var(--font-terminal);
+    font-size: 1.1rem;
+    color: var(--retro-green);
 }
 
-.footer-links a {
-    color: var(--text-main);
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: var(--transition-normal);
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
-.footer-links a:hover {
-    color: var(--gold-main);
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+.status-icon {
+    color: var(--retro-yellow);
 }
 
-.separator {
-    color: var(--cyan-main);
-    font-size: 0.7rem;
+/* Separator pipes */
+.status-separator {
+    color: var(--retro-gray);
 }
 
-/* Social Icons */
+/* Social Links - Icon Buttons */
 .footer-socials {
     display: flex;
-    gap: 18px;
-    margin-top: 6px;
+    gap: var(--spacing-sm);
 }
 
 .footer-socials a {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--bg-tertiary);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gold-main);
+    background: var(--retro-bg-tertiary);
+    border: 3px solid var(--retro-white);
+    color: var(--retro-text);
     font-size: 1.2rem;
-    transition: var(--transition-normal);
+    transition: none;
 }
 
 .footer-socials a:hover {
-    background: var(--gold-main);
-    color: var(--bg-main);
-    transform: translateY(-4px);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    background: var(--retro-yellow);
+    color: var(--retro-bg);
+    border-color: var(--retro-yellow);
 }
 
 /* Footer Note */
 .footer-note {
-    font-size: 0.75rem;
-    color: var(--text-faded);
-    margin-top: 6px;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    color: var(--retro-gray);
+    margin-top: var(--spacing-sm);
     letter-spacing: 1px;
 }
 
-/* Responsive */
+/* Game Over Style Decoration */
+.footer-decoration {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
+    color: var(--retro-blue);
+    background: var(--retro-bg-card);
+    padding: 0 var(--spacing-md);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 1024px) {
     footer {
-        padding: 50px 20px 30px;
+        padding: var(--spacing-md);
     }
-
-    .footer-symbol {
-        font-size: 1.8rem;
-    }
-
-    .footer-content p {
-        font-size: 0.85rem;
-    }
-
-    .footer-links {
-        gap: 12px;
-    }
-
-    .footer-links a {
-        font-size: 0.8rem;
-    }
-
-    .footer-socials {
-        gap: 15px;
-    }
-
-    .footer-socials a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
+    
+    .status-bar {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 768px) {
     footer {
-        padding: 40px 16px 25px;
+        padding: var(--spacing-sm) var(--spacing-md);
     }
-
-    .footer-symbol {
-        font-size: 1.5rem;
-    }
-
-    .footer-content p {
-        font-size: 0.8rem;
-    }
-
-    .footer-links {
-        gap: 10px;
-    }
-
-    .footer-links a {
-        font-size: 0.75rem;
-    }
-
-    .separator {
-        font-size: 0.6rem;
-    }
-
-    .footer-socials {
-        gap: 12px;
-        margin-top: 4px;
-    }
-
-    .footer-socials a {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
-    }
-
-    .footer-note {
-        font-size: 0.7rem;
-    }
-}
-
-@media (max-width: 600px) {
-    footer {
-        padding: 35px 14px 20px;
-    }
-
-    .footer-symbol {
-        font-size: 1.3rem;
-    }
-
+    
     .footer-content {
-        gap: 14px;
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
     }
-
-    .footer-content p {
-        font-size: 0.75rem;
-        letter-spacing: 0.5px;
+    
+    .status-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 0.95rem;
     }
-
-    .footer-links {
-        gap: 8px;
-    }
-
-    .footer-links a {
-        font-size: 0.7rem;
-    }
-
-    .separator {
+    
+    .status-separator {
         display: none;
     }
-
+    
     .footer-socials {
-        gap: 10px;
-        margin-top: 6px;
+        order: -1;
     }
-
+    
     .footer-socials a {
         width: 36px;
         height: 36px;
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
-
+    
     .footer-note {
-        font-size: 0.65rem;
-        margin-top: 4px;
+        font-size: 0.4rem;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     footer {
-        padding: 30px 12px 18px;
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
-
-    .footer-symbol {
-        font-size: 1.2rem;
+    
+    .status-bar {
+        font-size: 0.85rem;
+        gap: var(--spacing-xs);
     }
-
-    .footer-content p {
-        font-size: 0.7rem;
-    }
-
-    .footer-links {
-        flex-direction: column;
-        gap: 6px;
-    }
-
+    
     .footer-socials a {
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
         font-size: 0.9rem;
+    }
+    
+    .footer-note {
+        font-size: 0.35rem;
     }
 }
