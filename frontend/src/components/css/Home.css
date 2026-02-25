@@ -341,7 +341,9 @@
     .welcome-player {
         font-size: 0.8rem;
     }
-    
+    .press-start{
+        visibility: hidden !important;
+    }
     .hero-title {
         font-size: 0.9rem;
     }
@@ -404,6 +406,7 @@
     }
     
     .press-start {
+        visibility: hidden !important;
         font-size: 0.6rem;
     }
     
