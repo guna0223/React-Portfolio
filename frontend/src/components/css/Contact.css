@@ -236,8 +236,53 @@
 }
 
 /* ============================================
-   RESPONSIVE
+   RETRO ALERT BOX
    ============================================ */
+.retro-alert {
+  font-family: var(--font-terminal);
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  animation: blinkIn 0.3s ease-out;
+}
+
+.retro-alert.success {
+  background: var(--retro-bg-card);
+  border-color: var(--retro-green);
+  color: var(--retro-green);
+}
+
+.retro-alert.error {
+  background: var(--retro-bg-card);
+  border-color: var(--retro-red);
+  color: var(--retro-red);
+}
+
+.alert-icon {
+  font-size: 1.2rem;
+}
+
+.alert-message {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.alert-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes blinkIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 @media (max-width: 1024px) {
     .terminal-content {
         gap: var(--spacing-md);

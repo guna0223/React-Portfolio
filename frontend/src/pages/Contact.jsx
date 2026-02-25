@@ -1,42 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import "../components/css/Contact.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
+  const [alertInfo, setAlertInfo] = useState({ show: false, type: "", message: "" });
 
-  // SEND EMAIL FUNCTION (ADDED ONLY)
-  const sendEmail = (e) => {
+  const showAlert = (type, message) => {
+    setAlertInfo({ show: true, type, message });
+    setTimeout(() => {
+      setAlertInfo({ show: false, type: "", message: "" });
+    }, 4000);
+  };
+
+  const sendEmail = async (e) => {
     e.preventDefault();
 
-    const templateParams = {
+    const formData = {
       name: e.target.name.value,
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
     };
 
-    emailjs
-      .send(
-        "service_y0ymmgf",
-        "template_96kexgk",
-        templateParams,
-        "nFxwbwNW4OW4-i054"
-      )
-      .then(() => {
-        alert("◆ TRANSMISSION SENT ✔");
-        e.target.reset();
-      })
-      .catch((error) => {
-        alert("◆ TRANSMISSION FAILED ✖");
-        console.error(error);
-      });
+    // Admin email params
+    const adminParams = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    // User auto-reply params
+    const userParams = {
+      name: formData.name,
+      to_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      // Step 1: Send email to admin
+      await emailjs.send("service_y0ymmgf", "template_96kexgk", adminParams, "nFxwbwNW4OW4-i054");
+      
+      // Step 2: Send confirmation to user
+      await emailjs.send("service_y0ymmgf", "template_z5qlmac", userParams, "nFxwbwNW4OW4-i054");
+      
+      showAlert("success", "TRANSMISSION COMPLETE - CHECK YOUR MAIL");
+      e.target.reset();
+    } catch (error) {
+      console.error(error);
+      showAlert("error", "TRANSMISSION FAILED - TRY AGAIN");
+    }
   };
 
   return (
     <section id="contact" className="section contact">
       <div className="container">
         <h2 className="section-title">[ COMM TERMINAL ]</h2>
+        
+        {/* Retro Alert Box */}
+        {alertInfo.show && (
+          <div className={`retro-alert ${alertInfo.type}`}>
+            <span className="alert-icon">
+              {alertInfo.type === "success" ? "✔" : "✖"}
+            </span>
+            <span className="alert-message">
+              {alertInfo.message}
+            </span>
+            <span className="alert-cursor">_</span>
+          </div>
+        )}
 
         <div className="terminal-container">
           <div className="terminal-header">
