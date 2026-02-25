@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "../components/css/About.css";
 import aboutImg from "../assets/AboutImage/img.jpeg";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 
 const About = () => {
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleResumeDownload = () => {
+    // Create a hidden anchor element to trigger download
+    const link = document.createElement('a');
+    link.href = '/resume/Gunasekar_Resume.pdf';
+    link.download = 'Gunasekar_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Show alert after download starts
+    setTimeout(() => {
+      setShowAlert(true);
+      // Auto-hide after 3 seconds
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+    }, 500);
+  };
   return (
     <section id="about" className="section about">
       <div className="container">
@@ -82,13 +102,24 @@ const About = () => {
             </div>
 
             <div className="about-actions">
-              <button className="about-btn">
+              <button className="about-btn" onClick={handleResumeDownload}>
                 ⬇ DOWNLOAD MAP
               </button>
             </div>
           </div>
 
         </div>
+
+        {/* Retro Success Alert */}
+        {showAlert && (
+          <div className="retro-alert">
+            <div className="retro-alert-content">
+              <span className="retro-alert-icon">★</span>
+              <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+              <span className="retro-alert-icon">★</span>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

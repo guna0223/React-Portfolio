@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import profileImg from "../assets/AboutImage/homeimg.jpeg";
 import "../components/css/Home.css";
 
 const Home = () => {
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleResumeDownload = (e) => {
+    // Allow the default download behavior
+    // Show alert after a brief delay to let download start
+    setTimeout(() => {
+      setShowAlert(true);
+      // Auto-hide after 3 seconds
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+    }, 500);
+  };
+
   return (
     <section id="home" className="section home">
       <div className="container">
@@ -40,8 +54,9 @@ const Home = () => {
               </a>
 
               <a
-                href="/src/assets/resume/Gunasekar D --Resume.pdf"
-                download
+                href="/resume/Gunasekar_Resume.pdf"
+                download="Gunasekar_Resume.pdf"
+                onClick={handleResumeDownload}
                 className="hire-btn secondary"
               >
                 <span>⬇ GET MAP</span>
@@ -96,6 +111,17 @@ const Home = () => {
           </div>
 
         </div>
+
+        {/* Retro Success Alert */}
+        {showAlert && (
+          <div className="retro-alert">
+            <div className="retro-alert-content">
+              <span className="retro-alert-icon">★</span>
+              <span className="retro-alert-message">RESUME DOWNLOADED SUCCESSFULLY</span>
+              <span className="retro-alert-icon">★</span>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
