@@ -115,6 +115,25 @@
     line-height: 1.6;
 }
 
+/* Bio Lines - SEO-friendly alternative to <br/> */
+.bio-line {
+    display: block;
+}
+
+.bio-decorative {
+    color: var(--retro-text-dim);
+    font-size: 0.9rem;
+    margin: var(--spacing-xs) 0;
+}
+
+.bio-greeting {
+    margin: var(--spacing-xs) 0;
+}
+
+.bio-quest {
+    margin-top: var(--spacing-xs);
+}
+
 /* Player Stats Grid */
 .player-stats {
     display: grid;

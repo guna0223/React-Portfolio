@@ -37,14 +37,10 @@ const About = () => {
           <div className="about-text">
             <div className="bio-box">
               <p className="about-description">
-                ═══════════════════════════════════<br/>
-                Greetings, traveler! I am a Full-Stack Developer 
-                specializing in the ancient arts of Python, Django, SQL, 
-                and modern frontend grimoires including HTML, CSS, 
-                JavaScript, and React.
-                ═══════════════════════════════════<br/><br/>
-                My quest: Building clean, responsive, and scalable 
-                web applications across the digital realm.
+                <span className="bio-line bio-decorative">═══════════════════════════════════</span>
+                <span className="bio-line bio-greeting">Greetings, traveler! I am a Full-Stack Developer specializing in the ancient arts of Python, Django, SQL, and modern frontend grimoires including HTML, CSS, JavaScript, and React.</span>
+                <span className="bio-line bio-decorative">═══════════════════════════════════</span>
+                <span className="bio-line bio-quest">My quest: Building clean, responsive, and scalable web applications across the digital realm.</span>
               </p>
             </div>
 
