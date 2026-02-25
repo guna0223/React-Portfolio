@@ -78,6 +78,7 @@ const Contact = () => {
 
           <div className="terminal-content">
             <div className="contact-info">
+              {/* Email */}
               <div className="contact-item">
                 <div className="contact-icon">
                   <i className="fas fa-envelope"></i>
@@ -86,6 +87,52 @@ const Contact = () => {
                   <h3>◆ EMAIL</h3>
                   <p>gunasekar0223@gmail.com</p>
                   <a href="mailto:gunasekar0223@gmail.com">[ SEND MAIL ]</a>
+                </div>
+              </div>
+              {/* WhatsApp */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <i className="fab fa-whatsapp"></i>
+                </div>
+                <div className="contact-details">
+                  <h3>◆ WHATSAPP</h3>
+                  <p>+91 9486436037</p>
+                  <a href="https://wa.me/919486436037" target="_blank" rel="noreferrer">[ SEND MSG ]</a>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <i className="fas fa-map-marker-alt"></i>
+                </div>
+                <div className="contact-details">
+                  <h3>◆ LOCATION</h3>
+                  <p>BTM 1st Stage, Bengaluru, Karnataka, India</p>
+                </div>
+              </div>
+
+              {/* LinkedIn */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <i className="fab fa-linkedin"></i>
+                </div>
+                <div className="contact-details">
+                  <h3>◆ LINKEDIN</h3>
+                  <p>LinkedIn Profile</p>
+                  <a href="https://www.linkedin.com/in/gunasekar0223/" target="_blank" rel="noreferrer">[ VISIT ]</a>
+                </div>
+              </div>
+
+              {/* GitHub */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <i className="fab fa-github"></i>
+                </div>
+                <div className="contact-details">
+                  <h3>◆ GITHUB</h3>
+                  <p>GitHub Profile</p>
+                  <a href="https://github.com/guna0223" target="_blank" rel="noreferrer">[ VISIT ]</a>
                 </div>
               </div>
             </div>
