@@ -600,7 +600,6 @@
     }
 
     .retro-alert {
-        top: 100px;
         align-items: center;
         padding: 6px 10px;
     }
@@ -623,7 +622,6 @@
     }
 
     .retro-alert {
-        top: 75px;
         width: auto;
         max-width: 100%;
         justify-content: center;
