@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../components/css/Projects.css";
 import gameSellingImg from "../assets/images/project-img/gameselling.png";
 import whatsapp from "../assets/images/project-img/whatapp.png";
@@ -9,310 +9,154 @@ import shopping from "../assets/images/project-img/shopping.png";
 
 
 const Projects = () => {
+  const [activeProject, setActiveProject] = useState(null);
+
+  const projects = [
+    {
+      id: 1,
+      title: "VEXO – E-Commerce App",
+      image: shopping,
+      description: "Modern & responsive e-commerce web app built using React. Integrates FakeStore API for dynamic product data, featuring listing, filtering, search, wishlist & cart.",
+      tech: ["React", "REST API", "CSS3"],
+      link: "https://react-ecommerce-fxed.vercel.app/",
+      github: "https://github.com/guna0223/React-Ecommerce"
+    },
+    {
+      id: 2,
+      title: "WhatsApp UI Clone",
+      image: whatsapp,
+      description: "Responsive WhatsApp UI clone using React with chat lists, message layout & dynamic data rendering.",
+      tech: ["React", "JavaScript", "JSON", "CSS"],
+      link: "https://whatsapp-ui-ten.vercel.app/",
+      github: "https://github.com/guna0223/whatsapp-ui"
+    },
+    {
+      id: 3,
+      title: "Weather Dashboard",
+      image: weatherImg,
+      description: "Interactive weather dashboard with location-based forecasts, weather maps & historical data visualization.",
+      tech: ["JavaScript", "OpenWeather API"],
+      link: "https://weather-dashbord-seven.vercel.app/",
+      github: "https://github.com/guna0223/weather-dashbord"
+    },
+    {
+      id: 4,
+      title: "Portfolio Website",
+      image: portfolioImg,
+      description: "Modern, responsive portfolio built with React, focused on performance, accessibility & clean UI.",
+      tech: ["React", "JavaScript", "CSS3", "Vite"],
+      link: "https://react-portfolio-2kbm.vercel.app/",
+      github: "https://github.com/guna0223/portfolio"
+    },
+    {
+      id: 5,
+      title: "Movie App",
+      image: movie,
+      description: "Movie browsing app built with React & TMDB API, featuring real-time search, detailed info & favorites.",
+      tech: ["React", "Context API", "TMDB API", "CSS"],
+      link: "https://movie-project-omega-tawny.vercel.app/",
+      github: "https://github.com/guna0223/movie-project"
+    },
+    {
+      id: 6,
+      title: "Game Selling App",
+      image: gameSellingImg,
+      description: "Full-stack game selling web app using Django with authentication, product & order management.",
+      tech: ["Django", "Python", "HTML", "CSS"],
+      link: null,
+      github: "https://github.com/guna0223/Django-Game"
+    }
+  ];
+
+  const toggleProject = (id) => {
+    setActiveProject(activeProject === id ? null : id);
+  };
+
   return (
     <section id="project" className="section projects">
       <div className="container">
         <h2 className="section-title">
-          <span className="title-icon">🗝️</span>
-          My Projects
+          [ QUEST LOG ]
         </h2>
 
         <div className="projects-content">
           <div className="projects-grid">
-            {/* shopping */}
-            <div className="project-card animate-on-scroll">
-              <div className="project-image">
-                <div className="relic-frame">
-                  <img
-                    src={shopping}
-                    alt="VEXO E-commerce Application"
-                  />
-                </div>
-
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <a
-                      href="https://react-ecommerce-fxed.vercel.app/"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fas fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <a
-                      href="https://github.com/guna0223/React-Ecommerce"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-github"></i>
-                    </a>
+            {projects.map((project, index) => (
+              <React.Fragment key={project.id}>
+                <div 
+                  className={`project-card ${activeProject === project.id ? 'active' : ''}`}
+                  onClick={() => toggleProject(project.id)}
+                >
+                  <div className="project-selector">
+                    {activeProject === project.id ? '▶' : '○'}
+                  </div>
+                  <div className="project-image">
+                    <img src={project.image} alt={project.title} />
+                  </div>
+                  <div className="project-info">
+                    <h3>◆ {project.title}</h3>
+                    <p>Click to {activeProject === project.id ? 'close' : 'view'} details</p>
+                    <div className="project-tech">
+                      {project.tech.map((t, i) => (
+                        <span key={i}>{t}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="project-info">
-                <h3>VEXO – Modern E-Commerce Web App</h3>
-
-                <p>
-                  VEXO is a modern and responsive e-commerce web application built using
-                  React. It integrates a RESTful API (FakeStore API) to dynamically fetch
-                  and display product data, featuring product listing, category filtering,
-                  search functionality, wishlist, and cart management.
-                </p>
-
-                <div className="project-tech">
-                  <span className="tech-rune">⦿</span><span>React</span>
-                  <span className="tech-rune">⦿</span><span>REST API</span>
-                  <span className="tech-rune">⦿</span><span>CSS3</span>
-                </div>
-              </div>
-            </div>
-
-            {/* WhatsApp Project */}
-            <div className="project-card animate-on-scroll">
-              <div className="project-image">
-                <div className="relic-frame">
-                  <img
-                    src={whatsapp}
-                    alt="WhatsApp UI Project"
-                  />
-                </div>
-
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <a
-                      href="https://whatsapp-ui-ten.vercel.app/"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fas fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <a
-                      href="https://github.com/guna0223/whatsapp-ui"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-github"></i>
-                    </a>
+                {/* Project Details Dialog */}
+                {activeProject === project.id && (
+                  <div className="project-details open">
+                    <div className="dialog-header">
+                      <div className="dialog-title">◆ {project.title}</div>
+                      <button 
+                        className="dialog-close"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveProject(null);
+                        }}
+                      >
+                        ✕
+                      </button>
+                    </div>
+                    <div className="dialog-content">
+                      <div className="dialog-image">
+                        <img src={project.image} alt={project.title} />
+                      </div>
+                      <div className="dialog-text">
+                        <h4>◆ MISSION BRIEFING</h4>
+                        <p>{project.description}</p>
+                        <div className="project-meta">
+                          {project.tech.map((t, i) => (
+                            <span key={i}>{t}</span>
+                          ))}
+                        </div>
+                        <div className="dialog-buttons">
+                          {project.link && (
+                            <a 
+                              href={project.link} 
+                              target="_blank" 
+                              rel="noreferrer"
+                              className="dialog-btn primary"
+                            >
+                              ▶ LAUNCH
+                            </a>
+                          )}
+                          <a 
+                            href={project.github} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="dialog-btn secondary"
+                          >
+                            ⌂ SOURCE
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="project-info">
-                <h3>WhatsApp UI Clone</h3>
-                <p>
-                  Built a responsive WhatsApp UI clone using React, featuring
-                  chat lists, message layout, and dynamic data rendering using JSON.
-                </p>
-
-                <div className="project-tech">
-                  <span className="tech-rune">⦿</span><span>React</span>
-                  <span className="tech-rune">⦿</span><span>JavaScript</span>
-                  <span className="tech-rune">⦿</span><span>JSON</span>
-                  <span className="tech-rune">⦿</span><span>CSS</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Weather Project */}
-            <div className="project-card animate-on-scroll">
-              <div className="project-image">
-                <div className="relic-frame">
-                  <img
-                    src={weatherImg}
-                    alt="Weather Dashboard"
-                  />
-                </div>
-
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <a
-                      href="https://weather-dashbord-seven.vercel.app/"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fas fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <a
-                      href="https://github.com/guna0223/weather-dashbord"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-github"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="project-info">
-                <h3>Weather Dashboard</h3>
-                <p>
-                  An interactive weather dashboard with location-based forecasts,
-                  weather maps, and historical data visualization.
-                </p>
-
-                <div className="project-tech">
-                  <span className="tech-rune">⦿</span><span>JavaScript</span>
-                  <span className="tech-rune">⦿</span><span>OpenWeather API</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Portfolio Project */}
-            <div className="project-card animate-on-scroll">
-              <div className="project-image">
-                <div className="relic-frame">
-                  <img
-                    src={portfolioImg}
-                    alt="Portfolio Website"
-                  />
-                </div>
-
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <a
-                      href="https://react-portfolio-2kbm.vercel.app/"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fas fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <a
-                      href="https://github.com/guna0223/portfolio"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-github"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="project-info">
-                <h3>Portfolio Website</h3>
-
-                <p>
-                  Designed and developed a modern, responsive portfolio website using
-                  <strong> React</strong>, focused on performance, accessibility, and clean
-                  UI interactions with smooth animations.
-                </p>
-
-                {/* <div className="project-points">
-                  <ul>
-                    <li>Built with reusable React components</li>
-                    <li>Responsive layout with mobile-first design</li>
-                    <li>Animated UI elements for enhanced user experience</li>
-                    <li>Optimized asset loading and performance</li>
-                  </ul>
-                </div> */}
-
-                <div className="project-tech">
-                  <span className="tech-rune">⦿</span><span>React</span>
-                  <span className="tech-rune">⦿</span><span>JavaScript</span>
-                  <span className="tech-rune">⦿</span><span>CSS3</span>
-                  <span className="tech-rune">⦿</span><span>Vite</span>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Movie App */}
-            <div className="project-card animate-on-scroll">
-              <div className="project-image">
-                <div className="relic-frame">
-                  <img
-                    src={movie}
-                    alt="Movie App"
-                  />
-                </div>
-
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <a
-                      href="https://movie-project-omega-tawny.vercel.app/"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fas fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <a
-                      href="https://github.com/guna0223/movie-project"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-github"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="project-info">
-                <h3>Movie App</h3>
-                <p>
-                  A powerful movie browsing app built with React and TMDB API,
-                  featuring real-time search, detailed movie information, and
-                  a favorites system with responsive UI.
-                </p>
-
-                <div className="project-tech">
-                  <span className="tech-rune">⦿</span><span>React</span>
-                  <span className="tech-rune">⦿</span><span>Context API</span>
-                  <span className="tech-rune">⦿</span><span>TMDB API</span>
-                  <span className="tech-rune">⦿</span><span>CSS</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Game Selling App */}
-            <div className="project-card animate-on-scroll">
-              <div className="project-image">
-                <div className="relic-frame">
-                  <img
-                    src={gameSellingImg}
-                    alt="Game Selling App"
-                  />
-                </div>
-
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <a
-                      href="https://github.com/guna0223/Django-Game"
-                      className="project-link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-github"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="project-info">
-                <h3>Game Selling App</h3>
-                <p>
-                  A full-stack game selling web application developed using
-                  Django, featuring authentication, product management,
-                  order handling, and an admin dashboard.
-                </p>
-
-                <div className="project-tech">
-                  <span className="tech-rune">⦿</span><span>Django</span>
-                  <span className="tech-rune">⦿</span><span>Python</span>
-                  <span className="tech-rune">⦿</span><span>HTML</span>
-                  <span className="tech-rune">⦿</span><span>CSS</span>
-                </div>
-              </div>
-            </div>
-
+                )}
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>

@@ -5,26 +5,23 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-content">
-        {/* Brand Symbol */}
-        <div className="footer-symbol">⦿</div>
-
-        {/* Copyright */}
-        <p>
-          Cast in Mystic Fire © {new Date().getFullYear()} • Gunasekar
-        </p>
-
-        {/* Navigation Links */}
-        <div className="footer-links">
-          <a href="#home">| Home |</a>
-          <span className="separator">✦</span>
-          <a href="#about">| About |</a>
-          <span className="separator">✦</span>
-          <a href="#projects">| Projects |</a>
-          <span className="separator">✦</span>
-          <a href="#contact">| Contact |</a>
+        {/* Status Bar */}
+        <div className="status-bar">
+          <div className="status-item">
+            <span className="status-icon">★</span>
+            <span>PLAYER READY</span>
+          </div>
+          <span className="status-separator">|</span>
+          <div className="status-item">
+            <span>REACT MODE</span>
+          </div>
+          <span className="status-separator">|</span>
+          <div className="status-item">
+            <span>LVL: DEV</span>
+          </div>
         </div>
 
-        {/* ADDED: Social Links */}
+        {/* Social Links */}
         <div className="footer-socials">
           <a
             href="https://github.com/guna0223"
@@ -52,9 +49,9 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* ADDED: Footer Note */}
+        {/* Footer Note */}
         <small className="footer-note">
-          Built with React • Designed & Developed by Me
+          ◆ GAME OVER - THANKS FOR PLAYING ◆ {new Date().getFullYear()}
         </small>
       </div>
     </footer>
