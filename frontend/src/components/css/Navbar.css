@@ -287,3 +287,18 @@ header.scrolled {
         padding: var(--spacing-sm) var(--spacing-md);
     }
 }
+
+/* Small Mobile ≤ 360px */
+@media (max-width: 360px) {
+    .nav-brand {
+        font-size: 0.45rem;
+    }
+    
+    .brand-symbol {
+        font-size: 1rem;
+    }
+    
+    .hamburger span {
+        width: 18px;
+    }
+}

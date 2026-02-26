@@ -383,3 +383,32 @@
         padding: var(--spacing-sm) var(--spacing-md);
     }
 }
+
+/* Small Mobile ≤ 360px */
+@media (max-width: 360px) {
+    .project-info h3 {
+        font-size: 0.5rem;
+    }
+    
+    .project-info p {
+        font-size: 0.8rem;
+    }
+    
+    .project-tech span {
+        font-size: 0.6rem;
+        padding: 2px 4px;
+    }
+    
+    .dialog-title {
+        font-size: 0.55rem;
+    }
+    
+    .dialog-text p {
+        font-size: 0.8rem;
+    }
+    
+    .dialog-btn {
+        font-size: 0.85rem;
+        min-height: 44px;
+    }
+}

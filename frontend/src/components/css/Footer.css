@@ -180,3 +180,20 @@ footer {
         font-size: 0.5rem;
     }
 }
+
+/* Small Mobile ≤ 360px */
+@media (max-width: 360px) {
+    .status-bar {
+        font-size: 0.75rem;
+    }
+    
+    .footer-socials a {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .footer-note {
+        font-size: 0.3rem;
+    }
+}

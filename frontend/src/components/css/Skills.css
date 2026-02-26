@@ -217,3 +217,19 @@
         font-size: 0.35rem;
     }
 }
+
+/* Small Mobile ≤ 360px */
+@media (max-width: 360px) {
+    .skill-item span {
+        font-size: 0.75rem;
+    }
+    
+    .skill-bar-fill {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .skill-percent {
+        font-size: 0.3rem;
+    }
+}

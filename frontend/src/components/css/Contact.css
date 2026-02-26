@@ -410,3 +410,28 @@
         padding: var(--spacing-sm);
     }
 }
+
+/* Small Mobile ≤ 360px */
+@media (max-width: 360px) {
+    .contact-details p {
+        font-size: 0.75rem;
+    }
+    
+    .contact-details a {
+        font-size: 0.7rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.85rem;
+    }
+    
+    .form-group label {
+        font-size: 0.3rem;
+    }
+    
+    .submit-btn {
+        font-size: 0.85rem;
+        min-height: 44px;
+    }
+}

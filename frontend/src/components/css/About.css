@@ -637,4 +637,24 @@
     }
 }
 
+/* Extra Small Mobile ≤ 360px */
+@media (max-width: 360px) {
+    .about-description {
+        font-size: 0.7rem;
+    }
+    
+    .profile-card {
+        width: 120px;
+    }
+    
+    .avatar-frame {
+        width: 90px;
+        height: 115px;
+    }
+    
+    .about-btn {
+        min-height: 36px;
+    }
+}
+
 /* END OF FILE */
