@@ -204,7 +204,7 @@ function LoadingScreen({ onComplete }) {
           </div>
 
           <div className="progress-info">
-            <span className="neon-text yellow">{Math.floor(progress)}%</span>
+            <span className="neon-text yellow">{Math.min(Math.floor(progress), 100)}%</span>
           </div>
         </div>
 
