@@ -1,4 +1,4 @@
-/* NotFound Page Styles - Mario Theme */
+/* NotFound Page Styles - Mario Theme - Enhanced Responsive */
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -26,7 +26,7 @@
   overflow: hidden;
 }
 
-/* Subtle cloud pattern in background */
+/* Animated clouds background */
 .notfound-container::before {
   content: '';
   position: absolute;
@@ -34,11 +34,37 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
+  background-image:
     radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 20%),
     radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 15%),
     radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.2) 0%, transparent 25%);
   pointer-events: none;
+}
+
+/* Floating animated clouds */
+.notfound-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80px 40px at 15% 25%, rgba(255, 255, 255, 0.6) 0%, transparent 70%),
+    radial-gradient(ellipse 100px 50px at 70% 20%, rgba(255, 255, 255, 0.5) 0%, transparent 70%),
+    radial-gradient(ellipse 70px 35px at 40% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+  animation: floatClouds 20s linear infinite;
+}
+
+@keyframes floatClouds {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100px);
+  }
 }
 
 .notfound-content {
@@ -47,259 +73,493 @@
   text-align: center;
   max-width: 900px;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
+/* ===========================================
+   HEADER - 404 Title
+   =========================================== */
 .notfound-title {
-  font-size: 2.5rem;
+  font-size:29px;
   color: var(--mario-red);
-  text-shadow: 
-    3px 3px 0 #000,
-    -1px -1px 0 #fff,
-    0 0 20px rgba(229, 37, 33, 0.5);
-  margin-bottom: 20px;
+  text-shadow:
+    4px 4px 0 #000,
+    -2px -2px 0 #fff,
+    0 0 30px rgba(229, 37, 33, 0.6);
+  margin-bottom: 40px;
   animation: bounce 1s ease-in-out infinite;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+  line-height: 1.4;
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
+/* ===========================================
+   SUBTEXT - Description
+   =========================================== */
 .notfound-subtitle {
-  font-size: 0.9rem;
+  font-size: 18px;
   color: #fff;
   text-shadow: 2px 2px 0 #000;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   letter-spacing: 1px;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
-/* Offline Badge - Mario style */
-.offline-badge {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: linear-gradient(135deg, var(--mario-red), #cc0000);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 
-    0 4px 0 #990000,
-    0 0 15px rgba(229, 37, 33, 0.5);
-  animation: pulse 2s infinite;
-  z-index: 100;
-}
-
-.offline-dot {
-  width: 8px;
-  height: 8px;
-  background: #fff;
-  border-radius: 50%;
-  animation: blink 1s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-@keyframes blink {
-  0%, 50%, 100% {
-    opacity: 1;
-  }
-  25%, 75% {
-    opacity: 0.3;
-  }
-}
-
-/* Game Container - Mario style border */
+/* ===========================================
+   GAME CONTAINER - Card Style Design
+   =========================================== */
 .game-container {
   position: relative;
-  display: inline-block;
-  border: 6px solid var(--mario-ground);
-  border-radius: 4px;
-  box-shadow: 
-    0 6px 0 #5D3A1A,
-    0 8px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 6px var(--mario-ground),
+    0 8px 0 #5D3A1A;
   overflow: hidden;
-  background: var(--mario-sky);
+  padding: 20px;
+  max-width: 100%;
+  width: 800px;
 }
 
 .game-canvas {
   display: block;
   background: var(--mario-sky);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
 }
 
-/* Game Instructions */
+/* ===========================================
+   GAME UI - Score and Instructions
+   =========================================== */
 .game-instructions {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .key-hint {
   color: var(--mario-yellow);
-  font-size: 0.8rem;
+  font-size: 14px;
   text-shadow: 2px 2px 0 #000;
   animation: blink 1.5s infinite;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 12px 24px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px 30px;
   border: 3px solid var(--mario-yellow);
   border-radius: 8px;
+  display: inline-block;
 }
 
-/* Game Over Overlay - Mario style */
+@keyframes blink {
+
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0.7;
+  }
+}
+
+/* ===========================================
+   GAME OVER OVERLAY
+   =========================================== */
 .game-over-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   animation: fadeIn 0.3s ease-out;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
 .game-over-title {
-  font-size: 2.5rem;
+  font-size: 36px;
   color: var(--mario-red);
-  text-shadow: 
-    3px 3px 0 #000,
-    0 0 20px var(--mario-red);
-  margin-bottom: 20px;
+  text-shadow:
+    4px 4px 0 #000,
+    0 0 30px var(--mario-red);
+  margin-bottom: 25px;
   animation: shake 0.5s ease-in-out;
 }
 
 @keyframes shake {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(-10px);
   }
+
   75% {
     transform: translateX(10px);
   }
 }
 
 .final-score {
-  font-size: 1.2rem;
+  font-size: 20px;
   color: var(--mario-yellow);
   text-shadow: 2px 2px 0 #000;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
-/* Restart Button - Mario blue style */
+/* ===========================================
+   RESTART BUTTON - Mobile Friendly
+   =========================================== */
 .restart-btn {
   font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 1rem;
+  font-size: 14px;
   color: #fff;
   background: linear-gradient(180deg, var(--mario-blue), #0377A8);
   border: none;
-  padding: 15px 40px;
-  border-radius: 8px;
+  padding: 18px 50px;
+  border-radius: 10px;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: 
-    0 4px 0 #025A80,
-    0 0 20px rgba(4, 156, 216, 0.5);
-  transition: all 0.1s ease;
+  box-shadow:
+    0 6px 0 #025A80,
+    0 0 25px rgba(4, 156, 216, 0.5);
+  transition: all 0.2s ease;
   margin-bottom: 20px;
+  width: 220px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .restart-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 0 #025A80,
-    0 0 30px rgba(4, 156, 216, 0.7);
+  transform: translateY(-3px);
+  box-shadow:
+    0 9px 0 #025A80,
+    0 0 40px rgba(4, 156, 216, 0.8);
+  background: linear-gradient(180deg, #05B8EE, var(--mario-blue));
+}
+
+.restart-btn:focus {
+  outline: 3px solid var(--mario-yellow);
+  outline-offset: 3px;
 }
 
 .restart-btn:active {
-  transform: translateY(2px);
-  box-shadow: 
-    0 2px 0 #025A80,
+  transform: translateY(3px);
+  box-shadow:
+    0 3px 0 #025A80,
     0 0 20px rgba(4, 156, 216, 0.5);
 }
 
 .restart-hint {
-  font-size: 0.6rem;
+  font-size: 11px;
   color: #aaa;
   text-shadow: 1px 1px 0 #000;
 }
 
-/* Responsive Design */
-@media (max-width: 850px) {
-  .notfound-title {
-    font-size: 1.5rem;
+/* ===========================================
+   OFFLINE BADGE
+   =========================================== */
+.offline-badge {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--mario-red), #cc0000);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow:
+    0 4px 0 #990000,
+    0 0 20px rgba(229, 37, 33, 0.5);
+  animation: pulse 2s infinite;
+  z-index: 100;
+}
+
+.offline-dot {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
   }
-  
-  .notfound-subtitle {
-    font-size: 0.7rem;
-  }
-  
-  .game-canvas {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-  }
-  
-  .game-container {
-    width: 100%;
-    max-width: calc(100vw - 48px);
+
+  50% {
+    transform: scale(1.05);
   }
 }
 
+/* ===========================================
+   RESPONSIVE BREAKPOINTS
+   =========================================== */
+
+/* Tablet - max-width: 1024px */
+@media (max-width: 1024px) {
+  .notfound-title {
+    font-size: 36px;
+  }
+
+  .notfound-subtitle {
+    font-size: 16px;
+  }
+
+  .game-container {
+    width: 600px;
+    padding: 16px;
+  }
+
+  .game-over-title {
+    font-size: 28px;
+  }
+
+  .final-score {
+    font-size: 16px;
+  }
+
+  .restart-btn {
+    width: 200px;
+    height: 55px;
+    font-size: 12px;
+    padding: 16px 40px;
+  }
+
+  .key-hint {
+    font-size: 12px;
+    padding: 12px 24px;
+  }
+}
+
+/* Tablet Portrait - max-width: 768px */
+@media (max-width: 768px) {
+  .notfound-container {
+    padding: 30px 15px;
+  }
+
+  .notfound-title {
+    font-size: 32px;
+  }
+
+  .notfound-subtitle {
+    font-size: 14px;
+    padding: 0 20px;
+  }
+
+  .game-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.15),
+      0 0 0 4px var(--mario-ground),
+      0 6px 0 #5D3A1A;
+  }
+
+  .game-canvas {
+    border-radius: 6px;
+  }
+
+  .game-instructions {
+    margin-top: 15px;
+  }
+
+  .key-hint {
+    font-size: 11px;
+    padding: 10px 20px;
+  }
+
+  .game-over-title {
+    font-size: 24px;
+  }
+
+  .final-score {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .restart-btn {
+    width: 180px;
+    height: 50px;
+    font-size: 11px;
+    padding: 14px 30px;
+  }
+
+  .restart-hint {
+    font-size: 9px;
+  }
+
+  .offline-badge {
+    top: 15px;
+    right: 15px;
+    font-size: 9px;
+    padding: 10px 18px;
+  }
+}
+
+/* Mobile - max-width: 480px */
 @media (max-width: 480px) {
   .notfound-container {
     padding: 20px 10px;
+    min-height: 100vh;
   }
-  
+
+  .notfound-content {
+    gap: 20px;
+  }
+
   .notfound-title {
-    font-size: 1.2rem;
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
   }
-  
+
   .notfound-subtitle {
-    font-size: 0.6rem;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 0 10px;
   }
-  
+
+  .game-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.15),
+      0 0 0 3px var(--mario-ground),
+      0 4px 0 #5D3A1A;
+  }
+
+  .game-canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  .game-instructions {
+    margin-top: 12px;
+  }
+
+  .key-hint {
+    font-size: 10px;
+    padding: 10px 16px;
+    border-width: 2px;
+  }
+
+  .game-over-overlay {
+    padding: 15px;
+  }
+
   .game-over-title {
-    font-size: 1.5rem;
+    font-size: 20px;
+    margin-bottom: 15px;
   }
-  
+
+  .final-score {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
   .restart-btn {
-    font-size: 0.8rem;
-    padding: 12px 30px;
+    width: 160px;
+    height: 48px;
+    font-size: 10px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow:
+      0 4px 0 #025A80,
+      0 0 15px rgba(4, 156, 216, 0.4);
   }
-  
+
+  .restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 0 #025A80,
+      0 0 25px rgba(4, 156, 216, 0.6);
+  }
+
+  .restart-hint {
+    font-size: 8px;
+  }
+
   .offline-badge {
-    font-size: 0.5rem;
-    padding: 8px 12px;
     top: 10px;
     right: 10px;
+    font-size: 8px;
+    padding: 8px 14px;
+    border-radius: 6px;
+  }
+
+  .offline-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  .notfound-title {
+    font-size: 22px;
+  }
+
+  .notfound-subtitle {
+    font-size: 10px;
+  }
+
+  .restart-btn {
+    width: 140px;
+    height: 44px;
+    font-size: 9px;
   }
 }

@@ -1,42 +1,62 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../css/Navbar.css";
 
 const Navbar = () => {
+  const location = useLocation();
+
+  // Check if we're on a 404 page
+  const is404Page = location.pathname === '/404' || location.pathname === '/not-found' || location.pathname === '*';
+
   return (
     <header>
       <nav className="navbar">
-        <a href="#">
-          <div className="nav-brand">
-            <span className="brand-symbol">★</span>
-            <span className="brand-text">PORTFOLIO</span>
-          </div>
-        </a>
+        <Link to="/">
+          <a href="#home">
+            <div className="nav-brand">
+              <span className="brand-symbol">★</span>
+              <span className="brand-text">PORTFOLIO</span>
+            </div>
+          </a>
+        </Link>
 
         <ul className="nav-menu">
           <li>
-            <a href="#home" className="nav-link active">HOME</a>
+            <a href="#home">
+              <Link to="/" className="nav-link active">HOME</Link>
+            </a>
           </li>
           <li>
-            <a href="#about" className="nav-link">ABOUT</a>
+            <a href="#about">
+              <Link to="/about" className="nav-link">ABOUT</Link>
+            </a>
           </li>
           <li>
-            <a href="#skills" className="nav-link">SKILLS</a>
+            <a href="#skills">
+              <Link to="/skills" className="nav-link">SKILLS</Link>
+            </a>
           </li>
           <li>
-            <a href="#service" className="nav-link">SERVICE</a>
+            <a href="#service">
+              <Link to="/services" className="nav-link">SERVICE</Link>
+            </a>
           </li>
           <li>
-            <a href="#project" className="nav-link">PROJECT</a>
+            <a href="#project">
+              <Link to="/projects" className="nav-link">PROJECT</Link>
+            </a>
           </li>
           <li>
-            <a href="#contact" className="nav-link">CONTACT</a>
+            <a href="#contact">
+              <Link to="/contact" className="nav-link">CONTACT</Link>
+            </a>
           </li>
         </ul>
 
         <div className="nav-cta">
-          <a href="#contact" className="cta-btn">
+          <Link to="/contact" className="cta-btn">
             <span className="arow">LET'S TALK</span>
-          </a>
+          </Link>
         </div>
       </nav>
     </header>

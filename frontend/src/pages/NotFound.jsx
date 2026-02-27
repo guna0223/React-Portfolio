@@ -417,7 +417,7 @@ const NotFound = () => {
       )}
       
       <div className="notfound-content">
-        <h1 className="notfound-title mt-2">404 - Page Not Found</h1>
+        <h1 className="notfound-title">404 - Page Not Found</h1>
         <p className="notfound-subtitle">Looks like you are lost! Play a game while you're here.</p>
         
         <div className="game-container">

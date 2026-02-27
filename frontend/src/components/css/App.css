@@ -49,6 +49,15 @@
     --pixel-size: 4px;
 }
 
+/*  */
+#about,
+#skills,
+#services,
+#projects,
+#contact {
+    margin-top: 80px;
+}
+
 /* gta game style cursor */
 html,
 body,
@@ -59,7 +68,9 @@ li,
 }
 
 a,
-button,i,.arow{
+button,
+i,
+.arow {
     cursor: url("/cursor/hover.cur") 0 0, pointer !important;
 }
 
@@ -375,7 +386,7 @@ img {
     .container {
         padding: 0 8px;
     }
-    
+
     .section {
         padding: 80px 8px var(--spacing-lg);
     }
@@ -388,7 +399,7 @@ img {
     .container {
         max-width: 1400px;
     }
-    
+
     body {
         font-size: 20px;
     }
@@ -401,7 +412,7 @@ img {
     html {
         scroll-behavior: auto !important;
     }
-    
+
     *,
     *::before,
     *::after {
@@ -416,18 +427,19 @@ img {
    PRINT STYLES
    ============================================ */
 @media print {
+
     .navbar,
     .hamburger,
     .loading-screen,
     .nav-cta {
         display: none !important;
     }
-    
+
     body {
         background: white !important;
         color: black !important;
     }
-    
+
     body::before,
     body::after {
         display: none !important;
@@ -438,6 +450,7 @@ img {
    TOUCH-FRIENDLY IMPROVEMENTS
    ============================================ */
 @media (hover: none) and (pointer: coarse) {
+
     .hire-btn,
     .dialog-btn,
     .about-btn,
