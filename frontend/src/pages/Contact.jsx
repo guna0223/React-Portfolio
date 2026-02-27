@@ -18,6 +18,14 @@ const Contact = () => {
     }, 4000);
   };
 
+  const openGmail = () => {
+    const email = "gunasekar0223@gmail.com";
+    const subject = encodeURIComponent("Portfolio Contact");
+    const body = encodeURIComponent("Hello,\n\nI visited your portfolio and would like to connect with you.\n\nBest regards,");
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+    window.open(gmailUrl, "_blank");
+  };
+
   const sendEmail = async (e) => {
     e.preventDefault();
     showAlert("", "SENDING...");
@@ -88,7 +96,7 @@ const Contact = () => {
                 <div className="contact-details">
                   <h3>◆ EMAIL</h3>
                   <p>gunasekar0223@gmail.com</p>
-                  <a href="mailto:gunasekar0223@gmail.com">[ SEND MAIL ]</a>
+                  <a href="#" onClick={openGmail} className="gmail-link">[ SEND MAIL ]</a>
                 </div>
               </div>
               {/* WhatsApp */}

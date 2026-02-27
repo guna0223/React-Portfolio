@@ -1,3 +1,4 @@
+import React from "react";
 import "../css/MyLocation.css";
 
 function MyLocation({ onClose }) {
