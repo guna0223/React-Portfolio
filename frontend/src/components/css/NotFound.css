@@ -1,10 +1,21 @@
-/* NotFound Page Styles - Retro Arcade Theme */
+/* NotFound Page Styles - Mario Theme */
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+/* Mario Color Variables */
+:root {
+  --mario-sky: #87CEEB;
+  --mario-red: #E52521;
+  --mario-blue: #049CD8;
+  --mario-yellow: #FFD700;
+  --mario-grass: #43B047;
+  --mario-ground: #8B5A2B;
+  --mario-cloud: #FFFFFF;
+}
+
 .notfound-container {
   min-height: 100vh;
-  background: #0a0a0f;
+  background: linear-gradient(180deg, #87CEEB 0%, #6BB3D9 50%, #5BA3C9 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +26,7 @@
   overflow: hidden;
 }
 
-/* Background grid effect */
+/* Subtle cloud pattern in background */
 .notfound-container::before {
   content: '';
   position: absolute;
@@ -24,27 +35,9 @@
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(rgba(255, 0, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 0, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-}
-
-/* Scanline effect */
-.notfound-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.1) 0px,
-    rgba(0, 0, 0, 0.1) 1px,
-    transparent 1px,
-    transparent 2px
-  );
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 20%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 15%),
+    radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.2) 0%, transparent 25%);
   pointer-events: none;
 }
 
@@ -58,59 +51,49 @@
 
 .notfound-title {
   font-size: 2.5rem;
-  color: #ff00ff;
+  color: var(--mario-red);
   text-shadow: 
-    0 0 10px #ff00ff,
-    0 0 20px #ff00ff,
-    0 0 40px #ff00ff,
-    4px 4px 0 #00ffff;
+    3px 3px 0 #000,
+    -1px -1px 0 #fff,
+    0 0 20px rgba(229, 37, 33, 0.5);
   margin-bottom: 20px;
-  animation: glitch 1s infinite;
+  animation: bounce 1s ease-in-out infinite;
   letter-spacing: 2px;
 }
 
-@keyframes glitch {
-  0%, 90%, 100% {
-    transform: translate(0);
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
   }
-  92% {
-    transform: translate(-2px, 1px);
-  }
-  94% {
-    transform: translate(2px, -1px);
-  }
-  96% {
-    transform: translate(-1px, 2px);
-  }
-  98% {
-    transform: translate(1px, -2px);
+  50% {
+    transform: translateY(-10px);
   }
 }
 
 .notfound-subtitle {
   font-size: 0.9rem;
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffff;
+  color: #fff;
+  text-shadow: 2px 2px 0 #000;
   margin-bottom: 40px;
   letter-spacing: 1px;
 }
 
-/* Offline Badge */
+/* Offline Badge - Mario style */
 .offline-badge {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: linear-gradient(135deg, #ff3366, #ff6699);
+  background: linear-gradient(135deg, var(--mario-red), #cc0000);
   color: #fff;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 0.7rem;
   display: flex;
   align-items: center;
   gap: 8px;
   box-shadow: 
-    0 0 15px rgba(255, 51, 102, 0.5),
-    inset 0 0 10px rgba(255, 255, 255, 0.2);
+    0 4px 0 #990000,
+    0 0 15px rgba(229, 37, 33, 0.5);
   animation: pulse 2s infinite;
   z-index: 100;
 }
@@ -141,23 +124,22 @@
   }
 }
 
-/* Game Container */
+/* Game Container - Mario style border */
 .game-container {
   position: relative;
   display: inline-block;
-  border: 4px solid #ff00ff;
-  border-radius: 8px;
+  border: 6px solid var(--mario-ground);
+  border-radius: 4px;
   box-shadow: 
-    0 0 20px rgba(255, 0, 255, 0.5),
-    0 0 40px rgba(255, 0, 255, 0.3),
-    inset 0 0 20px rgba(255, 0, 255, 0.1);
+    0 6px 0 #5D3A1A,
+    0 8px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  background: #0a0a0f;
+  background: var(--mario-sky);
 }
 
 .game-canvas {
   display: block;
-  background: #0a0a0f;
+  background: var(--mario-sky);
 }
 
 /* Game Instructions */
@@ -168,24 +150,24 @@
 }
 
 .key-hint {
-  color: #00ff00;
+  color: var(--mario-yellow);
   font-size: 0.8rem;
-  text-shadow: 0 0 10px #00ff00;
+  text-shadow: 2px 2px 0 #000;
   animation: blink 1.5s infinite;
-  background: rgba(0, 255, 0, 0.1);
+  background: rgba(0, 0, 0, 0.4);
   padding: 12px 24px;
-  border: 2px solid #00ff00;
-  border-radius: 4px;
+  border: 3px solid var(--mario-yellow);
+  border-radius: 8px;
 }
 
-/* Game Over Overlay */
+/* Game Over Overlay - Mario style */
 .game-over-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 15, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,12 +185,11 @@
 }
 
 .game-over-title {
-  font-size: 2rem;
-  color: #ff3366;
+  font-size: 2.5rem;
+  color: var(--mario-red);
   text-shadow: 
-    0 0 10px #ff3366,
-    0 0 20px #ff3366,
-    0 0 40px #ff3366;
+    3px 3px 0 #000,
+    0 0 20px var(--mario-red);
   margin-bottom: 20px;
   animation: shake 0.5s ease-in-out;
 }
@@ -226,25 +207,26 @@
 }
 
 .final-score {
-  font-size: 1rem;
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffff;
+  font-size: 1.2rem;
+  color: var(--mario-yellow);
+  text-shadow: 2px 2px 0 #000;
   margin-bottom: 30px;
 }
 
+/* Restart Button - Mario blue style */
 .restart-btn {
   font-family: 'Press Start 2P', 'Courier New', monospace;
   font-size: 1rem;
-  color: #0a0a0f;
-  background: linear-gradient(135deg, #00ff00, #00cc00);
+  color: #fff;
+  background: linear-gradient(180deg, var(--mario-blue), #0377A8);
   border: none;
   padding: 15px 40px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   text-transform: uppercase;
   box-shadow: 
-    0 0 20px rgba(0, 255, 0, 0.5),
-    0 4px 0 #009900;
+    0 4px 0 #025A80,
+    0 0 20px rgba(4, 156, 216, 0.5);
   transition: all 0.1s ease;
   margin-bottom: 20px;
 }
@@ -252,21 +234,21 @@
 .restart-btn:hover {
   transform: translateY(-2px);
   box-shadow: 
-    0 0 30px rgba(0, 255, 0, 0.7),
-    0 6px 0 #009900;
+    0 6px 0 #025A80,
+    0 0 30px rgba(4, 156, 216, 0.7);
 }
 
 .restart-btn:active {
   transform: translateY(2px);
   box-shadow: 
-    0 0 20px rgba(0, 255, 0, 0.5),
-    0 2px 0 #009900;
+    0 2px 0 #025A80,
+    0 0 20px rgba(4, 156, 216, 0.5);
 }
 
 .restart-hint {
   font-size: 0.6rem;
-  color: #666;
-  text-shadow: 0 0 5px #666;
+  color: #aaa;
+  text-shadow: 1px 1px 0 #000;
 }
 
 /* Responsive Design */
