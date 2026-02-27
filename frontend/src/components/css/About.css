@@ -1,6 +1,9 @@
 /* ============================================
    ABOUT SECTION - PLAYER PROFILE SCREEN
    ============================================ */
+.container {
+    margin-top: -82px;
+}
 
 .about {
     background: var(--retro-bg);
@@ -642,16 +645,16 @@
     .about-description {
         font-size: 0.7rem;
     }
-    
+
     .profile-card {
         width: 120px;
     }
-    
+
     .avatar-frame {
         width: 90px;
         height: 115px;
     }
-    
+
     .about-btn {
         min-height: 36px;
     }

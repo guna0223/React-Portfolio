@@ -20,6 +20,7 @@
     -webkit-touch-callout: none;
     /* Allow smooth scrolling */
     touch-action: pan-y;
+    margin-top: 80px !important;
 }
 
 /* Starfield Background Effect */
