@@ -5,26 +5,25 @@ import '../components/css/NotFound.css';
 // CUSTOM IMAGE PLACEHOLDERS - Upload your sprites
 // ============================================
 
-// TODO: Add player sprite image
-// Example: playerImage.src = "/images/mario.png";
-const playerImage = new Image("assests/images/gameimage/super.png");
-// playerImage.src = "ADD_PLAYER_IMAGE_PATH_HERE";
+// Player sprite image
+const playerImage = new Image();
+playerImage.src = "images/gameimage/super.png";
 
-// TODO: Add crab enemy sprite (fast small enemy)
+// Crab enemy sprite (fast small enemy)
 const crabEnemyImage = new Image();
-// crabEnemyImage.src = "ADD_CRAB_IMAGE_PATH_HERE";
+crabEnemyImage.src = "images/gameimage/crab.png";
 
-// TODO: Add turtle enemy sprite (larger, slower)
+// Turtle enemy sprite (larger, slower)
 const turtleEnemyImage = new Image();
-// turtleEnemyImage.src = "ADD_TURTLE_IMAGE_PATH_HERE";
+turtleEnemyImage.src = "images/gameimage/turtle.png";
 
-// TODO: Add background image (sky/scene)
+// Background image (sky/scene)
 const backgroundImage = new Image();
-// backgroundImage.src = "ADD_BACKGROUND_IMAGE_PATH_HERE";
+backgroundImage.src = "images/gameimage/bg.png";
 
-// TODO: Add ground texture image
+// Ground texture image
 const groundImage = new Image();
-// groundImage.src = "ADD_GROUND_IMAGE_PATH_HERE";
+groundImage.src = "images/gameimage/ground.png";
 
 // ============================================
 // MARIO COLOR PALETTE (fallback if no images)
@@ -230,9 +229,9 @@ const NotFound = () => {
       const player = state.player;
       
       // Clear and draw background
-      if (backgroundImage.complete && backgroundImage.naturalWidth > 0) {
+      try {
         ctx.drawImage(backgroundImage, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-      } else {
+      } catch (e) {
         ctx.fillStyle = COLORS.sky;
         ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
       }
@@ -251,9 +250,22 @@ const NotFound = () => {
       state.groundOffset = (state.groundOffset + 2) % 40;
       
       if (groundImage.complete && groundImage.naturalWidth > 0) {
-        for (let i = -1; i < CANVAS_WIDTH / groundImage.width + 1; i++) {
-          const x = i * groundImage.width - (state.groundOffset % groundImage.width);
-          ctx.drawImage(groundImage, x, state.groundY, groundImage.width, 50);
+        try {
+          for (let i = -1; i < CANVAS_WIDTH / groundImage.width + 1; i++) {
+            const x = i * groundImage.width - (state.groundOffset % groundImage.width);
+            ctx.drawImage(groundImage, x, state.groundY, groundImage.width, 50);
+          }
+        } catch (e) {
+          ctx.fillStyle = COLORS.groundBrown;
+          ctx.fillRect(0, state.groundY + 10, CANVAS_WIDTH, 40);
+          ctx.fillStyle = COLORS.grassGreen;
+          ctx.fillRect(0, state.groundY, CANVAS_WIDTH, 12);
+          ctx.fillStyle = '#2E7D32';
+          for (let i = -1; i < CANVAS_WIDTH / 40 + 1; i++) {
+            const x = i * 40 - state.groundOffset;
+            ctx.fillRect(x, state.groundY + 8, 8, 4);
+            ctx.fillRect(x + 20, state.groundY + 4, 6, 4);
+          }
         }
       } else {
         ctx.fillStyle = COLORS.groundBrown;
@@ -279,9 +291,9 @@ const NotFound = () => {
       }
       
       // Draw player
-      if (playerImage.complete && playerImage.naturalWidth > 0) {
+      try {
         ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
-      } else {
+      } catch (e) {
         drawPlayerFallback(ctx, player);
       }
       
@@ -291,15 +303,15 @@ const NotFound = () => {
         enemy.frame++;
         
         if (enemy.type === 'crab') {
-          if (crabEnemyImage.complete && crabEnemyImage.naturalWidth > 0) {
+          try {
             ctx.drawImage(crabEnemyImage, enemy.x, enemy.y, enemy.width, enemy.height);
-          } else {
+          } catch (e) {
             drawCrabFallback(ctx, enemy);
           }
         } else {
-          if (turtleEnemyImage.complete && turtleEnemyImage.naturalWidth > 0) {
+          try {
             ctx.drawImage(turtleEnemyImage, enemy.x, enemy.y, enemy.width, enemy.height);
-          } else {
+          } catch (e) {
             drawTurtleFallback(ctx, enemy);
           }
         }
@@ -405,7 +417,7 @@ const NotFound = () => {
       )}
       
       <div className="notfound-content">
-        <h1 className="notfound-title">404 - Page Not Found</h1>
+        <h1 className="notfound-title mt-2">404 - Page Not Found</h1>
         <p className="notfound-subtitle">Looks like you are lost! Play a game while you're here.</p>
         
         <div className="game-container">
