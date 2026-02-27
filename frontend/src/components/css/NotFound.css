@@ -139,6 +139,11 @@
   padding: 20px;
   max-width: 100%;
   width: 800px;
+  /* Improve touch interaction */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .game-canvas {
@@ -148,6 +153,11 @@
   overflow: hidden;
   max-width: 100%;
   height: auto;
+  /* Improve touch interaction on mobile */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* ===========================================
@@ -561,5 +571,103 @@
     width: 140px;
     height: 44px;
     font-size: 9px;
+  }
+}
+
+/* ============================================
+   LAPTOP (1025px - 1440px)
+   ============================================ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .notfound-content {
+    max-width: 850px;
+  }
+
+  .notfound-title {
+    font-size: 42px;
+  }
+
+  .notfound-subtitle {
+    font-size: 18px;
+  }
+
+  .game-container {
+    width: 750px;
+    padding: 18px;
+  }
+
+  .game-over-title {
+    font-size: 34px;
+  }
+
+  .final-score {
+    font-size: 18px;
+  }
+
+  .restart-btn {
+    width: 210px;
+    height: 58px;
+    font-size: 13px;
+    padding: 16px 45px;
+  }
+
+  .key-hint {
+    font-size: 13px;
+    padding: 14px 28px;
+  }
+}
+
+/* ============================================
+   LARGE DESKTOP (1441px and above)
+   ============================================ */
+@media (min-width: 1441px) {
+  .notfound-container {
+    padding: 60px 40px;
+  }
+
+  .notfound-content {
+    max-width: 1000px;
+  }
+
+  .notfound-title {
+    font-size: 52px;
+    letter-spacing: 6px;
+  }
+
+  .notfound-subtitle {
+    font-size: 20px;
+  }
+
+  .game-container {
+    width: 850px;
+    padding: 24px;
+  }
+
+  .game-canvas {
+    max-width: 100%;
+  }
+
+  .game-over-title {
+    font-size: 42px;
+  }
+
+  .final-score {
+    font-size: 22px;
+  }
+
+  .restart-btn {
+    width: 240px;
+    height: 65px;
+    font-size: 14px;
+    padding: 18px 50px;
+  }
+
+  .key-hint {
+    font-size: 14px;
+    padding: 15px 30px;
+  }
+
+  .offline-badge {
+    font-size: 12px;
+    padding: 14px 28px;
   }
 }

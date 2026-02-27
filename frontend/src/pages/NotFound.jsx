@@ -393,6 +393,38 @@ const NotFound = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [gameOver]);
 
+  // Handle touch input for mobile devices
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    // Handle touchstart - start jump or restart
+    const handleTouchStart = (e) => {
+      e.preventDefault();
+      if (gameOver) {
+        handleRestart();
+      } else {
+        handleJump();
+      }
+    };
+
+    // Add touch event listeners
+    canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
+    
+    // Also handle touch on the game container for better mobile experience
+    const gameContainer = document.querySelector('.game-container');
+    if (gameContainer) {
+      gameContainer.addEventListener('touchstart', handleTouchStart, { passive: false });
+    }
+
+    return () => {
+      canvas.removeEventListener('touchstart', handleTouchStart);
+      if (gameContainer) {
+        gameContainer.removeEventListener('touchstart', handleTouchStart);
+      }
+    };
+  }, [gameOver]);
+
   // Handle offline detection
   useEffect(() => {
     const handleOnline = () => setIsOffline(false);
@@ -429,7 +461,7 @@ const NotFound = () => {
           />
           
           <div className="game-instructions">
-            <span className="key-hint">Press SPACE to Jump</span>
+            <span className="key-hint">Press SPACE or TAP to Jump</span>
           </div>
 
           {gameOver && (

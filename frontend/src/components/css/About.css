@@ -529,6 +529,72 @@
 }
 
 /* ============================================
+   LAPTOP (1025px - 1440px)
+   ============================================ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .about-content {
+        gap: var(--spacing-xl);
+        max-width: 1200px;
+    }
+    
+    .profile-card {
+        width: 300px;
+    }
+    
+    .avatar-frame {
+        width: 220px;
+        height: 280px;
+    }
+    
+    .about-title {
+        font-size: 0.95rem;
+    }
+    
+    .about-description {
+        font-size: 1.1rem;
+    }
+    
+    .player-stats {
+        gap: var(--spacing-md);
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP (1441px and above)
+   ============================================ */
+@media (min-width: 1441px) {
+    .about-content {
+        gap: var(--spacing-xl);
+        max-width: 1400px;
+    }
+    
+    .profile-card {
+        width: 320px;
+    }
+    
+    .avatar-frame {
+        width: 240px;
+        height: 300px;
+    }
+    
+    .about-title {
+        font-size: 1.1rem;
+    }
+    
+    .about-description {
+        font-size: 1.2rem;
+    }
+    
+    .player-stats {
+        gap: var(--spacing-lg);
+    }
+    
+    .stat-value {
+        font-size: 1.4rem;
+    }
+}
+
+/* ============================================
    RETRO SUCCESS ALERT
    ============================================ */
 

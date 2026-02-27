@@ -253,3 +253,61 @@
         font-size: 1.1rem;
     }
 }
+
+/* ============================================
+   LAPTOP (1025px - 1440px)
+   ============================================ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .features-title {
+        font-size: 0.75rem;
+    }
+    
+    .service-card h3 {
+        font-size: 0.55rem;
+    }
+    
+    .service-card p {
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP (1441px and above)
+   ============================================ */
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-xl);
+    }
+    
+    .features-title {
+        font-size: 0.9rem;
+    }
+    
+    .service-card h3 {
+        font-size: 0.65rem;
+    }
+    
+    .service-card p {
+        font-size: 1.1rem;
+    }
+    
+    .service-features span {
+        font-size: 1rem;
+    }
+    
+    .icon-box {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+}

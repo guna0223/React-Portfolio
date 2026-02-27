@@ -504,6 +504,61 @@
 }
 
 /* ============================================
+   LAPTOP (1025px - 1440px)
+   ============================================ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .home-content {
+        gap: var(--spacing-xl);
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .pixel-frame {
+        width: 280px;
+        height: 360px;
+    }
+    
+    .hero-title {
+        font-size: 1.2rem;
+    }
+    
+    .hero-desc {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP (1441px and above)
+   ============================================ */
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .home-content {
+        gap: var(--spacing-xl);
+        padding: 0 var(--spacing-xl);
+        max-width: 1400px;
+    }
+    
+    .pixel-frame {
+        width: 320px;
+        height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .hero-desc {
+        font-size: 1.2rem;
+    }
+}
+
+/* ============================================
    RETRO SUCCESS ALERT
    ============================================ */
 

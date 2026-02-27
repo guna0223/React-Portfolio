@@ -233,3 +233,60 @@
         font-size: 0.3rem;
     }
 }
+
+/* ============================================
+   LAPTOP (1025px - 1440px)
+   ============================================ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .stats-title {
+        font-size: 0.75rem;
+    }
+    
+    .category-header h3 {
+        font-size: 0.45rem;
+    }
+    
+    .skill-item span {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP (1441px and above)
+   ============================================ */
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+    }
+    
+    .stats-title {
+        font-size: 0.9rem;
+    }
+    
+    .stats-level {
+        font-size: 0.7rem;
+    }
+    
+    .category-header h3 {
+        font-size: 0.55rem;
+    }
+    
+    .skill-item span {
+        font-size: 1.1rem;
+    }
+    
+    .skill-bar-fill {
+        width: 18px;
+        height: 18px;
+    }
+}

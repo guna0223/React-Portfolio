@@ -412,3 +412,53 @@
         min-height: 44px;
     }
 }
+
+/* ============================================
+   LAPTOP (1025px - 1440px)
+   ============================================ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .project-card {
+        padding: var(--spacing-md);
+    }
+    
+    .project-info h3 {
+        font-size: 0.65rem;
+    }
+    
+    .project-info p {
+        font-size: 0.95rem;
+    }
+    
+    .dialog-content {
+        gap: var(--spacing-lg);
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP (1441px and above)
+   ============================================ */
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .project-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .project-info h3 {
+        font-size: 0.75rem;
+    }
+    
+    .project-info p {
+        font-size: 1.1rem;
+    }
+    
+    .dialog-content {
+        gap: var(--spacing-xl);
+    }
+    
+    .dialog-title {
+        font-size: 0.9rem;
+    }
+}

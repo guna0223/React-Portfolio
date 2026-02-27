@@ -302,3 +302,40 @@ header.scrolled {
         width: 18px;
     }
 }
+
+/* ============================================
+   LAPTOP (1025px - 1440px)
+   ============================================ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .navbar {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .nav-brand {
+        font-size: 0.85rem;
+    }
+    
+    .nav-link {
+        font-size: 1.15rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP (1441px and above)
+   ============================================ */
+@media (min-width: 1441px) {
+    .navbar {
+        max-width: 1400px;
+        padding: 0 var(--spacing-xl);
+    }
+    
+    .nav-brand {
+        font-size: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 1.25rem;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}
