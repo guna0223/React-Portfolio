@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../components/css/Contact.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import MyLocation from "../components/MyLocation/MyLocation";
 
 const Contact = () => {
   const [alertInfo, setAlertInfo] = useState({
@@ -8,6 +9,7 @@ const Contact = () => {
     type: "",
     message: "",
   });
+  const [showLocation, setShowLocation] = useState(false);
 
   const showAlert = (type, message) => {
     setAlertInfo({ show: true, type, message });
@@ -102,13 +104,14 @@ const Contact = () => {
               </div>
 
               {/* Location */}
-              <div className="contact-item">
+              <div className="contact-item location-item" onClick={() => setShowLocation(true)}>
                 <div className="contact-icon">
                   <i className="fas fa-map-marker-alt"></i>
                 </div>
                 <div className="contact-details">
                   <h3>◆ LOCATION</h3>
                   <p>BTM 1st Stage, Bengaluru, Karnataka, India</p>
+                  <span className="location-click-hint">[ CLICK TO DETECT ]</span>
                 </div>
               </div>
 
@@ -171,6 +174,15 @@ const Contact = () => {
 
           </div>
         </div>
+
+        {/* Location Panel - Slides in from right */}
+        {showLocation && (
+          <div className="location-panel-overlay" onClick={() => setShowLocation(false)}>
+            <div className="location-panel" onClick={(e) => e.stopPropagation()}>
+              <MyLocation onClose={() => setShowLocation(false)} />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
