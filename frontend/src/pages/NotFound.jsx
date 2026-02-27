@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import './css/NotFound.css';
+import '../components/css/NotFound.css';
 
 const NotFound = () => {
   const canvasRef = useRef(null);

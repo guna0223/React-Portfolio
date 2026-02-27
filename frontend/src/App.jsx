@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
 import "./components/css/App.css";
 import Home from "./pages/Home";
@@ -7,6 +8,7 @@ import Skills from "./pages/Skills";
 import Services from "./pages/Service";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer/Footer";
 import ScriptInitializer from "./components/Script/ScriptInitializer";
 import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
@@ -22,22 +24,20 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       {!isLoading && (
         <>
           <ScriptInitializer />
           <Navbar />
-          <Home/>
-          <About/>
-          <Skills/>
-          <Services />
-          <Projects/>
-          <Contact />
+          <Routes>
+            <Route path="/" element={<><Home/><About/><Skills/><Services /><Projects/><Contact /></>} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
           <Footer />
         </>
       )}
-    </>
+    </Router>
   );
 }
 
