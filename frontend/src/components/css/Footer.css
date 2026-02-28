@@ -2,31 +2,36 @@
    FOOTER - RETRO GAME STATUS BAR STYLE
    ============================================ */
 
+/* Base styles - Mobile First */
 footer {
     background: var(--retro-bg-card);
     border-top: 4px solid var(--retro-blue);
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 /* Status Bar Design */
 .footer-content {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    text-align: center;
 }
 
 /* Status Text - Terminal Style */
 .status-bar {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-xs);
     font-family: var(--font-terminal);
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     color: var(--retro-green);
 }
 
@@ -42,25 +47,26 @@ footer {
 
 /* Separator pipes */
 .status-separator {
-    color: var(--retro-gray);
+    display: none;
 }
 
 /* Social Links - Icon Buttons */
 .footer-socials {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
+    order: -1;
 }
 
 .footer-socials a {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--retro-bg-tertiary);
     border: 3px solid var(--retro-white);
     color: var(--retro-text);
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     transition: none;
 }
 
@@ -75,9 +81,9 @@ footer {
     width: 100%;
     text-align: center;
     font-family: var(--font-pixel);
-    font-size: 0.5rem;
+    font-size: 0.3rem;
     color: var(--retro-gray);
-    margin-top: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
     letter-spacing: 1px;
 }
 
@@ -88,101 +94,22 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-pixel);
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     color: var(--retro-blue);
     background: var(--retro-bg-card);
     padding: 0 var(--spacing-md);
 }
 
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE - Mobile First Breakpoints
    ============================================ */
-@media (max-width: 1024px) {
-    footer {
-        padding: var(--spacing-md);
-    }
-    
-    .status-bar {
-        font-size: 1rem;
-    }
-}
 
-@media (max-width: 768px) {
-    footer {
-        padding: var(--spacing-sm) var(--spacing-md);
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: var(--spacing-sm);
-    }
-    
-    .status-bar {
-        flex-wrap: wrap;
-        justify-content: center;
-        font-size: 0.95rem;
-    }
-    
-    .status-separator {
-        display: none;
-    }
-    
-    .footer-socials {
-        order: -1;
-    }
-    
-    .footer-socials a {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-    }
-    
-    .footer-note {
-        font-size: 0.4rem;
-    }
-}
-
-@media (max-width: 480px) {
+/* Small Mobile - 320px */
+@media (min-width: 320px) {
     footer {
         padding: var(--spacing-xs) var(--spacing-sm);
     }
     
-    .footer-content {
-        gap: var(--spacing-xs);
-    }
-    
-    .status-bar {
-        font-size: 0.85rem;
-        gap: var(--spacing-xs);
-    }
-    
-    .status-item {
-        gap: var(--spacing-xs);
-    }
-    
-    .footer-socials {
-        gap: var(--spacing-xs);
-    }
-    
-    .footer-socials a {
-        width: 32px;
-        height: 32px;
-        font-size: 0.9rem;
-    }
-    
-    .footer-note {
-        font-size: 0.35rem;
-        margin-top: var(--spacing-xs);
-    }
-    
-    .footer-decoration {
-        font-size: 0.5rem;
-    }
-}
-
-/* Small Mobile ≤ 360px */
-@media (max-width: 360px) {
     .status-bar {
         font-size: 0.75rem;
     }
@@ -194,16 +121,109 @@ footer {
     }
     
     .footer-note {
-        font-size: 0.3rem;
+        font-size: 0.25rem;
+    }
+    
+    .footer-decoration {
+        font-size: 0.4rem;
     }
 }
 
-/* ============================================
-   LAPTOP (1025px - 1440px)
-   ============================================ */
-@media (min-width: 1025px) and (max-width: 1440px) {
+/* Phones - 480px */
+@media (min-width: 480px) {
+    footer {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
     .footer-content {
-        max-width: 1100px;
+        gap: var(--spacing-sm);
+    }
+    
+    .status-bar {
+        font-size: 0.9rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .status-item {
+        gap: var(--spacing-xs);
+    }
+    
+    .status-separator {
+        display: block;
+        color: var(--retro-gray);
+    }
+    
+    .footer-socials {
+        order: 0;
+    }
+    
+    .footer-socials a {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .footer-note {
+        font-size: 0.35rem;
+    }
+}
+
+/* Large Phones - 640px */
+@media (min-width: 640px) {
+    .status-bar {
+        font-size: 1rem;
+    }
+    
+    .footer-note {
+        font-size: 0.4rem;
+    }
+}
+
+/* Tablets - 768px */
+@media (min-width: 768px) {
+    footer {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        gap: var(--spacing-md);
+    }
+    
+    .status-bar {
+        font-size: 1rem;
+        align-items: flex-start;
+    }
+    
+    .footer-note {
+        width: auto;
+        text-align: center;
+        margin-top: 0;
+    }
+    
+    .footer-socials a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .footer-decoration {
+        font-size: 0.55rem;
+    }
+}
+
+/* Small Laptops - 1024px */
+@media (min-width: 1024px) {
+    footer {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .footer-content {
+        max-width: 1200px;
     }
     
     .status-bar {
@@ -211,14 +231,33 @@ footer {
     }
     
     .footer-note {
-        font-size: 0.5rem;
+        font-size: 0.45rem;
     }
 }
 
-/* ============================================
-   LARGE DESKTOP (1441px and above)
-   ============================================ */
-@media (min-width: 1441px) {
+/* Laptops - 1280px */
+@media (min-width: 1280px) {
+    .footer-content {
+        max-width: 1200px;
+    }
+    
+    .status-bar {
+        font-size: 1.15rem;
+    }
+    
+    .footer-note {
+        font-size: 0.5rem;
+    }
+    
+    .footer-socials a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Large Screens - 1536px+ */
+@media (min-width: 1536px) {
     .footer-content {
         max-width: 1400px;
     }
@@ -228,12 +267,30 @@ footer {
     }
     
     .footer-note {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
     }
     
     .footer-socials a {
-        width: 45px;
-        height: 45px;
+        width: 48px;
+        height: 48px;
         font-size: 1.3rem;
+    }
+    
+    .footer-decoration {
+        font-size: 0.6rem;
+    }
+}
+
+/* ============================================
+   PREVENT HORIZONTAL SCROLLING
+   ============================================ */
+@media (max-width: 768px) {
+    footer {
+        overflow-x: hidden;
+    }
+    
+    footer * {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }

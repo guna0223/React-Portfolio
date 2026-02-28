@@ -2,13 +2,15 @@
    PROJECTS SECTION - GAME SELECT MENU
    ============================================ */
 
+/* Base styles - Mobile First */
 .projects {
     background: var(--retro-bg);
-    min-height: var(--dvh, 100vh);
+    padding: var(--spacing-lg) 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 /* Projects Grid */
@@ -16,6 +18,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+    width: 100%;
 }
 
 /* Project Item - Menu Row Style */
@@ -23,9 +26,13 @@
     background: var(--retro-bg-card);
     border: 4px solid var(--retro-gray);
     display: flex;
+    flex-direction: column;
     align-items: center;
     cursor: pointer;
     transition: none;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .project-card:hover,
@@ -36,30 +43,33 @@
 
 /* Selector Arrow */
 .project-selector {
-    width: 50px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--retro-yellow);
     background: var(--retro-bg-secondary);
-    border-right: 4px solid var(--retro-gray);
-    padding: var(--spacing-md);
+    border-bottom: 4px solid var(--retro-gray);
+    padding: var(--spacing-sm);
+    box-sizing: border-box;
 }
 
 .project-card:hover .project-selector,
 .project-card.active .project-selector {
     color: var(--retro-cyan);
-    border-right-color: var(--retro-yellow);
+    border-bottom-color: var(--retro-yellow);
 }
 
 /* Project Thumbnail */
 .project-image {
-    width: 120px;
-    height: 80px;
+    width: 100%;
+    max-width: 100%;
+    height: 120px;
     border: 3px solid var(--retro-white);
     overflow: hidden;
     flex-shrink: 0;
+    box-sizing: border-box;
 }
 
 .project-image img {
@@ -72,12 +82,14 @@
 /* Project Info */
 .project-info {
     flex: 1;
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-md);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .project-info h3 {
     font-family: var(--font-pixel);
-    font-size: 0.7rem;
+    font-size: 0.55rem;
     color: var(--retro-white);
     margin-bottom: var(--spacing-xs);
     letter-spacing: 1px;
@@ -85,7 +97,7 @@
 
 .project-info p {
     font-family: var(--font-terminal);
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--retro-text-dim);
 }
 
@@ -94,11 +106,13 @@
     display: flex;
     gap: var(--spacing-xs);
     margin-top: var(--spacing-xs);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .project-tech span {
     font-family: var(--font-terminal);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     padding: 2px 8px;
     background: var(--retro-bg-tertiary);
     border: 2px solid var(--retro-blue);
@@ -110,9 +124,11 @@
     display: none;
     border: 4px solid var(--retro-yellow);
     background: var(--retro-bg-card);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     margin-top: var(--spacing-md);
     animation: slide-down 0.1s ease-out;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .project-details.open {
@@ -138,11 +154,13 @@
     border-bottom: 3px solid var(--retro-blue);
     padding-bottom: var(--spacing-md);
     margin-bottom: var(--spacing-md);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dialog-title {
     font-family: var(--font-pixel);
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     color: var(--retro-yellow);
 }
 
@@ -162,14 +180,17 @@
 
 /* Dialog Content */
 .dialog-content {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
 }
 
 .dialog-image {
     border: 4px solid var(--retro-white);
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .dialog-image img {
@@ -178,9 +199,14 @@
     image-rendering: pixelated;
 }
 
+.dialog-text {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .dialog-text h4 {
     font-family: var(--font-pixel);
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     color: var(--retro-cyan);
     margin-bottom: var(--spacing-sm);
     letter-spacing: 1px;
@@ -188,7 +214,7 @@
 
 .dialog-text p {
     font-family: var(--font-terminal);
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--retro-text);
     line-height: 1.5;
     margin-bottom: var(--spacing-md);
@@ -198,11 +224,12 @@
 .project-points {
     list-style: none;
     margin-bottom: var(--spacing-md);
+    padding-left: 0;
 }
 
 .project-points li {
     font-family: var(--font-terminal);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: var(--retro-text-dim);
     padding-left: var(--spacing-md);
     position: relative;
@@ -220,19 +247,26 @@
 /* Dialog Buttons */
 .dialog-buttons {
     display: flex;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dialog-btn {
     font-family: var(--font-terminal);
-    font-size: 1rem;
-    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-md);
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-width: 3px;
     border-style: solid;
+    min-height: 44px;
+    flex: 1;
+    max-width: 200px;
 }
 
 .dialog-btn.primary {
@@ -261,13 +295,15 @@
 /* Project Meta */
 .project-meta {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
     margin-top: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .project-meta span {
     font-family: var(--font-terminal);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     padding: 2px 8px;
     background: var(--retro-bg-tertiary);
     border: 2px solid var(--retro-gray);
@@ -275,117 +311,19 @@
 }
 
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE - Mobile First Breakpoints
    ============================================ */
-@media (max-width: 1024px) {
-    .dialog-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .dialog-image {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-    
-    .project-info {
-        padding: var(--spacing-md);
-    }
-}
 
-@media (max-width: 768px) {
+/* Small Mobile - 320px */
+@media (min-width: 320px) {
     .projects {
-        padding: var(--spacing-lg) 0;
-    }
-    
-    .project-card {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .project-selector {
-        width: 100%;
-        border-right: none;
-        border-bottom: 4px solid var(--retro-gray);
-        padding: var(--spacing-sm);
-    }
-    
-    .project-card:hover .project-selector,
-    .project-card.active .project-selector {
-        border-right: none;
-        border-bottom-color: var(--retro-yellow);
-    }
-    
-    .project-image {
-        width: 100%;
-        height: 150px;
-    }
-    
-    .project-info {
-        padding: var(--spacing-md);
-    }
-    
-    .project-tech {
-        justify-content: center;
-    }
-    
-    .dialog-buttons {
-        flex-direction: column;
-    }
-    
-    .dialog-btn {
-        min-height: 44px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 var(--spacing-sm);
+        padding: var(--spacing-md) var(--spacing-xs);
     }
     
     .projects-grid {
         gap: var(--spacing-xs);
     }
     
-    .project-info h3 {
-        font-size: 0.6rem;
-    }
-    
-    .project-info p {
-        font-size: 0.9rem;
-    }
-    
-    .project-tech {
-        flex-wrap: wrap;
-    }
-    
-    .project-tech span {
-        font-size: 0.7rem;
-    }
-    
-    .dialog-title {
-        font-size: 0.65rem;
-    }
-    
-    .dialog-text p {
-        font-size: 0.9rem;
-    }
-    
-    .dialog-image {
-        max-width: 100%;
-    }
-    
-    .dialog-buttons {
-        gap: var(--spacing-sm);
-    }
-    
-    .dialog-btn {
-        font-size: 0.9rem;
-        padding: var(--spacing-sm) var(--spacing-md);
-    }
-}
-
-/* Small Mobile ≤ 360px */
-@media (max-width: 360px) {
     .project-info h3 {
         font-size: 0.5rem;
     }
@@ -400,7 +338,7 @@
     }
     
     .dialog-title {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
     }
     
     .dialog-text p {
@@ -408,16 +346,115 @@
     }
     
     .dialog-btn {
-        font-size: 0.85rem;
-        min-height: 44px;
+        font-size: 0.8rem;
     }
 }
 
-/* ============================================
-   LAPTOP (1025px - 1440px)
-   ============================================ */
-@media (min-width: 1025px) and (max-width: 1440px) {
+/* Phones - 480px */
+@media (min-width: 480px) {
+    .projects {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .project-image {
+        height: 150px;
+    }
+    
+    .project-info h3 {
+        font-size: 0.6rem;
+    }
+    
+    .project-info p {
+        font-size: 0.95rem;
+    }
+    
+    .project-tech span {
+        font-size: 0.7rem;
+    }
+    
+    .dialog-content {
+        gap: var(--spacing-md);
+    }
+    
+    .dialog-title {
+        font-size: 0.65rem;
+    }
+    
+    .dialog-text p {
+        font-size: 0.95rem;
+    }
+    
+    .dialog-btn {
+        font-size: 0.9rem;
+    }
+}
+
+/* Large Phones - 640px */
+@media (min-width: 640px) {
+    .projects-grid {
+        gap: var(--spacing-sm);
+    }
+    
     .project-card {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .project-selector {
+        width: 50px;
+        border-bottom: none;
+        border-right: 4px solid var(--retro-gray);
+    }
+    
+    .project-card:hover .project-selector,
+    .project-card.active .project-selector {
+        border-right-color: var(--retro-yellow);
+        border-bottom: none;
+    }
+    
+    .project-image {
+        width: 120px;
+        height: 80px;
+    }
+    
+    .project-tech {
+        justify-content: flex-start;
+    }
+    
+    .dialog-content {
+        flex-direction: column;
+    }
+    
+    .dialog-image {
+        max-width: 100%;
+    }
+}
+
+/* Tablets - 768px */
+@media (min-width: 768px) {
+    .projects {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .projects-grid {
+        gap: var(--spacing-md);
+    }
+    
+    .project-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .project-selector {
+        width: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .project-image {
+        width: 140px;
+        height: 100px;
+    }
+    
+    .project-info {
         padding: var(--spacing-md);
     }
     
@@ -426,24 +463,81 @@
     }
     
     .project-info p {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
     
     .dialog-content {
+        flex-direction: row;
         gap: var(--spacing-lg);
+    }
+    
+    .dialog-image {
+        flex: 1;
+        max-width: 50%;
+    }
+    
+    .dialog-text {
+        flex: 1.5;
+    }
+    
+    .dialog-title {
+        font-size: 0.75rem;
+    }
+    
+    .dialog-text p {
+        font-size: 1rem;
+    }
+    
+    .dialog-buttons {
+        justify-content: flex-start;
+    }
+    
+    .project-meta {
+        justify-content: flex-start;
     }
 }
 
-/* ============================================
-   LARGE DESKTOP (1441px and above)
-   ============================================ */
-@media (min-width: 1441px) {
-    .container {
-        max-width: 1400px;
+/* Small Laptops - 1024px */
+@media (min-width: 1024px) {
+    .projects-grid {
+        gap: var(--spacing-md);
     }
     
     .project-card {
+        padding: var(--spacing-md);
+    }
+    
+    .project-selector {
+        width: 70px;
+    }
+    
+    .project-image {
+        width: 160px;
+        height: 110px;
+    }
+    
+    .project-info h3 {
+        font-size: 0.7rem;
+    }
+    
+    .dialog-content {
+        gap: var(--spacing-xl);
+    }
+    
+    .dialog-title {
+        font-size: 0.8rem;
+    }
+}
+
+/* Laptops - 1280px */
+@media (min-width: 1280px) {
+    .project-card {
         padding: var(--spacing-lg);
+    }
+    
+    .project-image {
+        width: 180px;
+        height: 120px;
     }
     
     .project-info h3 {
@@ -454,11 +548,54 @@
         font-size: 1.1rem;
     }
     
+    .project-tech span {
+        font-size: 0.8rem;
+    }
+    
+    .dialog-title {
+        font-size: 0.85rem;
+    }
+    
+    .dialog-text p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Large Screens - 1536px+ */
+@media (min-width: 1536px) {
+    .project-image {
+        width: 200px;
+        height: 140px;
+    }
+    
+    .project-info h3 {
+        font-size: 0.8rem;
+    }
+    
     .dialog-content {
         gap: var(--spacing-xl);
     }
     
     .dialog-title {
         font-size: 0.9rem;
+    }
+}
+
+/* ============================================
+   PREVENT HORIZONTAL SCROLLING
+   ============================================ */
+@media (max-width: 768px) {
+    .projects {
+        overflow-x: hidden;
+    }
+    
+    .projects * {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-xs);
+        max-width: 100%;
     }
 }

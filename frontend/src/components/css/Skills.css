@@ -2,61 +2,70 @@
    SKILLS SECTION - RETRO STATUS SCREEN
    ============================================ */
 
+/* Base styles - Mobile First */
 .skills {
     background: var(--retro-bg);
-    min-height: var(--dvh, 100vh);
+    padding: var(--spacing-lg) 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .skills-content {
     padding-top: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Stats Container */
 .stats-container {
     border: 4px solid var(--retro-white);
     background: var(--retro-bg-card);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Stats Header */
 .stats-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: var(--spacing-sm);
     border-bottom: 4px solid var(--retro-blue);
     padding-bottom: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
 }
 
 .stats-title {
     font-family: var(--font-pixel);
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     color: var(--retro-yellow);
     letter-spacing: 2px;
 }
 
 .stats-level {
     font-family: var(--font-pixel);
-    font-size: 0.6rem;
+    font-size: 0.45rem;
     color: var(--retro-green);
 }
 
-/* Skills Grid */
+/* Skills Grid - 1 column on mobile */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
 }
 
 /* Skill Category */
 .skill-category {
     border: 3px solid var(--retro-gray);
     background: var(--retro-bg-tertiary);
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
 }
 
 /* Category Header */
@@ -64,19 +73,19 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     padding-bottom: var(--spacing-sm);
     border-bottom: 2px dashed var(--retro-gray);
 }
 
 .category-header i {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: var(--retro-yellow);
 }
 
 .category-header h3 {
     font-family: var(--font-pixel);
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     color: var(--retro-cyan);
     letter-spacing: 1px;
 }
@@ -85,7 +94,7 @@
 .skill-items {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
 }
 
 .skill-item {
@@ -97,7 +106,7 @@
 /* Skill Name */
 .skill-item span {
     font-family: var(--font-terminal);
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--retro-text);
 }
 
@@ -108,8 +117,8 @@
 }
 
 .skill-bar-fill {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     background: var(--retro-green);
     border: 2px solid var(--retro-white);
 }
@@ -126,66 +135,23 @@
 /* Skill Percentage */
 .skill-percent {
     font-family: var(--font-pixel);
-    font-size: 0.4rem;
+    font-size: 0.35rem;
     color: var(--retro-text-dim);
     text-align: right;
 }
 
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE - Mobile First Breakpoints
    ============================================ */
-@media (max-width: 1024px) {
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-md);
-    }
-    
-    .skills-content {
-        padding: 0 var(--spacing-md);
-    }
-}
 
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-    
-    .stats-container {
-        padding: var(--spacing-md);
-    }
-    
-    .stats-header {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        text-align: center;
-    }
-    
-    .skill-category {
-        padding: var(--spacing-sm);
-    }
-    
-    .skill-item span {
-        font-size: 0.95rem;
-    }
-    
-    .skill-bar-fill {
-        width: 14px;
-        height: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 var(--spacing-sm);
-    }
-    
+/* Small Mobile - 320px */
+@media (min-width: 320px) {
     .skills {
-        padding: var(--spacing-lg) 0;
+        padding: var(--spacing-md) var(--spacing-xs);
     }
     
     .skills-content {
-        padding: 0 var(--spacing-sm);
+        padding: 0 var(--spacing-xs);
     }
     
     .stats-container {
@@ -193,35 +159,19 @@
     }
     
     .stats-title {
-        font-size: 0.65rem;
-    }
-    
-    .stats-level {
         font-size: 0.5rem;
     }
     
-    .category-header h3 {
-        font-size: 0.4rem;
-    }
-    
-    .skill-item span {
-        font-size: 0.85rem;
-    }
-    
-    .skill-bar-fill {
-        width: 12px;
-        height: 12px;
-    }
-    
-    .skill-percent {
+    .stats-level {
         font-size: 0.35rem;
     }
-}
-
-/* Small Mobile ≤ 360px */
-@media (max-width: 360px) {
+    
+    .category-header h3 {
+        font-size: 0.35rem;
+    }
+    
     .skill-item span {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
     
     .skill-bar-fill {
@@ -234,17 +184,30 @@
     }
 }
 
-/* ============================================
-   LAPTOP (1025px - 1440px)
-   ============================================ */
-@media (min-width: 1025px) and (max-width: 1440px) {
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--spacing-lg);
+/* Phones - 480px */
+@media (min-width: 480px) {
+    .skills {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .skills-content {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .stats-container {
+        padding: var(--spacing-md);
     }
     
     .stats-title {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
+    }
+    
+    .stats-level {
+        font-size: 0.5rem;
+    }
+    
+    .skills-grid {
+        gap: var(--spacing-md);
     }
     
     .category-header h3 {
@@ -252,20 +215,142 @@
     }
     
     .skill-item span {
-        font-size: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .skill-bar-fill {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .skill-percent {
+        font-size: 0.4rem;
     }
 }
 
-/* ============================================
-   LARGE DESKTOP (1441px and above)
-   ============================================ */
-@media (min-width: 1441px) {
-    .container {
-        max-width: 1400px;
+/* Large Phones - 640px */
+@media (min-width: 640px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-header {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+    
+    .stats-title {
+        font-size: 0.7rem;
+    }
+    
+    .category-header h3 {
+        font-size: 0.5rem;
+    }
+}
+
+/* Tablets - 768px */
+@media (min-width: 768px) {
+    .skills {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .skills-content {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .stats-container {
+        padding: var(--spacing-lg);
+    }
+    
+    .stats-title {
+        font-size: 0.75rem;
+    }
+    
+    .stats-level {
+        font-size: 0.55rem;
+    }
+    
+    .skills-grid {
+        gap: var(--spacing-lg);
+    }
+    
+    .skill-category {
+        padding: var(--spacing-md);
+    }
+    
+    .category-header i {
+        font-size: 1.3rem;
+    }
+    
+    .category-header h3 {
+        font-size: 0.5rem;
+    }
+    
+    .skill-item span {
+        font-size: 1rem;
+    }
+    
+    .skill-bar-fill {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .skill-percent {
+        font-size: 0.4rem;
+    }
+}
+
+/* Small Laptops - 1024px */
+@media (min-width: 1024px) {
+    .skills-content {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .stats-title {
+        font-size: 0.8rem;
+    }
+    
+    .category-header h3 {
+        font-size: 0.5rem;
+    }
+}
+
+/* Laptops - 1280px */
+@media (min-width: 1280px) {
+    .skills-content {
+        padding: 0 var(--spacing-xl);
+        max-width: 1200px;
     }
     
     .skills-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stats-title {
+        font-size: 0.85rem;
+    }
+    
+    .stats-level {
+        font-size: 0.6rem;
+    }
+    
+    .category-header h3 {
+        font-size: 0.55rem;
+    }
+    
+    .skill-item span {
+        font-size: 1.1rem;
+    }
+}
+
+/* Large Screens - 1536px+ */
+@media (min-width: 1536px) {
+    .skills-content {
+        max-width: 1400px;
+    }
+    
+    .skills-grid {
         gap: var(--spacing-xl);
     }
     
@@ -278,15 +363,29 @@
     }
     
     .category-header h3 {
-        font-size: 0.55rem;
+        font-size: 0.6rem;
     }
     
     .skill-item span {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
     }
     
     .skill-bar-fill {
         width: 18px;
         height: 18px;
+    }
+}
+
+/* ============================================
+   PREVENT HORIZONTAL SCROLLING
+   ============================================ */
+@media (max-width: 768px) {
+    .skills {
+        overflow-x: hidden;
+    }
+    
+    .skills * {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }
