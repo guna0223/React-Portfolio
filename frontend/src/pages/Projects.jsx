@@ -6,6 +6,7 @@ import portfolioImg from "../assets/images/project-img/portfolio.png";
 import weatherImg from "../assets/images/project-img/weather.png";
 import movie from "../assets/images/project-img/movie.png";
 import shopping from "../assets/images/project-img/shopping.png";
+import game from "../assets/images/project-img/game.png";
 
 
 const Projects = () => {
@@ -65,6 +66,15 @@ const Projects = () => {
       tech: ["Django", "Python", "HTML", "CSS3", "PostgreSQL", "Authentication"],
       link: null,
       github: "https://github.com/guna0223/Django-Game"
+    }, 
+    {
+      id: 7,
+      title: "Retro Game Vault",
+      image: game,
+      description : "A nostalgic retro arcade game featuring classic pixel-art gameplay inspired by vintage arcade classics. The game includes multiple character sprites (crab, turtle, and superhero), smooth animations, collision detection, score tracking, and increasing difficulty levels. Players control a character to navigate through levels, avoid obstacles, and collect points in a classic arcade-style interface with retro sound effects and authentic 8-bit aesthetics.",
+      tech : ["React", "EmulatorJS", "Web Assembly", "CSS3"],
+      link : "https://retro-game-three.vercel.app/",
+      github : "https://github.com/guna0223/retro-game"
     }
   ];
 
@@ -83,7 +93,7 @@ const Projects = () => {
           <div className="projects-grid">
             {projects.map((project, index) => (
               <React.Fragment key={project.id}>
-                <div 
+                <div
                   className={`project-card ${activeProject === project.id ? 'active' : ''}`}
                   onClick={() => toggleProject(project.id)}
                 >
@@ -109,7 +119,7 @@ const Projects = () => {
                   <div className="project-details open">
                     <div className="dialog-header">
                       <div className="dialog-title">◆ {project.title}</div>
-                      <button 
+                      <button
                         className="dialog-close"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -133,18 +143,18 @@ const Projects = () => {
                         </div>
                         <div className="dialog-buttons">
                           {project.link && (
-                            <a 
-                              href={project.link} 
-                              target="_blank" 
+                            <a
+                              href={project.link}
+                              target="_blank"
                               rel="noreferrer"
                               className="dialog-btn primary"
                             >
                               ▶ LAUNCH
                             </a>
                           )}
-                          <a 
-                            href={project.github} 
-                            target="_blank" 
+                          <a
+                            href={project.github}
+                            target="_blank"
                             rel="noreferrer"
                             className="dialog-btn secondary"
                           >
