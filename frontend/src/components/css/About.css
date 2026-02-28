@@ -38,7 +38,7 @@
     justify-content: center;
     width: 100%;
     order: 1;
-
+    overflow-x: hidden;
 }
 
 /* Profile Card Frame */
@@ -48,6 +48,7 @@
     border: 4px solid var(--retro-white);
     background: var(--retro-bg-card);
     padding: var(--spacing-sm);
+    overflow: hidden !important;
 }
 
 /* Card header like game profile */
@@ -265,67 +266,73 @@
    ============================================ */
 
 /* Small Mobile - 320px */
-@media (min-width: 320px) {
+@media (max-width: 320px) {
     .about {
         padding: var(--spacing-md) var(--spacing-xs);
+        overflow-x: hidden !important;
     }
-    
+
     .about-content {
         padding: 0 var(--spacing-xs);
         gap: var(--spacing-md);
+        overflow-x: hidden !important;
     }
-    
+
     .profile-card {
-        width: 160px;
+        width: 140px;
+        max-width: 90vw;
+        overflow-x: none !important;
     }
-    
+
     .avatar-frame {
-        width: 100px;
-        height: 130px;
+        width: 90px;
+        height: 120px;
     }
-    
+
     .profile-header {
-        font-size: 0.3rem;
+        font-size: 0.25rem;
     }
-    
+
     .player-level {
-        font-size: 0.3rem;
+        font-size: 0.25rem;
+        bottom: -8px;
+        right: -8px;
     }
-    
+
     .about-title {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
     }
-    
+
     .bio-box {
         padding: var(--spacing-sm);
     }
-    
+
     .about-description {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
-    
+
     .bio-decorative {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
-    
+
     .stat-box {
         padding: var(--spacing-xs);
     }
-    
+
     .stat-label {
-        font-size: 0.3rem;
+        font-size: 0.25rem;
     }
-    
+
     .stat-value {
-        font-size: 0.85rem;
-    }
-    
-    .tech-item {
-        font-size: 0.65rem;
-    }
-    
-    .about-btn {
         font-size: 0.8rem;
+    }
+
+    .tech-item {
+        font-size: 0.6rem;
+    }
+
+    .about-btn {
+        font-size: 0.75rem;
         padding: var(--spacing-xs) var(--spacing-md);
     }
 }
@@ -336,56 +343,56 @@
         padding: 0 var(--spacing-sm);
         gap: var(--spacing-lg);
     }
-    
+
     .profile-card {
         width: 200px;
     }
-    
+
     .avatar-frame {
         width: 140px;
         height: 180px;
     }
-    
+
     .profile-header {
         font-size: 0.4rem;
     }
-    
+
     .player-level {
         font-size: 0.35rem;
     }
-    
+
     .about-title {
         font-size: 0.7rem;
     }
-    
+
     .bio-box {
         padding: var(--spacing-md);
     }
-    
+
     .about-description {
         font-size: 1rem;
     }
-    
+
     .bio-decorative {
         font-size: 0.85rem;
     }
-    
+
     .player-stats {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .stat-label {
         font-size: 0.4rem;
     }
-    
+
     .stat-value {
         font-size: 1rem;
     }
-    
+
     .tech-item {
         font-size: 0.8rem;
     }
-    
+
     .about-btn {
         font-size: 1rem;
     }
@@ -396,24 +403,24 @@
     .profile-card {
         width: 240px;
     }
-    
+
     .avatar-frame {
         width: 180px;
         height: 220px;
     }
-    
+
     .profile-header {
         font-size: 0.5rem;
     }
-    
+
     .player-level {
         font-size: 0.4rem;
     }
-    
+
     .about-title {
         font-size: 0.85rem;
     }
-    
+
     .about-description {
         font-size: 1.1rem;
     }
@@ -428,69 +435,69 @@
         padding: 0 var(--spacing-lg);
         max-width: 1200px;
     }
-    
+
     .about-image {
         order: 1;
         flex: 1;
         justify-content: flex-start;
     }
-    
+
     .about-text {
         order: 2;
         flex: 1.5;
         align-items: flex-start;
     }
-    
+
     .profile-card {
         width: 260px;
     }
-    
+
     .avatar-frame {
         width: 200px;
         height: 250px;
     }
-    
+
     .profile-header {
         font-size: 0.5rem;
     }
-    
+
     .player-level {
         font-size: 0.45rem;
     }
-    
+
     .about-title {
         font-size: 0.9rem;
     }
-    
+
     .bio-box {
         padding: var(--spacing-lg);
     }
-    
+
     .about-description {
         font-size: 1.1rem;
     }
-    
+
     .player-stats {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-md);
     }
-    
+
     .stat-box {
         padding: var(--spacing-md);
     }
-    
+
     .tech-stack {
         padding: var(--spacing-md);
     }
-    
+
     .tech-label {
         font-size: 0.45rem;
     }
-    
+
     .tech-items {
         justify-content: flex-start;
     }
-    
+
     .about-actions {
         justify-content: flex-start;
     }
@@ -502,40 +509,40 @@
         gap: var(--spacing-xl);
         padding: 0 var(--spacing-lg);
     }
-    
+
     .profile-card {
         width: 280px;
     }
-    
+
     .avatar-frame {
         width: 220px;
         height: 280px;
     }
-    
+
     .about-title {
         font-size: 1rem;
     }
-    
+
     .bio-box {
         padding: var(--spacing-xl);
     }
-    
+
     .about-description {
         font-size: 1.15rem;
     }
-    
+
     .stat-label {
         font-size: 0.5rem;
     }
-    
+
     .stat-value {
         font-size: 1.2rem;
     }
-    
+
     .tech-label {
         font-size: 0.5rem;
     }
-    
+
     .tech-item {
         font-size: 0.95rem;
     }
@@ -547,16 +554,16 @@
         max-width: 1200px;
         padding: 0 var(--spacing-xl);
     }
-    
+
     .profile-card {
         width: 300px;
     }
-    
+
     .avatar-frame {
         width: 240px;
         height: 300px;
     }
-    
+
     .about-title {
         font-size: 1.1rem;
     }
@@ -567,20 +574,20 @@
     .about-content {
         max-width: 1400px;
     }
-    
+
     .profile-card {
         width: 320px;
     }
-    
+
     .avatar-frame {
         width: 260px;
         height: 320px;
     }
-    
+
     .about-title {
         font-size: 1.2rem;
     }
-    
+
     .about-description {
         font-size: 1.2rem;
     }
@@ -593,12 +600,12 @@
     .about {
         overflow-x: hidden;
     }
-    
+
     .about * {
         max-width: 100%;
         overflow-x: hidden;
     }
-    
+
     .container {
         padding: 0 var(--spacing-xs);
     }
