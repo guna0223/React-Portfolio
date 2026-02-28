@@ -569,6 +569,433 @@
 }
 
 /* ============================================
+   LOCATION PANEL - RETRO ARCADE SPIDER-MAN STYLE
+   Inspired by "Spider-Man and Venom: Separation Anxiety (1995)"
+   ============================================ */
+
+/* Panel Overlay - Dark arcade backdrop */
+.location-panel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 20, 0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: flex-end;
+    animation: arcadeFadeIn 0.2s ease-out;
+}
+
+@keyframes arcadeFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Main Location Panel - Arcade Beat-em-up Style */
+.location-panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 50%, #0f0f23 100%);
+    overflow-y: auto;
+    animation: arcadeSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 
+        -8px 0 40px rgba(180, 20, 30, 0.5),
+        -4px 0 20px rgba(4, 120, 200, 0.3),
+        inset 0 0 100px rgba(0, 0, 0, 0.5);
+    border-left: 4px solid #b4141e;
+}
+
+/* Comic pop animation when panel appears */
+@keyframes arcadeSlideIn {
+    0% {
+        transform: translateX(100%) scale(0.8);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(-5%) scale(1.02);
+        opacity: 1;
+    }
+    80% {
+        transform: translateX(3%) scale(0.98);
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Pixel grid background pattern */
+.location-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(180, 20, 30, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180, 20, 30, 0.03) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Top banner - Arcade game title bar style */
+.location-panel .arcade-header {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, #b4141e 0%, #8a1018 50%, #6b0d12 100%);
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #0478c8;
+    box-shadow: 
+        0 4px 15px rgba(180, 20, 30, 0.5),
+        inset 0 2px 0 rgba(255, 255, 255, 0.1);
+}
+
+.location-panel .arcade-header::before {
+    content: '◆';
+    position: absolute;
+    left: 8px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+}
+
+.location-panel .arcade-header::after {
+    content: '◆';
+    position: absolute;
+    right: 8px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+}
+
+.location-panel .arcade-header h3 {
+    font-family: var(--font-pixel);
+    font-size: 0.45rem;
+    color: #fff;
+    letter-spacing: 3px;
+    text-shadow: 
+        2px 2px 0 #000,
+        0 0 10px rgba(255, 255, 255, 0.5);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Comic-style close button */
+.location-panel .arcade-close {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(180deg, #0478c8 0%, #035a8a 100%);
+    border: 3px solid #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    color: #fff;
+    transition: all 0.15s ease;
+    box-shadow: 
+        0 3px 0 #023a5a,
+        0 0 10px rgba(4, 120, 200, 0.5);
+}
+
+.location-panel .arcade-close:hover {
+    background: linear-gradient(180deg, #ff4444 0%, #b4141e 100%);
+    transform: scale(1.1);
+    box-shadow: 
+        0 3px 0 #6b0d12,
+        0 0 20px rgba(180, 20, 30, 0.8);
+}
+
+.location-panel .arcade-close:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 
+        0 1px 0 #023a5a,
+        0 0 8px rgba(4, 120, 200, 0.5);
+}
+
+/* Panel content area */
+.location-panel .arcade-content {
+    position: relative;
+    z-index: 1;
+    padding: 25px 20px;
+}
+
+/* Info card - Arcade HUD style */
+.location-panel .arcade-card {
+    background: linear-gradient(135deg, rgba(4, 120, 200, 0.15) 0%, rgba(20, 30, 50, 0.8) 100%);
+    border: 3px solid #0478c8;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 
+        0 0 25px rgba(4, 120, 200, 0.25),
+        inset 0 0 40px rgba(4, 120, 200, 0.05),
+        inset 0 0 80px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.location-panel .arcade-card:hover {
+    border-color: #b4141e;
+    box-shadow: 
+        0 0 30px rgba(180, 20, 30, 0.4),
+        inset 0 0 40px rgba(180, 20, 30, 0.05),
+        inset 0 0 80px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Card corner decorations */
+.location-panel .arcade-card::before,
+.location-panel .arcade-card::after {
+    content: '■';
+    position: absolute;
+    color: #0478c8;
+    font-size: 8px;
+    opacity: 0.6;
+}
+
+.location-panel .arcade-card::before {
+    top: 8px;
+    left: 8px;
+}
+
+.location-panel .arcade-card::after {
+    bottom: 8px;
+    right: 8px;
+}
+
+.location-panel .arcade-card h4 {
+    font-family: var(--font-pixel);
+    font-size: 0.35rem;
+    color: #b4141e;
+    letter-spacing: 2px;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.location-panel .arcade-card p {
+    font-family: var(--font-terminal);
+    font-size: 0.95rem;
+    color: #e8e8e8;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Action button - Arcade game style */
+.location-panel .arcade-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(180deg, #b4141e 0%, #8a1018 100%);
+    border: 3px solid #fff;
+    border-radius: 4px;
+    font-family: var(--font-pixel);
+    font-size: 0.3rem;
+    color: #fff;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.15s ease;
+    box-shadow: 
+        0 4px 0 #6b0d12,
+        0 0 20px rgba(180, 20, 30, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.location-panel .arcade-btn::before {
+    content: '▶';
+    margin-right: 8px;
+}
+
+.location-panel .arcade-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 7px 0 #6b0d12,
+        0 0 35px rgba(180, 20, 30, 0.7),
+        0 0 50px rgba(4, 120, 200, 0.3);
+    background: linear-gradient(180deg, #d41820 0%, #b4141e 100%);
+}
+
+.location-panel .arcade-btn:active {
+    transform: translateY(2px);
+    box-shadow: 
+        0 2px 0 #6b0d12,
+        0 0 15px rgba(180, 20, 30, 0.5);
+}
+
+/* Glowing bottom accent - Arcade style */
+.location-panel .arcade-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #b4141e 20%, 
+        #0478c8 50%, 
+        #b4141e 80%, 
+        transparent 100%
+    );
+    animation: arcadeGlowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes arcadeGlowPulse {
+    0%, 100% {
+        opacity: 0.6;
+        box-shadow: 0 0 10px #b4141e;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 25px #0478c8, 0 0 35px #b4141e;
+    }
+}
+
+/* Side web line decorations */
+.location-panel .web-line {
+    position: absolute;
+    width: 3px;
+    top: 60px;
+    bottom: 40px;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(180, 20, 30, 0.3) 20%, 
+        rgba(180, 20, 30, 0.5) 50%, 
+        rgba(180, 20, 30, 0.3) 80%, 
+        transparent 100%
+    );
+}
+
+.location-panel .web-line.left {
+    left: 8px;
+}
+
+.location-panel .web-line.right {
+    right: 8px;
+}
+
+/* Web corner accents */
+.location-panel .corner-accent {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(180, 20, 30, 0.4);
+}
+
+.location-panel .corner-accent.top-left {
+    top: 50px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.location-panel .corner-accent.top-right {
+    top: 50px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.location-panel .corner-accent.bottom-left {
+    bottom: 20px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+}
+
+.location-panel .corner-accent.bottom-right {
+    bottom: 20px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+/* CRT scanline effect (very subtle) */
+.location-panel .scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.3;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    .location-panel {
+        max-width: 100%;
+    }
+    
+    .location-panel .arcade-header {
+        padding: 14px 16px;
+    }
+    
+    .location-panel .arcade-header h3 {
+        font-size: 0.38rem;
+        letter-spacing: 2px;
+    }
+    
+    .location-panel .arcade-content {
+        padding: 18px 16px;
+    }
+    
+    .location-panel .arcade-card {
+        padding: 16px;
+    }
+    
+    .location-panel .arcade-card p {
+        font-size: 0.85rem;
+    }
+    
+    .location-panel .arcade-btn {
+        font-size: 0.28rem;
+        padding: 12px;
+    }
+    
+    .location-panel .corner-accent {
+        display: none;
+    }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .location-panel {
+        width: 380px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1280px) {
+    .location-panel {
+        width: 450px;
+        max-width: 450px;
+    }
+}
+
+/* ============================================
    PREVENT HORIZONTAL SCROLLING
    ============================================ */
 @media (max-width: 768px) {

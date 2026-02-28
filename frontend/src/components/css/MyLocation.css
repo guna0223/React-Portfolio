@@ -1,121 +1,110 @@
-/* Retro Gaming / Arcade Radar Location Indicator Styles */
+/* ============================================
+   RETRO ARCADE LOCATION STYLES
+   Inspired by "Spider-Man and Venom: Separation Anxiety (1995)"
+   ============================================ */
 
+/* Main Radar Container - Arcade HUD Panel */
 .radar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  padding: 2rem;
-  background: #0a0a0a;
-  border-radius: 12px;
-  border: 2px solid #00ff88;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 50%, #0f0f23 100%);
+  border-radius: 8px;
+  border: 3px solid #b4141e;
   box-shadow: 
-    0 0 20px rgba(0, 255, 136, 0.3),
-    inset 0 0 30px rgba(0, 255, 136, 0.05);
-  font-family: 'Courier New', monospace;
+    0 0 30px rgba(180, 20, 30, 0.4),
+    0 0 60px rgba(4, 120, 200, 0.2),
+    inset 0 0 50px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-terminal);
   position: relative;
 }
 
-/* Close Button */
+/* Pixel grid background */
+.radar-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(180, 20, 30, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 20, 30, 0.02) 1px, transparent 1px);
+  background-size: 4px 4px;
+  pointer-events: none;
+  border-radius: 6px;
+}
+
+/* Close Button - Arcade style */
 .radar-close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: 2px solid #ff4444;
-  border-radius: 50%;
-  color: #ff4444;
-  font-size: 1rem;
+  background: linear-gradient(180deg, #b4141e 0%, #8a1018 100%);
+  border: 2px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
   z-index: 10;
+  box-shadow: 
+    0 2px 0 #6b0d12,
+    0 0 10px rgba(180, 20, 30, 0.5);
 }
 
 .radar-close-btn:hover {
-  background: #ff4444;
-  color: #0a0a0a;
-  box-shadow: 0 0 15px rgba(255, 68, 68, 0.6);
-}
-
-/* Retro Gaming Button Styles */
-.radar-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
-  border: 2px solid #00ff88;
-  border-radius: 8px;
-  color: #00ff88;
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
+  background: linear-gradient(180deg, #ff4444 0%, #d41820 100%);
+  transform: scale(1.1);
   box-shadow: 
-    0 0 10px rgba(0, 255, 136, 0.4),
-    inset 0 0 20px rgba(0, 255, 136, 0.1);
+    0 3px 0 #6b0d12,
+    0 0 20px rgba(180, 20, 30, 0.8);
 }
 
-.radar-button:hover {
-  background: linear-gradient(180deg, #1f1f3a 0%, #141428 100%);
+.radar-close-btn:active {
+  transform: scale(0.95);
   box-shadow: 
-    0 0 25px rgba(0, 255, 136, 0.6),
-    inset 0 0 30px rgba(0, 255, 136, 0.2);
-  transform: translateY(-2px);
+    0 1px 0 #6b0d12,
+    0 0 8px rgba(180, 20, 30, 0.5);
 }
 
-.radar-button:active {
-  transform: translateY(0);
-  box-shadow: 
-    0 0 15px rgba(0, 255, 136, 0.5),
-    inset 0 0 40px rgba(0, 255, 136, 0.3);
-}
-
-.radar-button-text {
-  text-shadow: 0 0 10px #00ff88;
-}
-
-.radar-button-icon {
-  font-size: 1.2rem;
-  filter: drop-shadow(0 0 5px #00ff88);
-}
-
-/* Location Display Container */
+/* Location Display - Arcade HUD style */
 .radar-location-display {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1rem 1.5rem;
-  background: rgba(0, 255, 136, 0.05);
-  border-radius: 8px;
-  border: 1px solid rgba(0, 255, 136, 0.3);
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(4, 120, 200, 0.12) 0%, rgba(20, 30, 50, 0.6) 100%);
+  border-radius: 6px;
+  border: 2px solid #0478c8;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Radar Marker Container */
+/* Radar Marker - Arcade waypoint icon */
 .radar-marker {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 /* Squad Waypoint / Gaming Waypoint Icon */
 .radar-waypoint {
   position: relative;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   z-index: 10;
 }
 
@@ -127,26 +116,25 @@
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 16px solid #00ff88;
-  filter: drop-shadow(0 0 8px #00ff88);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 14px solid #b4141e;
+  filter: drop-shadow(0 0 6px rgba(180, 20, 30, 0.8));
 }
 
 .radar-waypoint::after {
   content: '';
   position: absolute;
-  top: 14px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  background: #00ff88;
+  width: 6px;
+  height: 6px;
+  background: #fff;
   border-radius: 50%;
   box-shadow: 
-    0 0 10px #00ff88,
-    0 0 20px #00ff88,
-    0 0 30px rgba(0, 255, 136, 0.5);
+    0 0 8px #fff,
+    0 0 15px rgba(180, 20, 30, 0.8);
 }
 
 .radar-waypoint-inner {
@@ -154,62 +142,60 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 4px;
-  height: 4px;
-  background: #ffffff;
+  width: 3px;
+  height: 3px;
+  background: #b4141e;
   border-radius: 50%;
-  box-shadow: 0 0 5px #ffffff;
 }
 
 /* Radar Pulse Animation */
-.radar-pulse {
+.radar-pulse,
+.radar-pulse-2 {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  border: 2px solid #00ff88;
+  border: 2px solid #b4141e;
   opacity: 0;
-  animation: radar-pulse-animation 2s ease-out infinite;
+  animation: radar-pulse-arcade 2s ease-out infinite;
 }
 
 .radar-pulse-2 {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #00ff88;
-  opacity: 0;
-  animation: radar-pulse-animation 2s ease-out infinite;
   animation-delay: 1s;
 }
 
-@keyframes radar-pulse-animation {
+@keyframes radar-pulse-arcade {
   0% {
     transform: scale(0.5);
     opacity: 0.8;
+    border-color: #b4141e;
+  }
+  50% {
+    border-color: #0478c8;
   }
   100% {
-    transform: scale(2);
+    transform: scale(1.8);
     opacity: 0;
+    border-color: #0478c8;
   }
 }
 
 /* Radar Scanning Animation */
 .radar-scan {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    rgba(0, 255, 136, 0.3) 30deg,
+    rgba(180, 20, 30, 0.4) 30deg,
     transparent 60deg
   );
-  animation: radar-scan-animation 3s linear infinite;
+  animation: radar-scan-arcade 2.5s linear infinite;
 }
 
-@keyframes radar-scan-animation {
+@keyframes radar-scan-arcade {
   0% {
     transform: rotate(0deg);
   }
@@ -218,97 +204,72 @@
   }
 }
 
-/* Coordinates Display */
-.radar-coordinates {
-  color: #00ff88;
-  font-family: 'Courier New', monospace;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  text-shadow: 
-    0 0 10px rgba(0, 255, 136, 0.8),
-    0 0 20px rgba(0, 255, 136, 0.4);
-  margin: 0;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
-  border-left: 3px solid #00ff88;
-  animation: coordinates-appear 0.5s ease-out;
+/* Location Text Container */
+.location-text-container {
+  text-align: left;
+  flex: 1;
 }
 
-/* Map Container */
+.location-label {
+  color: #0478c8;
+  font-family: var(--font-pixel);
+  font-size: 0.35rem;
+  letter-spacing: 3px;
+  margin: 0 0 0.4rem 0;
+  text-shadow: 
+    1px 1px 0 #000,
+    0 0 10px rgba(4, 120, 200, 0.8);
+  text-transform: uppercase;
+}
+
+.location-city {
+  color: #e8e8e8;
+  font-family: var(--font-terminal);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0.4rem 0.75rem;
+  background: rgba(180, 20, 30, 0.15);
+  border-radius: 4px;
+  border-left: 3px solid #b4141e;
+}
+
+/* Map Container - Arcade frame style */
 .map-container {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 2px solid #00ff88;
+  border: 3px solid #0478c8;
   box-shadow: 
-    0 0 20px rgba(0, 255, 136, 0.3),
-    inset 0 0 20px rgba(0, 255, 136, 0.1);
-  margin-top: 1rem;
+    0 0 25px rgba(4, 120, 200, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
+  margin-top: 0.5rem;
 }
 
 .map-container iframe {
   display: block;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-/* Location Text Container */
-.location-text-container {
-  text-align: center;
-  padding: 0.5rem;
-}
-
-.location-label {
-  color: #00ff88;
-  font-family: 'Courier New', monospace;
-  font-size: 1.2rem;
-  letter-spacing: 3px;
-  margin: 0 0 0.5rem 0;
-  text-shadow: 
-    0 0 10px rgba(0, 255, 136, 0.8),
-    0 0 20px rgba(0, 255, 136, 0.4);
-}
-
-.location-city {
-  color: #ffffff;
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  margin: 0;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 255, 136, 0.1);
-  border-radius: 4px;
-  border: 1px solid rgba(0, 255, 136, 0.3);
-}
-
-@keyframes coordinates-appear {
-  0% {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Neon Glow Effects */
-.radar-container::before {
-  content: 'LOCATION DETECTED';
+/* Neon Glow Effects - Arcade header */
+.radar-container::after {
+  content: '◆ LOCATION DETECTED ◆';
   position: absolute;
-  top: -12px;
+  top: -10px;
   left: 20px;
-  background: #0a0a0a;
-  padding: 0 10px;
-  color: #00ff88;
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  font-family: 'Courier New', monospace;
-  text-shadow: 0 0 10px #00ff88;
+  background: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 100%);
+  padding: 0 12px;
+  color: #b4141e;
+  font-family: var(--font-pixel);
+  font-size: 0.25rem;
+  letter-spacing: 2px;
+  text-shadow: 
+    0 0 10px rgba(180, 20, 30, 0.8),
+    0 0 20px rgba(4, 120, 200, 0.4);
 }
 
 /* Scanline Effect Overlay */
-.radar-container::after {
+.radar-container .scanlines {
   content: '';
   position: absolute;
   top: 0;
@@ -319,36 +280,47 @@
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.1) 2px,
-    rgba(0, 0, 0, 0.1) 4px
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
   );
   pointer-events: none;
-  border-radius: 12px;
+  border-radius: 6px;
+  opacity: 0.25;
 }
 
 /* Responsive Design */
 @media (max-width: 480px) {
   .radar-container {
-    padding: 1.5rem;
+    padding: 1.25rem;
     gap: 1rem;
-  }
-
-  .radar-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
   }
 
   .radar-location-display {
     flex-direction: column;
-    gap: 1rem;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .location-text-container {
+    text-align: center;
   }
 
   .radar-marker {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
-  .radar-coordinates {
-    font-size: 0.95rem;
+  .radar-waypoint::before {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid #b4141e;
+  }
+
+  .location-city {
+    font-size: 0.8rem;
+  }
+
+  .location-label {
+    font-size: 0.3rem;
   }
 }

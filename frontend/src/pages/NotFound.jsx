@@ -7,23 +7,23 @@ import '../components/css/NotFound.css';
 
 // Player sprite image
 const playerImage = new Image();
-playerImage.src = "images/gameimage/super.png";
+playerImage.src = "/images/gameimage/super.png";
 
 // Crab enemy sprite (fast small enemy)
 const crabEnemyImage = new Image();
-crabEnemyImage.src = "images/gameimage/crab.png";
+crabEnemyImage.src = "/images/gameimage/crab.png";
 
 // Turtle enemy sprite (larger, slower)
 const turtleEnemyImage = new Image();
-turtleEnemyImage.src = "images/gameimage/turtle.png";
+turtleEnemyImage.src = "/images/gameimage/turtle.png";
 
 // Background image (sky/scene)
 const backgroundImage = new Image();
-backgroundImage.src = "images/gameimage/bg.png";
+backgroundImage.src = "/images/gameimage/bg.png";
 
 // Ground texture image
 const groundImage = new Image();
-groundImage.src = "images/gameimage/ground.png";
+groundImage.src = "/images/gameimage/ground.png";
 
 // ============================================
 // MARIO COLOR PALETTE (fallback if no images)
