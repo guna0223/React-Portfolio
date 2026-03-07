@@ -3,7 +3,7 @@
  * Retro web-swing inspired interactions
  */
 
-(function() {
+(function() { 
     'use strict';
 
     // ============================================
