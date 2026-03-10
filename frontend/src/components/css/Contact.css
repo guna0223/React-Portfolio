@@ -1,275 +1,32 @@
 /* ============================================
-   CONTACT SECTION - COMMUNICATION TERMINAL
+   CONTACT SECTION — COMM TERMINAL
+   Retro Arcade · Mobile-First · Fully Responsive
    ============================================ */
 
-/* Base styles - Mobile First */
+/* ────────────────────────────────────────────
+   SECTION WRAPPER
+──────────────────────────────────────────── */
 .contact {
     background: var(--retro-bg);
-    padding: var(--spacing-lg) 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    box-sizing: border-box;
-    padding-bottom: var(--spacing-xl);
+    padding: 60px 0 80px;
     overflow-x: hidden;
-}
-
-/* Terminal Container */
-.terminal-container {
-    border: 4px solid var(--retro-green);
-    background: var(--retro-bg-card);
-    position: relative;
-    width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
 }
 
-/* Terminal Header */
-.terminal-header {
-    background: var(--retro-green);
-    color: var(--retro-bg);
-    padding: var(--spacing-sm) var(--spacing-md);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.terminal-title {
-    font-family: var(--font-pixel);
-    font-size: 0.5rem;
-    letter-spacing: 2px;
-}
-
-.terminal-dots {
-    display: flex;
-    gap: var(--spacing-xs);
-}
-
-.terminal-dots span {
-    width: 10px;
-    height: 10px;
-    background: var(--retro-bg);
-    border: 1px solid var(--retro-bg);
-}
-
-/* Terminal Content */
-.terminal-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
-}
-
-/* Contact Info Panel */
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    order: 2;
-}
-
-/* Contact Item */
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    border: 3px solid var(--retro-gray);
-    background: var(--retro-bg-tertiary);
-    padding: var(--spacing-sm);
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.contact-item:hover {
-    border-color: var(--retro-yellow);
-}
-
-/* Contact Icon */
-.contact-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--retro-blue);
-    border: 3px solid var(--retro-white);
-    font-size: 1.1rem;
-    color: var(--retro-white);
-    flex-shrink: 0;
-}
-
-.contact-details {
-    flex: 1;
-    min-width: 0;
-}
-
-.contact-details h3 {
-    font-family: var(--font-pixel);
-    font-size: 0.35rem;
-    color: var(--retro-cyan);
-    letter-spacing: 1px;
-    margin-bottom: 2px;
-}
-
-.contact-details p {
-    font-family: var(--font-terminal);
-    font-size: 0.9rem;
-    color: var(--retro-text);
-    word-break: break-word;
-}
-
-.contact-details a {
-    font-family: var(--font-terminal);
-    font-size: 0.85rem;
-    color: var(--retro-yellow);
-    word-break: break-all;
-}
-
-.contact-details a:hover {
-    color: var(--retro-white);
-    text-decoration: underline;
-}
-
-/* Contact Form */
-.contact-form {
-    border: 3px solid var(--retro-blue);
-    background: var(--retro-bg-tertiary);
-    padding: var(--spacing-md);
-    order: 1;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Form Header */
-.form-header {
-    font-family: var(--font-pixel);
-    font-size: 0.4rem;
-    color: var(--retro-yellow);
-    letter-spacing: 2px;
-    margin-bottom: var(--spacing-lg);
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 2px dashed var(--retro-blue);
-}
-
-/* Form Group */
-.form-group {
-    margin-bottom: var(--spacing-md);
-    position: relative;
-}
-
-/* Input & Textarea */
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: var(--spacing-md);
-    background: var(--retro-bg);
-    border: 3px solid var(--retro-gray);
-    color: var(--retro-text);
-    font-family: var(--font-terminal);
-    font-size: 1rem;
-    box-sizing: border-box;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--retro-yellow);
-    background: var(--retro-bg-card);
-}
-
-/* Blinking Cursor Effect */
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: var(--retro-text-muted);
-}
-
-.form-group input:focus::placeholder,
-.form-group textarea:focus::placeholder {
-    color: transparent;
-}
-
-/* Input Label */
-.form-group label {
-    position: absolute;
-    left: var(--spacing-md);
-    top: var(--spacing-md);
-    font-family: var(--font-pixel);
-    font-size: 0.4rem;
-    color: var(--retro-text-muted);
-    letter-spacing: 1px;
-    background: var(--retro-bg-tertiary);
-    padding: 0 var(--spacing-xs);
-    transition: all 0.1s;
-    pointer-events: none;
-}
-
-.form-group input:focus ~ label,
-.form-group input:valid ~ label,
-.form-group textarea:focus ~ label,
-.form-group textarea:valid ~ label {
-    top: -10px;
-    left: var(--spacing-sm);
-    font-size: 0.35rem;
-    color: var(--retro-yellow);
-}
-
-/* Submit Button */
-.submit-btn {
-    width: 100%;
-    padding: var(--spacing-md);
-    font-family: var(--font-terminal);
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    background: var(--retro-green);
-    color: var(--retro-white);
-    border: 4px solid var(--retro-white);
-    transition: none;
-    min-height: 48px;
-}
-
-.submit-btn:hover {
-    background: var(--retro-yellow);
-    color: var(--retro-bg);
-    border-color: var(--retro-yellow);
-}
-
-.submit-btn:active {
-    transform: translate(2px, 2px);
-}
-
-/* Terminal Blinking Cursor */
-.terminal-cursor {
-    display: inline-block;
-    width: 10px;
-    height: 18px;
-    background: var(--retro-green);
-    animation: cursor-blink 0.8s steps(2, start) infinite;
-    vertical-align: middle;
-    margin-left: var(--spacing-xs);
-}
-
-@keyframes cursor-blink {
-    to {
-        visibility: hidden;
-    }
-}
-
-/* ============================================
-   RETRO ALERT BOX
-   ============================================ */
+/* ────────────────────────────────────────────
+   RETRO ALERT
+──────────────────────────────────────────── */
 .retro-alert {
-    font-family: var(--font-terminal);
-    padding: var(--spacing-md) var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
-    border: 3px solid;
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    animation: blinkIn 0.3s ease-out;
+    gap: 10px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    border: 3px solid;
+    font-family: var(--font-terminal);
     width: 100%;
     box-sizing: border-box;
+    animation: blinkIn 0.3s ease-out both;
 }
 
 .retro-alert.success {
@@ -284,302 +41,374 @@
     color: var(--retro-yellow);
 }
 
-.retro-alert.admin-success {
-    background: var(--retro-bg-card);
-    border-color: var(--retro-blue);
-    color: var(--retro-blue);
-}
-
 .retro-alert.error {
     background: var(--retro-bg-card);
     border-color: var(--retro-red);
     color: var(--retro-red);
 }
 
+.retro-alert.admin-success {
+    background: var(--retro-bg-card);
+    border-color: var(--retro-blue);
+    color: var(--retro-blue);
+}
+
 .alert-icon {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    flex-shrink: 0;
 }
 
 .alert-message {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     letter-spacing: 1px;
 }
 
 .alert-cursor {
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+    animation: blink 1s step-end infinite;
 }
 
 @keyframes blinkIn {
-    0% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
 
-/* ============================================
-   RESPONSIVE - Mobile First Breakpoints
-   ============================================ */
-
-/* Small Mobile - 320px */
-@media (min-width: 320px) {
-    .contact {
-        padding: var(--spacing-md) var(--spacing-xs);
-    }
-    
-    .terminal-content {
-        padding: var(--spacing-sm);
-    }
-    
-    .terminal-title {
-        font-size: 0.4rem;
-    }
-    
-    .terminal-dots span {
-        width: 8px;
-        height: 8px;
-    }
-    
-    .form-header {
-        font-size: 0.35rem;
-    }
-    
-    .contact-item {
-        padding: var(--spacing-xs);
-    }
-    
-    .contact-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
-    
-    .contact-details h3 {
-        font-size: 0.3rem;
-    }
-    
-    .contact-details p {
-        font-size: 0.8rem;
-    }
-    
-    .contact-details a {
-        font-size: 0.75rem;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-        font-size: 0.9rem;
-        padding: var(--spacing-sm);
-    }
-    
-    .form-group label {
-        font-size: 0.35rem;
-    }
-    
-    .submit-btn {
-        font-size: 0.9rem;
-        padding: var(--spacing-sm);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Phones - 480px */
-@media (min-width: 480px) {
-    .contact {
-        padding: var(--spacing-lg) var(--spacing-sm);
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
     }
-    
-    .terminal-content {
-        padding: var(--spacing-md);
-    }
-    
-    .terminal-title {
-        font-size: 0.5rem;
-    }
-    
-    .form-header {
-        font-size: 0.45rem;
-    }
-    
-    .contact-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
-    
-    .contact-details h3 {
-        font-size: 0.4rem;
-    }
-    
-    .contact-details p {
-        font-size: 1rem;
-    }
-    
-    .contact-details a {
-        font-size: 0.95rem;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-        font-size: 1rem;
-    }
-    
-    .form-group label {
-        font-size: 0.4rem;
-    }
-    
-    .submit-btn {
-        font-size: 1rem;
+
+    51%,
+    100% {
+        opacity: 0;
     }
 }
 
-/* Large Phones - 640px */
-@media (min-width: 640px) {
-    .terminal-content {
-        gap: var(--spacing-md);
-    }
-    
-    .contact-info {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    
-    .contact-item {
-        flex: 1;
-        min-width: 250px;
+/* ────────────────────────────────────────────
+   TERMINAL CONTAINER
+──────────────────────────────────────────── */
+.terminal-container {
+    border: 4px solid var(--retro-green);
+    background: var(--retro-bg-card);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* ────────────────────────────────────────────
+   TERMINAL CHROME BAR
+──────────────────────────────────────────── */
+.terminal-header {
+    background: var(--retro-green);
+    color: var(--retro-bg);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.terminal-title {
+    font-family: var(--font-pixel);
+    font-size: 0.45rem;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.terminal-dots span {
+    width: 9px;
+    height: 9px;
+    background: var(--retro-bg);
+    border: 1px solid var(--retro-bg);
+    display: block;
+}
+
+/* ────────────────────────────────────────────
+   TERMINAL BODY — stacked on mobile, side-by-side on tablet+
+──────────────────────────────────────────── */
+.terminal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ────────────────────────────────────────────
+   CONTACT INFO COLUMN
+──────────────────────────────────────────── */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 3px solid var(--retro-gray);
+    order: 2;
+}
+
+/* ── Contact item row ── */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--retro-gray);
+    background: var(--retro-bg-tertiary);
+    box-sizing: border-box;
+    transition: background 0.1s, border-color 0.1s;
+    cursor: default;
+    position: relative;
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item:hover {
+    background: var(--retro-bg-card);
+    border-color: var(--retro-yellow);
+}
+
+/* Left accent bar on hover */
+.contact-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--retro-yellow);
+    transform: scaleY(0);
+    transition: transform 0.15s ease;
+    transform-origin: top;
+}
+
+.contact-item:hover::before {
+    transform: scaleY(1);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--retro-blue);
+    border: 3px solid var(--retro-white);
+    font-size: 1rem;
+    color: var(--retro-white);
+    flex-shrink: 0;
+    transition: transform 0.1s;
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.06);
+}
+
+.contact-details {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.contact-details h3 {
+    font-family: var(--font-pixel);
+    font-size: 0.33rem;
+    color: var(--retro-cyan);
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+.contact-details p {
+    font-family: var(--font-terminal);
+    font-size: 0.9rem;
+    color: var(--retro-text);
+    word-break: break-word;
+    margin: 0;
+}
+
+.contact-details a,
+.gmail-link,
+.location-click-hint {
+    font-family: var(--font-terminal);
+    font-size: 0.85rem;
+    color: var(--retro-yellow);
+    text-decoration: none;
+    cursor: pointer;
+    word-break: break-all;
+    display: inline-block;
+}
+
+.contact-details a:hover,
+.gmail-link:hover {
+    color: var(--retro-white);
+    text-decoration: underline;
+}
+
+.location-item {
+    cursor: pointer;
+}
+
+/* ────────────────────────────────────────────
+   CONTACT FORM COLUMN
+──────────────────────────────────────────── */
+.contact-form {
+    border: none;
+    border-top: 3px solid var(--retro-blue);
+    background: var(--retro-bg-tertiary);
+    padding: 20px 16px;
+    order: 1;
+    box-sizing: border-box;
+}
+
+/* Form section header */
+.form-header {
+    font-family: var(--font-pixel);
+    font-size: 0.38rem;
+    color: var(--retro-yellow);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed var(--retro-blue);
+}
+
+/* ── Form group with floating label ── */
+.form-group {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.form-group:last-of-type {
+    margin-bottom: 0;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 22px 12px 8px;
+    background: var(--retro-bg);
+    border: 3px solid var(--retro-gray);
+    color: var(--retro-text);
+    font-family: var(--font-terminal);
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+    resize: vertical;
+}
+
+.form-group textarea {
+    min-height: 100px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--retro-yellow);
+    background: var(--retro-bg-card);
+}
+
+/* Placeholder invisible — label acts as placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: transparent;
+}
+
+/* Floating label */
+.form-group label {
+    position: absolute;
+    left: 13px;
+    top: 13px;
+    font-family: var(--font-pixel);
+    font-size: 0.38rem;
+    color: var(--retro-text-muted);
+    letter-spacing: 1px;
+    background: transparent;
+    padding: 0 3px;
+    pointer-events: none;
+    transition: top 0.12s ease, font-size 0.12s ease, color 0.12s ease;
+}
+
+/* Float up when focused or filled */
+.form-group input:focus~label,
+.form-group input:valid~label,
+.form-group textarea:focus~label,
+.form-group textarea:valid~label {
+    top: 4px;
+    font-size: 0.3rem;
+    color: var(--retro-yellow);
+    letter-spacing: 1.5px;
+}
+
+/* Terminal blinking cursor inside label */
+.terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--retro-green);
+    animation: cursorBlink 0.8s steps(2, start) infinite;
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+@keyframes cursorBlink {
+    to {
+        visibility: hidden;
     }
 }
 
-/* Tablets - 768px */
-@media (min-width: 768px) {
-    .contact {
-        padding: var(--spacing-xl) 0;
-    }
-    
-    .terminal-content {
-        flex-direction: row;
-        padding: var(--spacing-lg);
-        gap: var(--spacing-lg);
-    }
-    
-    .contact-info {
-        flex: 1;
-        order: 1;
-    }
-    
-    .contact-form {
-        flex: 1.5;
-        order: 2;
-        padding: var(--spacing-lg);
-    }
-    
-    .terminal-title {
-        font-size: 0.55rem;
-    }
-    
-    .contact-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-    }
-    
-    .contact-details h3 {
-        font-size: 0.45rem;
-    }
-    
-    .form-group {
-        margin-bottom: var(--spacing-lg);
-    }
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    margin-top: 6px;
+    padding: 14px 16px;
+    background: var(--retro-green);
+    color: var(--retro-white);
+    border: 4px solid var(--retro-white);
+    font-family: var(--font-terminal);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    min-height: 48px;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-sizing: border-box;
 }
 
-/* Small Laptops - 1024px */
-@media (min-width: 1024px) {
-    .terminal-content {
-        gap: var(--spacing-xl);
-    }
-    
-    .contact-details h3 {
-        font-size: 0.45rem;
-    }
-    
-    .form-header {
-        font-size: 0.5rem;
-    }
+.submit-btn:hover {
+    background: var(--retro-yellow);
+    color: var(--retro-bg);
+    border-color: var(--retro-yellow);
 }
 
-/* Laptops - 1280px */
-@media (min-width: 1280px) {
-    .terminal-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    .terminal-content {
-        padding: var(--spacing-xl);
-    }
-    
-    .form-header {
-        font-size: 0.55rem;
-    }
-    
-    .contact-details p {
-        font-size: 1.1rem;
-    }
-    
-    .contact-details a {
-        font-size: 1rem;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-        font-size: 1.1rem;
-    }
-    
-    .submit-btn {
-        font-size: 1.1rem;
-    }
+.submit-btn:active {
+    transform: translate(2px, 2px);
 }
 
-/* Large Screens - 1536px+ */
-@media (min-width: 1536px) {
-    .terminal-container {
-        max-width: 1400px;
-    }
-    
-    .terminal-title {
-        font-size: 0.6rem;
-    }
-    
-    .form-header {
-        font-size: 0.6rem;
-    }
-    
-    .contact-details h3 {
-        font-size: 0.5rem;
-    }
-    
-    .contact-details p {
-        font-size: 1.15rem;
-    }
-    
-    .submit-btn {
-        font-size: 1.2rem;
-    }
-}
-
-/* ============================================
-   LOCATION PANEL - RETRO ARCADE SPIDER-MAN STYLE
-   Inspired by "Spider-Man and Venom: Separation Anxiety (1995)"
-   ============================================ */
-
-/* Panel Overlay - Dark arcade backdrop */
+/* ────────────────────────────────────────────
+   LOCATION PANEL — Arcade slide-in panel
+──────────────────────────────────────────── */
 .location-panel-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(10, 10, 20, 0.85);
     z-index: 9999;
     display: flex;
@@ -588,11 +417,15 @@
 }
 
 @keyframes arcadeFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-/* Main Location Panel - Arcade Beat-em-up Style */
 .location-panel {
     position: absolute;
     right: 0;
@@ -602,42 +435,38 @@
     max-width: 420px;
     background: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 50%, #0f0f23 100%);
     overflow-y: auto;
-    animation: arcadeSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 
-        -8px 0 40px rgba(180, 20, 30, 0.5),
-        -4px 0 20px rgba(4, 120, 200, 0.3),
-        inset 0 0 100px rgba(0, 0, 0, 0.5);
     border-left: 4px solid #b4141e;
+    box-shadow: -8px 0 40px rgba(180, 20, 30, 0.5), -4px 0 20px rgba(4, 120, 200, 0.3);
+    animation: arcadeSlideIn 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Comic pop animation when panel appears */
 @keyframes arcadeSlideIn {
     0% {
         transform: translateX(100%) scale(0.8);
         opacity: 0;
     }
+
     60% {
-        transform: translateX(-5%) scale(1.02);
+        transform: translateX(-4%) scale(1.02);
         opacity: 1;
     }
+
     80% {
-        transform: translateX(3%) scale(0.98);
+        transform: translateX(2%) scale(0.98);
     }
+
     100% {
         transform: translateX(0) scale(1);
         opacity: 1;
     }
 }
 
-/* Pixel grid background pattern */
+/* Pixel grid bg */
 .location-panel::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
+    inset: 0;
+    background-image:
         linear-gradient(rgba(180, 20, 30, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(180, 20, 30, 0.03) 1px, transparent 1px);
     background-size: 4px 4px;
@@ -645,19 +474,17 @@
     z-index: 0;
 }
 
-/* Top banner - Arcade game title bar style */
+/* Arcade header bar */
 .location-panel .arcade-header {
     position: relative;
     z-index: 1;
     background: linear-gradient(180deg, #b4141e 0%, #8a1018 50%, #6b0d12 100%);
-    padding: 18px 20px;
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid #0478c8;
-    box-shadow: 
-        0 4px 15px rgba(180, 20, 30, 0.5),
-        inset 0 2px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(180, 20, 30, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.1);
 }
 
 .location-panel .arcade-header::before {
@@ -678,17 +505,15 @@
 
 .location-panel .arcade-header h3 {
     font-family: var(--font-pixel);
-    font-size: 0.45rem;
+    font-size: 0.42rem;
     color: #fff;
     letter-spacing: 3px;
-    text-shadow: 
-        2px 2px 0 #000,
-        0 0 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 255, 255, 0.5);
     margin: 0;
     text-transform: uppercase;
 }
 
-/* Comic-style close button */
+/* Close button */
 .location-panel .arcade-close {
     width: 32px;
     height: 32px;
@@ -702,84 +527,72 @@
     font-family: var(--font-pixel);
     font-size: 0.5rem;
     color: #fff;
+    flex-shrink: 0;
     transition: all 0.15s ease;
-    box-shadow: 
-        0 3px 0 #023a5a,
-        0 0 10px rgba(4, 120, 200, 0.5);
+    box-shadow: 0 3px 0 #023a5a, 0 0 10px rgba(4, 120, 200, 0.5);
 }
 
 .location-panel .arcade-close:hover {
     background: linear-gradient(180deg, #ff4444 0%, #b4141e 100%);
     transform: scale(1.1);
-    box-shadow: 
-        0 3px 0 #6b0d12,
-        0 0 20px rgba(180, 20, 30, 0.8);
+    box-shadow: 0 3px 0 #6b0d12, 0 0 20px rgba(180, 20, 30, 0.8);
 }
 
 .location-panel .arcade-close:active {
     transform: scale(0.95) translateY(2px);
-    box-shadow: 
-        0 1px 0 #023a5a,
-        0 0 8px rgba(4, 120, 200, 0.5);
 }
 
-/* Panel content area */
+/* Panel content */
 .location-panel .arcade-content {
     position: relative;
     z-index: 1;
-    padding: 25px 20px;
+    padding: 24px 20px;
 }
 
-/* Info card - Arcade HUD style */
+/* Info card */
 .location-panel .arcade-card {
     background: linear-gradient(135deg, rgba(4, 120, 200, 0.15) 0%, rgba(20, 30, 50, 0.8) 100%);
     border: 3px solid #0478c8;
     border-radius: 6px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 
-        0 0 25px rgba(4, 120, 200, 0.25),
-        inset 0 0 40px rgba(4, 120, 200, 0.05),
-        inset 0 0 80px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    padding: 18px;
+    margin-bottom: 18px;
+    position: relative;
+    box-shadow: 0 0 25px rgba(4, 120, 200, 0.25), inset 0 0 40px rgba(4, 120, 200, 0.05);
+    transition: all 0.25s ease;
 }
 
 .location-panel .arcade-card:hover {
     border-color: #b4141e;
-    box-shadow: 
-        0 0 30px rgba(180, 20, 30, 0.4),
-        inset 0 0 40px rgba(180, 20, 30, 0.05),
-        inset 0 0 80px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 30px rgba(180, 20, 30, 0.4);
     transform: translateY(-2px);
 }
 
-/* Card corner decorations */
-.location-panel .arcade-card::before,
-.location-panel .arcade-card::after {
+.location-panel .arcade-card::before {
     content: '■';
     position: absolute;
+    top: 8px;
+    left: 8px;
     color: #0478c8;
     font-size: 8px;
     opacity: 0.6;
 }
 
-.location-panel .arcade-card::before {
-    top: 8px;
-    left: 8px;
-}
-
 .location-panel .arcade-card::after {
+    content: '■';
+    position: absolute;
     bottom: 8px;
     right: 8px;
+    color: #0478c8;
+    font-size: 8px;
+    opacity: 0.6;
 }
 
 .location-panel .arcade-card h4 {
     font-family: var(--font-pixel);
-    font-size: 0.35rem;
+    font-size: 0.34rem;
     color: #b4141e;
     letter-spacing: 2px;
-    margin: 0 0 12px 0;
-    text-transform: uppercase;
+    margin: 0 0 10px;
     text-shadow: 1px 1px 0 #000;
 }
 
@@ -792,7 +605,7 @@
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* Action button - Arcade game style */
+/* CTA button */
 .location-panel .arcade-btn {
     display: block;
     width: 100%;
@@ -809,9 +622,7 @@
     text-decoration: none;
     text-transform: uppercase;
     transition: all 0.15s ease;
-    box-shadow: 
-        0 4px 0 #6b0d12,
-        0 0 20px rgba(180, 20, 30, 0.4);
+    box-shadow: 0 4px 0 #6b0d12, 0 0 20px rgba(180, 20, 30, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -823,61 +634,45 @@
 
 .location-panel .arcade-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 
-        0 7px 0 #6b0d12,
-        0 0 35px rgba(180, 20, 30, 0.7),
-        0 0 50px rgba(4, 120, 200, 0.3);
-    background: linear-gradient(180deg, #d41820 0%, #b4141e 100%);
+    box-shadow: 0 7px 0 #6b0d12, 0 0 35px rgba(180, 20, 30, 0.7);
 }
 
 .location-panel .arcade-btn:active {
     transform: translateY(2px);
-    box-shadow: 
-        0 2px 0 #6b0d12,
-        0 0 15px rgba(180, 20, 30, 0.5);
+    box-shadow: 0 2px 0 #6b0d12;
 }
 
-/* Glowing bottom accent - Arcade style */
+/* Decorative elements */
 .location-panel .arcade-glow {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        #b4141e 20%, 
-        #0478c8 50%, 
-        #b4141e 80%, 
-        transparent 100%
-    );
+    background: linear-gradient(90deg, transparent 0%, #b4141e 20%, #0478c8 50%, #b4141e 80%, transparent 100%);
     animation: arcadeGlowPulse 1.5s ease-in-out infinite;
 }
 
 @keyframes arcadeGlowPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.6;
         box-shadow: 0 0 10px #b4141e;
     }
+
     50% {
         opacity: 1;
         box-shadow: 0 0 25px #0478c8, 0 0 35px #b4141e;
     }
 }
 
-/* Side web line decorations */
 .location-panel .web-line {
     position: absolute;
     width: 3px;
     top: 60px;
     bottom: 40px;
-    background: linear-gradient(180deg, 
-        transparent 0%, 
-        rgba(180, 20, 30, 0.3) 20%, 
-        rgba(180, 20, 30, 0.5) 50%, 
-        rgba(180, 20, 30, 0.3) 80%, 
-        transparent 100%
-    );
+    background: linear-gradient(180deg, transparent, rgba(180, 20, 30, 0.5), transparent);
 }
 
 .location-panel .web-line.left {
@@ -888,7 +683,6 @@
     right: 8px;
 }
 
-/* Web corner accents */
 .location-panel .corner-accent {
     position: absolute;
     width: 20px;
@@ -924,92 +718,441 @@
     border-top: none;
 }
 
-/* CRT scanline effect (very subtle) */
 .location-panel .scanlines {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.1) 2px,
-        rgba(0, 0, 0, 0.1) 4px
-    );
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
     pointer-events: none;
     z-index: 2;
     opacity: 0.3;
 }
 
-/* Mobile responsive */
-@media (max-width: 480px) {
+/* ════════════════════════════════════════════
+   RESPONSIVE — Mobile-First Breakpoints
+   ════════════════════════════════════════════ */
+
+/* ── 320px – 479px  (small phones) ──────── */
+@media (max-width: 479px) {
+    .contact {
+        padding: 40px 0 60px;
+    }
+
+    .terminal-header {
+        padding: 7px 12px;
+    }
+
+    .terminal-title {
+        font-size: 0.38rem;
+        letter-spacing: 1.5px;
+    }
+
+    .terminal-dots span {
+        width: 7px;
+        height: 7px;
+    }
+
+    .contact-item {
+        padding: 12px 12px;
+        gap: 10px;
+    }
+
+    .contact-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.88rem;
+        border-width: 2px;
+    }
+
+    .contact-details h3 {
+        font-size: 0.28rem;
+    }
+
+    .contact-details p {
+        font-size: 0.82rem;
+    }
+
+    .contact-details a,
+    .gmail-link,
+    .location-click-hint {
+        font-size: 0.78rem;
+    }
+
+    .contact-form {
+        padding: 16px 12px;
+    }
+
+    .form-header {
+        font-size: 0.32rem;
+        margin-bottom: 16px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.92rem;
+        padding: 20px 10px 7px;
+    }
+
+    .form-group label {
+        font-size: 0.32rem;
+        left: 11px;
+    }
+
+    .form-group input:focus~label,
+    .form-group input:valid~label,
+    .form-group textarea:focus~label,
+    .form-group textarea:valid~label {
+        font-size: 0.26rem;
+        top: 4px;
+    }
+
+    .submit-btn {
+        font-size: 0.88rem;
+        padding: 12px;
+    }
+
     .location-panel {
         max-width: 100%;
     }
-    
+
     .location-panel .arcade-header {
-        padding: 14px 16px;
+        padding: 12px 14px;
     }
-    
+
     .location-panel .arcade-header h3 {
-        font-size: 0.38rem;
+        font-size: 0.35rem;
         letter-spacing: 2px;
     }
-    
+
     .location-panel .arcade-content {
-        padding: 18px 16px;
+        padding: 16px 12px;
     }
-    
+
     .location-panel .arcade-card {
-        padding: 16px;
+        padding: 14px;
     }
-    
+
     .location-panel .arcade-card p {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
     }
-    
+
     .location-panel .arcade-btn {
-        font-size: 0.28rem;
-        padding: 12px;
+        font-size: 0.26rem;
+        padding: 11px;
     }
-    
+
     .location-panel .corner-accent {
         display: none;
     }
 }
 
-/* Tablet and up */
-@media (min-width: 768px) {
+/* ── 480px – 639px  (phones) ─────────────── */
+@media (min-width: 480px) and (max-width: 639px) {
+    .contact {
+        padding: 50px 0 70px;
+    }
+
+    .terminal-title {
+        font-size: 0.44rem;
+    }
+
+    .form-header {
+        font-size: 0.36rem;
+    }
+
+    .contact-item {
+        padding: 13px 14px;
+    }
+
+    .contact-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .contact-details h3 {
+        font-size: 0.31rem;
+    }
+
+    .contact-details p {
+        font-size: 0.88rem;
+    }
+
+    .contact-details a,
+    .gmail-link {
+        font-size: 0.84rem;
+    }
+
+    .contact-form {
+        padding: 18px 14px;
+    }
+
     .location-panel {
-        width: 380px;
+        max-width: 92vw;
     }
 }
 
-/* Large screens */
-@media (min-width: 1280px) {
+/* ── 640px – 767px  (large phones) ──────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+    /* Contact items wrap into a 2-col grid */
+    .contact-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+    }
+
+    .contact-item {
+        border-right: 2px solid var(--retro-gray);
+        border-bottom: 2px solid var(--retro-gray);
+    }
+
+    .contact-item:nth-child(even) {
+        border-right: none;
+    }
+
+    .contact-item:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+
+    .terminal-title {
+        font-size: 0.48rem;
+    }
+}
+
+/* ── 768px+  (tablets and up) ───────────── */
+@media (min-width: 768px) {
+    .contact {
+        padding: 70px 0 90px;
+    }
+
+    /* Side-by-side layout */
+    .terminal-content {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .contact-info {
+        flex: 0 0 42%;
+        border-bottom: none;
+        border-right: 3px solid var(--retro-gray);
+        order: 1;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Reset 2-col grid that may have been set on 640px */
+    .contact-info {
+        display: flex;
+    }
+
+    .contact-item {
+        border-right: none !important;
+    }
+
+    .contact-item:last-child {
+        border-bottom: 2px solid var(--retro-gray);
+    }
+
+    .contact-form {
+        flex: 1;
+        order: 2;
+        border-top: none;
+        border-left: 3px solid var(--retro-blue);
+        padding: 24px 22px;
+    }
+
+    .terminal-header {
+        padding: 10px 20px;
+    }
+
+    .terminal-title {
+        font-size: 0.52rem;
+        letter-spacing: 2.5px;
+    }
+
+    .terminal-dots span {
+        width: 10px;
+        height: 10px;
+    }
+
+    .contact-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .contact-details h3 {
+        font-size: 0.36rem;
+    }
+
+    .contact-details p {
+        font-size: 0.95rem;
+    }
+
+    .contact-details a,
+    .gmail-link {
+        font-size: 0.9rem;
+    }
+
+    .form-header {
+        font-size: 0.42rem;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 1rem;
+    }
+
     .location-panel {
-        width: 450px;
+        max-width: 380px;
+    }
+}
+
+/* ── 1024px+  (small laptops) ───────────── */
+@media (min-width: 1024px) {
+    .contact-info {
+        flex: 0 0 38%;
+    }
+
+    .terminal-title {
+        font-size: 0.55rem;
+    }
+
+    .form-header {
+        font-size: 0.46rem;
+    }
+
+    .contact-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+    }
+
+    .contact-details h3 {
+        font-size: 0.38rem;
+    }
+
+    .contact-details p {
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 1.05rem;
+    }
+
+    .submit-btn {
+        font-size: 1.05rem;
+    }
+}
+
+/* ── 1280px+  (laptops / desktops) ──────── */
+@media (min-width: 1280px) {
+    .terminal-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .terminal-title {
+        font-size: 0.58rem;
+    }
+
+    .form-header {
+        font-size: 0.5rem;
+    }
+
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .contact-details h3 {
+        font-size: 0.4rem;
+    }
+
+    .contact-details p {
+        font-size: 1.05rem;
+    }
+
+    .contact-details a,
+    .gmail-link {
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 30px 28px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 1.08rem;
+    }
+
+    .submit-btn {
+        font-size: 1.08rem;
+        letter-spacing: 2.5px;
+    }
+
+    .location-panel {
+        max-width: 420px;
+    }
+}
+
+/* ── 1536px+  (large desktops) ──────────── */
+@media (min-width: 1536px) {
+    .terminal-container {
+        max-width: 1400px;
+    }
+
+    .terminal-title {
+        font-size: 0.62rem;
+    }
+
+    .form-header {
+        font-size: 0.54rem;
+    }
+
+    .contact-details h3 {
+        font-size: 0.44rem;
+    }
+
+    .contact-details p {
+        font-size: 1.12rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 1.12rem;
+    }
+
+    .submit-btn {
+        font-size: 1.12rem;
+    }
+
+    .location-panel {
         max-width: 450px;
     }
 }
 
-/* ============================================
-   PREVENT HORIZONTAL SCROLLING
-   ============================================ */
+/* ── Overflow guard (all sizes) ──────────── */
 @media (max-width: 768px) {
-    .contact {
+
+    .contact,
+    .terminal-container {
         overflow-x: hidden;
     }
-    
-    .contact * {
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-    
+
     .container {
-        padding: 0 var(--spacing-xs);
+        padding: 0 10px;
         max-width: 100%;
     }
 }
