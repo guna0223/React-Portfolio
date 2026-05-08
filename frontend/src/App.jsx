@@ -1,62 +1,73 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from "./components/Navbar/Navbar";
-import "./components/css/App.css";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Skills from "./pages/Skills";
-import Services from "./pages/Service";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
-import Footer from "./components/Footer/Footer";
-import ScriptInitializer from "./components/Script/ScriptInitializer";
-import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
+import { useSmoothScroll } from './hooks/useSmoothScroll';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import ScrollProgress from './components/layout/ScrollProgress';
+import CustomCursor from './components/layout/CustomCursor';
+import NoiseTexture from './components/effects/NoiseTexture';
+import LoadingScreen from './LoadingScreen';
+import HeroSection from './components/sections/HeroSection';
+import AboutSection from './components/sections/AboutSection';
+import SkillsSection from './components/sections/SkillsSection';
+import ExperienceSection from './components/sections/ExperienceSection';
+import ProjectsSection from './components/sections/ProjectsSection';
+import ServicesSection from './components/sections/ServicesSection';
+import ContactSection from './components/sections/ContactSection';
+import NotFound from './pages/NotFound';
 
-import "bootstrap-icons/font/bootstrap-icons.css";
+function Portfolio() {
+  useSmoothScroll();
+
+  return (
+    <>
+      <CustomCursor />
+      <ScrollProgress />
+      <Navbar />
+      <NoiseTexture />
+      <main>
+        <HeroSection />
+        <div className="section-divider" />
+        <AboutSection />
+        <div className="section-divider" />
+        <SkillsSection />
+        <ExperienceSection />
+        <div className="section-divider" />
+        <ProjectsSection />
+        <div className="section-divider" />
+        <ServicesSection />
+        <div className="section-divider" />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
+  );
+}
 
 function AppContent() {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  
-  // Check if this is a 404 route - skip loading screen for invalid routes
-  const is404Route = location.pathname === '/404' || location.pathname === '/not-found' || !['/', '/about', '/skills', '/services', '/projects', '/contact'].includes(location.pathname);
 
-  const handleLoadingComplete = () => {
+  const handleLoadingComplete = useCallback(() => {
     setIsLoading(false);
-  };
+  }, []);
 
-  // For 404 routes, skip loading screen
-  if (is404Route) {
+  // Check if on 404 route
+  const validPaths = ['/'];
+  const is404 = !validPaths.includes(location.pathname);
+
+  if (is404) {
     return (
-      <>
-        <Navbar />
-        <Routes>
-          <Route path="/404" element={<NotFound />} />
-          <Route path="/not-found" element={<NotFound />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </>
+      <Routes>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     );
   }
 
   return (
     <>
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
-      {!isLoading && (
-        <>
-          <ScriptInitializer />
-          <Navbar />
-          <Home/>
-          <About/>
-          <Skills/>
-          <Services />
-          <Projects/>
-          <Contact />
-          <Footer />
-        </>
-      )}
+      {!isLoading && <Portfolio />}
     </>
   );
 }

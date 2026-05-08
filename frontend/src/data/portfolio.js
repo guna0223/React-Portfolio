@@ -1,0 +1,210 @@
+import gameSellingImg from '../assets/images/project-img/gameselling.png';
+import whatsapp from '../assets/images/project-img/whatapp.png';
+import portfolioImg from '../assets/images/project-img/portfolio.png';
+import weatherImg from '../assets/images/project-img/weather.png';
+import movie from '../assets/images/project-img/movie.png';
+import shopping from '../assets/images/project-img/shopping.png';
+import game from '../assets/images/project-img/game.png';
+
+export const personalInfo = {
+  name: 'Gunasekar',
+  lastName: 'D',
+  title: 'Creative Developer & UI/UX Designer',
+  roles: [
+    'Creative Developer',
+    'UI/UX Designer',
+    'Full-Stack Engineer',
+    'React Specialist',
+  ],
+  bio: `I'm a passionate Full-Stack Developer specializing in building exceptional digital experiences. With expertise in Python, Django, React, and modern frontend technologies, I craft clean, responsive, and scalable web applications that push the boundaries of what's possible on the web.`,
+  location: 'Bengaluru, Karnataka, India',
+  email: 'gunasekar0223@gmail.com',
+  resumeUrl: '/resume/Gunasekar_Resume.pdf',
+  social: {
+    github: 'https://github.com/guna0223',
+    linkedin: 'https://www.linkedin.com/in/gunasekar0223/',
+    whatsapp: 'https://web.whatsapp.com/',
+    email: 'mailto:gunasekar0223@gmail.com',
+  },
+};
+
+export const stats = [
+  { label: 'Projects Completed', value: '7+' },
+  { label: 'Technologies', value: '12+' },
+  { label: 'GitHub Repos', value: '10+' },
+  { label: 'Lines of Code', value: '50K+' },
+];
+
+export const skills = {
+  frontend: [
+    { name: 'HTML5', proficiency: 95, color: '#e34c26' },
+    { name: 'CSS3', proficiency: 90, color: '#264de4' },
+    { name: 'JavaScript', proficiency: 85, color: '#f0db4f' },
+    { name: 'React', proficiency: 85, color: '#61dafb' },
+    { name: 'Tailwind CSS', proficiency: 80, color: '#38bdf8' },
+  ],
+  backend: [
+    { name: 'Python', proficiency: 90, color: '#306998' },
+    { name: 'Django', proficiency: 85, color: '#092e20' },
+    { name: 'REST APIs', proficiency: 80, color: '#00d4ff' },
+  ],
+  database: [
+    { name: 'MySQL', proficiency: 85, color: '#00758f' },
+    { name: 'SQL', proficiency: 80, color: '#e48e00' },
+    { name: 'PostgreSQL', proficiency: 75, color: '#336791' },
+  ],
+  tools: [
+    { name: 'Git', proficiency: 90, color: '#f05032' },
+    { name: 'GitHub', proficiency: 90, color: '#ffffff' },
+    { name: 'VS Code', proficiency: 95, color: '#007acc' },
+    { name: 'Vite', proficiency: 85, color: '#646cff' },
+  ],
+};
+
+export const projects = [
+  {
+    id: 1,
+    title: 'VEXO — E-Commerce App',
+    image: shopping,
+    description:
+      'A modern and fully responsive e-commerce web application built with React. Features include dynamic product listings with FakeStore API integration, advanced filtering by category and price, real-time search functionality, persistent wishlist and shopping cart features, and a seamless checkout experience.',
+    tech: ['React', 'REST API', 'CSS3', 'Context API'],
+    link: 'https://react-ecommerce-fxed.vercel.app/',
+    github: 'https://github.com/guna0223/React-Ecommerce',
+    featured: true,
+  },
+  {
+    id: 2,
+    title: 'WhatsApp UI Clone',
+    image: whatsapp,
+    description:
+      'A pixel-perfect responsive WhatsApp UI clone built with React. Features include a complete chat list sidebar with search, message conversations with timestamps, online status indicators, typing indicators, and dynamic data rendering from JSON.',
+    tech: ['React', 'JavaScript', 'JSON', 'CSS3'],
+    link: 'https://whatsapp-ui-ten.vercel.app/',
+    github: 'https://github.com/guna0223/whatsapp-ui',
+    featured: true,
+  },
+  {
+    id: 3,
+    title: 'Weather Dashboard',
+    image: weatherImg,
+    description:
+      'An interactive and user-friendly weather dashboard featuring location-based forecasts using geolocation API, current weather conditions with detailed metrics, 7-day forecast predictions, interactive weather maps, and historical data visualization charts.',
+    tech: ['JavaScript', 'OpenWeather API', 'Chart.js', 'CSS3'],
+    link: 'https://weather-dashbord-seven.vercel.app/',
+    github: 'https://github.com/guna0223/weather-dashbord',
+    featured: true,
+  },
+  {
+    id: 4,
+    title: 'Portfolio Website',
+    image: portfolioImg,
+    description:
+      'A modern, responsive portfolio built with React focused on performance, accessibility, and clean UI. Features smooth scroll navigation, responsive design for all devices, SEO optimization, interactive animations, and a unique retro arcade-style loading screen.',
+    tech: ['React', 'JavaScript', 'CSS3', 'Vite'],
+    link: 'https://portfolio-guna.vercel.app/',
+    github: 'https://github.com/guna0223/portfolio',
+    featured: false,
+  },
+  {
+    id: 5,
+    title: 'Movie Explorer',
+    image: movie,
+    description:
+      'A feature-rich movie browsing application built with React and TMDB API. Offers real-time search, detailed movie information pages with cast, crew, trailers and reviews, favorite/wishlist management, trending movies section, and genre-based filtering.',
+    tech: ['React', 'Context API', 'TMDB API', 'CSS3'],
+    link: 'https://movie-project-omega-tawny.vercel.app/',
+    github: 'https://github.com/guna0223/movie-project',
+    featured: true,
+  },
+  {
+    id: 6,
+    title: 'Game Store — Django',
+    image: gameSellingImg,
+    description:
+      'A full-stack game selling web application built with Django framework. Features include secure user authentication, comprehensive product catalog management, shopping cart functionality, order processing, and admin dashboard for inventory management.',
+    tech: ['Django', 'Python', 'PostgreSQL', 'HTML/CSS'],
+    link: null,
+    github: 'https://github.com/guna0223/Django-Game',
+    featured: false,
+  },
+  {
+    id: 7,
+    title: 'Retro Game Vault',
+    image: game,
+    description:
+      'A nostalgic retro arcade gaming platform featuring classic games through EmulatorJS. Includes multiple game ROMs, smooth emulation, save states, and authentic retro aesthetics with a modern cyberpunk interface.',
+    tech: ['React', 'EmulatorJS', 'WebAssembly', 'CSS3'],
+    link: 'https://retro-game-three.vercel.app/',
+    github: 'https://github.com/guna0223/retro-game',
+    featured: true,
+  },
+];
+
+export const services = [
+  {
+    id: 1,
+    icon: 'Code',
+    title: 'Web Development',
+    description:
+      'Building responsive & modern websites using cutting-edge technologies. From concept to deployment — making digital dreams reality.',
+    features: ['Responsive Design', 'Performance Optimized', 'SEO Friendly'],
+  },
+  {
+    id: 2,
+    icon: 'Palette',
+    title: 'Frontend Development',
+    description:
+      'Creating clean, interactive & user-friendly interfaces with HTML, CSS, JavaScript & React.',
+    features: ['Modern UI', 'Reusable Components', 'Cross-Browser'],
+  },
+  {
+    id: 3,
+    icon: 'Database',
+    title: 'Backend Development',
+    description:
+      'Developing secure & scalable backend systems using Python and Django, with authentication & APIs.',
+    features: ['Django & REST APIs', 'Authentication', 'Database Design'],
+  },
+  {
+    id: 4,
+    icon: 'Layers',
+    title: 'Full Stack Solutions',
+    description:
+      'End-to-end application development combining frontend and backend technologies for complete solutions.',
+    features: ['Frontend + Backend', 'API Integration', 'Deployment Ready'],
+  },
+];
+
+export const experience = [
+  {
+    id: 1,
+    type: 'education',
+    title: 'Computer Science',
+    organization: 'University',
+    period: '2020 - 2024',
+    description: 'Bachelor of Computer Science with focus on software engineering and web development.',
+  },
+  {
+    id: 2,
+    type: 'project',
+    title: 'Full-Stack Development',
+    organization: 'Self-Directed',
+    period: '2023 - Present',
+    description: 'Building production-level web applications with React, Django, and modern tooling.',
+  },
+  {
+    id: 3,
+    type: 'achievement',
+    title: 'Open Source Contributor',
+    organization: 'GitHub',
+    period: '2024 - Present',
+    description: 'Active contributor with 10+ public repositories and growing community engagement.',
+  },
+];
+
+export const contactInfo = {
+  email: 'gunasekar0223@gmail.com',
+  location: 'Bengaluru, Karnataka, India',
+  linkedin: 'linkedin.com/in/gunasekar0223',
+};
