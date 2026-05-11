@@ -129,37 +129,40 @@ const MangekyoIntro = ({ onComplete }) => {
                 </radialGradient>
               </defs>
 
-              {/* Sclera & Eye Base */}
-              <path d="M 350 225 C 450 160 650 170 750 225 C 650 260 450 260 350 225 Z" fill="url(#scleraGradient)" />
+              {/* Scale up the entire eye composition around its center */}
+              <g transform="translate(550, 225) scale(1.4) translate(-550, -225)">
+                {/* Sclera & Eye Base */}
+                <path d="M 350 225 C 450 160 650 170 750 225 C 650 260 450 260 350 225 Z" fill="url(#scleraGradient)" />
 
-              {/* Glowing pupil core */}
-              <circle ref={pupilGlowRef} cx="550" cy="225" r="12" fill="#ff1a1a" filter="blur(6px)" />
+                {/* Glowing pupil core */}
+                <circle ref={pupilGlowRef} cx="550" cy="225" r="12" fill="#ff1a1a" filter="blur(6px)" />
 
-              {/* Iris Group */}
-              <g ref={irisRef}>
-                <circle cx="550" cy="225" r="62" fill="url(#irisGradient)" />
-                <circle cx="550" cy="225" r="62" fill="none" stroke="#000" strokeWidth="2" opacity="0.95" />
+                {/* Iris Group */}
+                <g ref={irisRef}>
+                  <circle cx="550" cy="225" r="62" fill="url(#irisGradient)" />
+                  <circle cx="550" cy="225" r="62" fill="none" stroke="#000" strokeWidth="2" opacity="0.95" />
 
-                {/* Highly readable Mangekyō Pattern */}
-                <g ref={mangekyoRef}>
-                  <circle cx="550" cy="225" r="14" fill="#000" />
-                  {[0, 120, 240].map((angle, i) => (
-                    <g key={i} transform={`rotate(${angle}, 550, 225)`}>
-                      <path d="M 550 225 C 580 195 580 150 550 135 C 530 170 530 200 550 225" fill="#000" />
-                    </g>
-                  ))}
-                  {/* Subtle black outer ring for depth */}
-                  <circle cx="550" cy="225" r="50" fill="none" stroke="#000" strokeWidth="1.5" opacity="0.8" />
+                  {/* Highly readable Mangekyō Pattern */}
+                  <g ref={mangekyoRef}>
+                    <circle cx="550" cy="225" r="14" fill="#000" />
+                    {[0, 120, 240].map((angle, i) => (
+                      <g key={i} transform={`rotate(${angle}, 550, 225)`}>
+                        <path d="M 550 225 C 580 195 580 150 550 135 C 530 170 530 200 550 225" fill="#000" />
+                      </g>
+                    ))}
+                    {/* Subtle black outer ring for depth */}
+                    <circle cx="550" cy="225" r="50" fill="none" stroke="#000" strokeWidth="1.5" opacity="0.8" />
+                  </g>
+                  
+                  {/* Increased Wet Cornea Reflection */}
+                  <path d="M 505 185 Q 550 155 595 185 Q 550 175 505 185 Z" fill="rgba(255,255,255,0.6)" filter="blur(1px)" />
+                  <circle cx="525" cy="175" r="4" fill="rgba(255,255,255,0.8)" filter="blur(1.5px)" />
                 </g>
-                
-                {/* Increased Wet Cornea Reflection */}
-                <path d="M 505 185 Q 550 155 595 185 Q 550 175 505 185 Z" fill="rgba(255,255,255,0.6)" filter="blur(1px)" />
-                <circle cx="525" cy="175" r="4" fill="rgba(255,255,255,0.8)" filter="blur(1.5px)" />
-              </g>
 
-              {/* Dark Eyelids separated from pure black by a subtle red rim shadow */}
-              <path ref={topEyelidRef} fill="#030001" filter="drop-shadow(0 4px 6px rgba(180,0,0,0.15)) drop-shadow(0 15px 25px rgba(0,0,0,0.95))" />
-              <path ref={bottomEyelidRef} fill="#030001" filter="drop-shadow(0 -4px 6px rgba(180,0,0,0.15)) drop-shadow(0 -15px 25px rgba(0,0,0,0.95))" />
+                {/* Dark Eyelids separated from pure black by a subtle red rim shadow */}
+                <path ref={topEyelidRef} fill="#030001" filter="drop-shadow(0 4px 6px rgba(180,0,0,0.15)) drop-shadow(0 15px 25px rgba(0,0,0,0.95))" />
+                <path ref={bottomEyelidRef} fill="#030001" filter="drop-shadow(0 -4px 6px rgba(180,0,0,0.15)) drop-shadow(0 -15px 25px rgba(0,0,0,0.95))" />
+              </g>
             </svg>
           </div>
         </motion.div>

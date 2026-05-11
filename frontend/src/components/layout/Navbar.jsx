@@ -326,7 +326,7 @@ const Navbar = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <SharinganLogo />
                   <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-primary)', letterSpacing: '0.06em' }}>
-                    SHINOBI<span style={{ color: '#cc2222' }}>.DEV</span>
+                    GUNA<span style={{ color: '#cc2222' }}>.DEV</span>
                   </span>
                 </div>
                 <button

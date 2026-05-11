@@ -298,7 +298,7 @@ const HeroSection = () => {
         >
           {/* Primary — gradient + chakra border trail */}
           <motion.button
-            whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(204,34,34,0.6), 0 0 60px rgba(123,47,255,0.3)' }}
+            whileHover={{ boxShadow: '0 0 30px rgba(204,34,34,0.6), 0 0 60px rgba(123,47,255,0.3)' }}
             whileTap={{ scale: 0.97 }}
             onClick={() => scrollTo('projects')}
             className="neon-pulse"
@@ -316,7 +316,7 @@ const HeroSection = () => {
 
           {/* Secondary — outline */}
           <motion.a
-            whileHover={{ scale: 1.04, background: 'rgba(204,34,34,0.12)', boxShadow: '0 0 20px rgba(204,34,34,0.3)' }}
+            whileHover={{ background: 'rgba(204,34,34,0.12)', boxShadow: '0 0 20px rgba(204,34,34,0.3)' }}
             whileTap={{ scale: 0.97 }}
             href={personalInfo.resumeUrl} download="Gunasekar_Resume.pdf"
             style={{
@@ -346,7 +346,7 @@ const HeroSection = () => {
           ].map(({ icon: Icon, href, label }) => (
             <motion.a
               key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
-              whileHover={{ y: -4, scale: 1.12 }} whileTap={{ scale: 0.92 }}
+              whileTap={{ scale: 0.95 }}
               style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 width: 48, height: 48, borderRadius: '12px',
