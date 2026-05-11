@@ -5,12 +5,10 @@ import { projects } from '../../data/portfolio';
 import SectionHeading from '../ui/SectionHeading';
 import HoloCard from '../ui/HoloCard';
 
-import Tilt from 'react-parallax-tilt';
-
 const ProjectCard = ({ project, onClick }) => {
   const [hovered, setHovered] = useState(false);
   return (
-    <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={1000} scale={1.02} transitionSpeed={1000} className="sharingan-card" style={{ borderRadius: '1.25rem' }}>
+    <motion.div className="sharingan-card" style={{ borderRadius: '1.25rem' }}>
       <motion.div layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }}
         onClick={() => onClick(project)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
@@ -36,7 +34,7 @@ const ProjectCard = ({ project, onClick }) => {
         {/* Kunai Slash Overlay */}
         <div className={`kunai-slash-overlay ${hovered ? 'kunai-slash-active' : ''}`} />
       </motion.div>
-    </Tilt>
+    </motion.div>
   );
 };
 
