@@ -1,11 +1,13 @@
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollProgress from './components/layout/ScrollProgress';
 import CustomCursor from './components/layout/CustomCursor';
 import ChakraTrailCursor from './components/ui/ChakraTrailCursor';
 import MangekyoIntro from './components/ui/MangekyoIntro';
+import GenjutsuStartScreen from './components/ui/GenjutsuStartScreen';
 import HeroSection from './components/sections/HeroSection';
 import AboutSection from './components/sections/AboutSection';
 import SkillsSection from './components/sections/SkillsSection';
@@ -48,40 +50,20 @@ function App() {
   const [started, setStarted] = useState(false);
   const [introDone, setIntroDone] = useState(false);
 
-  if (!started) {
-    return (
-      <div
-        style={{
-          height: '100vh',
-          background: '#000',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <button
-          onClick={() => setStarted(true)}
-          style={{
-            padding: '20px 50px',
-            background: 'red',
-            border: 'none',
-            color: 'white',
-            fontSize: '22px',
-            cursor: 'pointer',
-            borderRadius: '10px',
-          }}
-        >
-          ENTER THE GENJUTSU
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <>
-      {!introDone && <MangekyoIntro onComplete={() => setIntroDone(true)} />}
-      {introDone && <Portfolio />}
-    </>
+    <AnimatePresence mode="wait">
+      {!started && (
+        <GenjutsuStartScreen key="start" onStart={() => setStarted(true)} />
+      )}
+
+      {started && !introDone && (
+        <MangekyoIntro key="intro" onComplete={() => setIntroDone(true)} />
+      )}
+
+      {started && introDone && (
+        <Portfolio key="portfolio" />
+      )}
+    </AnimatePresence>
   );
 }
 
