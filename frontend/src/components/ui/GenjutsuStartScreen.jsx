@@ -632,12 +632,6 @@ const GenjutsuStartScreen = ({ onStart }) => {
               }}
               animate={{ scaleX: [0.2, 1, 0.2], opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-              style={{
-                marginTop: '8px',
-                height: '1px',
-                width: '100%',
-                background: 'linear-gradient(90deg, transparent, #ff2222, #9900ff, transparent)',
-              }}
             />
 
             {/* Sub-label */}
