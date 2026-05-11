@@ -9,7 +9,7 @@ import game from '../assets/images/project-img/game.png';
 export const personalInfo = {
   name: 'Gunasekar',
   lastName: 'D',
-  title: 'Creative Developer & UI/UX Designer',
+  title: ' Full Stack Developer || Creative Developer ',
   roles: [
     'Full Stack Developer',
     'Frontend Developer',

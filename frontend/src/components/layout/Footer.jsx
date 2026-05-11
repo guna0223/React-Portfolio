@@ -61,7 +61,7 @@ const Footer = () => {
             <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.25rem', marginBottom: '0.4rem', color: 'var(--color-accent-primary)', textShadow: '0 0 10px var(--color-glow-primary)' }}>
               Gunasekar <span style={{ opacity: 0.5 }}>D</span>
             </div>
-            <p className="text-small">Developer & UI/UX Shinobi</p>
+            <p className="text-small">Full-Stack Developer</p>
           </div>
 
           {/* Social Links */}
