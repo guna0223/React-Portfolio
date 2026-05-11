@@ -5,31 +5,38 @@ import { projects } from '../../data/portfolio';
 import SectionHeading from '../ui/SectionHeading';
 import HoloCard from '../ui/HoloCard';
 
+import Tilt from 'react-parallax-tilt';
+
 const ProjectCard = ({ project, onClick }) => {
   const [hovered, setHovered] = useState(false);
   return (
-    <motion.div layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }}
-      onClick={() => onClick(project)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
-      style={{ position: 'relative', borderRadius: '1.25rem', overflow: 'hidden', cursor: 'none', background: 'var(--color-bg-card)', border: `1px solid ${hovered ? 'rgba(204,34,34,0.45)' : 'var(--color-border-subtle)'}`, transition: 'all 0.4s', transform: hovered ? 'translateY(-5px)' : 'none', boxShadow: hovered ? '0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(204,34,34,0.2)' : '0 4px 20px rgba(0,0,0,0.2)' }}
-    >
-      <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
-        <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s', transform: hovered ? 'scale(1.05)' : 'scale(1)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: hovered ? 'linear-gradient(180deg, rgba(204,34,34,0.1) 0%, rgba(5,2,10,0.92) 100%)' : 'linear-gradient(180deg, transparent 40%, rgba(5,2,10,0.7) 100%)', transition: 'background 0.4s' }} />
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: hovered ? 1 : 0 }} style={{ position: 'absolute', bottom: '1rem', right: '1rem', display: 'flex', gap: '0.5rem', zIndex: 2 }}>
-          {project.link && <a href={project.link} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '10px', background: 'rgba(204,34,34,0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(204,34,34,0.3)', color: '#cc2222' }}><ExternalLink size={16} /></a>}
-          <a href={project.github} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '10px', background: 'rgba(123,47,255,0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(123,47,255,0.3)', color: '#9f5fff' }}><Code size={16} /></a>
-        </motion.div>
-      </div>
-      <div style={{ padding: '1.25rem 1.5rem 1.5rem' }}>
-        <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.125rem', marginBottom: '0.5rem', color: 'var(--color-text-primary)' }}>{project.title}</h3>
-        <p className="text-body" style={{ fontSize: '0.875rem', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{project.description}</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem', marginTop: '1rem' }}>
-          {project.tech.map(t => <span key={t} style={{ padding: '0.25rem 0.625rem', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: 500, fontFamily: 'var(--font-mono)', background: 'rgba(204,34,34,0.08)', border: '1px solid rgba(204,34,34,0.2)', color: 'var(--color-accent-primary)' }}>{t}</span>)}
+    <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={1000} scale={1.02} transitionSpeed={1000} className="sharingan-card" style={{ borderRadius: '1.25rem' }}>
+      <motion.div layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }}
+        onClick={() => onClick(project)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        style={{ position: 'relative', borderRadius: '1.25rem', overflow: 'hidden', cursor: 'none', background: 'var(--color-bg-card)', border: `1px solid ${hovered ? 'rgba(204,34,34,0.45)' : 'var(--color-border-subtle)'}`, transition: 'all 0.4s', boxShadow: hovered ? '0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(204,34,34,0.2)' : '0 4px 20px rgba(0,0,0,0.2)', height: '100%' }}
+      >
+        <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
+          <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s', transform: hovered ? 'scale(1.05)' : 'scale(1)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: hovered ? 'linear-gradient(180deg, rgba(204,34,34,0.1) 0%, rgba(5,2,10,0.92) 100%)' : 'linear-gradient(180deg, transparent 40%, rgba(5,2,10,0.7) 100%)', transition: 'background 0.4s' }} />
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: hovered ? 1 : 0 }} style={{ position: 'absolute', bottom: '1rem', right: '1rem', display: 'flex', gap: '0.5rem', zIndex: 2 }}>
+            {project.link && <a href={project.link} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '10px', background: 'rgba(204,34,34,0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(204,34,34,0.3)', color: '#cc2222' }}><ExternalLink size={16} /></a>}
+            <a href={project.github} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '10px', background: 'rgba(123,47,255,0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(123,47,255,0.3)', color: '#9f5fff' }}><Code size={16} /></a>
+          </motion.div>
         </div>
-      </div>
-      {project.featured && <div style={{ position: 'absolute', top: '1rem', left: '1rem', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.6875rem', fontWeight: 700, fontFamily: 'var(--font-display)', background: 'rgba(204,34,34,0.2)', backdropFilter: 'blur(10px)', border: '1px solid rgba(204,34,34,0.4)', color: '#cc2222', letterSpacing: '0.08em', textTransform: 'uppercase', zIndex: 2 }}>Featured</div>}
-    </motion.div>
+        <div style={{ padding: '1.25rem 1.5rem 1.5rem' }}>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.125rem', marginBottom: '0.5rem', color: 'var(--color-text-primary)' }}>{project.title}</h3>
+          <p className="text-body" style={{ fontSize: '0.875rem', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{project.description}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem', marginTop: '1rem' }}>
+            {project.tech.map(t => <span key={t} style={{ padding: '0.25rem 0.625rem', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: 500, fontFamily: 'var(--font-mono)', background: 'rgba(204,34,34,0.08)', border: '1px solid rgba(204,34,34,0.2)', color: 'var(--color-accent-primary)' }}>{t}</span>)}
+          </div>
+        </div>
+        {project.featured && <div style={{ position: 'absolute', top: '1rem', left: '1rem', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.6875rem', fontWeight: 700, fontFamily: 'var(--font-display)', background: 'rgba(204,34,34,0.2)', backdropFilter: 'blur(10px)', border: '1px solid rgba(204,34,34,0.4)', color: '#cc2222', letterSpacing: '0.08em', textTransform: 'uppercase', zIndex: 2 }}>Featured</div>}
+        
+        {/* Kunai Slash Overlay */}
+        <div className={`kunai-slash-overlay ${hovered ? 'kunai-slash-active' : ''}`} />
+      </motion.div>
+    </Tilt>
   );
 };
 

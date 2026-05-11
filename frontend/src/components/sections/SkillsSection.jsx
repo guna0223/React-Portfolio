@@ -80,17 +80,30 @@ const SkillsSection = () => {
           >
             {currentSkills.map((skill, i) => (
               <HoloCard key={skill.name} glowColor={activeCat?.color || 'var(--color-accent-primary)'}
+                className="sharingan-card"
                 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.875rem' }}
+                style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.875rem', position: 'relative' }}
               >
-                <div style={{ position: 'relative' }}>
+                {/* Sharingan SVG Background Overlay */}
+                <div className="sharingan-overlay" style={{ position: 'absolute', inset: 0, opacity: 0, transition: 'opacity 0.3s', pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 0 }}>
+                  <svg width="80%" height="80%" viewBox="0 0 120 120" style={{ opacity: 0.15, filter: 'blur(2px)' }}>
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-accent-primary)" strokeWidth="3" />
+                    <circle cx="60" cy="60" r="35" fill="none" stroke="var(--color-accent-primary)" strokeWidth="2" />
+                    <circle cx="60" cy="60" r="15" fill="var(--color-accent-primary)" opacity="0.8" />
+                    {[0, 120, 240].map(angle => (
+                      <circle key={angle} cx={60 + 25 * Math.cos(angle * Math.PI / 180)} cy={60 + 25 * Math.sin(angle * Math.PI / 180)} r="6" fill="var(--color-accent-primary)" />
+                    ))}
+                  </svg>
+                </div>
+                <style>{`.sharingan-card:hover .sharingan-overlay { opacity: 1 !important; }`}</style>
+                <div style={{ position: 'relative', zIndex: 1 }}>
                   <CircularProgress value={skill.proficiency} color={skill.color} size={90} strokeWidth={5} />
                   <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: skill.color, textShadow: `0 0 8px ${skill.color}` }}>
                     {skill.proficiency}%
                   </div>
                 </div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text-primary)', textAlign: 'center', letterSpacing: '0.03em' }}>
+                <div style={{ position: 'relative', zIndex: 1, fontFamily: 'var(--font-display)', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text-primary)', textAlign: 'center', letterSpacing: '0.03em' }}>
                   {skill.name}
                 </div>
               </HoloCard>
