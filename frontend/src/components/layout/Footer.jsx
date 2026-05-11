@@ -91,7 +91,7 @@ const Footer = () => {
         {/* Copyright */}
         <div style={{ textAlign: 'center', marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border-subtle)' }}>
           <p className="text-small">
-            © {new Date().getFullYear()} Gunasekar D — Crafted with Sharingan precision & Rinnegan vision.
+            © {new Date().getFullYear()} Gunasekar D — Moving in silence, building in shadows
           </p>
         </div>
       </div>
