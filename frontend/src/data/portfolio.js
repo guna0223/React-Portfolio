@@ -67,6 +67,8 @@ export const skills = {
     { name: 'ChatGPT', proficiency: 95, color: '#74aa9c' },
     { name: 'Claude AI', proficiency: 90, color: '#d97757' },
     { name: 'Cursor AI', proficiency: 88, color: '#ffffff' },
+    { name: 'gemini', proficiency: 88, color: '#00d4ff' },
+
   ],
 };
 
@@ -196,7 +198,14 @@ export const experience = [
       'Worked as a Full Stack Developer Intern on a property rental-based platform'
     ,
   },
-
+   {
+    id: 2,
+    type: 'project',
+    title: 'Full-Stack Development',
+    organization: 'Self-Directed',
+    period: '2023 - Present',
+    description: 'Building production-level web applications with React, Django, and modern tooling.',
+  },
   {
     id: 3,
     type: 'achievement',
