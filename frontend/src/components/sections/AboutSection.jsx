@@ -69,7 +69,7 @@ const AboutSection = () => {
 
             {/* Skill tags */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1.5rem' }}>
-              {['React', 'Python', 'Django', 'JavaScript', 'Tailwind', 'PostgreSQL'].map((tag) => (
+              {['React', 'Python', 'Django', 'JavaScript', 'mongodb', 'express'].map((tag) => (
                 <span key={tag} style={{ padding: '0.375rem 0.875rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 500, fontFamily: 'var(--font-mono)', background: 'rgba(204,34,34,0.08)', border: '1px solid rgba(204,34,34,0.2)', color: 'var(--color-accent-primary)' }}>
                   {tag}
                 </span>

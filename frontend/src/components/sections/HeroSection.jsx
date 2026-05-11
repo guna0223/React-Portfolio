@@ -167,7 +167,7 @@ const HeroSection = () => {
           style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--color-accent-primary)', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', textShadow: '0 0 8px rgba(204,34,34,0.6)' }}
         >
           <span style={{ display: 'inline-block', width: '40px', height: '1px', background: 'linear-gradient(90deg, transparent, #cc2222)' }} />
-          <GlitchText>Sharingan Online</GlitchText>
+          <GlitchText>developer Online</GlitchText>
           <span style={{ display: 'inline-block', width: '40px', height: '1px', background: 'linear-gradient(90deg, #cc2222, transparent)' }} />
         </motion.div>
 

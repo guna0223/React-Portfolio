@@ -11,10 +11,11 @@ export const personalInfo = {
   lastName: 'D',
   title: 'Creative Developer & UI/UX Designer',
   roles: [
-    'Creative Developer',
-    'UI/UX Designer',
-    'Full-Stack Engineer',
-    'React Specialist',
+    'Full Stack Developer',
+    'Frontend Developer',
+    'backend Developer',
+    'Web Developer',
+    'React Developer',
   ],
   bio: `I'm a passionate Full-Stack Developer specializing in building exceptional digital experiences. With expertise in Python, Django, React, and modern frontend technologies, I craft clean, responsive, and scalable web applications that push the boundaries of what's possible on the web.`,
   location: 'Bengaluru, Karnataka, India',
@@ -29,9 +30,9 @@ export const personalInfo = {
 };
 
 export const stats = [
-  { label: 'Projects Completed', value: '7+' },
+  { label: 'Projects Completed', value: '10+' },
   { label: 'Technologies', value: '12+' },
-  { label: 'GitHub Repos', value: '10+' },
+  { label: 'GitHub Repos', value: '20+' },
   { label: 'Lines of Code', value: '50K+' },
 ];
 
@@ -41,23 +42,31 @@ export const skills = {
     { name: 'CSS3', proficiency: 90, color: '#264de4' },
     { name: 'JavaScript', proficiency: 85, color: '#f0db4f' },
     { name: 'React', proficiency: 85, color: '#61dafb' },
-    { name: 'Tailwind CSS', proficiency: 80, color: '#38bdf8' },
+    // { name: 'Tailwind CSS', proficiency: 80, color: '#38bdf8' },
   ],
   backend: [
     { name: 'Python', proficiency: 90, color: '#306998' },
     { name: 'Django', proficiency: 85, color: '#092e20' },
     { name: 'REST APIs', proficiency: 80, color: '#00d4ff' },
+    { name: 'node.js', proficiency: 60, color: '#f0db4f' },
+
   ],
   database: [
     { name: 'MySQL', proficiency: 85, color: '#00758f' },
     { name: 'SQL', proficiency: 80, color: '#e48e00' },
-    { name: 'PostgreSQL', proficiency: 75, color: '#336791' },
+    { name: 'mongodb', proficiency: 75, color: '#4ea82c' },
   ],
   tools: [
     { name: 'Git', proficiency: 90, color: '#f05032' },
     { name: 'GitHub', proficiency: 90, color: '#ffffff' },
     { name: 'VS Code', proficiency: 95, color: '#007acc' },
     { name: 'Vite', proficiency: 85, color: '#646cff' },
+
+  ],
+  aitools: [
+    { name: 'ChatGPT', proficiency: 95, color: '#74aa9c' },
+    { name: 'Claude AI', proficiency: 90, color: '#d97757' },
+    { name: 'Cursor AI', proficiency: 88, color: '#ffffff' },
   ],
 };
 
@@ -179,20 +188,15 @@ export const services = [
 export const experience = [
   {
     id: 1,
-    type: 'education',
-    title: 'Computer Science',
-    organization: 'University',
-    period: '2020 - 2024',
-    description: 'Bachelor of Computer Science with focus on software engineering and web development.',
+    type: 'work',
+    title: 'Full Stack Developer Intern',
+    organization: 'Draptor Technologies',
+    period: '02/03/2026 - 02/06/2026',
+    description:
+      'Worked as a Full Stack Developer Intern on a property rental-based platform'
+    ,
   },
-  {
-    id: 2,
-    type: 'project',
-    title: 'Full-Stack Development',
-    organization: 'Self-Directed',
-    period: '2023 - Present',
-    description: 'Building production-level web applications with React, Django, and modern tooling.',
-  },
+
   {
     id: 3,
     type: 'achievement',

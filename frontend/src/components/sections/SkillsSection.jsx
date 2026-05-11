@@ -9,6 +9,7 @@ const skillCategories = [
   { key: 'backend', label: 'Backend', color: '#7b2fff' },
   { key: 'database', label: 'Database', color: '#f5a623' },
   { key: 'tools', label: 'Tools', color: '#e63333' },
+  { key: 'aitools', label: 'AI Tools', color: '#74aa9c' },
 ];
 
 const CircularProgress = ({ value, color, size = 96, strokeWidth = 6 }) => {
@@ -88,11 +89,11 @@ const SkillsSection = () => {
                 {/* Sharingan SVG Background Overlay */}
                 <div className="sharingan-overlay" style={{ position: 'absolute', inset: 0, opacity: 0, transition: 'opacity 0.3s', pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 0 }}>
                   <svg width="80%" height="80%" viewBox="0 0 120 120" style={{ opacity: 0.15, filter: 'blur(2px)' }}>
-                    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-accent-primary)" strokeWidth="3" />
-                    <circle cx="60" cy="60" r="35" fill="none" stroke="var(--color-accent-primary)" strokeWidth="2" />
-                    <circle cx="60" cy="60" r="15" fill="var(--color-accent-primary)" opacity="0.8" />
+                    <circle cx="60" cy="60" r="50" fill="none" stroke={activeCat?.color || 'var(--color-accent-primary)'} strokeWidth="3" />
+                    <circle cx="60" cy="60" r="35" fill="none" stroke={activeCat?.color || 'var(--color-accent-primary)'} strokeWidth="2" />
+                    <circle cx="60" cy="60" r="15" fill={activeCat?.color || 'var(--color-accent-primary)'} opacity="0.8" />
                     {[0, 120, 240].map(angle => (
-                      <circle key={angle} cx={60 + 25 * Math.cos(angle * Math.PI / 180)} cy={60 + 25 * Math.sin(angle * Math.PI / 180)} r="6" fill="var(--color-accent-primary)" />
+                      <circle key={angle} cx={60 + 25 * Math.cos(angle * Math.PI / 180)} cy={60 + 25 * Math.sin(angle * Math.PI / 180)} r="6" fill={activeCat?.color || 'var(--color-accent-primary)'} />
                     ))}
                   </svg>
                 </div>

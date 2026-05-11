@@ -139,7 +139,7 @@ const Navbar = () => {
               textShadow: '0 0 12px rgba(204,34,34,0.4)',
             }}
           >
-            SHINOBI<span style={{ color: 'var(--color-accent-primary)', opacity: 0.75 }}>.DEV</span>
+            GUNA<span style={{ color: 'var(--color-accent-primary)', opacity: 0.75 }}>.DEV</span>
           </span>
         </button>
 
