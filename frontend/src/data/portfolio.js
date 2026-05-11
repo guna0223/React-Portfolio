@@ -219,5 +219,7 @@ export const experience = [
 export const contactInfo = {
   email: 'gunasekar0223@gmail.com',
   location: 'Bengaluru, Karnataka, India',
+  mapsUrl: 'https://maps.google.com/?q=Bengaluru,+Karnataka,+India',
   linkedin: 'linkedin.com/in/gunasekar0223',
+  whatsapp: '+91 9486436037',
 };

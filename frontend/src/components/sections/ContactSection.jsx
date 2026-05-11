@@ -35,8 +35,9 @@ const ContactSection = () => {
 
   const contactCards = [
     { icon: Mail, label: 'Email', value: contactInfo.email, href: `mailto:${contactInfo.email}` },
-    { icon: MapPin, label: 'Location', value: contactInfo.location },
+    { icon: MapPin, label: 'Location', value: contactInfo.location, href: contactInfo.mapsUrl },
     { icon: Link, label: 'LinkedIn', value: contactInfo.linkedin, href: `https://${contactInfo.linkedin}` },
+    { icon: Link, label: 'WhatsApp', value: contactInfo.whatsapp, href: `https://wa.me/${contactInfo.whatsapp.replace(/\D/g, '')}` },
   ];
 
   return (
