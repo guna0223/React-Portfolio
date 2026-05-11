@@ -212,6 +212,67 @@ const Particle = ({ color, x, y, delay, duration, size }) => (
 );
 
 /* ─────────────────────────────────────────────
+   SMOKE WISP PARTICLE — floating black smoke
+───────────────────────────────────────────── */
+const SmokeWisp = ({ x, y, delay, duration }) => (
+  <motion.div
+    style={{
+      position: 'absolute',
+      left: x,
+      top: y,
+      width: '20px',
+      height: '20px',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(0,0,0,0.6) 0%, rgba(50,0,0,0.3) 50%, transparent 100%)',
+      filter: 'blur(8px)',
+      pointerEvents: 'none',
+    }}
+    animate={{
+      y: [0, -120],
+      x: [0, (Math.random() - 0.5) * 80],
+      opacity: [0, 0.7, 0],
+      scale: [0.5, 1.5, 0.5],
+    }}
+    transition={{
+      duration,
+      delay,
+      repeat: Infinity,
+      ease: 'easeOut',
+    }}
+  />
+);
+
+/* ─────────────────────────────────────────────
+   BLACK FLAME ACCENT — dark flame particles
+───────────────────────────────────────────── */
+const BlackFlame = ({ x, y, delay }) => (
+  <motion.div
+    style={{
+      position: 'absolute',
+      left: x,
+      top: y,
+      width: '6px',
+      height: '15px',
+      background: 'linear-gradient(to top, rgba(0,0,0,0.8), rgba(100,0,0,0.4), transparent)',
+      borderRadius: '50% 50% 20% 20%',
+      filter: 'blur(2px)',
+      pointerEvents: 'none',
+    }}
+    animate={{
+      y: [0, -25],
+      opacity: [0, 0.8, 0],
+      scale: [0.8, 1.2, 0.8],
+    }}
+    transition={{
+      duration: 1.5,
+      delay,
+      repeat: Infinity,
+      ease: 'easeOut',
+    }}
+  />
+);
+
+/* ─────────────────────────────────────────────
    CHAKRA BEAM — energy beam between both eyes
 ───────────────────────────────────────────── */
 const ChakraBeam = ({ hover }) => (
@@ -258,6 +319,27 @@ const GenjutsuStartScreen = ({ onStart }) => {
     }))
   ).current;
 
+  // Smoke wisps for hover effect
+  const smokeWisps = useRef(
+    Array.from({ length: 12 }, (_, i) => ({
+      id: i,
+      x: `${20 + Math.random() * 60}%`,
+      y: `${40 + Math.random() * 40}%`,
+      delay: Math.random() * 2,
+      duration: 3 + Math.random() * 2,
+    }))
+  ).current;
+
+  // Black flame accents
+  const blackFlames = useRef(
+    Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      x: `${15 + Math.random() * 70}%`,
+      y: `${50 + Math.random() * 30}%`,
+      delay: Math.random() * 3,
+    }))
+  ).current;
+
   const handleClick = useCallback(async () => {
     if (activated) return;
     setActivated(true);
@@ -301,6 +383,16 @@ const GenjutsuStartScreen = ({ onStart }) => {
         {particles.map(p => (
           <Particle key={p.id} {...p} />
         ))}
+        {/* Smoke wisps on hover */}
+        <AnimatePresence>
+          {hover && smokeWisps.map(w => (
+            <SmokeWisp key={`smoke-${w.id}`} {...w} />
+          ))}
+        </AnimatePresence>
+        {/* Black flame accents */}
+        {blackFlames.map(f => (
+          <BlackFlame key={`flame-${f.id}`} {...f} />
+        ))}
       </div>
 
       {/* ── Vignette edges ── */}
@@ -318,6 +410,25 @@ const GenjutsuStartScreen = ({ onStart }) => {
         animate={{ opacity: [0, 1, 0.3, 1, 0] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
       />
+
+      {/* ── Subtle screen distortion on hover ── */}
+      <AnimatePresence>
+        {hover && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              pointerEvents: 'none',
+              background: 'radial-gradient(circle at center, rgba(255,0,0,0.05) 0%, transparent 50%)',
+              filter: 'blur(20px)',
+            }}
+          />
+        )}
+      </AnimatePresence>
 
       {/* ── Subtitle text above button ── */}
       <motion.p
@@ -345,8 +456,8 @@ const GenjutsuStartScreen = ({ onStart }) => {
           onHoverEnd={() => setHover(false)}
           onClick={handleClick}
           disabled={activated}
-          whileHover={{ y: -6, scale: 1.03 }}
-          whileTap={{ scale: 0.96 }}
+          whileHover={{ y: -8, scale: 1.05 }}
+          whileTap={{ scale: 0.94 }}
           transition={{ type: 'spring', stiffness: 300, damping: 18 }}
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -365,11 +476,33 @@ const GenjutsuStartScreen = ({ onStart }) => {
             outline: 'none',
             overflow: 'visible',
             boxShadow: hover
-              ? '0 0 40px rgba(160,0,0,0.5), 0 0 80px rgba(100,0,180,0.25), inset 0 0 30px rgba(0,0,0,0.8)'
-              : '0 0 20px rgba(100,0,0,0.3), 0 0 50px rgba(60,0,120,0.15), inset 0 0 20px rgba(0,0,0,0.6)',
+              ? '0 0 60px rgba(160,0,0,0.7), 0 0 120px rgba(100,0,180,0.4), inset 0 0 30px rgba(0,0,0,0.8), 0 20px 40px rgba(0,0,0,0.5)'
+              : '0 0 30px rgba(100,0,0,0.4), 0 0 70px rgba(60,0,120,0.2), inset 0 0 20px rgba(0,0,0,0.6), 0 10px 20px rgba(0,0,0,0.3)',
             transition: 'box-shadow 0.4s ease',
           }}
         >
+          {/* Breathing chakra aura */}
+          <motion.div
+            animate={{
+              opacity: [0.2, 0.5, 0.2],
+              scale: [0.95, 1.08, 0.95],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            style={{
+              position: 'absolute',
+              inset: '-25px',
+              borderRadius: '18px',
+              background: 'linear-gradient(135deg, rgba(200,0,0,0.08) 0%, rgba(100,0,200,0.08) 100%)',
+              filter: 'blur(15px)',
+              pointerEvents: 'none',
+              zIndex: -1,
+            }}
+          />
+
           {/* Animated border glow */}
           <motion.div
             style={{
@@ -408,25 +541,54 @@ const GenjutsuStartScreen = ({ onStart }) => {
           {/* Click burst effect */}
           <AnimatePresence>
             {activated && (
-              <motion.div
-                initial={{ scale: 0, opacity: 1 }}
-                animate={{ scale: 4, opacity: 0 }}
-                exit={{}}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                style={{
-                  position: 'absolute', inset: 0,
-                  borderRadius: '6px',
-                  background: 'radial-gradient(circle, rgba(255,80,80,0.6) 0%, rgba(120,0,255,0.4) 50%, transparent 80%)',
-                  pointerEvents: 'none',
-                }}
-              />
+              <>
+                <motion.div
+                  initial={{ scale: 0, opacity: 1 }}
+                  animate={{ scale: 6, opacity: 0 }}
+                  exit={{}}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                  style={{
+                    position: 'absolute', inset: 0,
+                    borderRadius: '6px',
+                    background: 'radial-gradient(circle, rgba(255,80,80,0.8) 0%, rgba(120,0,255,0.6) 40%, rgba(0,0,0,0.4) 70%, transparent 100%)',
+                    pointerEvents: 'none',
+                  }}
+                />
+                {/* Energy ripple */}
+                <motion.div
+                  initial={{ scale: 0, opacity: 0.8 }}
+                  animate={{ scale: 8, opacity: 0 }}
+                  exit={{}}
+                  transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }}
+                  style={{
+                    position: 'absolute',
+                    inset: '-50px',
+                    border: '2px solid rgba(255,0,0,0.5)',
+                    borderRadius: '50%',
+                    pointerEvents: 'none',
+                  }}
+                />
+                <motion.div
+                  initial={{ scale: 0, opacity: 0.6 }}
+                  animate={{ scale: 10, opacity: 0 }}
+                  exit={{}}
+                  transition={{ duration: 1.5, ease: 'easeOut', delay: 0.2 }}
+                  style={{
+                    position: 'absolute',
+                    inset: '-80px',
+                    border: '1px solid rgba(120,0,255,0.3)',
+                    borderRadius: '50%',
+                    pointerEvents: 'none',
+                  }}
+                />
+              </>
             )}
           </AnimatePresence>
 
           {/* ── LEFT: Sharingan ── */}
           <motion.div
-            animate={hover ? { rotate: [0, 5, -5, 0] } : {}}
-            transition={{ duration: 0.4, repeat: hover ? Infinity : 0 }}
+            animate={hover ? { rotate: [0, 10, -10, 0] } : {}}
+            transition={{ duration: 0.6, repeat: hover ? Infinity : 0 }}
             style={{ position: 'relative', zIndex: 2, flexShrink: 0 }}
           >
             <SharinganEye hover={hover} activated={activated} />
@@ -497,8 +659,8 @@ const GenjutsuStartScreen = ({ onStart }) => {
 
           {/* ── RIGHT: Rinnegan ── */}
           <motion.div
-            animate={hover ? { rotate: [0, -5, 5, 0] } : {}}
-            transition={{ duration: 0.4, repeat: hover ? Infinity : 0 }}
+            animate={hover ? { rotate: [0, -10, 10, 0] } : {}}
+            transition={{ duration: 0.6, repeat: hover ? Infinity : 0 }}
             style={{ position: 'relative', zIndex: 2, flexShrink: 0 }}
           >
             <RinneganEye hover={hover} activated={activated} />
