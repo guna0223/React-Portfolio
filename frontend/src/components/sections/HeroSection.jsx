@@ -7,6 +7,8 @@ import GlitchText from '../ui/GlitchText';
 import ChakraParticles from '../ui/ChakraParticles';
 import RinneSharingan from '../ui/RinneSharingan';
 import AkatsukiBackground from '../ui/AkatsukiBackground';
+import RasenganPulse from '../ui/RasenganPulse';
+import ChidoriFlash from '../ui/ChidoriFlash';
 import profileImg from '../../assets/AboutImage/homeimg.jpeg';
 
 /* ── Chakra Aura rings around the profile ── */
@@ -51,13 +53,50 @@ const MiniSharingan = () => (
 const HeroSection = () => {
   const [eyeOpen, setEyeOpen] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
+  const [activeAura, setActiveAura] = useState(null);
 
   useEffect(() => {
     // Trigger eyelid opening shortly after mount
     const t1 = setTimeout(() => setEyeOpen(true), 400);
     // Show content after eyelids finish opening
     const t2 = setTimeout(() => setContentVisible(true), 1600);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    
+    // Chakra Timing Loop (3s on, 5s off)
+    let timeoutId;
+    let isSubscribed = true;
+
+    const runLoop = () => {
+      if (!isSubscribed) return;
+      setActiveAura('rasengan');
+      
+      timeoutId = setTimeout(() => {
+        if (!isSubscribed) return;
+        setActiveAura(null);
+
+        timeoutId = setTimeout(() => {
+          if (!isSubscribed) return;
+          setActiveAura('chidori');
+
+          timeoutId = setTimeout(() => {
+            if (!isSubscribed) return;
+            setActiveAura(null);
+
+            timeoutId = setTimeout(runLoop, 5000);
+          }, 3000);
+        }, 5000);
+      }, 3000);
+    };
+
+    // Start loop slightly after content is visible
+    const t3 = setTimeout(runLoop, 2000);
+
+    return () => { 
+      clearTimeout(t1); 
+      clearTimeout(t2); 
+      clearTimeout(t3);
+      clearTimeout(timeoutId);
+      isSubscribed = false;
+    };
   }, []);
 
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -139,6 +178,34 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
           style={{ position: 'relative', marginBottom: '2.5rem', width: PROFILE_SIZE, height: PROFILE_SIZE }}
         >
+          {/* Timed Chakra Intervals (Behind Profile) */}
+          <AnimatePresence mode="wait">
+            {activeAura === 'rasengan' && (
+              <motion.div
+                key="rasengan"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                style={{ position: 'absolute', inset: 0, zIndex: 0 }}
+              >
+                <RasenganPulse />
+              </motion.div>
+            )}
+            {activeAura === 'chidori' && (
+              <motion.div
+                key="chidori"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                style={{ position: 'absolute', inset: 0, zIndex: 0 }}
+              >
+                <ChidoriFlash />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Chakra aura expanding rings */}
           <ChakraAura size={PROFILE_SIZE} />
 
