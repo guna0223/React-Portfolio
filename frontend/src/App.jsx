@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { useState } from 'react';
 import Navbar from './components/layout/Navbar';
@@ -19,11 +18,9 @@ import ContactSection from './components/sections/ContactSection';
 
 function Portfolio() {
   useSmoothScroll();
-  const [showIntro, setShowIntro] = useState(true);
 
   return (
     <>
-      {showIntro && <MangekyoIntro onComplete={() => setShowIntro(false)} />}
       <ChakraTrailCursor />
       <CustomCursor />
       <ScrollProgress />
@@ -47,15 +44,44 @@ function Portfolio() {
   );
 }
 
-function AppContent() {
-  return <Portfolio />;
-}
-
 function App() {
+  const [started, setStarted] = useState(false);
+  const [introDone, setIntroDone] = useState(false);
+
+  if (!started) {
+    return (
+      <div
+        style={{
+          height: '100vh',
+          background: '#000',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <button
+          onClick={() => setStarted(true)}
+          style={{
+            padding: '20px 50px',
+            background: 'red',
+            border: 'none',
+            color: 'white',
+            fontSize: '22px',
+            cursor: 'pointer',
+            borderRadius: '10px',
+          }}
+        >
+          ENTER THE GENJUTSU
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <>
+      {!introDone && <MangekyoIntro onComplete={() => setIntroDone(true)} />}
+      {introDone && <Portfolio />}
+    </>
   );
 }
 

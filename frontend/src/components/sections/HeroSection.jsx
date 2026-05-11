@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, Download, Code2, Link, Mail } from 'lucide-react';
 import { personalInfo } from '../../data/portfolio';
@@ -55,6 +55,10 @@ const HeroSection = () => {
   const [contentVisible, setContentVisible] = useState(false);
   const [activeAura, setActiveAura] = useState(null);
 
+  const audioRef = useRef(null);
+  const fadeIntervalRef = useRef(null);
+  const isPlayingRef = useRef(false);
+
   useEffect(() => {
     // Trigger eyelid opening shortly after mount
     const t1 = setTimeout(() => setEyeOpen(true), 400);
@@ -96,6 +100,89 @@ const HeroSection = () => {
       clearTimeout(t3);
       clearTimeout(timeoutId);
       isSubscribed = false;
+    };
+  }, []);
+
+  // Audio control functions
+  const startAudio = () => {
+    const audio = audioRef.current;
+    if (!audio || isPlayingRef.current) return;
+
+    audio.volume = 0;
+    audio.play().then(() => {
+      isPlayingRef.current = true;
+      console.log("Hero audio playing");
+
+      // Fade in
+      let volume = 0;
+      fadeIntervalRef.current = setInterval(() => {
+        if (volume < 0.15) { // Low cinematic volume
+          volume += 0.005;
+          audio.volume = volume;
+        } else {
+          clearInterval(fadeIntervalRef.current);
+          fadeIntervalRef.current = null;
+        }
+      }, 50);
+    }).catch((err) => {
+      console.log("Audio play failed:", err);
+    });
+  };
+
+  const stopAudio = () => {
+    const audio = audioRef.current;
+    if (!audio || !isPlayingRef.current) return;
+
+    // Fade out
+    let volume = audio.volume;
+    fadeIntervalRef.current = setInterval(() => {
+      if (volume > 0) {
+        volume -= 0.005;
+        audio.volume = volume;
+      } else {
+        clearInterval(fadeIntervalRef.current);
+        fadeIntervalRef.current = null;
+        audio.pause();
+        audio.currentTime = 0;
+        isPlayingRef.current = false;
+        console.log("Hero audio paused");
+      }
+    }, 50);
+  };
+
+  useEffect(() => {
+    const heroElement = document.getElementById('hero');
+
+    if (!heroElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            if (!isPlayingRef.current) {
+              startAudio();
+            }
+          } else {
+            if (isPlayingRef.current) {
+              stopAudio();
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(heroElement);
+
+    return () => {
+      observer.disconnect();
+      if (fadeIntervalRef.current) {
+        clearInterval(fadeIntervalRef.current);
+      }
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
     };
   }, []);
 
@@ -385,6 +472,16 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Background Audio */}
+      <audio
+        ref={audioRef}
+        preload="auto"
+        loop
+        style={{ display: 'none' }}
+      >
+        <source src="/audio/home-page.mp3" type="audio/mpeg" />
+      </audio>
     </section>
   );
 };

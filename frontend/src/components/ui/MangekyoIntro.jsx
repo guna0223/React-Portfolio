@@ -6,34 +6,65 @@ import { gsap } from 'gsap';
  * Dark Single-Eye Cinematic Intro
  * Pitch-black, heavily cropped, asymmetrical single-eye focus.
  * Finely tuned to preserve deep shadows while making the iris readable.
+ *
+ * Audio: Production-quality handling with autoplay fallback,
+ * volume fade-in/out, duplicate prevention, and cleanup.
  */
 const MangekyoIntro = ({ onComplete }) => {
   const [exiting, setExiting] = useState(false);
-  
+
   const containerRef = useRef(null);
   const topEyelidRef = useRef(null);
   const bottomEyelidRef = useRef(null);
   const irisRef = useRef(null);
   const mangekyoRef = useRef(null);
   const pupilGlowRef = useRef(null);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
+    const audio = audioRef.current;
+
+    if (audio) {
+      audio.volume = 0;
+
+      audio.play()
+        .then(() => {
+          let volume = 0;
+
+          const fade = setInterval(() => {
+            if (volume < 0.4) {
+              volume += 0.02;
+              audio.volume = volume;
+            } else {
+              clearInterval(fade);
+            }
+          }, 100);
+        })
+        .catch((err) => {
+          console.log('Audio blocked:', err);
+        });
+    }
+
     const tl = gsap.timeline({
       onComplete: () => {
+        if (audio) {
+          audio.pause();
+          audio.currentTime = 0;
+        }
         setExiting(true);
         setTimeout(() => {
           document.body.style.overflow = '';
           if (onComplete) onComplete();
-        }, 1000); 
-      }
+        }, 1000);
+      },
     });
 
     // Eye positioned at X: 550, Y: 225
     const closedTop = "M 350 225 C 450 225 650 225 750 225";
     const closedBottom = "M 750 225 C 650 225 450 225 350 225";
-    
+
     // Opened slightly wider than before to increase iris visibility
     const openTop = "M 350 225 C 450 160 650 170 750 225";
     const openBottom = "M 750 225 C 650 260 450 260 350 225";
@@ -45,22 +76,28 @@ const MangekyoIntro = ({ onComplete }) => {
     gsap.set(mangekyoRef.current, { rotation: -20, transformOrigin: '550px 225px' });
     gsap.set(pupilGlowRef.current, { opacity: 0 });
 
-    // 0s - 0.5s: Crimson pupil fades in
-    tl.to(pupilGlowRef.current, { opacity: 0.7, duration: 0.5, ease: 'power2.inOut' }, 0);
+    // 0s - 0.7s: Crimson pupil fades in
+    tl.to(pupilGlowRef.current, { opacity: 0.7, duration: 0.7, ease: 'power2.inOut' }, 0);
 
-    // 0.5s - 1.5s: Eyelids part, revealing higher-contrast iris
-    tl.to(irisRef.current, { scale: 1, opacity: 1, duration: 1, ease: 'power2.out' }, 0.5);
-    tl.to(topEyelidRef.current, { attr: { d: `M 0 0 L 800 0 L 800 225 L 0 225 Z ${openTop}` }, duration: 1.5, ease: 'power2.inOut' }, 0.5);
-    tl.to(bottomEyelidRef.current, { attr: { d: `${openBottom} L 0 450 L 800 450 Z` }, duration: 1.5, ease: 'power2.inOut' }, 0.5);
+    // 0.7s - 2.5s: Eyelids part, revealing higher-contrast iris
+    tl.to(irisRef.current, { scale: 1, opacity: 1, duration: 1.3, ease: 'power2.out' }, 0.7);
+    tl.to(topEyelidRef.current, { attr: { d: `M 0 0 L 800 0 L 800 225 L 0 225 Z ${openTop}` }, duration: 1.8, ease: 'power2.inOut' }, 0.7);
+    tl.to(bottomEyelidRef.current, { attr: { d: `${openBottom} L 0 450 L 800 450 Z` }, duration: 1.8, ease: 'power2.inOut' }, 0.7);
 
-    // 1.5s - 3s: Hold, slight pulse, Mangekyō locks
-    tl.to(irisRef.current, { scale: 1.05, duration: 0.2, ease: 'power4.out' }, 2.5);
-    tl.to(mangekyoRef.current, { rotation: 0, duration: 1.5, ease: 'power1.inOut' }, 1.5);
+    // 2.0s - 4.0s: Hold, slight pulse, Mangekyō locks
+    tl.to(irisRef.current, { scale: 1.05, duration: 0.3, ease: 'power4.out' }, 3.2);
+    tl.to(mangekyoRef.current, { rotation: 0, duration: 2.0, ease: 'power1.inOut' }, 2.0);
     // Stronger final pupil pulse
-    tl.to(pupilGlowRef.current, { opacity: 1, scale: 1.6, duration: 1.5, ease: 'power2.out' }, 1.5);
+    tl.to(pupilGlowRef.current, { opacity: 1, scale: 1.6, duration: 2.0, ease: 'power2.out' }, 2.0);
 
+    // ── Cleanup on unmount ──
     return () => {
       tl.kill();
+      const audio = audioRef.current;
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
       document.body.style.overflow = '';
     };
   }, [onComplete]);
@@ -86,7 +123,7 @@ const MangekyoIntro = ({ onComplete }) => {
           <div style={{
             position: 'absolute',
             top: '50%', left: '50%',
-            transform: 'translate(-30%, -50%)', 
+            transform: 'translate(-30%, -50%)',
             width: '600px', height: '600px',
             background: 'radial-gradient(circle, rgba(160,0,0,0.18) 0%, transparent 45%)',
             filter: 'blur(40px)',
@@ -153,7 +190,7 @@ const MangekyoIntro = ({ onComplete }) => {
                     {/* Subtle black outer ring for depth */}
                     <circle cx="550" cy="225" r="50" fill="none" stroke="#000" strokeWidth="1.5" opacity="0.8" />
                   </g>
-                  
+
                   {/* Increased Wet Cornea Reflection */}
                   <path d="M 505 185 Q 550 155 595 185 Q 550 175 505 185 Z" fill="rgba(255,255,255,0.6)" filter="blur(1px)" />
                   <circle cx="525" cy="175" r="4" fill="rgba(255,255,255,0.8)" filter="blur(1.5px)" />
@@ -165,6 +202,11 @@ const MangekyoIntro = ({ onComplete }) => {
               </g>
             </svg>
           </div>
+
+          {/* ── Audio Element ── */}
+          <audio ref={audioRef} preload="auto">
+            <source src="/audio/Mangekyou-Sharingan.mp3" type="audio/mpeg" />
+          </audio>
         </motion.div>
       )}
     </AnimatePresence>
