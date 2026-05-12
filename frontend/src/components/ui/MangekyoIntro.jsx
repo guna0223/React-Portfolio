@@ -61,34 +61,26 @@ const MangekyoIntro = ({ onComplete }) => {
       },
     });
 
-    // Eye positioned at X: 550, Y: 225
-    const closedTop = "M 350 225 C 450 225 650 225 750 225";
-    const closedBottom = "M 750 225 C 650 225 450 225 350 225";
-
-    // Opened slightly wider than before to increase iris visibility
-    const openTop = "M 350 225 C 450 160 650 170 750 225";
-    const openBottom = "M 750 225 C 650 260 450 260 350 225";
-
     // Initialize in pure darkness
-    gsap.set(topEyelidRef.current, { attr: { d: `M 0 0 L 800 0 L 800 225 L 0 225 Z ${closedTop}` } });
-    gsap.set(bottomEyelidRef.current, { attr: { d: `${closedBottom} L 0 450 L 800 450 Z` } });
-    gsap.set(irisRef.current, { scale: 0.8, opacity: 0, transformOrigin: '550px 225px' });
-    gsap.set(mangekyoRef.current, { rotation: -20, transformOrigin: '550px 225px' });
+    gsap.set(topEyelidRef.current, { scaleY: 1 });
+    gsap.set(bottomEyelidRef.current, { scaleY: 1 });
+    gsap.set(irisRef.current, { scale: 0.8, opacity: 0 });
+    gsap.set(mangekyoRef.current, { rotation: -20 });
     gsap.set(pupilGlowRef.current, { opacity: 0 });
 
-    // 0s - 0.7s: Crimson pupil fades in
-    tl.to(pupilGlowRef.current, { opacity: 0.7, duration: 0.7, ease: 'power2.inOut' }, 0);
+    // 0s - 0.7s: Crimson pupil/glow fades in
+    tl.to(pupilGlowRef.current, { opacity: 0.8, duration: 0.7, ease: 'power2.inOut' }, 0);
 
-    // 0.7s - 2.5s: Eyelids part, revealing higher-contrast iris
+    // 0.7s - 2.5s: Eyelids part, revealing video iris
     tl.to(irisRef.current, { scale: 1, opacity: 1, duration: 1.3, ease: 'power2.out' }, 0.7);
-    tl.to(topEyelidRef.current, { attr: { d: `M 0 0 L 800 0 L 800 225 L 0 225 Z ${openTop}` }, duration: 1.8, ease: 'power2.inOut' }, 0.7);
-    tl.to(bottomEyelidRef.current, { attr: { d: `${openBottom} L 0 450 L 800 450 Z` }, duration: 1.8, ease: 'power2.inOut' }, 0.7);
+    tl.to(topEyelidRef.current, { scaleY: 0, duration: 1.8, ease: 'power2.inOut' }, 0.7);
+    tl.to(bottomEyelidRef.current, { scaleY: 0, duration: 1.8, ease: 'power2.inOut' }, 0.7);
 
     // 2.0s - 4.0s: Hold, slight pulse, Mangekyō locks
     tl.to(irisRef.current, { scale: 1.05, duration: 0.3, ease: 'power4.out' }, 3.2);
     tl.to(mangekyoRef.current, { rotation: 0, duration: 2.0, ease: 'power1.inOut' }, 2.0);
     // Stronger final pupil pulse
-    tl.to(pupilGlowRef.current, { opacity: 1, scale: 1.6, duration: 2.0, ease: 'power2.out' }, 2.0);
+    tl.to(pupilGlowRef.current, { opacity: 1, scale: 1.5, duration: 2.0, ease: 'power2.out' }, 2.0);
 
     // ── Cleanup on unmount ──
     return () => {
@@ -149,58 +141,88 @@ const MangekyoIntro = ({ onComplete }) => {
               background: 'linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.85) 100%)',
             }} />
 
-            <svg width="100%" height="100%" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                {/* Slightly brighter sclera to ensure shadow depth isn't lost completely to black */}
-                <radialGradient id="scleraGradient" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#fff" stopOpacity="0.5" />
-                  <stop offset="60%" stopColor="#4a0000" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#050000" stopOpacity="1" />
-                </radialGradient>
+            {/* Cinematic Video Eye Section */}
+            <div
+              style={{
+                position: 'absolute',
+                left: '68.75%', // Equivalent to original 550px/800px position
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 'clamp(320px, 48vw, 750px)',
+                aspectRatio: '1',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 5,
+              }}
+            >
+              {/* Soft Red Ambient Glow behind the eye */}
+              <div
+                ref={pupilGlowRef}
+                style={{
+                  position: 'absolute',
+                  inset: '-15%',
+                  background: 'radial-gradient(circle, rgba(220,0,0,0.35) 0%, transparent 70%)',
+                  filter: 'blur(50px)',
+                  zIndex: -1,
+                }}
+              />
 
-                {/* More vibrant crimson iris */}
-                <radialGradient id="irisGradient" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#ff2222" />
-                  <stop offset="65%" stopColor="#aa0000" />
-                  <stop offset="100%" stopColor="#1a0000" />
-                </radialGradient>
-              </defs>
+              {/* The Eye Container (Masked & Animated) */}
+              <div
+                ref={irisRef}
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  maskImage: 'radial-gradient(circle, black 35%, transparent 85%)',
+                  WebkitMaskImage: 'radial-gradient(circle, black 35%, transparent 85%)',
+                  boxShadow: '0 0 60px rgba(0,0,0,0.95)',
+                }}
+              >
+                 <div ref={mangekyoRef} style={{ width: '100%', height: '100%', transformOrigin: 'center' }}>
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="auto"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        filter: 'brightness(0.9) contrast(1.1)',
+                      }}
+                    >
+                      <source src="/video/left-eye.mp4" type="video/mp4" />
+                    </video>
+                 </div>
 
-              {/* Scale up the entire eye composition around its center */}
-              <g transform="translate(550, 225) scale(1.4) translate(-550, -225)">
-                {/* Sclera & Eye Base */}
-                <path d="M 350 225 C 450 160 650 170 750 225 C 650 260 450 260 350 225 Z" fill="url(#scleraGradient)" />
-
-                {/* Glowing pupil core */}
-                <circle ref={pupilGlowRef} cx="550" cy="225" r="12" fill="#ff1a1a" filter="blur(6px)" />
-
-                {/* Iris Group */}
-                <g ref={irisRef}>
-                  <circle cx="550" cy="225" r="62" fill="url(#irisGradient)" />
-                  <circle cx="550" cy="225" r="62" fill="none" stroke="#000" strokeWidth="2" opacity="0.95" />
-
-                  {/* Highly readable Mangekyō Pattern */}
-                  <g ref={mangekyoRef}>
-                    <circle cx="550" cy="225" r="14" fill="#000" />
-                    {[0, 120, 240].map((angle, i) => (
-                      <g key={i} transform={`rotate(${angle}, 550, 225)`}>
-                        <path d="M 550 225 C 580 195 580 150 550 135 C 530 170 530 200 550 225" fill="#000" />
-                      </g>
-                    ))}
-                    {/* Subtle black outer ring for depth */}
-                    <circle cx="550" cy="225" r="50" fill="none" stroke="#000" strokeWidth="1.5" opacity="0.8" />
-                  </g>
-
-                  {/* Increased Wet Cornea Reflection */}
-                  <path d="M 505 185 Q 550 155 595 185 Q 550 175 505 185 Z" fill="rgba(255,255,255,0.6)" filter="blur(1px)" />
-                  <circle cx="525" cy="175" r="4" fill="rgba(255,255,255,0.8)" filter="blur(1.5px)" />
-                </g>
-
-                {/* Dark Eyelids separated from pure black by a subtle red rim shadow */}
-                <path ref={topEyelidRef} fill="#030001" filter="drop-shadow(0 4px 6px rgba(180,0,0,0.15)) drop-shadow(0 15px 25px rgba(0,0,0,0.95))" />
-                <path ref={bottomEyelidRef} fill="#030001" filter="drop-shadow(0 -4px 6px rgba(180,0,0,0.15)) drop-shadow(0 -15px 25px rgba(0,0,0,0.95))" />
-              </g>
-            </svg>
+                 {/* Cinematic Eyelid Overlays (reveal animation) */}
+                 <div
+                    ref={topEyelidRef}
+                    style={{
+                      position: 'absolute',
+                      top: 0, left: 0, width: '100%', height: '50.5%',
+                      background: '#000000',
+                      zIndex: 10,
+                      transformOrigin: 'top',
+                    }}
+                 />
+                 <div
+                    ref={bottomEyelidRef}
+                    style={{
+                      position: 'absolute',
+                      bottom: 0, left: 0, width: '100%', height: '50.5%',
+                      background: '#000000',
+                      zIndex: 10,
+                      transformOrigin: 'bottom',
+                    }}
+                 />
+              </div>
+            </div>
           </div>
 
           {/* ── Audio Element ── */}
