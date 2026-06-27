@@ -60,8 +60,6 @@
 *::after {
   margin: 0;
   padding: 0;
-  cursor: url('https://cdn.cursors-4u.net/previews/ninja-kunai-138b7125-32.webp') 32 , auto !important;
-
   box-sizing: border-box;
 }
 
@@ -77,12 +75,11 @@ body {
   color: var(--color-text-primary);
   line-height: 1.7;
   overflow-x: hidden;
+  cursor: none;
 }
 
 @media (hover: none) and (pointer: coarse) {
-  body {
-    cursor: auto;
-  }
+  body { cursor: auto; }
 }
 
 ::selection {
@@ -104,13 +101,12 @@ button {
   font-family: inherit;
   border: none;
   background: none;
+  cursor: none;
   color: inherit;
 }
 
 @media (hover: none) and (pointer: coarse) {
-  button {
-    cursor: pointer;
-  }
+  button { cursor: pointer; }
 }
 
 /* ============================================
@@ -248,7 +244,7 @@ button {
 }
 
 .neon-text-glow {
-  text-shadow:
+  text-shadow: 
     0 0 10px var(--color-glow-primary),
     0 0 20px rgba(204, 34, 34, 0.3),
     0 0 40px rgba(204, 34, 34, 0.15);
@@ -265,35 +261,28 @@ button {
 .section-divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg,
-      transparent,
-      var(--color-accent-tertiary) 20%,
-      var(--color-accent-primary) 50%,
-      var(--color-accent-purple) 80%,
-      transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent-tertiary) 20%,
+    var(--color-accent-primary) 50%,
+    var(--color-accent-purple) 80%,
+    transparent
+  );
   opacity: 0.4;
 }
 
 /* ============================================
    SCROLLBAR — Crimson theme
    ============================================ */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg-primary);
-}
-
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-bg-primary); }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--color-accent-primary), var(--color-accent-purple));
   border-radius: 3px;
   box-shadow: 0 0 6px var(--color-glow-primary);
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-secondary);
-}
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent-secondary); }
 
 /* ============================================
    GRID BACKGROUND — subtle dark grid
@@ -347,153 +336,79 @@ button {
 }
 
 @keyframes aurora-float {
-
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  33% {
-    transform: translate(30px, -30px) scale(1.05);
-  }
-
-  66% {
-    transform: translate(-20px, 20px) scale(0.95);
-  }
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
 }
 
 /* ============================================
    SHARINGAN / TOMOE ANIMATIONS
    ============================================ */
 @keyframes sharingan-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes sharingan-spin-reverse {
-  from {
-    transform: rotate(360deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
 }
 
 @keyframes tomoe-pulse {
-
-  0%,
-  100% {
-    opacity: 0.7;
-    filter: drop-shadow(0 0 3px var(--color-accent-primary));
-  }
-
-  50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 8px var(--color-accent-primary));
-  }
+  0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 3px var(--color-accent-primary)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px var(--color-accent-primary)); }
 }
 
 /* ============================================
    RINNEGAN RIPPLE ANIMATIONS
    ============================================ */
 @keyframes rinnegan-pulse {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.6;
-  }
-
-  50% {
-    transform: scale(1.1);
-    opacity: 0.2;
-  }
-
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
+  0% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 0.2; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
 @keyframes rinnegan-ripple {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: scale(2.5);
-    opacity: 0;
-  }
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
 
 /* ============================================
    CHAKRA BURST / ENERGY ANIMATIONS
    ============================================ */
 @keyframes chakra-glow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 5px var(--color-glow-primary), 0 0 10px rgba(204, 34, 34, 0.2);
+  0%, 100% {
+    box-shadow: 0 0 5px var(--color-glow-primary), 0 0 10px rgba(204,34,34,0.2);
   }
-
   50% {
-    box-shadow: 0 0 20px var(--color-glow-primary), 0 0 40px rgba(204, 34, 34, 0.3), 0 0 60px rgba(123, 47, 255, 0.15);
+    box-shadow: 0 0 20px var(--color-glow-primary), 0 0 40px rgba(204,34,34,0.3), 0 0 60px rgba(123,47,255,0.15);
   }
 }
 
 @keyframes chakra-float {
-
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-
-  50% {
-    transform: translateY(-12px) scale(1.03);
-  }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.03); }
 }
 
 @keyframes chakra-particle {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: translateY(-100px) scale(0);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-100px) scale(0); opacity: 0; }
 }
 
 /* ============================================
    AKATSUKI CLOUD PATTERN
    ============================================ */
 @keyframes akatsuki-drift {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100vw);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
 }
 
 /* ============================================
    SCANNER / GLITCH ANIMATIONS
    ============================================ */
 @keyframes scanner-sweep {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .scanner-line {
@@ -508,103 +423,44 @@ button {
 }
 
 @keyframes glitch {
-
-  0%,
-  100% {
-    transform: translate(0);
-    text-shadow: none;
-  }
-
-  20% {
-    transform: translate(-2px, 2px);
-    text-shadow: 2px 0 var(--color-accent-primary), -2px 0 var(--color-accent-purple);
-  }
-
-  40% {
-    transform: translate(2px, -2px);
-    text-shadow: -2px 0 var(--color-accent-primary), 2px 0 var(--color-accent-purple);
-  }
-
-  60% {
-    transform: translate(-1px, 1px);
-    text-shadow: 1px 0 var(--color-accent-secondary), -1px 0 var(--color-accent-purple-light);
-  }
-
-  80% {
-    transform: translate(1px, -1px);
-    text-shadow: -1px 0 var(--color-accent-secondary), 1px 0 var(--color-accent-purple-light);
-  }
+  0%, 100% { transform: translate(0); text-shadow: none; }
+  20% { transform: translate(-2px, 2px); text-shadow: 2px 0 var(--color-accent-primary), -2px 0 var(--color-accent-purple); }
+  40% { transform: translate(2px, -2px); text-shadow: -2px 0 var(--color-accent-primary), 2px 0 var(--color-accent-purple); }
+  60% { transform: translate(-1px, 1px); text-shadow: 1px 0 var(--color-accent-secondary), -1px 0 var(--color-accent-purple-light); }
+  80% { transform: translate(1px, -1px); text-shadow: -1px 0 var(--color-accent-secondary), 1px 0 var(--color-accent-purple-light); }
 }
 
 /* ============================================
    UTILITY ANIMATIONS
    ============================================ */
 @keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse-glow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 10px var(--color-glow-primary);
-  }
-
-  50% {
-    box-shadow: 0 0 30px var(--color-glow-primary), 0 0 60px rgba(204, 34, 34, 0.2);
-  }
+  0%, 100% { box-shadow: 0 0 10px var(--color-glow-primary); }
+  50% { box-shadow: 0 0 30px var(--color-glow-primary), 0 0 60px rgba(204,34,34,0.2); }
 }
 
 @keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes rotate-reverse {
-  from {
-    transform: rotate(360deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
 }
 
 /* ============================================
@@ -615,11 +471,13 @@ button {
   inset: 0;
   pointer-events: none;
   z-index: 9998;
-  background: repeating-linear-gradient(0deg,
-      transparent,
-      transparent 2px,
-      rgba(204, 34, 34, 0.012) 2px,
-      rgba(204, 34, 34, 0.012) 4px);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(204, 34, 34, 0.012) 2px,
+    rgba(204, 34, 34, 0.012) 4px
+  );
 }
 
 /* ============================================
@@ -641,10 +499,12 @@ button {
   width: 50%;
   height: 50%;
   transform-origin: 0 0;
-  background: conic-gradient(from 0deg,
-      transparent 0deg,
-      rgba(204, 34, 34, 0.08) 30deg,
-      transparent 60deg);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(204, 34, 34, 0.08) 30deg,
+    transparent 60deg
+  );
   animation: rotate 6s linear infinite;
 }
 
@@ -652,113 +512,64 @@ button {
    RESPONSIVE UTILITIES
    ============================================ */
 @media (max-width: 768px) {
-  .text-display {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-
-  .section-padding {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
+  .text-display { font-size: clamp(2rem, 8vw, 3rem); }
+  .section-padding { padding-top: 3rem; padding-bottom: 3rem; }
 }
 
 @media (max-width: 480px) {
-  .text-display {
-    font-size: 1.75rem;
-  }
+  .text-display { font-size: 1.75rem; }
 }
 
 /* ============================================
    AKATSUKI CLOUD DRIFT
    ============================================ */
 @keyframes akatsuki-cloud-drift {
-  0% {
-    transform: translateX(0) scaleY(1);
-  }
-
-  50% {
-    transform: translateX(115vw) scaleY(1.08);
-  }
-
-  50.01% {
-    transform: translateX(-40%) scaleY(1);
-  }
-
-  100% {
-    transform: translateX(0) scaleY(1);
-  }
+  0%   { transform: translateX(0) scaleY(1); }
+  50%  { transform: translateX(115vw) scaleY(1.08); }
+  50.01% { transform: translateX(-40%) scaleY(1); }
+  100% { transform: translateX(0) scaleY(1); }
 }
 
 /* ============================================
    EYELID OPEN — Mangekyō hero reveal
    ============================================ */
 @keyframes eyelid-top-open {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-100%);
-  }
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
 }
-
 @keyframes eyelid-bottom-open {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(100%);
-  }
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(100%); }
 }
 
 .eyelid-top {
-  position: absolute;
-  inset: 0;
-  bottom: 50%;
+  position: absolute; inset: 0; bottom: 50%;
   background: #05020a;
   z-index: 50;
   transform-origin: top;
 }
-
 .eyelid-bottom {
-  position: absolute;
-  inset: 0;
-  top: 50%;
+  position: absolute; inset: 0; top: 50%;
   background: #05020a;
   z-index: 50;
   transform-origin: bottom;
 }
-
-.eyelid-open .eyelid-top {
-  animation: eyelid-top-open 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.eyelid-open .eyelid-bottom {
-  animation: eyelid-bottom-open 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
+.eyelid-open .eyelid-top    { animation: eyelid-top-open    1.2s cubic-bezier(0.4,0,0.2,1) forwards; }
+.eyelid-open .eyelid-bottom { animation: eyelid-bottom-open 1.2s cubic-bezier(0.4,0,0.2,1) forwards; }
 
 /* ============================================
    CHAKRA AURA RINGS — profile glow waves
    ============================================ */
 @keyframes chakra-aura-wave {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.55;
-  }
-
-  100% {
-    transform: translate(-50%, -50%) scale(1.7);
-    opacity: 0;
-  }
+  0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.55; }
+  100% { transform: translate(-50%,-50%) scale(1.7); opacity: 0; }
 }
 
 .chakra-aura-ring {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   border-radius: 50%;
-  border: 1.5px solid rgba(123, 47, 255, 0.55);
+  border: 1.5px solid rgba(123,47,255,0.55);
   pointer-events: none;
   animation: chakra-aura-wave 2.6s ease-out infinite;
 }
@@ -767,63 +578,37 @@ button {
    KUNAI SLASH — project card hover
    ============================================ */
 @keyframes kunai-slash {
-  0% {
-    transform: translate(-120%, -120%) rotate(45deg);
-    opacity: 0;
-  }
-
-  30% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate(120%, 120%) rotate(45deg);
-    opacity: 0;
-  }
+  0%   { transform: translate(-120%,-120%) rotate(45deg); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translate(120%, 120%) rotate(45deg);  opacity: 0; }
 }
 
 .kunai-slash-overlay {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 10;
+  position: absolute; inset: 0; overflow: hidden;
+  border-radius: inherit; pointer-events: none; z-index: 10;
 }
-
 .kunai-slash-overlay::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(204, 34, 34, 0.9), rgba(255, 200, 100, 0.6), transparent);
-  box-shadow: 0 0 12px rgba(204, 34, 34, 0.7), 0 0 24px rgba(255, 180, 50, 0.4);
-  transform: translate(-120%, -120%) rotate(45deg);
+  top: 0; left: 0;
+  width: 200%; height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(204,34,34,0.9), rgba(255,200,100,0.6), transparent);
+  box-shadow: 0 0 12px rgba(204,34,34,0.7), 0 0 24px rgba(255,180,50,0.4);
+  transform: translate(-120%,-120%) rotate(45deg);
   opacity: 0;
   transition: none;
 }
-
 .kunai-slash-active::after {
-  animation: kunai-slash 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: kunai-slash 0.45s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
 }
 
 /* ============================================
    CHAKRA GLOW BUTTON TRAIL
    ============================================ */
 @keyframes chakra-border-trail {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .chakra-btn {
@@ -835,7 +620,6 @@ button {
   padding: 1px;
   border-radius: 0.75rem;
 }
-
 .chakra-btn-inner {
   background: #05020a;
   border-radius: calc(0.75rem - 1px);
@@ -846,25 +630,13 @@ button {
    SMOKE REVEAL — scroll-triggered sections
    ============================================ */
 @keyframes smoke-reveal {
-  0% {
-    opacity: 0;
-    filter: blur(20px);
-    transform: translateY(30px) scale(0.97);
-  }
-
-  60% {
-    filter: blur(2px);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0) scale(1);
-  }
+  0%   { opacity: 0; filter: blur(20px); transform: translateY(30px) scale(0.97); }
+  60%  { filter: blur(2px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
 }
 
 .smoke-reveal {
-  animation: smoke-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: smoke-reveal 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 
 /* ============================================
@@ -874,46 +646,30 @@ button {
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .sharingan-card:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 0 24px rgba(204, 34, 34, 0.4), 0 0 48px rgba(123, 47, 255, 0.2);
+  box-shadow: 0 0 24px rgba(204,34,34,0.4), 0 0 48px rgba(123,47,255,0.2);
 }
-
 .sharingan-card::before {
   content: '';
-  position: absolute;
-  inset: -1px;
+  position: absolute; inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(204, 34, 34, 0.4), rgba(123, 47, 255, 0.4));
+  background: linear-gradient(135deg, rgba(204,34,34,0.4), rgba(123,47,255,0.4));
   opacity: 0;
   transition: opacity 0.3s;
   z-index: 0;
   pointer-events: none;
 }
-
-.sharingan-card:hover::before {
-  opacity: 1;
-}
+.sharingan-card:hover::before { opacity: 1; }
 
 /* ============================================
    NEON BORDER PULSE
    ============================================ */
 @keyframes neon-border-pulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 5px rgba(204, 34, 34, 0.4), 0 0 10px rgba(204, 34, 34, 0.2);
-  }
-
-  50% {
-    box-shadow: 0 0 20px rgba(204, 34, 34, 0.7), 0 0 40px rgba(123, 47, 255, 0.3);
-  }
+  0%, 100% { box-shadow: 0 0 5px rgba(204,34,34,0.4), 0 0 10px rgba(204,34,34,0.2); }
+  50%       { box-shadow: 0 0 20px rgba(204,34,34,0.7), 0 0 40px rgba(123,47,255,0.3); }
 }
-
-.neon-pulse {
-  animation: neon-border-pulse 2s ease-in-out infinite;
-}
+.neon-pulse { animation: neon-border-pulse 2s ease-in-out infinite; }
 
 /* ============================================
    SCROLL FADE UP (generic utility)
@@ -923,7 +679,6 @@ button {
   transform: translateY(40px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-
 .scroll-fade-up.visible {
   opacity: 1;
   transform: translateY(0);

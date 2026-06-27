@@ -438,12 +438,13 @@ const GenjutsuStartScreen = ({ onStart }) => {
         transition={{ delay: 0.6, duration: 1 }}
         style={{
           color: 'rgba(180,0,0,0.7)',
-          fontSize: '11px',
-          letterSpacing: '6px',
+          fontSize: 'clamp(9px, 2.5vw, 11px)',
+          letterSpacing: 'clamp(3px, 1vw, 6px)',
           textTransform: 'uppercase',
           fontFamily: "'Segoe UI', sans-serif",
-          marginBottom: '48px',
+          marginBottom: 'clamp(24px, 5vw, 48px)',
           textShadow: '0 0 12px rgba(255,0,0,0.4)',
+          textAlign: 'center',
         }}
       >
         Awaken your Dōjutsu
@@ -466,8 +467,8 @@ const GenjutsuStartScreen = ({ onStart }) => {
             position: 'relative',
             display: 'flex',
             alignItems: 'center',
-            gap: '28px',
-            padding: '22px 44px',
+            gap: 'clamp(12px, 3vw, 28px)',
+            padding: 'clamp(14px, 3vw, 22px) clamp(16px, 4vw, 44px)',
             background: 'linear-gradient(135deg, rgba(10,0,0,0.95) 0%, rgba(20,0,30,0.95) 100%)',
             border: '1px solid rgba(180,0,0,0.4)',
             borderRadius: '6px',
@@ -592,7 +593,7 @@ const GenjutsuStartScreen = ({ onStart }) => {
             transition={{ duration: hover ? 1.5 : 4, repeat: Infinity, ease: 'linear' }}
             style={{ position: 'relative', zIndex: 2, flexShrink: 0 }}
           >
-            <img src={leftEyeImage} alt="Left Eye" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
+            <img src={leftEyeImage} alt="Left Eye" style={{ width: 'clamp(44px, 10vw, 72px)', height: 'clamp(44px, 10vw, 72px)', objectFit: 'contain' }} />
           </motion.div>
 
           {/* ── CENTER: Chakra beam + Text ── */}
@@ -604,9 +605,9 @@ const GenjutsuStartScreen = ({ onStart }) => {
               style={{
                 display: 'block',
                 fontFamily: "'Segoe UI', 'Arial', sans-serif",
-                fontSize: 'clamp(13px, 2vw, 17px)',
+                fontSize: 'clamp(11px, 3vw, 17px)',
                 fontWeight: '700',
-                letterSpacing: '5px',
+                letterSpacing: 'clamp(2px, 1vw, 5px)',
                 textTransform: 'uppercase',
                 color: '#ffffff',
                 textShadow: hover
@@ -638,9 +639,9 @@ const GenjutsuStartScreen = ({ onStart }) => {
             {/* Sub-label */}
             <motion.span
               style={{
-                marginTop: '8px',
-                fontSize: '9px',
-                letterSpacing: '4px',
+                marginTop: 'clamp(4px, 1vw, 8px)',
+                fontSize: 'clamp(7px, 1.5vw, 9px)',
+                letterSpacing: 'clamp(2px, 0.8vw, 4px)',
                 color: 'rgba(180,0,0,0.6)',
                 fontFamily: "'Segoe UI', sans-serif",
                 textTransform: 'uppercase',
@@ -658,7 +659,7 @@ const GenjutsuStartScreen = ({ onStart }) => {
             transition={{ duration: hover ? 1.5 : 4, repeat: Infinity, ease: 'linear' }}
             style={{ position: 'relative', zIndex: 2, flexShrink: 0 }}
           >
-            <img src={leftEyeImage} alt="Right Eye" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
+            <img src={leftEyeImage} alt="Right Eye" style={{ width: 'clamp(44px, 10vw, 72px)', height: 'clamp(44px, 10vw, 72px)', objectFit: 'contain' }} />
           </motion.div>
         </motion.button>
       </motion.div>
@@ -669,10 +670,10 @@ const GenjutsuStartScreen = ({ onStart }) => {
         animate={{ opacity: [0, 0.5, 0.5, 0] }}
         transition={{ delay: 2, duration: 3, times: [0, 0.3, 0.7, 1], repeat: Infinity, repeatDelay: 2 }}
         style={{
-          marginTop: '48px',
+          marginTop: 'clamp(24px, 5vw, 48px)',
           color: 'rgba(120,0,0,0.6)',
-          fontSize: '10px',
-          letterSpacing: '5px',
+          fontSize: 'clamp(8px, 2vw, 10px)',
+          letterSpacing: 'clamp(2px, 1vw, 5px)',
           textTransform: 'uppercase',
           fontFamily: "'Segoe UI', sans-serif",
         }}
