@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Code, X } from 'lucide-react';
 import { projects } from '../../data/portfolio';
@@ -40,6 +40,18 @@ const ProjectCard = ({ project, onClick }) => {
 
 const ProjectsSection = () => {
   const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    if (selected) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selected]);
+
   return (
     <section id="projects" className="section-padding" style={{ position: 'relative' }}>
       <div className="grid-background" />
@@ -58,19 +70,22 @@ const ProjectsSection = () => {
           >
             <motion.div initial={{ scale: 0.9, y: 30 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 30 }}
               transition={{ type: 'spring', bounce: 0.2 }} onClick={e => e.stopPropagation()}
-              style={{ width: '100%', maxWidth: 820, maxHeight: '90vh', overflow: 'auto', borderRadius: '1.5rem', background: 'var(--color-bg-secondary)', border: '1px solid rgba(204,34,34,0.3)', boxShadow: '0 0 60px rgba(204,34,34,0.2), 0 0 120px rgba(123,47,255,0.1)' }}
+              style={{ position: 'relative', width: '100%', maxWidth: 820, maxHeight: '90vh', display: 'flex', flexDirection: 'column', borderRadius: '1.5rem', background: 'var(--color-bg-secondary)', border: '1px solid rgba(204,34,34,0.3)', boxShadow: '0 0 60px rgba(204,34,34,0.2), 0 0 120px rgba(123,47,255,0.1)', overflow: 'hidden' }}
             >
-              <button onClick={() => setSelected(null)} style={{ position: 'sticky', top: '1rem', float: 'right', marginRight: '1rem', width: 36, height: 36, borderRadius: '50%', background: 'rgba(204,34,34,0.15)', border: '1px solid rgba(204,34,34,0.3)', color: '#cc2222', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}><X size={18} /></button>
-              <div style={{ aspectRatio: '16/9', overflow: 'hidden', borderRadius: '1.5rem 1.5rem 0 0' }}><img src={selected.image} alt={selected.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>
-              <div style={{ padding: '2rem' }}>
-                <h2 className="text-h2" style={{ fontSize: '1.75rem', marginBottom: '1rem', color: 'var(--color-text-primary)' }}>{selected.title}</h2>
-                <p className="text-body" style={{ marginBottom: '1.5rem', lineHeight: 1.8 }}>{selected.description}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
-                  {selected.tech.map(t => <span key={t} style={{ padding: '0.375rem 0.875rem', borderRadius: '9999px', fontSize: '0.8125rem', fontWeight: 500, fontFamily: 'var(--font-mono)', background: 'rgba(204,34,34,0.1)', border: '1px solid rgba(204,34,34,0.25)', color: 'var(--color-accent-primary)' }}>{t}</span>)}
-                </div>
-                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                  {selected.link && <a href={selected.link} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', background: 'linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-purple))', color: '#fff', fontWeight: 600, fontSize: '0.9375rem', boxShadow: '0 0 20px rgba(204,34,34,0.4)' }}><ExternalLink size={16} />Live Demo</a>}
-                  <a href={selected.github} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border-medium)', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '0.9375rem' }}><Code size={16} />Source Code</a>
+              <button onClick={() => setSelected(null)} style={{ position: 'absolute', top: '1rem', right: '1rem', width: 36, height: 36, borderRadius: '50%', background: 'rgba(5,2,10,0.6)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}><X size={18} /></button>
+              
+              <div style={{ overflowY: 'auto', flex: 1, minHeight: 0, width: '100%' }}>
+                <div style={{ aspectRatio: '16/9', width: '100%' }}><img src={selected.image} alt={selected.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>
+                <div style={{ padding: '2rem' }}>
+                  <h2 className="text-h2" style={{ fontSize: '1.75rem', marginBottom: '1rem', color: 'var(--color-text-primary)' }}>{selected.title}</h2>
+                  <p className="text-body" style={{ marginBottom: '1.5rem', lineHeight: 1.8 }}>{selected.description}</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
+                    {selected.tech.map(t => <span key={t} style={{ padding: '0.375rem 0.875rem', borderRadius: '9999px', fontSize: '0.8125rem', fontWeight: 500, fontFamily: 'var(--font-mono)', background: 'rgba(204,34,34,0.1)', border: '1px solid rgba(204,34,34,0.25)', color: 'var(--color-accent-primary)' }}>{t}</span>)}
+                  </div>
+                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    {selected.link && <a href={selected.link} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', background: 'linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-purple))', color: '#fff', fontWeight: 600, fontSize: '0.9375rem', boxShadow: '0 0 20px rgba(204,34,34,0.4)', cursor: 'pointer' }}><ExternalLink size={16} />Live Demo</a>}
+                    <a href={selected.github} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border-medium)', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '0.9375rem', cursor: 'pointer' }}><Code size={16} />Source Code</a>
+                  </div>
                 </div>
               </div>
             </motion.div>

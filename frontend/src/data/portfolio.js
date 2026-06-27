@@ -5,6 +5,7 @@ import weatherImg from '../assets/images/project-img/weather.png';
 import movie from '../assets/images/project-img/movie.png';
 import shopping from '../assets/images/project-img/shopping.png';
 import game from '../assets/images/project-img/game.png';
+import cricketImg from '../assets/images/project-img/cricketImg.png';
 
 export const personalInfo = {
   name: 'Gunasekar',
@@ -75,6 +76,27 @@ export const skills = {
 export const projects = [
   {
     id: 1,
+    title: 'Game Store — Django',
+    image: gameSellingImg,
+    description:
+      'A full-stack game selling web application built with Django framework. Features include secure user authentication, comprehensive product catalog management, shopping cart functionality, order processing, and admin dashboard for inventory management.',
+    tech: ['Django', 'Python', 'PostgreSQL', 'HTML/CSS'],
+    link: "https://django-game-4ifu.onrender.com/",
+    github: 'https://github.com/guna0223/Django-Game',
+    featured: false,
+  },
+  {
+    id: 2,
+    title: 'Cricket Tournament Manager',
+    image: cricketImg,
+    description:
+      'A full-stack live cricket scoring platform built with the MERN stack. Features include real-time ball-by-ball scoring with Socket.IO, over history tracking, innings and match lifecycle management, dynamic points table, tournament statistics, and a branded PDF generator for sponsor profiles. Admin panel supports no-ball, wicket, and overthrow workflows via modal-driven scoring controls.',
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'PDFKit'],
+    link: 'https://pcc-pungampatti.vercel.app/',
+    featured: false,
+  },
+  {
+    id: 3,
     title: 'VEXO — E-Commerce App',
     image: shopping,
     description:
@@ -82,40 +104,18 @@ export const projects = [
     tech: ['React', 'REST API', 'CSS3', 'Context API'],
     link: 'https://react-ecommerce-fxed.vercel.app/',
     github: 'https://github.com/guna0223/React-Ecommerce',
-    featured: true,
-  },
-  {
-    id: 2,
-    title: 'WhatsApp UI Clone',
-    image: whatsapp,
-    description:
-      'A pixel-perfect responsive WhatsApp UI clone built with React. Features include a complete chat list sidebar with search, message conversations with timestamps, online status indicators, typing indicators, and dynamic data rendering from JSON.',
-    tech: ['React', 'JavaScript', 'JSON', 'CSS3'],
-    link: 'https://whatsapp-ui-ten.vercel.app/',
-    github: 'https://github.com/guna0223/whatsapp-ui',
-    featured: true,
-  },
-  {
-    id: 3,
-    title: 'Weather Dashboard',
-    image: weatherImg,
-    description:
-      'An interactive and user-friendly weather dashboard featuring location-based forecasts using geolocation API, current weather conditions with detailed metrics, 7-day forecast predictions, interactive weather maps, and historical data visualization charts.',
-    tech: ['JavaScript', 'OpenWeather API', 'Chart.js', 'CSS3'],
-    link: 'https://weather-dashbord-seven.vercel.app/',
-    github: 'https://github.com/guna0223/weather-dashbord',
-    featured: true,
+    featured: false,
   },
   {
     id: 4,
-    title: 'Portfolio Website',
-    image: portfolioImg,
+    title: 'Retro Game Vault',
+    image: game,
     description:
-      'A modern, responsive portfolio built with React focused on performance, accessibility, and clean UI. Features smooth scroll navigation, responsive design for all devices, SEO optimization, interactive animations, and a unique retro arcade-style loading screen.',
-    tech: ['React', 'JavaScript', 'CSS3', 'Vite'],
-    link: 'https://portfolio-guna.vercel.app/',
-    github: 'https://github.com/guna0223/portfolio',
-    featured: false,
+      'A nostalgic retro arcade gaming platform featuring classic games through EmulatorJS. Includes multiple game ROMs, smooth emulation, save states, and authentic retro aesthetics with a modern cyberpunk interface.',
+    tech: ['React', 'EmulatorJS', 'WebAssembly', 'CSS3'],
+    link: 'https://retro-game-three.vercel.app/',
+    github: 'https://github.com/guna0223/retro-game',
+    featured:false,
   },
   {
     id: 5,
@@ -126,30 +126,44 @@ export const projects = [
     tech: ['React', 'Context API', 'TMDB API', 'CSS3'],
     link: 'https://movie-project-omega-tawny.vercel.app/',
     github: 'https://github.com/guna0223/movie-project',
-    featured: true,
-  },
-  {
-    id: 6,
-    title: 'Game Store — Django',
-    image: gameSellingImg,
-    description:
-      'A full-stack game selling web application built with Django framework. Features include secure user authentication, comprehensive product catalog management, shopping cart functionality, order processing, and admin dashboard for inventory management.',
-    tech: ['Django', 'Python', 'PostgreSQL', 'HTML/CSS'],
-    link: null,
-    github: 'https://github.com/guna0223/Django-Game',
     featured: false,
   },
   {
-    id: 7,
-    title: 'Retro Game Vault',
-    image: game,
+    id: 6,
+    title: 'Portfolio Website',
+    image: portfolioImg,
     description:
-      'A nostalgic retro arcade gaming platform featuring classic games through EmulatorJS. Includes multiple game ROMs, smooth emulation, save states, and authentic retro aesthetics with a modern cyberpunk interface.',
-    tech: ['React', 'EmulatorJS', 'WebAssembly', 'CSS3'],
-    link: 'https://retro-game-three.vercel.app/',
-    github: 'https://github.com/guna0223/retro-game',
-    featured: true,
+      'A modern, responsive portfolio built with React focused on performance, accessibility, and clean UI. Features smooth scroll navigation, responsive design for all devices, SEO optimization, interactive animations, and a unique retro arcade-style loading screen.',
+    tech: ['React', 'JavaScript', 'CSS3', 'Vite'],
+    link: 'https://portfolio-guna.vercel.app/',
+    github: 'https://github.com/guna0223/portfolio',
+    featured: false,
   },
+
+  {
+    id: 7,
+    title: 'WhatsApp UI Clone',
+    image: whatsapp,
+    description:
+      'A pixel-perfect responsive WhatsApp UI clone built with React. Features include a complete chat list sidebar with search, message conversations with timestamps, online status indicators, typing indicators, and dynamic data rendering from JSON.',
+    tech: ['React', 'JavaScript', 'JSON', 'CSS3'],
+    link: 'https://whatsapp-ui-ten.vercel.app/',
+    github: 'https://github.com/guna0223/whatsapp-ui',
+    featured: false,
+  },
+  {
+    id: 8,
+    title: 'Weather Dashboard',
+    image: weatherImg,
+    description:
+      'An interactive and user-friendly weather dashboard featuring location-based forecasts using geolocation API, current weather conditions with detailed metrics, 7-day forecast predictions, interactive weather maps, and historical data visualization charts.',
+    tech: ['JavaScript', 'OpenWeather API', 'Chart.js', 'CSS3'],
+    link: 'https://weather-dashbord-seven.vercel.app/',
+    github: 'https://github.com/guna0223/weather-dashbord',
+    featured: false,
+  },
+
+
 ];
 
 export const services = [
@@ -195,10 +209,10 @@ export const experience = [
     organization: 'Draptor Technologies',
     period: '02/03/2026 - 02/06/2026',
     description:
-      'Worked as a Full Stack Developer Intern on a property rental-based platform'
-    ,
+      'Worked as a Full Stack Developer Intern on a property rental-based platform',
+    certificateUrl: '/certificate/Gunasekar_intern_certificate.pdf',
   },
-   {
+  {
     id: 2,
     type: 'project',
     title: 'Full-Stack Development',
