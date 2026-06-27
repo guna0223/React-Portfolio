@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+import leftEyeImage from '../../assets/Loading/left.png';
 
 /* ─────────────────────────────────────────────
    SHARINGAN SVG — left eye
@@ -585,13 +586,13 @@ const GenjutsuStartScreen = ({ onStart }) => {
             )}
           </AnimatePresence>
 
-          {/* ── LEFT: Sharingan ── */}
+          {/* ── LEFT: Eye ── */}
           <motion.div
-            animate={hover ? { rotate: [0, 10, -10, 0] } : {}}
-            transition={{ duration: 0.6, repeat: hover ? Infinity : 0 }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: hover ? 1.5 : 4, repeat: Infinity, ease: 'linear' }}
             style={{ position: 'relative', zIndex: 2, flexShrink: 0 }}
           >
-            <SharinganEye hover={hover} activated={activated} />
+            <img src={leftEyeImage} alt="Left Eye" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
           </motion.div>
 
           {/* ── CENTER: Chakra beam + Text ── */}
@@ -651,13 +652,13 @@ const GenjutsuStartScreen = ({ onStart }) => {
             </motion.span>
           </div>
 
-          {/* ── RIGHT: Rinnegan ── */}
+          {/* ── RIGHT: Eye ── */}
           <motion.div
-            animate={hover ? { rotate: [0, -10, 10, 0] } : {}}
-            transition={{ duration: 0.6, repeat: hover ? Infinity : 0 }}
+            animate={{ rotate: -360 }}
+            transition={{ duration: hover ? 1.5 : 4, repeat: Infinity, ease: 'linear' }}
             style={{ position: 'relative', zIndex: 2, flexShrink: 0 }}
           >
-            <RinneganEye hover={hover} activated={activated} />
+            <img src={leftEyeImage} alt="Right Eye" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
           </motion.div>
         </motion.button>
       </motion.div>
