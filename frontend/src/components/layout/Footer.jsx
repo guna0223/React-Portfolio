@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Link, Mail, ArrowUp } from 'lucide-react';
 import { personalInfo } from '../../data/portfolio';
+import navLogo from '../../assets/images/nav-img/nav.jpg';
 
 const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -32,15 +33,7 @@ const Footer = () => {
             animate={{ rotate: 360 }} transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
             style={{ display: 'inline-block', marginBottom: '1.25rem' }}
           >
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="18" r="17" stroke="#cc2222" strokeWidth="1.5" opacity="0.6" />
-              <circle cx="18" cy="18" r="11" stroke="#cc2222" strokeWidth="1" opacity="0.4" />
-              {[0, 120, 240].map((angle) => {
-                const rad = ((angle - 90) * Math.PI) / 180;
-                return <circle key={angle} cx={18 + 7 * Math.cos(rad)} cy={18 + 7 * Math.sin(rad)} r={2.5} fill="#cc2222" opacity="0.8" />;
-              })}
-              <circle cx="18" cy="18" r="3" fill="#cc2222" opacity="0.9" />
-            </svg>
+            <img src={navLogo} alt="Logo" style={{ width: 50, height: 50, borderRadius: '50%', objectFit: 'cover' }} />
           </motion.div>
 
           <h3 className="text-h2" style={{ marginBottom: '1rem' }}>

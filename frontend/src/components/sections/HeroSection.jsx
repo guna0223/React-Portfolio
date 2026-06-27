@@ -10,6 +10,7 @@ import AkatsukiBackground from '../ui/AkatsukiBackground';
 import RasenganPulse from '../ui/RasenganPulse';
 import ChidoriFlash from '../ui/ChidoriFlash';
 import profileImg from '../../assets/AboutImage/homeimg.jpeg';
+import navLogo from '../../assets/images/nav-img/nav.jpg';
 
 /* ── Chakra Aura rings around the profile ── */
 const ChakraAura = ({ size }) => (
@@ -36,18 +37,13 @@ const ChakraAura = ({ size }) => (
 
 /* ── Small Sharingan SVG for hero badge ── */
 const MiniSharingan = () => (
-  <motion.svg
+  <motion.img
+    src={navLogo}
+    alt="Logo"
     animate={{ rotate: 360 }}
     transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-    width="16" height="16" viewBox="0 0 16 16" fill="none"
-  >
-    <circle cx="8" cy="8" r="7" stroke="#cc2222" strokeWidth="1" opacity="0.8" />
-    {[270, 30, 150].map((deg, i) => {
-      const r = (deg * Math.PI) / 180;
-      return <circle key={i} cx={8 + 3.5 * Math.cos(r)} cy={8 + 3.5 * Math.sin(r)} r={1.2} fill="#cc2222" />;
-    })}
-    <circle cx="8" cy="8" r="1.5" fill="#cc2222" />
-  </motion.svg>
+    style={{ width: 16, height: 16, borderRadius: '50%', objectFit: 'cover' }}
+  />
 );
 
 const HeroSection = () => {

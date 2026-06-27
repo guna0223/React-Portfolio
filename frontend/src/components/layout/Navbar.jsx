@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import navLogo from '../../assets/images/nav-img/nav.jpg';
 
 const navItems = [
   { id: 'hero', label: 'Home' },
@@ -126,7 +127,7 @@ const Navbar = () => {
             transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
             style={{ display: 'flex' }}
           >
-            <SharinganLogo />
+            <img src={navLogo} alt="Logo" style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
           </motion.div>
           <span
             style={{
