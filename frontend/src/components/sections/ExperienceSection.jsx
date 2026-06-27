@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { experience } from '../../data/portfolio';
 import HoloCard from '../ui/HoloCard';
 import SectionHeading from '../ui/SectionHeading';
-import { GraduationCap, Briefcase, Award, X, FileText } from 'lucide-react';
+import { GraduationCap, Briefcase, Award, X, FileText, ExternalLink } from 'lucide-react';
 
 const iconMap = { education: GraduationCap, project: Briefcase, achievement: Award };
 const typeColors = { education: '#cc2222', project: '#7b2fff', achievement: '#f5a623' };
@@ -61,37 +61,69 @@ const ExperienceSection = () => {
 
                   {/* Bottom accent line */}
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(90deg, transparent, ${color}, transparent)`, opacity: 0.4, borderRadius: '0 0 1rem 1rem' }} />
-                  
-                  {/* Certificate Button */}
-                  {item.certificateUrl && (
-                    <div style={{ marginTop: '1.5rem', position: 'relative', zIndex: 2 }}>
-                      <button 
-                        onClick={() => setSelectedCertificate(item.certificateUrl)}
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.5rem',
-                          padding: '0.5rem 1rem',
-                          background: `linear-gradient(90deg, ${color}20, transparent)`,
-                          border: `1px solid ${color}50`,
-                          borderRadius: '8px',
-                          color: 'var(--color-text-primary)',
-                          fontSize: '0.875rem',
-                          cursor: 'pointer',
-                          transition: 'all 0.3s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = `linear-gradient(90deg, ${color}40, transparent)`;
-                          e.currentTarget.style.transform = 'translateY(-2px)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = `linear-gradient(90deg, ${color}20, transparent)`;
-                          e.currentTarget.style.transform = 'translateY(0)';
-                        }}
-                      >
-                        <FileText size={16} color={color} />
-                        View Certificate
-                      </button>
+                  {/* Action Buttons */}
+                  {(item.certificateUrl || item.liveUrl) && (
+                    <div style={{ marginTop: '1.5rem', position: 'relative', zIndex: 2, display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                      {item.certificateUrl && (
+                        <button 
+                          onClick={() => setSelectedCertificate(item.certificateUrl)}
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '0.5rem 1rem',
+                            background: `linear-gradient(90deg, ${color}20, transparent)`,
+                            border: `1px solid ${color}50`,
+                            borderRadius: '8px',
+                            color: 'var(--color-text-primary)',
+                            fontSize: '0.875rem',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.background = `linear-gradient(90deg, ${color}40, transparent)`;
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.background = `linear-gradient(90deg, ${color}20, transparent)`;
+                            e.currentTarget.style.transform = 'translateY(0)';
+                          }}
+                        >
+                          <FileText size={16} color={color} />
+                          View Certificate
+                        </button>
+                      )}
+                      {item.liveUrl && (
+                        <a 
+                          href={item.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '0.5rem 1rem',
+                            background: `linear-gradient(90deg, transparent, ${color}20)`,
+                            border: `1px solid ${color}50`,
+                            borderRadius: '8px',
+                            color: 'var(--color-text-primary)',
+                            fontSize: '0.875rem',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.background = `linear-gradient(90deg, transparent, ${color}40)`;
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.background = `linear-gradient(90deg, transparent, ${color}20)`;
+                            e.currentTarget.style.transform = 'translateY(0)';
+                          }}
+                        >
+                          <ExternalLink size={16} color={color} />
+                          Live Project
+                        </a>
+                      )}
                     </div>
                   )}
                 </HoloCard>

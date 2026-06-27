@@ -211,13 +211,14 @@ export const experience = [
     description:
       'Worked as a Full Stack Developer Intern on a property rental-based platform',
     certificateUrl: '/certificate/Gunasekar_intern_certificate.pdf',
+    liveUrl: 'https://badigemane.com/',
   },
   {
     id: 2,
     type: 'project',
     title: 'Full-Stack Development',
     organization: 'Self-Directed',
-    period: '2023 - Present',
+    period: '2025 - Present',
     description: 'Building production-level web applications with React, Django, and modern tooling.',
   },
   {
@@ -225,7 +226,7 @@ export const experience = [
     type: 'achievement',
     title: 'Open Source Contributor',
     organization: 'GitHub',
-    period: '2024 - Present',
+    period: '2025 - Present',
     description: 'Active contributor with 10+ public repositories and growing community engagement.',
   },
 ];
