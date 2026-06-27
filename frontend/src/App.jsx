@@ -4,7 +4,6 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollProgress from './components/layout/ScrollProgress';
-import ChakraTrailCursor from './components/ui/ChakraTrailCursor';
 import MangekyoIntro from './components/ui/MangekyoIntro';
 import GenjutsuStartScreen from './components/ui/GenjutsuStartScreen';
 import HeroSection from './components/sections/HeroSection';
@@ -22,7 +21,6 @@ function Portfolio() {
 
   return (
     <>
-      <ChakraTrailCursor />
       <ScrollProgress />
       <Navbar />
       <main>
