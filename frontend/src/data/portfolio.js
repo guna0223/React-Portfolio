@@ -242,7 +242,6 @@ export const clientProjects = [
     featured: false,
   },
   {
-    id: 2,
     title: 'Cricket Tournament Manager',
     image: cricketImg,
     description:
