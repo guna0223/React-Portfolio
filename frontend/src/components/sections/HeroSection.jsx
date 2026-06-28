@@ -18,7 +18,7 @@ const showAlert = (title, message, type = 'info') => {
   alert.className = 'ninja-alert';
   alert.innerHTML = `
     <div class="ninja-alert-content">
-      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : '⚡'}</div>
+      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : ''}</div>
       <div class="ninja-alert-text">
         <div class="ninja-alert-title">${title}</div>
         <div class="ninja-alert-message">${message}</div>
