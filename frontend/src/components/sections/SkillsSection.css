@@ -43,6 +43,8 @@
 
 .skills-tab--active {
   color: #05020a;
+  background-color: var(--tab-color);
+  border: 1px solid var(--tab-color);
   box-shadow: 0 0 15px var(--tab-color-glow);
 }
 

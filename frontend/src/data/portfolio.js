@@ -6,6 +6,7 @@ import movie from '../assets/images/project-img/movie.png';
 import shopping from '../assets/images/project-img/shopping.png';
 import game from '../assets/images/project-img/game.png';
 import cricketImg from '../assets/images/project-img/cricketImg.png';
+import nithishMakeupImg from '../assets/images/project-img/nithishMakeupImg.png';
 
 export const personalInfo = {
   name: 'Gunasekar',
@@ -87,16 +88,6 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'Cricket Tournament Manager',
-    image: cricketImg,
-    description:
-      'A full-stack live cricket scoring platform built with the MERN stack. Features include real-time ball-by-ball scoring with Socket.IO, over history tracking, innings and match lifecycle management, dynamic points table, tournament statistics, and a branded PDF generator for sponsor profiles. Admin panel supports no-ball, wicket, and overthrow workflows via modal-driven scoring controls.',
-    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'PDFKit'],
-    link: 'https://pcc-pungampatti.vercel.app/',
-    featured: false,
-  },
-  {
-    id: 3,
     title: 'VEXO — E-Commerce App',
     image: shopping,
     description:
@@ -107,7 +98,7 @@ export const projects = [
     featured: false,
   },
   {
-    id: 4,
+    id: 3,
     title: 'Retro Game Vault',
     image: game,
     description:
@@ -115,10 +106,10 @@ export const projects = [
     tech: ['React', 'EmulatorJS', 'WebAssembly', 'CSS3'],
     link: 'https://retro-game-three.vercel.app/',
     github: 'https://github.com/guna0223/retro-game',
-    featured:false,
+    featured: false,
   },
   {
-    id: 5,
+    id: 4,
     title: 'Movie Explorer',
     image: movie,
     description:
@@ -129,7 +120,7 @@ export const projects = [
     featured: false,
   },
   {
-    id: 6,
+    id: 5,
     title: 'Portfolio Website',
     image: portfolioImg,
     description:
@@ -141,7 +132,7 @@ export const projects = [
   },
 
   {
-    id: 7,
+    id: 6,
     title: 'WhatsApp UI Clone',
     image: whatsapp,
     description:
@@ -152,7 +143,7 @@ export const projects = [
     featured: false,
   },
   {
-    id: 8,
+    id: 7,
     title: 'Weather Dashboard',
     image: weatherImg,
     description:
@@ -238,3 +229,27 @@ export const contactInfo = {
   linkedin: 'linkedin.com/in/gunasekar0223',
   whatsapp: '+91 9486436037',
 };
+
+export const clientProjects = [
+    {
+    id: 1,
+    title: 'Nithish MakeOver Artistry',
+    image: nithishMakeupImg,
+    description:
+      'A professional portfolio and service showcase website built for a makeup artist. Features include a curated gallery of bridal and party looks, a services section with detailed offerings, client testimonials, and a contact/booking form. Designed with a clean, elegant aesthetic to reflect the artist\'s brand and attract potential clients.',
+    tech: ['React.js', 'CSS3', 'Vercel'],
+    link: 'https://nithish-makeup.vercel.app/',
+    featured: false,
+  },
+  {
+    id: 2,
+    title: 'Cricket Tournament Manager',
+    image: cricketImg,
+    description:
+      'A full-stack live cricket scoring platform built with the MERN stack. Features include real-time ball-by-ball scoring with Socket.IO, over history tracking, innings and match lifecycle management, dynamic points table, tournament statistics, and a branded PDF generator for sponsor profiles. Admin panel supports no-ball, wicket, and overthrow workflows via modal-driven scoring controls.',
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'PDFKit'],
+    link: 'https://pcc-pungampatti.vercel.app/',
+    featured: false,
+  },
+
+];

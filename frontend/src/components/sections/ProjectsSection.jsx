@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Code, X } from 'lucide-react';
-import { projects } from '../../data/portfolio';
+import { projects, clientProjects } from '../../data/portfolio';
 import SectionHeading from '../ui/SectionHeading';
 import HoloCard from '../ui/HoloCard';
 import './ProjectsSection.css';
@@ -63,6 +63,7 @@ const ProjectCard = ({ project, onClick }) => {
 
 const ProjectsSection = () => {
   const [selected, setSelected] = useState(null);
+  const [projectType, setProjectType] = useState('personal');
 
   useEffect(() => {
     if (selected) {
@@ -75,13 +76,31 @@ const ProjectsSection = () => {
     };
   }, [selected]);
 
+  const activeProjects = projectType === 'personal' ? projects : clientProjects;
+
   return (
     <section id="projects" className="section-padding projects-section">
       <div className="grid-background" />
       <div className="section-container projects-section-container">
         <SectionHeading number="04" title={<>Featured <span className="text-gradient">Work</span></>} subtitle="Missions completed with precision and mastery" />
+        
+        <div className="project-type-switch">
+          <button 
+            className={`project-type-btn ${projectType === 'personal' ? 'active' : ''}`}
+            onClick={() => setProjectType('personal')}
+          >
+            Personal Projects
+          </button>
+          <button 
+            className={`project-type-btn ${projectType === 'client' ? 'active' : ''}`}
+            onClick={() => setProjectType('client')}
+          >
+            Client Projects
+          </button>
+        </div>
+
         <div className="projects-grid">
-          {projects.map(p => <ProjectCard key={p.id} project={p} onClick={setSelected} />)}
+          {activeProjects.map(p => <ProjectCard key={p.id} project={p} onClick={setSelected} />)}
         </div>
       </div>
 

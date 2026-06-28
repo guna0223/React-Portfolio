@@ -11,6 +11,39 @@
     z-index: 1;
 }
 
+/* Project Type Switch */
+.project-type-switch {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.project-type-btn {
+    background: transparent;
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-type-btn:hover {
+    color: var(--color-text-primary);
+    border-color: rgba(204, 34, 34, 0.5);
+}
+
+.project-type-btn.active {
+    background: rgba(204, 34, 34, 0.15);
+    border-color: #cc2222;
+    color: #cc2222;
+    box-shadow: 0 0 15px rgba(204, 34, 34, 0.2);
+}
+
 /* Projects grid */
 .projects-grid {
     display: grid;
