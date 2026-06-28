@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import './IntroSequence.css';
 
 const IntroSequence = ({ onComplete }) => {
   const [phase, setPhase] = useState(0);
@@ -53,21 +54,11 @@ const IntroSequence = ({ onComplete }) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.7 }}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 100000,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'radial-gradient(ellipse at center, #0f0208 0%, #05020a 70%)',
-            overflow: 'hidden',
-          }}
+          className="intro-overlay"
         >
           {/* Grid background */}
-          <div className="grid-background" style={{ opacity: 0.4 }} />
-          <div className="scanline-overlay" style={{ opacity: 0.3 }} />
+          <div className="grid-background intro-grid-bg" />
+          <div className="scanline-overlay intro-scanlines" />
 
           {/* Rinnegan backdrop rings */}
           {[1, 2, 3].map((i) => (
@@ -75,13 +66,9 @@ const IntroSequence = ({ onComplete }) => {
               key={i}
               animate={{ scale: [1, 1.5, 2], opacity: [0.3, 0.1, 0] }}
               transition={{ duration: 3, repeat: Infinity, delay: i * 0.8, ease: 'easeOut' }}
+              className="intro-rinnegan-ring"
               style={{
-                position: 'absolute',
-                width: `${120 + i * 80}px`,
-                height: `${120 + i * 80}px`,
-                borderRadius: '50%',
-                border: '1px solid rgba(204, 34, 34, 0.4)',
-                pointerEvents: 'none',
+                '--ring-size': `${120 + i * 80}px`,
               }}
             />
           ))}
@@ -91,48 +78,28 @@ const IntroSequence = ({ onComplete }) => {
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: [0.34, 1.56, 0.64, 1] }}
-            style={{ position: 'relative', width: 140, height: 140, marginBottom: '3rem' }}
+            className="intro-eye-container"
           >
             {/* Outer spinning ring */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-              style={{
-                position: 'absolute',
-                inset: 0,
-                borderRadius: '50%',
-                border: '2px dashed rgba(204, 34, 34, 0.5)',
-                boxShadow: '0 0 20px rgba(204, 34, 34, 0.3)',
-              }}
+              className="intro-ring-outer"
             />
 
             {/* Mid ring (reverse) */}
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
-              style={{
-                position: 'absolute',
-                inset: 10,
-                borderRadius: '50%',
-                border: '2px solid rgba(204, 34, 34, 0.7)',
-                boxShadow: '0 0 15px rgba(204, 34, 34, 0.5), inset 0 0 15px rgba(204, 34, 34, 0.2)',
-              }}
+              className="intro-ring-mid"
             />
 
             {/* Iris */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 22,
-                borderRadius: '50%',
-                background: 'radial-gradient(circle, #1a0000 40%, #0a0000 100%)',
-                border: '1px solid rgba(204, 34, 34, 0.3)',
-              }}
-            />
+            <div className="intro-iris" />
 
             {/* SVG Tomoe */}
             <svg
-              style={{ position: 'absolute', inset: 0 }}
+              className="intro-tomoe-svg"
               width="140"
               height="140"
               viewBox="0 0 140 140"
@@ -167,17 +134,7 @@ const IntroSequence = ({ onComplete }) => {
             <motion.div
               animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 2, repeat: Infinity }}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                width: 16,
-                height: 16,
-                transform: 'translate(-50%, -50%)',
-                borderRadius: '50%',
-                background: '#cc2222',
-                boxShadow: '0 0 20px rgba(204,34,34,0.8), 0 0 40px rgba(204,34,34,0.4)',
-              }}
+              className="intro-pupil"
             />
           </motion.div>
 
@@ -185,90 +142,47 @@ const IntroSequence = ({ onComplete }) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.875rem',
-              color: '#cc2222',
-              marginBottom: '1.25rem',
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-              textShadow: '0 0 10px rgba(204,34,34,0.6)',
-              minHeight: '1.5rem',
-            }}
+            className="intro-status"
           >
             {displayText}
             <motion.span
               animate={{ opacity: [1, 0] }}
               transition={{ duration: 0.5, repeat: Infinity }}
-              style={{ marginLeft: '3px' }}
+              className="intro-cursor"
             >
               ▮
             </motion.span>
           </motion.div>
 
           {/* Progress bar */}
-          <div
-            style={{
-              width: 220,
-              height: 2,
-              background: 'rgba(204, 34, 34, 0.1)',
-              borderRadius: 1,
-              overflow: 'hidden',
-              marginBottom: '1rem',
-            }}
-          >
+          <div className="intro-progress">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${(phase / 5) * 100}%` }}
               transition={{ duration: 0.5 }}
-              style={{
-                height: '100%',
-                background: 'linear-gradient(90deg, #cc2222, #7b2fff)',
-                boxShadow: '0 0 10px rgba(204, 34, 34, 0.7)',
-              }}
+              className="intro-progress-fill"
             />
           </div>
 
           {/* Phase dots */}
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <div className="intro-dots">
             {[1, 2, 3, 4, 5].map((p) => (
               <motion.div
                 key={p}
                 animate={{ scale: p <= phase ? 1 : 0.7, opacity: p <= phase ? 1 : 0.3 }}
-                style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: '50%',
-                  background: p <= phase ? '#cc2222' : 'rgba(204,34,34,0.3)',
-                  boxShadow: p <= phase ? '0 0 6px #cc2222' : 'none',
-                }}
+                className={`intro-dot${p <= phase ? ' intro-dot--active' : ' intro-dot--inactive'}`}
               />
             ))}
           </div>
 
           {/* Bottom chakra wave */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '8%',
-              display: 'flex',
-              gap: '5px',
-              opacity: 0.35,
-            }}
-          >
+          <div className="intro-chakra-wave">
             {Array.from({ length: 24 }).map((_, i) => (
               <motion.div
                 key={i}
                 animate={{ height: [10, 28, 10], opacity: [0.4, 1, 0.4] }}
                 transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.07 }}
-                style={{
-                  width: 3,
-                  background: i % 3 === 0
-                    ? 'linear-gradient(180deg, #cc2222, #7b2fff)'
-                    : 'rgba(204, 34, 34, 0.8)',
-                  boxShadow: '0 0 4px rgba(204, 34, 34, 0.5)',
-                  borderRadius: 2,
-                }}
+                className={`intro-chakra-bar${i % 3 === 0 ? ' intro-chakra-bar--gradient' : ' intro-chakra-bar--solid'}`}
               />
             ))}
           </div>

@@ -1,0 +1,211 @@
+/* Contact Section Container */
+.contact-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radial gradient overlay */
+.contact-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(123, 47, 255, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Section container inside contact */
+.contact-section-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Contact grid layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-top: 3rem;
+}
+
+/* Contact cards container */
+.contact-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Contact card icon container */
+.contact-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(204, 34, 34, 0.1);
+  border: 1px solid rgba(204, 34, 34, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-primary);
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(204, 34, 34, 0.15);
+}
+
+/* Contact card label */
+.contact-card-label {
+  margin-bottom: 0.25rem;
+  color: var(--color-text-muted);
+}
+
+/* Contact card value */
+.contact-card-value {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* Decorative Rinnegan ring */
+.contact-rinnegan-ring {
+  width: 120px;
+  height: 120px;
+  margin: 1rem auto 0;
+  opacity: 0.15;
+  position: relative;
+}
+
+.contact-rinnegan-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid #7b2fff;
+}
+
+/* Form grid */
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Form label */
+.contact-form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+/* Form input base */
+.contact-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(204, 34, 34, 0.04);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-input:focus {
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 12px rgba(204, 34, 34, 0.2);
+}
+
+.contact-input:not(:focus) {
+  border-color: var(--color-border-subtle);
+  box-shadow: none;
+}
+
+/* Textarea specific */
+.contact-textarea {
+  resize: vertical;
+}
+
+/* Success message */
+.contact-success-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(204, 34, 34, 0.1);
+  border: 1px solid rgba(204, 34, 34, 0.25);
+  color: var(--color-accent-primary);
+  margin-bottom: 1rem;
+}
+
+.contact-success-message span {
+  font-size: 0.875rem;
+}
+
+/* Error message */
+.contact-error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 80, 80, 0.1);
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  color: #ff6666;
+  margin-bottom: 1rem;
+}
+
+.contact-error-message span {
+  font-size: 0.875rem;
+}
+
+/* Submit button */
+.contact-submit-btn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-purple));
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 0 20px rgba(204, 34, 34, 0.4), 0 0 40px rgba(123, 47, 255, 0.2);
+  transition: all 0.3s;
+}
+
+.contact-submit-btn:hover {
+  transform: scale(1.02);
+}
+
+.contact-submit-btn:active {
+  transform: scale(0.98);
+}
+
+.contact-submit-btn:disabled {
+  background: rgba(204, 34, 34, 0.3);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Spinner */
+.contact-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

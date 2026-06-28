@@ -1,0 +1,130 @@
+/* ═══════════════════════════════
+   SKILLS SECTION
+═══════════════════════════════ */
+.skills-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radial gradient overlay */
+.skills-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(123, 47, 255, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Section container */
+.skills-section-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Category tabs */
+.skills-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Category tab button */
+.skills-tab {
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.skills-tab--active {
+  color: #05020a;
+  box-shadow: 0 0 15px var(--tab-color-glow);
+}
+
+.skills-tab--inactive {
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: none;
+}
+
+/* Skills grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ═══════════════════════════════
+   SKILL CARD
+═══════════════════════════════ */
+.skill-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  position: relative;
+}
+
+/* Sharingan overlay */
+.skill-card-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.skill-card-overlay svg {
+  opacity: 0.15;
+  filter: blur(2px);
+}
+
+.sharingan-card:hover .skill-card-overlay {
+  opacity: 1 !important;
+}
+
+/* Circular progress container */
+.skill-progress-container {
+  position: relative;
+  z-index: 1;
+}
+
+.skill-progress-svg {
+  transform: rotate(-90deg);
+}
+
+/* Percentage text */
+.skill-percentage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px var(--skill-color-glow);
+}
+
+/* Skill name */
+.skill-name {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  letter-spacing: 0.03em;
+}

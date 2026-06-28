@@ -1,0 +1,102 @@
+/* ═══════════════════════════════
+   SERVICES SECTION
+═══════════════════════════════ */
+.services-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section container */
+.services-section-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Services grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* ═══════════════════════════════
+   SERVICE CARD
+═══════════════════════════════ */
+.service-card {
+  padding: 2rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative corner arc */
+.service-corner-arc {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid var(--service-color-alpha);
+  pointer-events: none;
+}
+
+/* Icon container */
+.service-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 18px var(--service-color-glow);
+}
+
+/* Title */
+.service-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* Description */
+.service-description {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+/* Feature pills container */
+.service-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Feature pill */
+.service-feature-pill {
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  background: var(--service-color-bg);
+  border: 1px solid var(--service-color-border);
+  color: var(--service-color);
+}
+
+/* Bottom accent line */
+.service-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--service-color), transparent);
+  opacity: 0.4;
+  border-radius: 0 0 1rem 1rem;
+}

@@ -1,0 +1,423 @@
+/* ═══════════════════════════════
+   HERO SECTION
+═══════════════════════════════ */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Cinematic radial gradient overlay */
+.hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(80, 0, 30, 0.18) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid background z-index */
+.hero-grid-bg {
+    z-index: 1;
+}
+
+/* ═══════════════════════════════
+   EYELID REVEAL OVERLAY
+═══════════════════════════════ */
+.hero-eyelid-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    pointer-events: all;
+}
+
+.hero-eyelid-overlay--open {
+    pointer-events: none;
+}
+
+/* Red Sharingan glow at center of eyelid */
+.hero-eyelid-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 10px;
+    z-index: 55;
+    background: radial-gradient(ellipse at center, rgba(204, 34, 34, 0.9) 0%, transparent 100%);
+    filter: blur(6px);
+    box-shadow: 0 0 60px 20px rgba(204, 34, 34, 0.35);
+}
+
+/* Upper eyelid */
+.hero-eyelid-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, #05020a 60%, #1a0005 100%);
+    overflow: hidden;
+}
+
+.hero-eyelid-top-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(204, 34, 34, 0.8), rgba(123, 47, 255, 0.6), rgba(204, 34, 34, 0.8), transparent);
+    box-shadow: 0 0 20px 4px rgba(204, 34, 34, 0.4);
+}
+
+/* Lower eyelid */
+.hero-eyelid-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(0deg, #05020a 60%, #1a0005 100%);
+    overflow: hidden;
+}
+
+.hero-eyelid-bottom-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(204, 34, 34, 0.8), rgba(123, 47, 255, 0.6), rgba(204, 34, 34, 0.8), transparent);
+    box-shadow: 0 0 20px 4px rgba(204, 34, 34, 0.4);
+}
+
+/* ═══════════════════════════════
+   HERO CONTENT
+═══════════════════════════════ */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.hero-content--visible {
+    opacity: 1;
+}
+
+/* Status tag */
+.hero-status-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-accent-primary);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(204, 34, 34, 0.6);
+}
+
+.hero-status-line {
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+}
+
+.hero-status-line--left {
+    background: linear-gradient(90deg, transparent, #cc2222);
+}
+
+.hero-status-line--right {
+    background: linear-gradient(90deg, #cc2222, transparent);
+}
+
+/* Profile container */
+.hero-profile-container {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+/* Chakra aura rings */
+.chakra-aura-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid;
+    animation: chakra-pulse 3s ease-in-out infinite;
+}
+
+@keyframes chakra-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+/* Extra static glow behind profile */
+.hero-profile-glow {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123, 47, 255, 0.15) 0%, rgba(204, 34, 34, 0.08) 50%, transparent 70%);
+    filter: blur(12px);
+    pointer-events: none;
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Profile image frame */
+.hero-profile-frame {
+    width: 68%;
+    height: 68%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(123, 47, 255, 0.45);
+    box-shadow: 0 0 24px rgba(123, 47, 255, 0.4), 0 0 48px rgba(204, 34, 34, 0.25), inset 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.hero-profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Available badge */
+.hero-available-badge {
+    position: absolute;
+    bottom: -6%;
+    right: -10%;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    background: rgba(5, 2, 10, 0.94);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(204, 34, 34, 0.5);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #cc2222;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 0 14px rgba(204, 34, 34, 0.3);
+    animation: badge-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+.hero-badge-logo {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Name */
+.hero-name {
+    margin-bottom: 0.5rem;
+    line-height: 1.05;
+}
+
+.hero-name-text {
+    color: var(--color-text-primary);
+}
+
+/* Divider line */
+.hero-divider {
+    height: 2px;
+    width: clamp(120px, 30vw, 220px);
+    background: linear-gradient(90deg, transparent, #cc2222, #7b2fff, transparent);
+    margin-bottom: 0.75rem;
+    border-radius: 2px;
+}
+
+/* Typewriter roles */
+.hero-roles {
+    font-family: var(--font-mono);
+    font-size: clamp(0.875rem, 1.5vw, 1.1rem);
+    color: var(--color-accent-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1em;
+    min-height: 1.5rem;
+    text-shadow: 0 0 10px rgba(204, 34, 34, 0.5);
+}
+
+/* Bio */
+.hero-bio {
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    line-height: 1.85;
+}
+
+/* CTA Buttons container */
+.hero-cta-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+/* Primary CTA button */
+.hero-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #cc2222, #7b2fff);
+    color: #fff;
+    border: none;
+    box-shadow: 0 0 20px rgba(204, 34, 34, 0.4), 0 0 40px rgba(123, 47, 255, 0.2);
+    transition: all 0.3s;
+}
+
+.hero-cta-primary:hover {
+    box-shadow: 0 0 30px rgba(204, 34, 34, 0.6), 0 0 60px rgba(123, 47, 255, 0.3);
+}
+
+/* Secondary CTA button (resume) */
+.hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: #cc2222;
+    border: 1px solid rgba(204, 34, 34, 0.6);
+    box-shadow: 0 0 10px rgba(204, 34, 34, 0.15);
+    transition: all 0.3s;
+}
+
+.hero-cta-secondary:hover {
+    background: rgba(204, 34, 34, 0.12);
+    box-shadow: 0 0 20px rgba(204, 34, 34, 0.3);
+}
+
+/* Social Links container */
+.hero-social-links {
+    display: flex;
+    gap: 0.875rem;
+    margin-bottom: 3rem;
+}
+
+/* Social link button */
+.hero-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(18, 4, 26, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(204, 34, 34, 0.2);
+    color: var(--color-text-muted);
+    transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.hero-social-link:hover {
+    color: #cc2222;
+    border-color: rgba(204, 34, 34, 0.5);
+    box-shadow: 0 0 16px rgba(204, 34, 34, 0.35);
+}
+
+/* Scroll indicator */
+.hero-scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero-scroll-text {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.hero-scroll-arrow {
+    color: #cc2222;
+    animation: scroll-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/* Neon pulse animation for primary CTA */
+.neon-pulse {
+    animation: neon-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-glow {
+    from {
+        box-shadow: 0 0 20px rgba(204, 34, 34, 0.4), 0 0 40px rgba(123, 47, 255, 0.2);
+    }
+
+    to {
+        box-shadow: 0 0 30px rgba(204, 34, 34, 0.6), 0 0 60px rgba(123, 47, 255, 0.35);
+    }
+}
