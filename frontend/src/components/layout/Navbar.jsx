@@ -388,7 +388,6 @@ const Navbar = () => {
                 })}
               </nav>
 
-              {/* CTA at bottom */}
               <div style={{ padding: '1rem 1.25rem 2rem' }}>
                 <motion.button
                   initial={{ opacity: 0, y: 16 }}
@@ -411,7 +410,7 @@ const Navbar = () => {
                     transition: 'opacity 0.2s',
                   }}
                 >
-                  ⚡ Enter The Battlefield
+                  Enter The Battlefield
                 </motion.button>
               </div>
             </motion.div>

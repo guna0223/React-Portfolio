@@ -95,8 +95,15 @@ const ContactSection = () => {
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your name" style={inputStyle} onFocus={e => Object.assign(e.target.style, focusStyle)} onBlur={e => Object.assign(e.target.style, blurStyle)} />
                   </div>
                   <div>
-                    <label className="text-small" style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--color-text-muted)' }}>Email</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="your@email.com" style={inputStyle} onFocus={e => Object.assign(e.target.style, focusStyle)} onBlur={e => Object.assign(e.target.style, blurStyle)} />
+                    <label className="text-small"
+                      style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--color-text-muted)' }}>Email
+                    </label>
+                    <input type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange} required placeholder="your@email.com"
+                      style={inputStyle} onFocus={e => Object.assign(e.target.style, focusStyle)} onBlur={e => Object.assign(e.target.style, blurStyle)}
+                    />
                   </div>
                 </div>
 
