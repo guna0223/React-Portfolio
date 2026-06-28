@@ -3,6 +3,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import navLogo from '../../assets/images/nav-img/nav.jpg';
 
+/* ─── Alert System ─── */
+const showAlert = (title, message, type = 'info') => {
+  const alert = document.createElement('div');
+  alert.className = 'ninja-alert';
+  alert.innerHTML = `
+    <div class="ninja-alert-content">
+      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : '⚡'}</div>
+      <div class="ninja-alert-text">
+        <div class="ninja-alert-title">${title}</div>
+        <div class="ninja-alert-message">${message}</div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(alert);
+  setTimeout(() => alert.classList.add('show'), 10);
+  setTimeout(() => {
+    alert.classList.remove('show');
+    setTimeout(() => alert.remove(), 300);
+  }, 3000);
+};
+
 const navItems = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
@@ -74,6 +95,16 @@ const Navbar = () => {
   }, [mobileOpen]);
 
   const scrollTo = (id) => {
+    const labels = {
+      hero: 'Home Base',
+      about: 'About the Shinobi',
+      skills: 'Ninja Skills',
+      experience: 'Battle Experience',
+      projects: 'Mission Archive',
+      services: 'Services Offered',
+      contact: 'Contact HQ'
+    };
+    showAlert('Navigation Activated', `Traveling to ${labels[id] || id}...`, 'info');
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMobileOpen(false);
   };

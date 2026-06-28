@@ -957,3 +957,63 @@ textarea {
 .video-home {
   border-radius: 50% !important;
 }
+
+/* ============================================
+   NINJA ALERT SYSTEM
+   ============================================ */
+.ninja-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: rgba(18, 4, 26, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(204, 34, 34, 0.3);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 0 30px rgba(204, 34, 34, 0.25), 0 0 60px rgba(123, 47, 255, 0.15);
+  transform: translateX(120%);
+  transition: transform 0.3s ease;
+  max-width: 320px;
+}
+
+.ninja-alert.show {
+  transform: translateX(0);
+}
+
+.ninja-alert-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ninja-alert-icon {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 10px var(--color-glow-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ninja-alert-text {
+  flex: 1;
+}
+
+.ninja-alert-title {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.ninja-alert-message {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}

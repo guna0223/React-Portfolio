@@ -6,6 +6,27 @@ import { contactInfo } from '../../data/portfolio';
 import HoloCard from '../ui/HoloCard';
 import SectionHeading from '../ui/SectionHeading';
 
+/* ─── Alert System ─── */
+const showAlert = (title, message, type = 'info') => {
+  const alert = document.createElement('div');
+  alert.className = 'ninja-alert';
+  alert.innerHTML = `
+    <div class="ninja-alert-content">
+      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : '⚡'}</div>
+      <div class="ninja-alert-text">
+        <div class="ninja-alert-title">${title}</div>
+        <div class="ninja-alert-message">${message}</div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(alert);
+  setTimeout(() => alert.classList.add('show'), 10);
+  setTimeout(() => {
+    alert.classList.remove('show');
+    setTimeout(() => alert.remove(), 300);
+  }, 3000);
+};
+
 const inputStyle = {
   width: '100%', padding: '0.875rem 1rem', borderRadius: '0.75rem',
   background: 'rgba(204,34,34,0.04)', border: '1px solid var(--color-border-subtle)',
@@ -25,12 +46,27 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true); setStatus(null);
+    showAlert('Mission Deployed', 'Your message is being transmitted to HQ...', 'info');
     try {
       await emailjs.send('service_portfolio', 'template_portfolio', formData, 'user_emailjs_id');
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch { setStatus('error'); }
+      showAlert('Transmission Success', 'Your message reached HQ! I will respond before the next arc.', 'success');
+    } catch { 
+      setStatus('error'); 
+      showAlert('Transmission Failed', 'Your signal was intercepted. Please redeploy your message.', 'error');
+    }
     finally { setSending(false); }
+  };
+
+  const handleCardClick = (label) => {
+    const messages = {
+      Email: 'Opening your communication scroll...',
+      Location: 'Revealing the hidden village location...',
+      LinkedIn: 'Connecting to the ninja network...',
+      WhatsApp: 'Opening direct line to the shinobi...'
+    };
+    showAlert(`Opening ${label}`, messages[label] || 'Activating link...', 'info');
   };
 
   const contactCards = [
@@ -60,9 +96,10 @@ const ContactSection = () => {
               const Icon = card.icon;
               return (
                 <motion.div key={card.label} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
-                  <HoloCard glowColor="var(--color-accent-primary)" style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', ...(card.href ? { cursor: 'none' } : {}) }}
-                    {...(card.href ? { as: 'a', href: card.href, target: '_blank', rel: 'noreferrer' } : {})}
-                  >
+                   <HoloCard glowColor="var(--color-accent-primary)" style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', ...(card.href ? { cursor: 'none' } : {}) }}
+                     {...(card.href ? { as: 'a', href: card.href, target: '_blank', rel: 'noreferrer' } : {})}
+                     onClick={() => handleCardClick(card.label)}
+                   >
                     <div style={{ width: 50, height: 50, borderRadius: '12px', background: 'rgba(204,34,34,0.1)', border: '1px solid rgba(204,34,34,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-accent-primary)', flexShrink: 0, boxShadow: '0 0 12px rgba(204,34,34,0.15)' }}>
                       <Icon size={22} />
                     </div>
@@ -146,7 +183,8 @@ const ContactSection = () => {
         </div>
       </div>
 
-      <style>{`@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr !important; } }`}</style>
+      <style>
+        {`@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr !important; } }`}</style>
     </section>
   );
 };

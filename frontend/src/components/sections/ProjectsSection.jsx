@@ -5,13 +5,37 @@ import { projects } from '../../data/portfolio';
 import SectionHeading from '../ui/SectionHeading';
 import HoloCard from '../ui/HoloCard';
 
+/* ─── Alert System ─── */
+const showAlert = (title, message, type = 'info') => {
+  const alert = document.createElement('div');
+  alert.className = 'ninja-alert';
+  alert.innerHTML = `
+    <div class="ninja-alert-content">
+      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : '⚡'}</div>
+      <div class="ninja-alert-text">
+        <div class="ninja-alert-title">${title}</div>
+        <div class="ninja-alert-message">${message}</div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(alert);
+  setTimeout(() => alert.classList.add('show'), 10);
+  setTimeout(() => {
+    alert.classList.remove('show');
+    setTimeout(() => alert.remove(), 300);
+  }, 3000);
+};
+
 const ProjectCard = ({ project, onClick }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <motion.div className="sharingan-card" style={{ borderRadius: '1.25rem' }}>
       <motion.div layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }}
-        onClick={() => onClick(project)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        onClick={() => {
+          showAlert('Mission Intel', `Accessing details for ${project.title}...`, 'info');
+          onClick(project);
+        }} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
         style={{ position: 'relative', borderRadius: '1.25rem', overflow: 'hidden', cursor: 'none', background: 'var(--color-bg-card)', border: `1px solid ${hovered ? 'rgba(204,34,34,0.45)' : 'var(--color-border-subtle)'}`, transition: 'all 0.4s', boxShadow: hovered ? '0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(204,34,34,0.2)' : '0 4px 20px rgba(0,0,0,0.2)', height: '100%' }}
       >
         <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
@@ -72,7 +96,10 @@ const ProjectsSection = () => {
               transition={{ type: 'spring', bounce: 0.2 }} onClick={e => e.stopPropagation()}
               style={{ position: 'relative', width: '100%', maxWidth: 820, maxHeight: '90vh', display: 'flex', flexDirection: 'column', borderRadius: '1.5rem', background: 'var(--color-bg-secondary)', border: '1px solid rgba(204,34,34,0.3)', boxShadow: '0 0 60px rgba(204,34,34,0.2), 0 0 120px rgba(123,47,255,0.1)', overflow: 'hidden' }}
             >
-              <button onClick={() => setSelected(null)} style={{ position: 'absolute', top: '1rem', right: '1rem', width: 36, height: 36, borderRadius: '50%', background: 'rgba(5,2,10,0.6)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}><X size={18} /></button>
+              <button onClick={() => {
+                showAlert('Mission Closed', 'Returning to the archive...', 'info');
+                setSelected(null);
+              }} style={{ position: 'absolute', top: '1rem', right: '1rem', width: 36, height: 36, borderRadius: '50%', background: 'rgba(5,2,10,0.6)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}><X size={18} /></button>
               
               <div style={{ overflowY: 'auto', flex: 1, minHeight: 0, width: '100%' }}>
                 <div style={{ aspectRatio: '16/9', width: '100%' }}><img src={selected.image} alt={selected.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>
@@ -83,9 +110,9 @@ const ProjectsSection = () => {
                     {selected.tech.map(t => <span key={t} style={{ padding: '0.375rem 0.875rem', borderRadius: '9999px', fontSize: '0.8125rem', fontWeight: 500, fontFamily: 'var(--font-mono)', background: 'rgba(204,34,34,0.1)', border: '1px solid rgba(204,34,34,0.25)', color: 'var(--color-accent-primary)' }}>{t}</span>)}
                   </div>
                   <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                    {selected.link && <a href={selected.link} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', background: 'linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-purple))', color: '#fff', fontWeight: 600, fontSize: '0.9375rem', boxShadow: '0 0 20px rgba(204,34,34,0.4)', cursor: 'pointer' }}><ExternalLink size={16} />Live Demo</a>}
-                    <a href={selected.github} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border-medium)', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '0.9375rem', cursor: 'pointer' }}><Code size={16} />Source Code</a>
-                  </div>
+                     {selected.link && <a href={selected.link} target="_blank" rel="noreferrer" onClick={() => showAlert('Live Mission', `Deploying ${selected.title} live demo...`, 'info')} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', background: 'linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-purple))', color: '#fff', fontWeight: 600, fontSize: '0.9375rem', boxShadow: '0 0 20px rgba(204,34,34,0.4)', cursor: 'pointer' }}><ExternalLink size={16} />Live Demo</a>}
+                     <a href={selected.github} target="_blank" rel="noreferrer" onClick={() => showAlert('Source Code', `Revealing the source code for ${selected.title}...`, 'info')} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border-medium)', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '0.9375rem', cursor: 'pointer' }}><Code size={16} />Source Code</a>
+                   </div>
                 </div>
               </div>
             </motion.div>

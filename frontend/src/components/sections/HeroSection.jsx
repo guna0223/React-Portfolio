@@ -12,6 +12,27 @@ import ChidoriFlash from '../ui/ChidoriFlash';
 import profileImg from '../../assets/AboutImage/homeimg.jpeg';
 import navLogo from '../../assets/images/nav-img/nav.jpg';
 
+/* ─── Alert System ─── */
+const showAlert = (title, message, type = 'info') => {
+  const alert = document.createElement('div');
+  alert.className = 'ninja-alert';
+  alert.innerHTML = `
+    <div class="ninja-alert-content">
+      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : '⚡'}</div>
+      <div class="ninja-alert-text">
+        <div class="ninja-alert-title">${title}</div>
+        <div class="ninja-alert-message">${message}</div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(alert);
+  setTimeout(() => alert.classList.add('show'), 10);
+  setTimeout(() => {
+    alert.classList.remove('show');
+    setTimeout(() => alert.remove(), 300);
+  }, 3000);
+};
+
 /* ── Chakra Aura rings around the profile ── */
 const ChakraAura = ({ size }) => (
   <>
@@ -383,7 +404,10 @@ const HeroSection = () => {
           <motion.button
             whileHover={{ boxShadow: '0 0 30px rgba(204,34,34,0.6), 0 0 60px rgba(123,47,255,0.3)' }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => scrollTo('projects')}
+            onClick={() => {
+              showAlert('Mission Archive', 'Accessing the project repository...', 'info');
+              scrollTo('projects');
+            }}
             className="neon-pulse"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
@@ -402,6 +426,7 @@ const HeroSection = () => {
             whileHover={{ background: 'rgba(204,34,34,0.12)', boxShadow: '0 0 20px rgba(204,34,34,0.3)' }}
             whileTap={{ scale: 0.97 }}
             href={personalInfo.resumeUrl} download="Gunasekar_Resume.pdf"
+            onClick={() => showAlert('Resume Download', 'Downloading the shinobi credentials...', 'info')}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               padding: '0.875rem 2rem', borderRadius: '0.75rem',
@@ -430,6 +455,14 @@ const HeroSection = () => {
             <motion.a
               key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const messages = {
+                  GitHub: 'Opening the code repository...',
+                  LinkedIn: 'Connecting to the ninja network...',
+                  Email: 'Preparing to send a message...'
+                };
+                showAlert(`Opening ${label}`, messages[label] || 'Activating link...', 'info');
+              }}
               style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 width: 48, height: 48, borderRadius: '12px',
