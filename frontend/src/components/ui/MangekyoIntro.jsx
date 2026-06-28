@@ -182,7 +182,7 @@ const MangekyoIntro = ({ onComplete }) => {
                   boxShadow: '0 0 60px rgba(0,0,0,0.95)',
                 }}
               >
-                 <div ref={mangekyoRef} style={{ width: '100%', height: '100%', transformOrigin: 'center' }}>
+                 <div ref={mangekyoRef} style={{ width: '100%', height: '100%', transformOrigin: 'center' }} className='video-home'>
                     <video
                       autoPlay
                       loop
@@ -196,7 +196,7 @@ const MangekyoIntro = ({ onComplete }) => {
                         filter: 'brightness(0.9) contrast(1.1)',
                       }}
                     >
-                      <source src="/video/left-eye.mp4" type="video/mp4" />
+                      <source src="/video/left-eye.mp4" type="video/mp4" className='video-home' />
                     </video>
                  </div>
 
