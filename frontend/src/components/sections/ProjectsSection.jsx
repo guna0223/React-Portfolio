@@ -41,7 +41,7 @@ const ProjectCard = ({ project, onClick }) => {
         className="project-card"
       >
         <div className="project-image-container">
-          <img src={project.image} alt={project.title} className="project-image" />
+          <img src={project.image} alt={project.title} className="project-image" loading="lazy" />
           <div className="project-image-overlay" />
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: hovered ? 1 : 0 }} className="project-actions">
             {project.link && <a href={project.link} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} className="project-action-btn project-action-btn--live"><ExternalLink size={16} /></a>}
@@ -120,7 +120,7 @@ const ProjectsSection = () => {
               }} className="project-modal-close"><X size={18} /></button>
 
               <div className="project-modal-scroll">
-                <div className="project-modal-image"><img src={selected.image} alt={selected.title} /></div>
+                <div className="project-modal-image"><img src={selected.image} alt={selected.title} loading="lazy" /></div>
                 <div className="project-modal-content">
                   <h2 className="text-h2 project-modal-title">{selected.title}</h2>
                   <p className="text-body project-modal-description">{selected.description}</p>
@@ -143,4 +143,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection;
+export default React.memo(ProjectsSection);

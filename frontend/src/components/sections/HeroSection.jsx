@@ -303,7 +303,7 @@ const HeroSection = () => {
           {/* Rinne Sharingan frame + photo */}
           <RinneSharingan size={PROFILE_SIZE} glowIntensity={1.2}>
             <div className="hero-profile-frame">
-              <img src={profileImg} alt="Gunasekar" />
+              <img src={profileImg} alt="Gunasekar" fetchpriority="high" />
             </div>
           </RinneSharingan>
 
@@ -443,4 +443,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default React.memo(HeroSection);

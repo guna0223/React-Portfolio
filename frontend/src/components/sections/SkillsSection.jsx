@@ -116,4 +116,4 @@ const SkillsSection = () => {
   );
 };
 
-export default SkillsSection;
+export default React.memo(SkillsSection);

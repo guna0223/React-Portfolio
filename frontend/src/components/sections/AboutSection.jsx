@@ -29,7 +29,7 @@ const AboutSection = () => {
           >
             <SharinganRing size={320} variant="rinnegan" rotationSpeed={30}>
               <div className="about-profile-frame">
-                <img src={profileImg} alt="Gunasekar" />
+                <img src={profileImg} alt="Gunasekar" loading="lazy" />
                 <div className="about-profile-scanlines" />
               </div>
             </SharinganRing>
@@ -83,4 +83,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default React.memo(AboutSection);

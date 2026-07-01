@@ -209,3 +209,5 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+.contact-card, .contact-form-card { border-radius: 7px !important; }

@@ -1017,3 +1017,4 @@ textarea {
   color: var(--color-text-secondary);
   line-height: 1.4;
 }
+.loading-fallback { min-height: 100vh; background: #05020a; }

@@ -33,6 +33,12 @@ const showAlert = (title, message, type = 'info') => {
  */
 const MangekyoIntro = ({ onComplete }) => {
   const [exiting, setExiting] = useState(false);
+  const [showSkip, setShowSkip] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSkip(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const containerRef = useRef(null);
   const topEyelidRef = useRef(null);
@@ -69,19 +75,21 @@ const MangekyoIntro = ({ onComplete }) => {
         });
     }
 
+    const handleExit = () => {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+      setExiting(true);
+      showAlert('Welcome Shinobi', 'The Mangekyō has spoken. Enter the ninja realm.', 'success');
+      setTimeout(() => {
+        document.body.style.overflow = '';
+        if (onComplete) onComplete();
+      }, 1000);
+    };
+
     const tl = gsap.timeline({
-      onComplete: () => {
-        if (audio) {
-          audio.pause();
-          audio.currentTime = 0;
-        }
-        setExiting(true);
-        showAlert('Welcome Shinobi', 'The Mangekyō has spoken. Enter the ninja realm.', 'success');
-        setTimeout(() => {
-          document.body.style.overflow = '';
-          if (onComplete) onComplete();
-        }, 1000);
-      },
+      onComplete: handleExit,
     });
 
     // Initialize in pure darkness
@@ -105,7 +113,6 @@ const MangekyoIntro = ({ onComplete }) => {
     // Stronger final pupil pulse
     tl.to(pupilGlowRef.current, { opacity: 1, scale: 1.5, duration: 2.0, ease: 'power2.out' }, 2.0);
 
-    // ── Cleanup on unmount ──
     return () => {
       tl.kill();
       const audio = audioRef.current;
@@ -116,6 +123,19 @@ const MangekyoIntro = ({ onComplete }) => {
       document.body.style.overflow = '';
     };
   }, [onComplete]);
+
+  const handleSkip = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+    setExiting(true);
+    setTimeout(() => {
+      document.body.style.overflow = '';
+      if (onComplete) onComplete();
+    }, 500);
+  };
 
   return (
     <AnimatePresence>
@@ -232,6 +252,7 @@ const MangekyoIntro = ({ onComplete }) => {
                       background: '#000000',
                       zIndex: 10,
                       transformOrigin: 'top',
+                      willChange: 'transform'
                     }}
                  />
                  <div
@@ -242,6 +263,7 @@ const MangekyoIntro = ({ onComplete }) => {
                       background: '#000000',
                       zIndex: 10,
                       transformOrigin: 'bottom',
+                      willChange: 'transform'
                     }}
                  />
               </div>
@@ -252,6 +274,38 @@ const MangekyoIntro = ({ onComplete }) => {
           <audio ref={audioRef} preload="auto">
             <source src="/audio/Mangekyou-Sharingan.mp3" type="audio/mpeg" />
           </audio>
+
+          {/* Skip Button */}
+          <AnimatePresence>
+            {showSkip && (
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={handleSkip}
+                style={{
+                  position: 'absolute',
+                  bottom: '40px',
+                  right: '40px',
+                  padding: '10px 20px',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  color: 'white',
+                  borderRadius: '30px',
+                  cursor: 'pointer',
+                  zIndex: 999999,
+                  fontFamily: 'var(--font-display)',
+                  letterSpacing: '1px',
+                  backdropFilter: 'blur(10px)',
+                  transition: 'background 0.3s'
+                }}
+                onMouseOver={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
+                onMouseOut={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.1)'}
+              >
+                Skip Intro
+              </motion.button>
+            )}
+          </AnimatePresence>
         </motion.div>
       )}
     </AnimatePresence>
