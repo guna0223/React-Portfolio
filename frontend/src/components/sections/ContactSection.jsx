@@ -94,12 +94,14 @@ const ContactSection = () => {
                     {...(card.href ? { as: 'a', href: card.href, target: '_blank', rel: 'noreferrer' } : {})}
                     onClick={() => handleCardClick(card.label)}
                   >
-                    <div className="contact-card-icon">
-                      <Icon size={22} />
-                    </div>
-                    <div>
-                      <div className="text-small contact-card-label">{card.label}</div>
-                      <div className="contact-card-value">{card.value}</div>
+                    <div className="contact-card-content">
+                      <div className="contact-card-icon">
+                        <Icon size={22} />
+                      </div>
+                      <div>
+                        <div className="text-small contact-card-label">{card.label}</div>
+                        <div className="contact-card-value">{card.value}</div>
+                      </div>
                     </div>
                   </HoloCard>
                 </motion.div>

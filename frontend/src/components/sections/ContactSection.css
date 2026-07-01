@@ -210,4 +210,23 @@
   }
 }
 
-.contact-card, .contact-form-card { border-radius: 7px !important; }
+
+
+.contact-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: 7px !important;
+  background: rgba(15, 10, 20, 0.4);
+  cursor: pointer;
+}
+
+.contact-card-content {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.contact-form-card {
+  padding: 2.5rem;
+  border-radius: 7px !important;
+  background: rgba(15, 10, 20, 0.4);
+}
