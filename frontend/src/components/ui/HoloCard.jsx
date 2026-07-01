@@ -46,7 +46,7 @@ const HoloCard = ({
           : 'perspective(1000px) rotateX(0) rotateY(0) scale(1)',
         transition: 'transform 0.3s ease-out, box-shadow 0.3s ease',
         boxShadow: isHovered
-          ? `0 0 20px ${glowColor}, 0 0 40px ${glowColor}33, inset 0 0 20px ${glowColor}11`
+          ? `0 0 15px ${glowColor}66, 0 0 30px ${glowColor}22, inset 0 0 10px ${glowColor}11`
           : '0 4px 20px rgba(0, 0, 0, 0.3)',
         borderColor: isHovered ? `${glowColor}66` : 'var(--color-border-subtle)',
         ...style,

@@ -21,6 +21,7 @@
 /* Horizontal scroll container */
 .experience-cards-container {
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
   overflow-x: auto;
   padding-bottom: 2rem;
@@ -38,7 +39,7 @@
 
 /* Card wrapper */
 .experience-card-wrapper {
-  flex: 0 0 320px;
+  flex: 0 0 350px;
   scroll-snap-align: start;
   position: relative;
   z-index: 1;
@@ -213,4 +214,11 @@
 .experience-pdf-viewer iframe {
   border: none;
   background: white;
+}
+
+@media (max-width: 1200px) {
+  .experience-cards-container {
+    justify-content: flex-start;
+    padding-left: 1rem;
+  }
 }
