@@ -9,7 +9,6 @@ import RinneSharingan from '../ui/RinneSharingan';
 import AkatsukiBackground from '../ui/AkatsukiBackground';
 import RasenganPulse from '../ui/RasenganPulse';
 import ChidoriFlash from '../ui/ChidoriFlash';
-import HeroScene3D from '../3d/HeroScene3D';
 import profileImg from '../../assets/AboutImage/homeimg.jpeg';
 import navLogo from '../../assets/images/nav-img/nav.jpg';
 import { useToast } from '../../context/ToastContext';
@@ -116,9 +115,9 @@ const HeroSection = () => {
       {/* ── Layered cinematic backgrounds ── */}
       <div className="hero-gradient-overlay" />
       <AkatsukiBackground />
-      <HeroScene3D />
+
       <div className="grid-background hero-grid-bg" />
-      <ChakraParticles density={40} />
+      <ChakraParticles density={35} />
 
       {/* ── Mangekyō eyelid reveal overlay ── */}
       <AnimatePresence>

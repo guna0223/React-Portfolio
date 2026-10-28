@@ -11,8 +11,7 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           framer: ['framer-motion'],
-          gsap: ['gsap'],
-          three: ['three']
+          gsap: ['gsap']
         }
       }
     }
