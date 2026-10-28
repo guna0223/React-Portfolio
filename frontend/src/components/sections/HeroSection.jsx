@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, Download, Code2, Link, Mail } from 'lucide-react';
+import { ArrowDown, Download, Code2, Link, Mail, Sparkles } from 'lucide-react';
 import { personalInfo } from '../../data/portfolio';
 import TypeWriter from '../ui/TypeWriter';
 import GlitchText from '../ui/GlitchText';
@@ -9,30 +9,12 @@ import RinneSharingan from '../ui/RinneSharingan';
 import AkatsukiBackground from '../ui/AkatsukiBackground';
 import RasenganPulse from '../ui/RasenganPulse';
 import ChidoriFlash from '../ui/ChidoriFlash';
+import HeroScene3D from '../3d/HeroScene3D';
 import profileImg from '../../assets/AboutImage/homeimg.jpeg';
 import navLogo from '../../assets/images/nav-img/nav.jpg';
+import { useToast } from '../../context/ToastContext';
+import { useSound } from '../../context/SoundContext';
 import './HeroSection.css';
-
-/* ─── Alert System ─── */
-const showAlert = (title, message, type = 'info') => {
-  const alert = document.createElement('div');
-  alert.className = 'ninja-alert';
-  alert.innerHTML = `
-    <div class="ninja-alert-content">
-      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : ''}</div>
-      <div class="ninja-alert-text">
-        <div class="ninja-alert-title">${title}</div>
-        <div class="ninja-alert-message">${message}</div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(alert);
-  setTimeout(() => alert.classList.add('show'), 10);
-  setTimeout(() => {
-    alert.classList.remove('show');
-    setTimeout(() => alert.remove(), 300);
-  }, 3000);
-};
 
 /* ── Chakra Aura rings around the profile ── */
 const ChakraAura = ({ size }) => (
@@ -72,9 +54,8 @@ const HeroSection = () => {
   const [contentVisible, setContentVisible] = useState(false);
   const [activeAura, setActiveAura] = useState(null);
 
-  const audioRef = useRef(null);
-  const fadeIntervalRef = useRef(null);
-  const isPlayingRef = useRef(false);
+  const { showToast } = useToast();
+  const { playSfx } = useSound();
 
   useEffect(() => {
     // Trigger eyelid opening shortly after mount
@@ -120,90 +101,10 @@ const HeroSection = () => {
     };
   }, []);
 
-  // Audio control functions
-  const startAudio = () => {
-    const audio = audioRef.current;
-    if (!audio || isPlayingRef.current) return;
-
-    audio.volume = 0;
-    audio.play().then(() => {
-      isPlayingRef.current = true;
-      console.log("Hero audio playing");
-
-      // Fade in
-      let volume = 0;
-      fadeIntervalRef.current = setInterval(() => {
-        if (volume < 0.15) { // Low cinematic volume
-          volume += 0.005;
-          audio.volume = volume;
-        } else {
-          clearInterval(fadeIntervalRef.current);
-          fadeIntervalRef.current = null;
-        }
-      }, 50);
-    }).catch((err) => {
-      console.log("Audio play failed:", err);
-    });
+  const scrollTo = (id) => {
+    playSfx('click');
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  const stopAudio = () => {
-    const audio = audioRef.current;
-    if (!audio || !isPlayingRef.current) return;
-
-    // Fade out
-    let volume = audio.volume;
-    fadeIntervalRef.current = setInterval(() => {
-      if (volume > 0) {
-        volume -= 0.005;
-        audio.volume = volume;
-      } else {
-        clearInterval(fadeIntervalRef.current);
-        fadeIntervalRef.current = null;
-        audio.pause();
-        audio.currentTime = 0;
-        isPlayingRef.current = false;
-        console.log("Hero audio paused");
-      }
-    }, 50);
-  };
-
-  useEffect(() => {
-    const heroElement = document.getElementById('hero');
-
-    if (!heroElement) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            if (!isPlayingRef.current) {
-              startAudio();
-            }
-          } else {
-            if (isPlayingRef.current) {
-              stopAudio();
-            }
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(heroElement);
-
-    return () => {
-      observer.disconnect();
-      if (fadeIntervalRef.current) {
-        clearInterval(fadeIntervalRef.current);
-      }
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-    };
-  }, []);
-
-  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   const PROFILE_SIZE = 230;
 
@@ -215,8 +116,9 @@ const HeroSection = () => {
       {/* ── Layered cinematic backgrounds ── */}
       <div className="hero-gradient-overlay" />
       <AkatsukiBackground />
+      <HeroScene3D />
       <div className="grid-background hero-grid-bg" />
-      <ChakraParticles density={50} />
+      <ChakraParticles density={40} />
 
       {/* ── Mangekyō eyelid reveal overlay ── */}
       <AnimatePresence>
@@ -366,12 +268,12 @@ const HeroSection = () => {
             whileHover={{ boxShadow: '0 0 30px rgba(204,34,34,0.6), 0 0 60px rgba(123,47,255,0.3)' }}
             whileTap={{ scale: 0.97 }}
             onClick={() => {
-              showAlert('Mission Archive', 'Accessing the project repository...', 'info');
+              playSfx('click');
               scrollTo('projects');
             }}
             className="hero-cta-primary neon-pulse"
           >
-            View My Work <ArrowDown size={16} />
+            Explore Missions <ArrowDown size={16} />
           </motion.button>
 
           {/* Secondary — outline */}
@@ -379,7 +281,10 @@ const HeroSection = () => {
             whileHover={{ background: 'rgba(204,34,34,0.12)', boxShadow: '0 0 20px rgba(204,34,34,0.3)' }}
             whileTap={{ scale: 0.97 }}
             href={personalInfo.resumeUrl} download="Gunasekar_Resume.pdf"
-            onClick={() => showAlert('Resume Download', 'Downloading the shinobi credentials...', 'info')}
+            onClick={() => {
+              playSfx('click');
+              showToast('Resume Download', 'Downloading Gunasekar D Resume...', 'success');
+            }}
             className="hero-cta-secondary"
           >
             <Download size={16} /> Resume
@@ -400,14 +305,7 @@ const HeroSection = () => {
             <motion.a
               key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
               whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const messages = {
-                  GitHub: 'Opening the code repository...',
-                  LinkedIn: 'Connecting to the ninja network...',
-                  Email: 'Preparing to send a message...'
-                };
-                showAlert(`Opening ${label}`, messages[label] || 'Activating link...', 'info');
-              }}
+              onClick={() => playSfx('click')}
               className="hero-social-link"
             >
               <Icon size={20} />
@@ -429,16 +327,6 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Background Audio */}
-      <audio
-        ref={audioRef}
-        preload="auto"
-        loop
-        style={{ display: 'none' }}
-      >
-        <source src="/audio/home-page.mp3" type="audio/mpeg" />
-      </audio>
     </section>
   );
 };

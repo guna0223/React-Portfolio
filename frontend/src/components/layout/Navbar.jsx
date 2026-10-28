@@ -1,29 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Terminal, Volume2, VolumeX, Sparkles, Briefcase } from 'lucide-react';
 import navLogo from '../../assets/images/nav-img/nav.jpg';
+import { useSound } from '../../context/SoundContext';
+import { useThemeMode } from '../../context/ThemeModeContext';
+import { useToast } from '../../context/ToastContext';
 import './Navbar.css';
-
-/* ─── Alert System ─── */
-const showAlert = (title, message, type = 'info') => {
-  const alert = document.createElement('div');
-  alert.className = 'ninja-alert';
-  alert.innerHTML = `
-    <div class="ninja-alert-content">
-      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : ''}</div>
-      <div class="ninja-alert-text">
-        <div class="ninja-alert-title">${title}</div>
-        <div class="ninja-alert-message">${message}</div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(alert);
-  setTimeout(() => alert.classList.add('show'), 10);
-  setTimeout(() => {
-    alert.classList.remove('show');
-    setTimeout(() => alert.remove(), 300);
-  }, 3000);
-};
 
 const navItems = [
   { id: 'hero', label: 'Home' },
@@ -52,12 +34,16 @@ const SharinganLogo = () => (
   </svg>
 );
 
-const Navbar = () => {
+const Navbar = ({ onOpenTerminal }) => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const lastScrollY = useRef(0);
+
+  const { isMuted, isPlaying, toggleMute, playSfx } = useSound();
+  const { themeMode, toggleThemeMode, isExecutive } = useThemeMode();
+  const { showToast } = useToast();
 
   /* ── Scroll detection ── */
   useEffect(() => {
@@ -96,18 +82,25 @@ const Navbar = () => {
   }, [mobileOpen]);
 
   const scrollTo = (id) => {
-    const labels = {
-      hero: 'Home Base',
-      about: 'About the Shinobi',
-      skills: 'Ninja Skills',
-      experience: 'Battle Experience',
-      projects: 'Mission Archive',
-      services: 'Services Offered',
-      contact: 'Contact HQ'
-    };
-    showAlert('Navigation Activated', `Traveling to ${labels[id] || id}...`, 'info');
+    playSfx('click');
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMobileOpen(false);
+  };
+
+  const handleSoundToggle = () => {
+    toggleMute();
+    playSfx('click');
+    showToast('Soundtrack', isMuted ? 'Ambient audio activated' : 'Audio muted', 'info');
+  };
+
+  const handleThemeToggle = () => {
+    toggleThemeMode();
+    playSfx('jutsu');
+    showToast(
+      'Theme Shift',
+      `Switched to ${themeMode === 'shinobi' ? 'Executive Clean' : 'Shinobi Genjutsu'} Mode`,
+      'success'
+    );
   };
 
   return (
@@ -162,13 +155,56 @@ const Navbar = () => {
           })}
         </nav>
 
-        {/* ── Desktop CTA ── */}
-        <button
-          onClick={() => scrollTo('contact')}
-          className="nav-cta"
-        >
-          ENTER
-        </button>
+        {/* ── Advanced Control Bar (Sound, Theme, Terminal) ── */}
+        <div className="nav-controls-group">
+          {/* Audio Visualizer Button */}
+          <button
+            onClick={handleSoundToggle}
+            className="nav-ctrl-btn"
+            title={isMuted ? 'Unmute ambient sound' : 'Mute ambient sound'}
+            aria-label="Toggle Sound"
+          >
+            {isMuted ? (
+              <VolumeX size={15} />
+            ) : (
+              <div className={`nav-sound-visualizer ${isPlaying ? 'playing' : ''}`}>
+                <span className="nav-sound-bar" />
+                <span className="nav-sound-bar" />
+                <span className="nav-sound-bar" />
+              </div>
+            )}
+          </button>
+
+          {/* Theme Mode Switcher */}
+          <button
+            onClick={handleThemeToggle}
+            className="nav-ctrl-btn"
+            title="Toggle Shinobi / Executive Mode"
+            aria-label="Toggle Theme Mode"
+          >
+            {isExecutive ? <Briefcase size={14} /> : <Sparkles size={14} />}
+            <span className="desktop-only-text">{isExecutive ? 'EXEC' : 'SHINOBI'}</span>
+          </button>
+
+          {/* Terminal CLI Launcher */}
+          <button
+            onClick={() => onOpenTerminal && onOpenTerminal()}
+            className="nav-ctrl-btn"
+            title="Open Interactive Terminal (Ctrl + K)"
+            aria-label="Open Shinobi Terminal"
+          >
+            <Terminal size={14} />
+            <span className="desktop-only-text">&gt;_</span>
+          </button>
+
+          {/* ── Desktop CTA ── */}
+          <button
+            onClick={() => scrollTo('contact')}
+            className="nav-cta"
+          >
+            HIRE
+          </button>
+        </div>
 
         {/* ── Mobile hamburger ── */}
         <button
@@ -259,6 +295,38 @@ const Navbar = () => {
               </nav>
 
               <div className="nav-drawer-footer">
+                <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                  <button
+                    onClick={handleSoundToggle}
+                    className="nav-ctrl-btn"
+                    style={{ flex: 1 }}
+                    aria-label="Toggle Sound"
+                  >
+                    {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+                    <span>{isMuted ? 'Muted' : 'Sound'}</span>
+                  </button>
+                  <button
+                    onClick={handleThemeToggle}
+                    className="nav-ctrl-btn"
+                    style={{ flex: 1 }}
+                    aria-label="Toggle Theme Mode"
+                  >
+                    {isExecutive ? <Briefcase size={14} /> : <Sparkles size={14} />}
+                    <span>{isExecutive ? 'Exec' : 'Shinobi'}</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setMobileOpen(false);
+                      if (onOpenTerminal) onOpenTerminal();
+                    }}
+                    className="nav-ctrl-btn"
+                    style={{ flex: 1 }}
+                    aria-label="Open Terminal"
+                  >
+                    <Terminal size={14} />
+                    <span>CLI</span>
+                  </button>
+                </div>
                 <motion.button
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -266,7 +334,7 @@ const Navbar = () => {
                   onClick={() => scrollTo('contact')}
                   className="nav-drawer-cta"
                 >
-                  Enter The Battlefield
+                  Initiate Contract / Hire
                 </motion.button>
               </div>
             </motion.div>

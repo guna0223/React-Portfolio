@@ -1,64 +1,59 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Link, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import emailjs from 'emailjs-com';
+import { Mail, MapPin, Link, Send, CheckCircle, AlertCircle, Copy, Check } from 'lucide-react';
 import { contactInfo } from '../../data/portfolio';
 import HoloCard from '../ui/HoloCard';
 import SectionHeading from '../ui/SectionHeading';
+import { useToast } from '../../context/ToastContext';
+import { useSound } from '../../context/SoundContext';
 import './ContactSection.css';
-
-/* ─── Alert System ─── */
-const showAlert = (title, message, type = 'info') => {
-  const alert = document.createElement('div');
-  alert.className = 'ninja-alert';
-  alert.innerHTML = `
-    <div class="ninja-alert-content">
-      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : ''}</div>
-      <div class="ninja-alert-text">
-        <div class="ninja-alert-title">${title}</div>
-        <div class="ninja-alert-message">${message}</div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(alert);
-  setTimeout(() => alert.classList.add('show'), 10);
-  setTimeout(() => {
-    alert.classList.remove('show');
-    setTimeout(() => alert.remove(), 300);
-  }, 3000);
-};
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState(null);
   const [sending, setSending] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const { showToast } = useToast();
+  const { playSfx } = useSound();
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+  const handleCopyEmail = (e) => {
     e.preventDefault();
-    setSending(true); setStatus(null);
-    showAlert('Mission Deployed', 'Your message is being transmitted to HQ...', 'info');
-    try {
-      await emailjs.send('service_portfolio', 'template_portfolio', formData, 'user_emailjs_id');
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      showAlert('Transmission Success', 'Your message reached HQ! I will respond before the next arc.', 'success');
-    } catch {
-      setStatus('error');
-      showAlert('Transmission Failed', 'Your signal was intercepted. Please redeploy your message.', 'error');
-    }
-    finally { setSending(false); }
+    navigator.clipboard.writeText(contactInfo.email);
+    setCopied(true);
+    playSfx('click');
+    showToast('Copied to Clipboard!', `${contactInfo.email} copied successfully.`, 'success');
+    setTimeout(() => setCopied(false), 3000);
   };
 
-  const handleCardClick = (label) => {
-    const messages = {
-      Email: 'Opening your communication scroll...',
-      Location: 'Revealing the hidden village location...',
-      LinkedIn: 'Connecting to the ninja network...',
-      WhatsApp: 'Opening direct line to the shinobi...'
-    };
-    showAlert(`Opening ${label}`, messages[label] || 'Activating link...', 'info');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    setStatus(null);
+    playSfx('click');
+    showToast('Deploying Message', 'Opening communication frequency...', 'info');
+
+    // Safe direct mailto trigger fallback + status confirmation
+    try {
+      const mailtoUrl = `mailto:${contactInfo.email}?subject=${encodeURIComponent(
+        `[Portfolio] ${formData.subject}`
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+
+      window.open(mailtoUrl, '_blank');
+      setStatus('success');
+      playSfx('jutsu');
+      showToast('Transmission Dispatched', 'Mail client opened with your message ready to send!', 'success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch {
+      setStatus('error');
+      showToast('Transmission Intercepted', 'Please copy email address directly or try again.', 'error');
+    } finally {
+      setSending(false);
+    }
   };
 
   const contactCards = [
@@ -77,8 +72,12 @@ const ContactSection = () => {
       <div className="section-container contact-section-container">
         <SectionHeading
           number="06"
-          title={<>Let's Create Something <span className="text-gradient">Legendary</span></>}
-          subtitle="Ready to deploy your next mission? Send the signal."
+          title={
+            <>
+              Let's Create Something <span className="text-gradient">Legendary</span>
+            </>
+          }
+          subtitle="Ready to deploy your next high-impact mission? Send the signal."
         />
 
         <div className="contact-grid">
@@ -87,18 +86,24 @@ const ContactSection = () => {
             {contactCards.map((card, i) => {
               const Icon = card.icon;
               return (
-                <motion.div key={card.label} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
+                <motion.div
+                  key={card.label}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
                   <HoloCard
                     glowColor="var(--color-accent-primary)"
                     className="contact-card"
                     {...(card.href ? { as: 'a', href: card.href, target: '_blank', rel: 'noreferrer' } : {})}
-                    onClick={() => handleCardClick(card.label)}
+                    onClick={() => playSfx('click')}
                   >
                     <div className="contact-card-content">
                       <div className="contact-card-icon">
                         <Icon size={22} />
                       </div>
-                      <div>
+                      <div style={{ flex: 1 }}>
                         <div className="text-small contact-card-label">{card.label}</div>
                         <div className="contact-card-value">{card.value}</div>
                       </div>
@@ -108,8 +113,42 @@ const ContactSection = () => {
               );
             })}
 
+            {/* Quick 1-Click Copy Email Action Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <button
+                onClick={handleCopyEmail}
+                className="contact-copy-btn"
+                style={{
+                  width: '100%',
+                  padding: '14px 18px',
+                  borderRadius: '12px',
+                  background: 'rgba(204, 34, 34, 0.1)',
+                  border: '1px dashed var(--color-accent-primary)',
+                  color: 'var(--color-text-primary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.825rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease',
+                }}
+              >
+                {copied ? <Check size={16} color="#38ef7d" /> : <Copy size={16} />}
+                <span>{copied ? 'Copied to Clipboard!' : 'Copy Direct Email Address'}</span>
+              </button>
+            </motion.div>
+
             {/* Decorative Rinnegan ring */}
-            <motion.div animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
               className="contact-rinnegan-ring"
             >
               {[1, 2, 3, 4].map((r) => (
@@ -119,50 +158,105 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <HoloCard glowColor="var(--color-accent-primary)" className="contact-form-card">
               <form onSubmit={handleSubmit}>
                 <div className="contact-form-grid">
                   <div>
                     <label className="text-small contact-form-label">Name</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your name" className="contact-input" />
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your name"
+                      className="contact-input"
+                    />
                   </div>
                   <div>
                     <label className="text-small contact-form-label">Email</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="your@email.com" className="contact-input" />
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="your@email.com"
+                      className="contact-input"
+                    />
                   </div>
                 </div>
 
                 <div style={{ marginBottom: '1rem' }}>
                   <label className="text-small contact-form-label">Subject</label>
-                  <input type="text" name="subject" value={formData.subject} onChange={handleChange} required placeholder="Mission brief" className="contact-input" />
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    placeholder="Project Inquiry / Job Opportunity"
+                    className="contact-input"
+                  />
                 </div>
 
                 <div style={{ marginBottom: '1.5rem' }}>
                   <label className="text-small contact-form-label">Message</label>
-                  <textarea name="message" value={formData.message} onChange={handleChange} required placeholder="Describe your mission..." rows={5}
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    placeholder="Describe your project, timeline, and requirements..."
+                    rows={5}
                     className="contact-input contact-textarea"
                   />
                 </div>
 
                 {status === 'success' && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="contact-success-message">
-                    <CheckCircle size={18} /><span>Message sent! I'll respond soon.</span>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="contact-success-message"
+                  >
+                    <CheckCircle size={18} />
+                    <span>Transmission deployed! Ready to collaborate.</span>
                   </motion.div>
                 )}
                 {status === 'error' && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="contact-error-message">
-                    <AlertCircle size={18} /><span>Failed to send. Please try again.</span>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="contact-error-message"
+                  >
+                    <AlertCircle size={18} />
+                    <span>Failed to transmit. Please use the copy email button above.</span>
                   </motion.div>
                 )}
 
-                <motion.button type="submit" disabled={sending} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                <motion.button
+                  type="submit"
+                  disabled={sending}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   className={`contact-submit-btn${sending ? ' contact-submit-btn--disabled' : ''}`}
                 >
                   {sending ? (
-                    <><div className="contact-spinner" />Sending...</>
+                    <>
+                      <div className="contact-spinner" />
+                      Deploying...
+                    </>
                   ) : (
-                    <><Send size={18} />Deploy Message</>
+                    <>
+                      <Send size={18} />
+                      Deploy Message Scroll
+                    </>
                   )}
                 </motion.button>
               </form>

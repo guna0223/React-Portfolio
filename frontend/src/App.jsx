@@ -1,12 +1,14 @@
-import { useSmoothScroll } from './hooks/useSmoothScroll';
-import { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollProgress from './components/layout/ScrollProgress';
-// import MangekyoIntro from './components/ui/MangekyoIntro';
 import GenjutsuStartScreen from './components/ui/GenjutsuStartScreen';
-import { Suspense, lazy } from 'react';
+import TerminalModal from './components/ui/TerminalModal';
+import { ToastProvider } from './context/ToastContext';
+import { SoundProvider } from './context/SoundContext';
+import { ThemeModeProvider } from './context/ThemeModeContext';
 
 // Lazy load sections
 const HeroSection = lazy(() => import('./components/sections/HeroSection'));
@@ -17,15 +19,15 @@ const ProjectsSection = lazy(() => import('./components/sections/ProjectsSection
 const ServicesSection = lazy(() => import('./components/sections/ServicesSection'));
 const ContactSection = lazy(() => import('./components/sections/ContactSection'));
 
-function Portfolio() {
+function Portfolio({ onOpenTerminal }) {
   useSmoothScroll();
 
   return (
     <>
       <ScrollProgress />
-      <Navbar />
+      <Navbar onOpenTerminal={onOpenTerminal} />
       <main>
-        <Suspense fallback={<div className="loading-fallback"></div>}>
+        <Suspense fallback={<div className="loading-fallback" />}>
           <HeroSection />
           <div className="section-divider" />
           <AboutSection />
@@ -45,26 +47,45 @@ function Portfolio() {
   );
 }
 
-function App() {
-  const [started, setStarted] = useState(false);
-  const [introDone, setIntroDone] = useState(false);
+function MainApp() {
+  const [started, setStarted] = useState(() => {
+    // If user has visited and opened before or executive mode is stored, allow seamless navigation
+    return localStorage.getItem('portfolio_started') === 'true';
+  });
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+
+  const handleStart = () => {
+    localStorage.setItem('portfolio_started', 'true');
+    setStarted(true);
+  };
 
   return (
-    <AnimatePresence mode="wait">
-      {!started && (
-        <GenjutsuStartScreen key="start" onStart={() => { setStarted(true); setIntroDone(true); }} />
-      )}
+    <>
+      <AnimatePresence mode="wait">
+        {!started ? (
+          <GenjutsuStartScreen key="start" onStart={handleStart} />
+        ) : (
+          <Portfolio key="portfolio" onOpenTerminal={() => setIsTerminalOpen(true)} />
+        )}
+      </AnimatePresence>
 
-      {/* Video Section Disabled Temporarily
-      {started && !introDone && (
-        <MangekyoIntro key="intro" onComplete={() => setIntroDone(true)} />
-      )}
-      */}
+      <TerminalModal
+        isOpen={isTerminalOpen}
+        onClose={() => setIsTerminalOpen(false)}
+      />
+    </>
+  );
+}
 
-      {started && introDone && (
-        <Portfolio key="portfolio" />
-      )}
-    </AnimatePresence>
+function App() {
+  return (
+    <ThemeModeProvider>
+      <SoundProvider>
+        <ToastProvider>
+          <MainApp />
+        </ToastProvider>
+      </SoundProvider>
+    </ThemeModeProvider>
   );
 }
 

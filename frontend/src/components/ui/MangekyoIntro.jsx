@@ -2,26 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 
-/* ─── Alert System ─── */
-const showAlert = (title, message, type = 'info') => {
-  const alert = document.createElement('div');
-  alert.className = 'ninja-alert';
-  alert.innerHTML = `
-    <div class="ninja-alert-content">
-      <div class="ninja-alert-icon">${type === 'success' ? '✓' : type === 'error' ? '✗' : ''}</div>
-      <div class="ninja-alert-text">
-        <div class="ninja-alert-title">${title}</div>
-        <div class="ninja-alert-message">${message}</div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(alert);
-  setTimeout(() => alert.classList.add('show'), 10);
-  setTimeout(() => {
-    alert.classList.remove('show');
-    setTimeout(() => alert.remove(), 300);
-  }, 3000);
-};
+import { useToast } from '../../context/ToastContext';
 
 /**
  * Dark Single-Eye Cinematic Intro
@@ -47,10 +28,11 @@ const MangekyoIntro = ({ onComplete }) => {
   const mangekyoRef = useRef(null);
   const pupilGlowRef = useRef(null);
   const audioRef = useRef(null);
+  const { showToast } = useToast();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    showAlert('Mangekyō Activated', 'The Sharingan awakens... preparing to reveal the ninja portfolio.', 'info');
+    showToast('Mangekyō Activated', 'The Sharingan awakens... preparing to reveal the ninja portfolio.', 'info');
 
     const audio = audioRef.current;
 
@@ -81,7 +63,7 @@ const MangekyoIntro = ({ onComplete }) => {
         audio.currentTime = 0;
       }
       setExiting(true);
-      showAlert('Welcome Shinobi', 'The Mangekyō has spoken. Enter the ninja realm.', 'success');
+      showToast('Welcome Shinobi', 'The Mangekyō has spoken. Enter the ninja realm.', 'success');
       setTimeout(() => {
         document.body.style.overflow = '';
         if (onComplete) onComplete();
