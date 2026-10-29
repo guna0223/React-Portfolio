@@ -159,6 +159,21 @@
   background: rgba(0, 229, 255, 0.22);
 }
 
+.reader-shortcut-hint {
+  background: rgba(0, 229, 255, 0.2);
+  font-size: 0.68rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 520px) {
+  .reader-shortcut-hint {
+    display: none;
+  }
+}
+
 /* Stats Row */
 .reader-stats-grid {
   display: grid;

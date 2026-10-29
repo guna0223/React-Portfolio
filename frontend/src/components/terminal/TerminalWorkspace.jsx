@@ -240,7 +240,40 @@ const TerminalWorkspace = ({ onToggleView, onToggleVideo, isVideoEnabled }) => {
     }
   };
 
+  // Shortcut listener for Ctrl+L to clear screen
+  useEffect(() => {
+    const handleWorkspaceShortcuts = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l') {
+        e.preventDefault();
+        setHistory([]);
+      }
+    };
+    window.addEventListener('keydown', handleWorkspaceShortcuts);
+    return () => window.removeEventListener('keydown', handleWorkspaceShortcuts);
+  }, []);
+
   const handleKeyDown = (e) => {
+    // Ctrl+K to toggle view
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      e.stopPropagation();
+      onToggleView();
+      return;
+    }
+    // Ctrl+L to clear screen
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l') {
+      e.preventDefault();
+      e.stopPropagation();
+      setHistory([]);
+      return;
+    }
+    // Ctrl+C to cancel current line
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c') {
+      e.preventDefault();
+      setInput('');
+      return;
+    }
+
     if (e.key === 'Enter') {
       executeCommand(input);
       setInput('');
@@ -289,7 +322,7 @@ const TerminalWorkspace = ({ onToggleView, onToggleVideo, isVideoEnabled }) => {
             <button
               type="button"
               className="traffic-dot dot-yellow"
-              title="Switch to Reader View"
+              title="Switch to Reader View (Ctrl + K)"
               onClick={(e) => {
                 e.stopPropagation();
                 onToggleView();
@@ -307,9 +340,21 @@ const TerminalWorkspace = ({ onToggleView, onToggleVideo, isVideoEnabled }) => {
           </div>
 
           {/* Terminal Title */}
-          <div className="terminal-window-title">
+          <div
+            className="terminal-window-title"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleView();
+            }}
+            title="Switch to Reader View (Ctrl + K)"
+            role="button"
+            tabIndex={0}
+          >
             <span className="title-prompt">&gt;_</span>
-            <span className="title-text">shinobi-terminal ~ bash (Ctrl + K)</span>
+            <span className="title-text">
+              <span className="title-full">shinobi-terminal ~ bash (Ctrl + K)</span>
+              <span className="title-short">shinobi-term (Ctrl+K)</span>
+            </span>
           </div>
 
           {/* Header Controls */}

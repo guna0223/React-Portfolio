@@ -49,10 +49,11 @@ const QuickDock = ({ onExecuteCmd, onToggleView }) => {
             playSfx('click');
             onToggleView();
           }}
-          title="Switch to clean Recruiter Reader View"
+          title="Switch to Recruiter Reader View (Ctrl + K)"
         >
           <Layout size={12} />
           <span>Reader View</span>
+          <span className="dock-shortcut-badge">Ctrl+K</span>
         </button>
 
         <button

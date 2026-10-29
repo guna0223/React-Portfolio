@@ -121,11 +121,22 @@
   font-size: 0.8rem;
   color: #9d8db3;
   letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.terminal-window-title:hover {
+  color: #ffffff;
 }
 
 .title-prompt {
   color: var(--color-accent-primary, #cc2222);
   font-weight: bold;
+}
+
+.title-short {
+  display: none;
 }
 
 .terminal-window-controls {
@@ -265,16 +276,17 @@
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .neofetch-grid {
-    grid-template-columns: 1fr;
-  }
+.neofetch-avatar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .neofetch-avatar-wrapper {
   position: relative;
   width: 160px;
   height: 160px;
+  max-width: 100%;
   border-radius: 12px;
   overflow: hidden;
   border: 2px solid rgba(204, 34, 34, 0.4);
@@ -285,6 +297,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .neofetch-avatar-badge {
@@ -304,6 +317,7 @@
   gap: 6px;
   margin-top: 12px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .neofetch-color-blocks span {
@@ -312,9 +326,14 @@
   border-radius: 2px;
 }
 
+.neofetch-info-col {
+  min-width: 0;
+}
+
 .neofetch-header {
   font-size: 1.05rem;
   font-weight: 700;
+  word-break: break-word;
 }
 
 .neofetch-user {
@@ -332,29 +351,38 @@
 .neofetch-divider {
   color: rgba(255, 255, 255, 0.15);
   margin-bottom: 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: -1px;
 }
 
 .neofetch-specs {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   font-size: 0.82rem;
   margin-bottom: 1rem;
 }
 
 .spec-row {
   display: flex;
-  gap: 8px;
+  gap: 8px 12px;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .spec-label {
   color: var(--color-accent-primary, #ff4d4d);
   font-weight: 600;
-  min-width: 85px;
+  min-width: 82px;
+  flex-shrink: 0;
 }
 
 .spec-val {
   color: #e2d9f3;
+  flex: 1;
+  min-width: 160px;
+  word-break: break-word;
 }
 
 .spec-val.highlight-green {
@@ -367,6 +395,7 @@
   line-height: 1.5;
   color: #c4b5de;
   margin-bottom: 1rem;
+  word-break: break-word;
 }
 
 .neofetch-quick-actions {
@@ -379,12 +408,16 @@
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #e2d9f3;
-  padding: 4px 10px;
-  font-size: 0.75rem;
+  padding: 5px 12px;
+  font-size: 0.78rem;
   font-family: inherit;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .term-inline-btn:hover {
@@ -809,6 +842,7 @@
   padding: 8px 1rem;
   overflow-x: auto;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .quick-dock-container::-webkit-scrollbar {
@@ -836,6 +870,7 @@
   align-items: center;
   gap: 6px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .quick-dock-pill:hover {
@@ -869,4 +904,286 @@
   height: 18px;
   background: rgba(255, 255, 255, 0.12);
   margin: 0 4px;
+}
+
+.dock-shortcut-badge {
+  background: rgba(0, 229, 255, 0.25);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.65rem;
+  margin-left: 2px;
+  letter-spacing: 0.05em;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE MEDIA QUERIES (ALL DEVICES)
+   Mobile, Tablet, Desktop, Ultra-wide & Landscape
+   ══════════════════════════════════════════════ */
+
+/* Tablets & iPads (<= 1024px) */
+@media (max-width: 1024px) {
+  .terminal-desktop-container {
+    padding: 1rem;
+  }
+
+  .terminal-window-frame {
+    height: 85vh;
+    max-height: 850px;
+  }
+
+  .term-projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+/* Small Tablets & Large Phones (<= 768px) */
+@media (max-width: 768px) {
+  .terminal-desktop-container {
+    padding: 0.75rem 0.5rem;
+    min-height: calc(100vh - 56px);
+  }
+
+  .terminal-window-frame {
+    height: 86vh;
+    min-height: 500px;
+    border-radius: 8px;
+  }
+
+  .terminal-window-body {
+    padding: 0.85rem 1rem;
+    font-size: 0.84rem;
+  }
+
+  .neofetch-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .neofetch-avatar-col {
+    align-items: center;
+    margin: 0 auto 0.25rem;
+  }
+
+  .neofetch-avatar-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .neofetch-info-col {
+    width: 100%;
+  }
+
+  .neofetch-header {
+    text-align: center;
+  }
+
+  .neofetch-divider {
+    text-align: center;
+  }
+
+  .term-projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+  }
+
+  .term-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Standard Mobile Devices (<= 540px: iPhone, Galaxy, Pixel) */
+@media (max-width: 540px) {
+  .terminal-desktop-container {
+    padding: 0.35rem 0.25rem;
+  }
+
+  .terminal-window-frame {
+    height: calc(100vh - 66px);
+    min-height: 440px;
+    border-radius: 6px;
+  }
+
+  .terminal-window-header {
+    height: 38px;
+    padding: 0 0.5rem;
+  }
+
+  .traffic-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .traffic-lights {
+    gap: 6px;
+  }
+
+  .terminal-window-title {
+    font-size: 0.72rem;
+    gap: 4px;
+    max-width: calc(100% - 130px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .title-full {
+    display: none;
+  }
+
+  .title-short {
+    display: inline;
+  }
+
+  .terminal-window-body {
+    padding: 0.65rem 0.55rem;
+    font-size: 0.8rem;
+  }
+
+  .terminal-output-card {
+    padding: 0.85rem 0.65rem;
+    margin: 0.75rem 0;
+  }
+
+  .neofetch-avatar-wrapper {
+    width: 125px;
+    height: 125px;
+  }
+
+  .spec-row {
+    gap: 3px 8px;
+  }
+
+  .spec-label {
+    min-width: 75px;
+    font-size: 0.78rem;
+  }
+
+  .spec-val {
+    min-width: 140px;
+    font-size: 0.78rem;
+  }
+
+  .neofetch-quick-actions {
+    justify-content: stretch;
+  }
+
+  .term-inline-btn {
+    flex: 1 1 calc(50% - 6px);
+    text-align: center;
+  }
+
+  /* Compact prompt line on mobile: hides username prefix to maximize typing space */
+  .terminal-active-input-line .term-prompt-user,
+  .terminal-active-input-line .term-prompt-colon {
+    display: none;
+  }
+
+  .term-cli-input {
+    font-size: 16px; /* Prevents iOS Safari auto-zoom on focus */
+  }
+
+  .term-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .term-commands-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .term-skill-row {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .skill-bar {
+    font-size: 0.72rem;
+  }
+
+  .quick-dock-container {
+    padding: 6px 0.5rem;
+  }
+
+  .quick-dock-pill {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    gap: 4px;
+  }
+
+  .dock-shortcut-badge {
+    display: none;
+  }
+
+  .sudo-actions .term-action-btn.large {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Compact Mobile Devices (<= 380px: iPhone SE, older phones) */
+@media (max-width: 380px) {
+  .terminal-desktop-container {
+    padding: 0.25rem 0.15rem;
+  }
+
+  .terminal-window-frame {
+    min-height: 380px;
+  }
+
+  .neofetch-avatar-wrapper {
+    width: 105px;
+    height: 105px;
+  }
+
+  .neofetch-header {
+    font-size: 0.95rem;
+  }
+
+  .spec-row {
+    flex-direction: column;
+    gap: 1px;
+    margin-bottom: 3px;
+  }
+
+  .spec-val {
+    min-width: 100%;
+    padding-left: 6px;
+  }
+
+  .term-inline-btn {
+    flex: 1 1 100%;
+  }
+
+  .term-project-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* Landscape Mode on Mobile (e.g. max-height <= 550px) */
+@media (max-height: 550px) and (orientation: landscape) {
+  .terminal-desktop-container {
+    padding: 0.25rem;
+    min-height: calc(100vh - 56px);
+  }
+
+  .terminal-window-frame {
+    height: 94vh;
+    min-height: 280px;
+  }
+
+  .neofetch-grid {
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+  }
+
+  .neofetch-avatar-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .neofetch-color-blocks {
+    margin-top: 6px;
+  }
 }

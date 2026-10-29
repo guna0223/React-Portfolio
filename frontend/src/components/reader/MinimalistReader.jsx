@@ -70,9 +70,11 @@ const MinimalistReader = ({ onSwitchToTerminal }) => {
                 playSfx('click');
                 onSwitchToTerminal();
               }}
+              title="Return to Terminal Workspace (Ctrl + K)"
             >
               <Terminal size={14} />
-              Return to Terminal OS
+              <span>Return to Terminal OS</span>
+              <span className="reader-shortcut-hint">Ctrl + K</span>
             </button>
           </div>
         </div>

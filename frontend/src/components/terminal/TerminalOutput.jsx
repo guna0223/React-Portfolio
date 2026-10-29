@@ -44,12 +44,8 @@ export const NeofetchOutput = ({ onExecuteCmd }) => {
 
           <div className="neofetch-specs">
             <div className="spec-row">
-              <span className="spec-label">OS:</span>
-              <span className="spec-val">Shinobi Linux x86_64 (v2.4)</span>
-            </div>
-            <div className="spec-row">
               <span className="spec-label">Host:</span>
-              <span className="spec-val">Gunasekar Workstation / Bengaluru</span>
+              <span className="spec-val">Gunasekar</span>
             </div>
             <div className="spec-row">
               <span className="spec-label">Kernel:</span>
@@ -65,7 +61,7 @@ export const NeofetchOutput = ({ onExecuteCmd }) => {
             </div>
             <div className="spec-row">
               <span className="spec-label">Editor:</span>
-              <span className="spec-val">VS Code / Cursor / Neovim</span>
+              <span className="spec-val">VS Code / Cursor / Antigravity</span>
             </div>
             <div className="spec-row">
               <span className="spec-label">Core Jutsu:</span>
