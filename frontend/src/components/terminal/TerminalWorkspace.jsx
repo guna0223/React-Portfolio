@@ -400,7 +400,7 @@ const TerminalWorkspace = ({ onToggleView, onToggleVideo, isVideoEnabled }) => {
                   <span className="term-prompt-user">shinobi@gunasekar</span>
                   <span className="term-prompt-colon"> : </span>
                   <span className="term-prompt-tilde">~</span>
-                  <span className="term-prompt-dollar"> $ </span>
+                  <span className="term-prompt-dollar"> sudo  $ :  </span>
                   <span className="term-cmd-text">{item.text.replace('shinobi@gunasekar : ~ $ ', '')}</span>
                 </div>
               );
@@ -444,7 +444,7 @@ const TerminalWorkspace = ({ onToggleView, onToggleVideo, isVideoEnabled }) => {
             <span className="term-prompt-user">shinobi@gunasekar</span>
             <span className="term-prompt-colon"> : </span>
             <span className="term-prompt-tilde">~</span>
-            <span className="term-prompt-dollar"> $ </span>
+            <span className="term-prompt-dollar">sudo $ :  </span>
             <input
               ref={inputRef}
               type="text"
