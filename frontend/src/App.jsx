@@ -1,58 +1,66 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { useSmoothScroll } from './hooks/useSmoothScroll';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import ScrollProgress from './components/layout/ScrollProgress';
+import VideoBackground from './components/background/VideoBackground';
+import ChakraParticles from './components/ui/ChakraParticles';
+import TopNavigation from './components/layout/TopNavigation';
+import TerminalWorkspace from './components/terminal/TerminalWorkspace';
+import MinimalistReader from './components/reader/MinimalistReader';
 import GenjutsuStartScreen from './components/ui/GenjutsuStartScreen';
-import TerminalModal from './components/ui/TerminalModal';
 import { ToastProvider } from './context/ToastContext';
 import { SoundProvider } from './context/SoundContext';
 import { ThemeModeProvider } from './context/ThemeModeContext';
 
-// Lazy load sections
-const HeroSection = lazy(() => import('./components/sections/HeroSection'));
-const AboutSection = lazy(() => import('./components/sections/AboutSection'));
-const SkillsSection = lazy(() => import('./components/sections/SkillsSection'));
-const ExperienceSection = lazy(() => import('./components/sections/ExperienceSection'));
-const ProjectsSection = lazy(() => import('./components/sections/ProjectsSection'));
-const ServicesSection = lazy(() => import('./components/sections/ServicesSection'));
-const ContactSection = lazy(() => import('./components/sections/ContactSection'));
+function TerminalPortfolio() {
+  const [currentView, setCurrentView] = useState('terminal'); // 'terminal' | 'reader'
+  const [isVideoEnabled, setIsVideoEnabled] = useState(true);
 
-function Portfolio({ onOpenTerminal }) {
-  useSmoothScroll();
+  const toggleView = () => {
+    setCurrentView((prev) => (prev === 'terminal' ? 'reader' : 'terminal'));
+  };
+
+  const toggleVideo = () => {
+    setIsVideoEnabled((prev) => !prev);
+  };
 
   return (
-    <>
-      <ScrollProgress />
-      <Navbar onOpenTerminal={onOpenTerminal} />
-      <main>
-        <Suspense fallback={<div className="loading-fallback" />}>
-          <HeroSection />
-          <div className="section-divider" />
-          <AboutSection />
-          <div className="section-divider" />
-          <SkillsSection />
-          <ExperienceSection />
-          <div className="section-divider" />
-          <ProjectsSection />
-          <div className="section-divider" />
-          <ServicesSection />
-          <div className="section-divider" />
-          <ContactSection />
-        </Suspense>
+    <div className="terminal-os-root">
+      {/* ── Background Video Backdrop ── */}
+      <VideoBackground
+        isEnabled={isVideoEnabled}
+        isDimmed={currentView === 'reader'}
+      />
+
+      {/* ── Ambient Chakra Sparks (Harmonized with video embers) ── */}
+      <ChakraParticles density={24} />
+
+      {/* ── Fixed Cyber-Shinobi Top Navigation Bar ── */}
+      <TopNavigation
+        currentView={currentView}
+        onViewChange={setCurrentView}
+        isVideoEnabled={isVideoEnabled}
+        onToggleVideo={toggleVideo}
+      />
+
+      {/* ── Main Viewport Switcher (Terminal OS vs Recruiter Reader) ── */}
+      <main className="terminal-os-main">
+        {currentView === 'terminal' ? (
+          <TerminalWorkspace
+            onToggleView={toggleView}
+            onToggleVideo={toggleVideo}
+            isVideoEnabled={isVideoEnabled}
+          />
+        ) : (
+          <MinimalistReader onSwitchToTerminal={() => setCurrentView('terminal')} />
+        )}
       </main>
-      <Footer />
-    </>
+    </div>
   );
 }
 
 function MainApp() {
   const [started, setStarted] = useState(() => {
-    // If user has visited and opened before or executive mode is stored, allow seamless navigation
     return localStorage.getItem('portfolio_started') === 'true';
   });
-  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
   const handleStart = () => {
     localStorage.setItem('portfolio_started', 'true');
@@ -60,20 +68,13 @@ function MainApp() {
   };
 
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {!started ? (
-          <GenjutsuStartScreen key="start" onStart={handleStart} />
-        ) : (
-          <Portfolio key="portfolio" onOpenTerminal={() => setIsTerminalOpen(true)} />
-        )}
-      </AnimatePresence>
-
-      <TerminalModal
-        isOpen={isTerminalOpen}
-        onClose={() => setIsTerminalOpen(false)}
-      />
-    </>
+    <AnimatePresence mode="wait">
+      {!started ? (
+        <GenjutsuStartScreen key="start" onStart={handleStart} />
+      ) : (
+        <TerminalPortfolio key="terminal-portfolio" />
+      )}
+    </AnimatePresence>
   );
 }
 

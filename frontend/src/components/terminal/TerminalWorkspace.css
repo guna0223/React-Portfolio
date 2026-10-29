@@ -1,0 +1,872 @@
+/* ══════════════════════════════════════════════
+   TERMINAL WORKSPACE (Shinobi OS v2.4)
+   Authentic CLI Window with Frosted Glassmorphism
+══════════════════════════════════════════════ */
+
+.terminal-desktop-container {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.terminal-desktop-container.is-maximized {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  z-index: 999;
+}
+
+/* Terminal Window Frame */
+.terminal-window-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 84vh;
+  min-height: 580px;
+  max-height: 900px;
+  background: rgba(10, 5, 18, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(204, 34, 34, 0.28);
+  border-radius: 12px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(204, 34, 34, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.terminal-desktop-container.is-maximized .terminal-window-frame {
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+  border: none;
+}
+
+/* Executive mode window styling */
+.theme-executive .terminal-window-frame {
+  background: rgba(8, 14, 26, 0.86);
+  border-color: rgba(0, 229, 255, 0.25);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(0, 229, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ── Window Header ── */
+.terminal-window-header {
+  height: 42px;
+  background: rgba(16, 8, 28, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  user-select: none;
+}
+
+.traffic-lights {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.traffic-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  padding: 0;
+}
+
+.traffic-dot:hover {
+  transform: scale(1.15);
+  opacity: 0.9;
+}
+
+.dot-red {
+  background-color: #ff5f56;
+  box-shadow: 0 0 8px rgba(255, 95, 86, 0.5);
+}
+
+.dot-yellow {
+  background-color: #ffbd2e;
+  box-shadow: 0 0 8px rgba(255, 189, 46, 0.5);
+}
+
+.dot-green {
+  background-color: #27c93f;
+  box-shadow: 0 0 8px rgba(39, 201, 63, 0.5);
+}
+
+.terminal-window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  color: #9d8db3;
+  letter-spacing: 0.05em;
+}
+
+.title-prompt {
+  color: var(--color-accent-primary, #cc2222);
+  font-weight: bold;
+}
+
+.terminal-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.term-header-btn {
+  background: transparent;
+  border: none;
+  color: #7b6f91;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.term-header-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Buffer Scroll Body ── */
+.terminal-window-body {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #e2d9f3;
+  scroll-behavior: smooth;
+}
+
+/* Terminal Lines */
+.term-line {
+  margin-bottom: 0.75rem;
+  word-break: break-word;
+}
+
+.term-system {
+  color: #b388ff;
+  font-weight: 500;
+}
+
+.term-error {
+  color: #ff5252;
+}
+
+.term-pre {
+  color: #c9bfe3;
+  white-space: pre-wrap;
+  font-family: inherit;
+  margin: 0.5rem 0;
+}
+
+/* Prompt Elements */
+.term-prompt-user {
+  color: var(--color-accent-primary, #ff4d4d);
+  font-weight: 600;
+}
+
+.term-prompt-colon {
+  color: #887d99;
+}
+
+.term-prompt-tilde {
+  color: #4dabf7;
+  font-weight: bold;
+}
+
+.term-prompt-dollar {
+  color: #e2d9f3;
+}
+
+.term-cmd-text {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Active Command Input Line */
+.terminal-active-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.term-cli-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  caret-color: var(--color-accent-primary, #ff4d4d);
+  margin-left: 0.25rem;
+  padding: 0;
+}
+
+/* ── Terminal Rich Output Cards ── */
+.terminal-output-card {
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: rgba(20, 10, 35, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-accent-primary, #cc2222);
+}
+
+.term-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-primary, #cc2222);
+  margin-bottom: 1rem;
+}
+
+.term-card-title.highlight-red {
+  color: #ff3344;
+}
+
+/* Neofetch Styling */
+.neofetch-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .neofetch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.neofetch-avatar-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(204, 34, 34, 0.4);
+  box-shadow: 0 0 20px rgba(204, 34, 34, 0.25);
+}
+
+.neofetch-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.neofetch-avatar-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 255, 102, 0.9);
+  color: #000000;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.neofetch-color-blocks {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.neofetch-color-blocks span {
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.neofetch-header {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.neofetch-user {
+  color: var(--color-accent-primary, #ff4d4d);
+}
+
+.neofetch-at {
+  color: #887d99;
+}
+
+.neofetch-host {
+  color: #7b2fff;
+}
+
+.neofetch-divider {
+  color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 0.75rem;
+}
+
+.neofetch-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.82rem;
+  margin-bottom: 1rem;
+}
+
+.spec-row {
+  display: flex;
+  gap: 8px;
+}
+
+.spec-label {
+  color: var(--color-accent-primary, #ff4d4d);
+  font-weight: 600;
+  min-width: 85px;
+}
+
+.spec-val {
+  color: #e2d9f3;
+}
+
+.spec-val.highlight-green {
+  color: #00ff66;
+  font-weight: 600;
+}
+
+.neofetch-bio {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #c4b5de;
+  margin-bottom: 1rem;
+}
+
+.neofetch-quick-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.term-inline-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2d9f3;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-family: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.term-inline-btn:hover {
+  background: rgba(204, 34, 34, 0.25);
+  border-color: var(--color-accent-primary, #cc2222);
+  color: #ffffff;
+}
+
+.term-inline-btn.highlight {
+  background: rgba(204, 34, 34, 0.2);
+  border-color: rgba(204, 34, 34, 0.5);
+  color: #ff6666;
+  font-weight: bold;
+}
+
+/* Projects Grid inside Terminal */
+.term-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.term-project-item {
+  background: rgba(14, 7, 24, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.term-project-img-wrap {
+  position: relative;
+  height: 140px;
+  overflow: hidden;
+}
+
+.term-project-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.term-project-item:hover .term-project-img-wrap img {
+  transform: scale(1.05);
+}
+
+.term-project-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(5, 2, 10, 0.85);
+  color: var(--color-accent-primary, #ff4d4d);
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(204, 34, 34, 0.4);
+}
+
+.term-project-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.term-project-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.term-project-desc {
+  font-size: 0.78rem;
+  color: #b8a9d1;
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
+.term-arch-box {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  margin-bottom: 0.75rem;
+}
+
+.arch-label {
+  color: var(--color-accent-primary, #ff4d4d);
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.arch-detail {
+  color: #c9bfe3;
+}
+
+.term-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.term-tech-pill {
+  background: rgba(255, 255, 255, 0.05);
+  color: #a89bbd;
+  font-size: 0.68rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.term-project-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.term-action-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.term-action-btn.primary {
+  background: var(--color-accent-primary, #cc2222);
+  color: #ffffff;
+}
+
+.term-action-btn.primary:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 12px rgba(204, 34, 34, 0.4);
+}
+
+.term-action-btn.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2d9f3;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.term-action-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Skills Grid */
+.term-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.term-skill-category {
+  background: rgba(14, 7, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 0.85rem;
+}
+
+.term-cat-header {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--color-accent-primary, #ff4d4d);
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 4px;
+}
+
+.term-cat-prefix {
+  color: #7b2fff;
+}
+
+.term-skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.term-skill-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+}
+
+.skill-name {
+  color: #e2d9f3;
+}
+
+.skill-bar {
+  font-family: inherit;
+  font-weight: bold;
+}
+
+/* Git Commit Timeline */
+.term-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.term-commit-item {
+  display: flex;
+  gap: 1rem;
+}
+
+.term-commit-graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 16px;
+}
+
+.commit-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent-primary, #ff4d4d);
+  box-shadow: 0 0 8px var(--color-accent-primary, #ff4d4d);
+}
+
+.commit-line {
+  flex: 1;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  margin-top: 4px;
+}
+
+.term-commit-content {
+  flex: 1;
+}
+
+.commit-header {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  margin-bottom: 2px;
+}
+
+.commit-hash {
+  color: #00ff66;
+  font-weight: bold;
+}
+
+.commit-period {
+  color: #887d99;
+}
+
+.commit-title {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin: 0 0 2px 0;
+}
+
+.commit-org {
+  font-size: 0.8rem;
+  color: #7b2fff;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.commit-desc {
+  font-size: 0.78rem;
+  color: #b8a9d1;
+  margin: 0;
+}
+
+/* Contact Card */
+.term-contact-intro {
+  font-size: 0.85rem;
+  color: #c9bfe3;
+  margin-bottom: 1rem;
+}
+
+.term-contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.82rem;
+}
+
+.term-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.method-label {
+  color: var(--color-accent-primary, #ff4d4d);
+  font-weight: 600;
+  min-width: 70px;
+}
+
+.method-val {
+  color: #ffffff;
+}
+
+.method-link {
+  color: #4dabf7;
+  text-decoration: none;
+}
+
+.method-link:hover {
+  text-decoration: underline;
+}
+
+.term-copy-btn,
+.term-link-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2d9f3;
+  font-family: inherit;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.term-copy-btn:hover,
+.term-link-btn:hover {
+  background: var(--color-accent-primary, #cc2222);
+  color: #ffffff;
+}
+
+/* Sudo Hire Card */
+.sudo-hire-box {
+  background: rgba(204, 34, 34, 0.08);
+  border: 1px solid rgba(204, 34, 34, 0.3);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.sudo-hire-msg {
+  font-size: 0.88rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.sudo-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: #d1c5e6;
+  margin-bottom: 1rem;
+}
+
+.sudo-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.term-action-btn.large {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  flex: initial;
+}
+
+/* Help Commands Grid */
+.term-commands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+
+.term-cmd-row {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.term-cmd-row:hover {
+  background: rgba(204, 34, 34, 0.18);
+  border-color: rgba(204, 34, 34, 0.4);
+  transform: translateX(3px);
+}
+
+.term-cmd-badge {
+  color: var(--color-accent-primary, #ff4d4d);
+  font-weight: 700;
+  font-size: 0.8rem;
+  min-width: 75px;
+}
+
+.term-cmd-desc {
+  color: #a89bbd;
+  font-size: 0.75rem;
+}
+
+/* ── Quick Action Dock ── */
+.quick-dock-container {
+  background: rgba(14, 7, 26, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 8px 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.quick-dock-container::-webkit-scrollbar {
+  display: none;
+}
+
+.quick-dock-pill-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: max-content;
+}
+
+.quick-dock-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c9bfe3;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.quick-dock-pill:hover {
+  background: rgba(204, 34, 34, 0.25);
+  border-color: var(--color-accent-primary, #cc2222);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.quick-dock-pill.pill-highlight {
+  background: rgba(204, 34, 34, 0.2);
+  border-color: rgba(204, 34, 34, 0.5);
+  color: #ff6666;
+  font-weight: 600;
+}
+
+.quick-dock-pill.pill-secondary {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: rgba(0, 229, 255, 0.35);
+  color: #00e5ff;
+}
+
+.quick-dock-pill.pill-dim {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #7b6f91;
+}
+
+.quick-dock-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0 4px;
+}

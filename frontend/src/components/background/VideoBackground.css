@@ -1,0 +1,113 @@
+/* ══════════════════════════════════════════════
+   CINEMATIC VIDEO BACKGROUND
+   Madara Blood-Moon Loop with Frosted Vignette
+══════════════════════════════════════════════ */
+
+.cinematic-video-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #05020a;
+  transition: opacity 0.8s ease, filter 0.8s ease;
+}
+
+.cinematic-video-wrapper.is-disabled {
+  opacity: 0;
+}
+
+.cinematic-video-wrapper.is-dimmed {
+  opacity: 0.3;
+}
+
+/* Video element with smooth fade-in */
+.cinematic-video-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.02);
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  filter: contrast(1.1) brightness(0.72) saturate(1.15);
+  will-change: transform, opacity;
+}
+
+.cinematic-video-element.is-ready {
+  opacity: 1;
+}
+
+/* Executive mode tone shift — sleek cyan/slate */
+.cinematic-video-wrapper.theme-executive .cinematic-video-element {
+  filter: contrast(1.15) brightness(0.55) saturate(0.3) hue-rotate(160deg);
+}
+
+/* Radial Vignette: darkens edges, centers attention */
+.video-overlay-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(5, 2, 10, 0.15) 0%,
+    rgba(5, 2, 10, 0.55) 55%,
+    rgba(5, 2, 10, 0.92) 85%,
+    #05020a 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Subtle CRT / Cyber scanlines (ultra faint) */
+.video-overlay-scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  opacity: 0.35;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Top bar gradient */
+.video-overlay-gradient-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 2, 10, 0.9) 0%,
+    rgba(5, 2, 10, 0.4) 50%,
+    transparent 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Bottom gradient bleeding into page */
+.video-overlay-gradient-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: linear-gradient(
+    0deg,
+    var(--color-bg-primary, #05020a) 0%,
+    rgba(5, 2, 10, 0.8) 40%,
+    transparent 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
